@@ -1,0 +1,38 @@
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: 56px var(--page-pad) 80px;
+}
+
+.footer {
+  padding: 28px var(--page-pad);
+  border-top: 1px solid var(--line);
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footerRight {
+  opacity: 0.9;
+}
+
+@media (max-width: 760px) {
+  .main {
+    padding-top: 24px;
+  }
+  .footerInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,24 @@
+.homeHero {
+  padding: 22px 0 28px;
+  display: grid;
+  gap: 10px;
+}
+
+.homeTitle {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.homeSub {
+  color: var(--muted);
+  max-width: 720px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .homeTitle {
+    font-size: 22px;
+  }
+}

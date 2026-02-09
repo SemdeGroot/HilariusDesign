@@ -1,0 +1,22 @@
+.page {
+  padding-top: 18px;
+  max-width: 860px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.pageIntro {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pageBody {
+  margin-top: 22px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
