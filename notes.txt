@@ -1,0 +1,17 @@
+Home;
+https://archicon.qodeinteractive.com/portfolio-minimal/
+
+Categorie;
+https://archicon.qodeinteractive.com/interactive-portfolio/
+
+Product: 
+https://archicon.qodeinteractive.com/portfolio-item/jan-house/
+
+Mobile:
+https://archicon.qodeinteractive.com/horizontal-showcase/
+
+Lettertype:
+Gibson
+Gibson Bold
+120 spacing headers
+60 spacing normal
