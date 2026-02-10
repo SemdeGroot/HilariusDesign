@@ -4,7 +4,7 @@ import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import LanguageSwitch from "../LanguageSwitch/LanguageSwitch.jsx";
 import logo from "../../assets/logo.png";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import "./Header.css";
 
 export default function Header() {
@@ -14,6 +14,9 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const closeTimer = useRef(null);
+
+  // Mobile menu: accordion state per category
+  const [openCats, setOpenCats] = useState(() => ({}));
 
   const categories = routesConfig.categories;
   const nav = routesConfig.nav;
@@ -47,6 +50,10 @@ export default function Header() {
     closeTimer.current = window.setTimeout(() => setPortfolioOpen(false), 120);
   }
 
+  function toggleCat(slug) {
+    setOpenCats((prev) => ({ ...prev, [slug]: !prev[slug] }));
+  }
+
   return (
     <>
       <header className="header">
@@ -55,6 +62,7 @@ export default function Header() {
             <img className="brandLogo" src={logo} alt="" />
           </Link>
 
+          {/* Desktop: exact zoals het was */}
           <nav className="navDesktop" aria-label="Primary">
             <div
               className={`navGroup ${portfolioOpen ? "open" : ""}`}
@@ -114,6 +122,16 @@ export default function Header() {
             <LanguageSwitch />
           </nav>
 
+          {/* Mobile: top header links + compact language, in dezelfde header-rij */}
+          <nav className="navMobileInline" aria-label="Quick links">
+            {nav.map((item) => (
+              <NavLink key={item.path} to={item.path} className="navMobileInlineLink">
+                {pick(item, "label")}
+              </NavLink>
+            ))}
+            <LanguageSwitch compact />
+          </nav>
+
           <button
             className="mobileBtn"
             onClick={() => setMobileOpen((v) => !v)}
@@ -122,18 +140,6 @@ export default function Header() {
             {mobileOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
           </button>
         </div>
-
-        {/* Mobile: vaste header-links (Over/FAQ/Contact) */}
-        <nav className="headerMobileLinks" aria-label="Snelkoppelingen">
-          {nav.map((item) => (
-            <NavLink key={item.path} to={item.path} className="headerMobileLink">
-              <span className="headerMobileLinkLabel">
-                {pick(item, "label")}
-                <span className="headerMobileUnderline" />
-              </span>
-            </NavLink>
-          ))}
-        </nav>
       </header>
 
       <div className={`mobileOverlay ${mobileOpen ? "open" : ""}`}>
@@ -146,7 +152,6 @@ export default function Header() {
           <div className="mobileTop">
             <div className="mobileTitle">{pick(routesConfig.copy.nav, "menu")}</div>
             <div className="mobileTopRight">
-              <LanguageSwitch compact />
               <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Sluiten">
                 <X size={20} strokeWidth={1.8} />
               </button>
@@ -154,17 +159,49 @@ export default function Header() {
           </div>
 
           <div className="mobileNav">
+            {/* Portfolio accordion met producten */}
             <div className="mobileSection">
               <div className="mobileSectionLabel">{pick(routesConfig.copy.nav, "portfolio")}</div>
-              {categories.map((c) => (
-                <Link key={c.slug} to={`/category/${c.slug}`} className="mobileLink">
-                  <span className="mobileLinkTitle">{pick(c, "title")}</span>
-                  <span className="mobileLinkSub">{pick(c, "subtitle")}</span>
-                </Link>
-              ))}
-            </div>
 
-            {/* Over/FAQ/Contact zijn nu uit het hamburger-menu gehaald (staan in de header op mobile). */}
+              <div className="mobileAcc">
+                {categories.map((c) => {
+                  const isOpen = !!openCats[c.slug];
+                  const items = mega.get(c.slug) ?? [];
+                  return (
+                    <div key={c.slug} className="mobileAccItem">
+                      <button
+                        type="button"
+                        className="mobileAccBtn"
+                        onClick={() => toggleCat(c.slug)}
+                        aria-expanded={isOpen ? "true" : "false"}
+                        aria-controls={`cat-${c.slug}`}
+                      >
+                        <span className="mobileAccTitle">{pick(c, "title")}</span>
+                        <ChevronDown
+                          size={18}
+                          strokeWidth={1.8}
+                          className={`mobileAccChev ${isOpen ? "open" : ""}`}
+                        />
+                      </button>
+
+                      <div id={`cat-${c.slug}`} className={`mobileAccPanel ${isOpen ? "open" : ""}`}>
+                        <Link to={`/category/${c.slug}`} className="mobileAccAll">
+                          {pick(c, "subtitle")}
+                        </Link>
+
+                        <div className="mobileAccProducts">
+                          {items.map((p) => (
+                            <Link key={p.id} to={`/project/${p.id}`} className="mobileAccProduct">
+                              {pick(p, "title")}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

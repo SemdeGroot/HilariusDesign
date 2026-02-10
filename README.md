@@ -15,7 +15,7 @@ Als je op GitHub een tekst of afbeelding aanpast, bouwt Netlify automatisch een 
 
 ## Snel wijzigen (zonder codekennis)
 
-### 1) Teksten aanpassen (menu, categorieën, pagina’s)
+### 1) Algemene teksten aanpassen (menu, categorieën, pagina’s)
 Bijna alle tekst staat in:
 
 - `src/router/routesConfig.js` (navigatie, categorieën, projectlijst, instellingen)
@@ -51,7 +51,7 @@ Er zijn 2 niveaus:
 - Bestand: `src/router/routesConfig.js`
 - Functie: `defaultProjectI18n()`
 
-#### B) Per project overriden (meest gebruikt)
+#### B) Per project overriden (hier kan je de productteksten aanpassen)
 - Bestand: `src/router/projectsData.js`
 - Object: `projectOverrides`
 

@@ -62,3 +62,17 @@
 }
 .langItem:hover{ background: rgba(0,0,0,0.03); opacity:1; }
 .langItem.active{ opacity:1; }
+
+/* Compact variant (voor in header / mobile top) */
+.lang.compact .langBtn{
+  height: 30px;
+  padding: 0 8px 0 10px;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.lang.compact .langMenu{
+  top: 38px;
+  min-width: 84px;
+}

@@ -1,17 +1,22 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import "./Project.css";
 
-function scrollTop() {
+function scrollTopSmooth() {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
 export default function Project() {
   const { id } = useParams();
   const { pick } = useContext(I18nContext);
+
+  // Fix: altijd naar boven bij project-wissel (ook als alleen "next" bestaat)
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [id]);
 
   const project = useMemo(() => routesConfig.projects.find((p) => p.id === id), [id]);
   const category = useMemo(() => {
@@ -124,7 +129,7 @@ export default function Project() {
       <div className="pn">
         <div className="pnLeft">
           {nav.prev ? (
-            <Link to={`/project/${nav.prev.id}`} className="pnLink" onClick={scrollTop}>
+            <Link to={`/project/${nav.prev.id}`} className="pnLink" onClick={scrollTopSmooth}>
               <span className="pnIcon" aria-hidden="true">
                 <ArrowLeft strokeWidth={1.8} />
               </span>
@@ -137,14 +142,14 @@ export default function Project() {
           to={category ? `/category/${category.slug}` : "/"}
           className="pnCenter"
           aria-label="Back to category"
-          onClick={scrollTop}
+          onClick={scrollTopSmooth}
         >
           <LayoutGrid strokeWidth={1.6} />
         </Link>
 
         <div className="pnRight">
           {nav.next ? (
-            <Link to={`/project/${nav.next.id}`} className="pnLink right" onClick={scrollTop}>
+            <Link to={`/project/${nav.next.id}`} className="pnLink right" onClick={scrollTopSmooth}>
               <span className="pnText">{pick(routesConfig.copy.project, "next")}</span>
               <span className="pnIcon" aria-hidden="true">
                 <ArrowRight strokeWidth={1.8} />

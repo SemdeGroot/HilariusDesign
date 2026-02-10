@@ -142,29 +142,13 @@
 }
 
 .catMobileSub{
-  margin-top: 6px; /* strakker */
+  margin-top: 6px;
   color: var(--muted);
   line-height: 1.55;
 }
 
-/* Subtiele hint: swipe/scroll voor producten */
-.catMobileHint{
-  margin-top: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  opacity: 0.9;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  width: fit-content;
-}
-
-.catMobileHint svg{
-  opacity: 0.8;
+.catMobileRailWrap{
+  margin-top: 12px;
 }
 
 .catMobileRail{
@@ -174,28 +158,29 @@
   grid-auto-columns: min(82vw, 420px);
   gap: 14px;
   overflow-x:auto;
+
   scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  scroll-padding-inline: 2px;
+
   -webkit-overflow-scrolling: touch;
   padding: 6px 2px 2px;
-}
-
-.catMobileRailWrap{
-  margin-top: 12px;
+  overscroll-behavior-x: contain;
 }
 
 .catMobileControls{
-  margin-top: 10px;
+  margin-top: 12px;
   display:flex;
   justify-content:center;
-  gap: 10px;
+  gap: 18px; /* pijltjes verder uit elkaar */
 }
 
 .catArrowBtn{
   border: 1px solid var(--line);
   background: transparent;
   color: var(--muted);
-  width: 44px;
-  height: 38px;
+  width: 46px;
+  height: 40px;
   border-radius: 999px;
   display:inline-flex;
   align-items:center;
@@ -211,7 +196,6 @@
 @media (hover: none) and (pointer: coarse){
   .catArrowBtn:hover{ background: transparent; color: var(--muted); }
 }
-
 
 .catMobileCard{
   scroll-snap-align:start;
@@ -252,6 +236,13 @@
 @media (max-width: 860px){
   .catLayout{ display:none; }
   .catMobile{ display:block; }
+}
+
+/* Extra stabiel: op héél smalle schermen één kaart per “pagina” */
+@media (max-width: 520px){
+  .catMobileRail{
+    grid-auto-columns: 100%;
+  }
 }
 
 /* Touch: hover-effect uit */
