@@ -32,7 +32,8 @@ const defaultProjectI18n = (file, categoryDefaults = {}) => {
       title: t,
       description:
         "Ontwerp en productie in gerecycled karton. Strak, functioneel en volledig te personaliseren in uw huisstijl.",
-      body: "", // <-- extra vrije tekst per project (optioneel)
+      body:
+        "Toepassing\n— Waar wordt dit product voor gebruikt?\n\nDetails\n— Formaat / variaties\n— Afwerking (bijv. stans, folie, lak)\n— Personalisatie / branding\n\nProductie\n— Oplage (indicatie)\n— Levertijd (indicatie)\n\nOpmerking\n— Extra context of wensen van de klant",
       type: categoryDefaults?.nl?.type ?? "Relatiegeschenk / Karton",
       year: categoryDefaults?.nl?.year ?? "—",
       materials: "Gerecycled karton"
@@ -41,7 +42,8 @@ const defaultProjectI18n = (file, categoryDefaults = {}) => {
       title: t,
       description:
         "Design and production in recycled board. Clean, functional and fully customizable to your brand.",
-      body: "",
+      body:
+        "Use case\n— What is this used for?\n\nDetails\n— Size / variations\n— Finishing (e.g. die-cut, foil, varnish)\n— Custom branding\n\nProduction\n— Quantity (estimate)\n— Lead time (estimate)\n\nNotes\n— Any extra context or client requests",
       type: categoryDefaults?.en?.type ?? "Corporate gift / Board",
       year: categoryDefaults?.en?.year ?? "—",
       materials: "Recycled board"
@@ -50,7 +52,8 @@ const defaultProjectI18n = (file, categoryDefaults = {}) => {
       title: t,
       description:
         "Design und Produktion aus recycelter Pappe. Klar, funktional und vollständig an Ihre Marke anpassbar.",
-      body: "",
+      body:
+        "Einsatz\n— Wofür wird es genutzt?\n\nDetails\n— Größe / Varianten\n— Veredelung (z.B. Stanzung, Folie, Lack)\n— Branding / Personalisierung\n\nProduktion\n— Auflage (Schätzung)\n— Lieferzeit (Schätzung)\n\nNotizen\n— Zusätzlicher Kontext oder Kundenwünsche",
       type: categoryDefaults?.de?.type ?? "Werbegeschenk / Pappe",
       year: categoryDefaults?.de?.year ?? "—",
       materials: "Recycelte Pappe"
@@ -139,9 +142,9 @@ export const routesConfig = {
     home: texts.home,
     category: {
       i18n: {
-        nl: { colProject: "Product", colType: "Type", colYear: "Jaar" },
-        en: { colProject: "Project", colType: "Type", colYear: "Year" },
-        de: { colProject: "Projekt", colType: "Typ", colYear: "Jahr" }
+        nl: { colProject: "Product", colType: "Type", colYear: "Jaar", scrollHint: "Scroll voor producten" },
+        en: { colProject: "Project", colType: "Type", colYear: "Year", scrollHint: "Scroll for products" },
+        de: { colProject: "Projekt", colType: "Typ", colYear: "Jahr", scrollHint: "Scroll für Produkte" }
       }
     },
     project: {
@@ -212,12 +215,12 @@ export const routesConfig = {
 
   // Mooie selectie voor homescreen (handmatig per categorie)
   homeCovers: {
-    "bureau-accessoires": "bureau-accessoires/popup/popup.jpg",
-    transport: "transport/heineken/heineken.jpg",
-    "wijnverpakkingen-displays": "wijnverpakkingen-displays/vikokoker/vikokoker.jpg",
-    "boeken-mappen": "boeken-mappen/stalenboek/stalenboek.jpg",
+    "bureau-accessoires": "bureau-accessoires/klokken/klokken.jpg",
+    transport: "transport/vrachtwagens/vrachtwagens.jpg",
+    "wijnverpakkingen-displays": "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg",
+    "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen.jpg",
     "kerst-spellen": "kerst-spellen/schaakspel/schaakspel.jpg",
-    "interieur-exterieur": "interieur-exterieur/standbouw/standbouw.jpg"
+    "interieur-exterieur": "interieur-exterieur/maquette/maquette.jpg"
   },
 
   homeExtras: [

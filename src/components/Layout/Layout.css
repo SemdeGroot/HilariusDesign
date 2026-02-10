@@ -33,12 +33,27 @@
   gap: 40px;
 }
 
+/* Belangrijk:
+   Elke footerCol heeft exact 2 rijen:
+   - rij 1: label
+   - rij 2: body (alle content start exact gelijk) */
+.footerCol{
+  display:grid;
+  grid-template-rows: auto 1fr;
+  align-items:start;
+}
+
 .footerLabel{
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.footerBody{
+  display:grid;
+  gap: 8px;
 }
 
 .footerText{
@@ -48,11 +63,12 @@
   opacity: 0.9;
 }
 
+/* LinkedIn zelf dezelfde ritme/hoogte als footerText */
 .footerLink{
   font-size: 13px;
-  letter-spacing: 0.02em;
-  padding: 6px 0;
-  display: inline-block;
+  line-height: 1.65;
+  padding: 0;
+  display: block;
 }
 
 @media (max-width: 860px){

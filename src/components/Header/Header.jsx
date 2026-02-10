@@ -21,7 +21,6 @@ export default function Header() {
   const mega = useMemo(() => {
     const map = new Map();
     for (const c of categories) {
-      // ALLE producten tonen
       const items = routesConfig.projects.filter((p) => p.category === c.slug);
       map.set(c.slug, items);
     }
@@ -49,79 +48,81 @@ export default function Header() {
   }
 
   return (
-    <header className="header">
-      <div className="headerInner">
-        <Link to="/" className="brand" aria-label="HilariusDesign">
-          <img className="brandLogo" src={logo} alt="" />
-        </Link>
+    <>
+      <header className="header">
+        <div className="headerInner">
+          <Link to="/" className="brand" aria-label="HilariusDesign">
+            <img className="brandLogo" src={logo} alt="" />
+          </Link>
 
-        <nav className="navDesktop" aria-label="Primary">
-          <div
-            className={`navGroup ${portfolioOpen ? "open" : ""}`}
-            onMouseEnter={openPortfolio}
-            onMouseLeave={scheduleClosePortfolio}
-          >
-            <NavLink to="/" className="navItem">
-              <span className="navLabel">
-                {pick(routesConfig.copy.nav, "portfolio")}
-                <span className="navUnderline" />
-              </span>
-            </NavLink>
-
+          <nav className="navDesktop" aria-label="Primary">
             <div
-              className={`mega ${portfolioOpen ? "open" : ""}`}
-              role="menu"
-              aria-label="Portfolio submenu"
+              className={`navGroup ${portfolioOpen ? "open" : ""}`}
               onMouseEnter={openPortfolio}
               onMouseLeave={scheduleClosePortfolio}
             >
-              <div className="megaInner">
-                {categories.map((c) => (
-                  <div key={c.slug} className="megaCol">
-                    <Link to={`/category/${c.slug}`} className="megaTitle">
-                      <span className="megaTitleLabel">
-                        {pick(c, "title")}
-                        <span className="megaUnderline" />
-                      </span>
-                    </Link>
-                    <div className="megaSub">{pick(c, "subtitle")}</div>
+              <NavLink to="/" className="navItem">
+                <span className="navLabel">
+                  {pick(routesConfig.copy.nav, "portfolio")}
+                  <span className="navUnderline" />
+                </span>
+              </NavLink>
 
-                    <div className="megaItems">
-                      {(mega.get(c.slug) ?? []).map((p) => (
-                        <Link key={p.id} to={`/project/${p.id}`} className="megaItem">
-                          <span className="megaItemLabel">
-                            {pick(p, "title")}
-                            <span className="megaUnderlineThin" />
-                          </span>
-                        </Link>
-                      ))}
+              <div
+                className={`mega ${portfolioOpen ? "open" : ""}`}
+                role="menu"
+                aria-label="Portfolio submenu"
+                onMouseEnter={openPortfolio}
+                onMouseLeave={scheduleClosePortfolio}
+              >
+                <div className="megaInner">
+                  {categories.map((c) => (
+                    <div key={c.slug} className="megaCol">
+                      <Link to={`/category/${c.slug}`} className="megaTitle">
+                        <span className="megaTitleLabel">
+                          {pick(c, "title")}
+                          <span className="megaUnderline" />
+                        </span>
+                      </Link>
+                      <div className="megaSub">{pick(c, "subtitle")}</div>
+
+                      <div className="megaItems">
+                        {(mega.get(c.slug) ?? []).map((p) => (
+                          <Link key={p.id} to={`/project/${p.id}`} className="megaItem">
+                            <span className="megaItemLabel">
+                              {pick(p, "title")}
+                              <span className="megaUnderlineThin" />
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {nav.map((item) => (
-            <NavLink key={item.path} to={item.path} className="navItem">
-              <span className="navLabel">
-                {pick(item, "label")}
-                <span className="navUnderline" />
-              </span>
-            </NavLink>
-          ))}
+            {nav.map((item) => (
+              <NavLink key={item.path} to={item.path} className="navItem">
+                <span className="navLabel">
+                  {pick(item, "label")}
+                  <span className="navUnderline" />
+                </span>
+              </NavLink>
+            ))}
 
-          <LanguageSwitch />
-        </nav>
+            <LanguageSwitch />
+          </nav>
 
-        <button
-          className="mobileBtn"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label={mobileOpen ? "Menu sluiten" : "Menu openen"}
-        >
-          {mobileOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
-        </button>
-      </div>
+          <button
+            className="mobileBtn"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? "Menu sluiten" : "Menu openen"}
+          >
+            {mobileOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
+          </button>
+        </div>
+      </header>
 
       <div className={`mobileOverlay ${mobileOpen ? "open" : ""}`}>
         <div
@@ -159,6 +160,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }

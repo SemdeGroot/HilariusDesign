@@ -1,7 +1,7 @@
 .header{
   position: sticky;
   top:0;
-  z-index:50;
+  z-index:200;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -88,7 +88,7 @@
   pointer-events:none;
   transition: opacity 160ms ease, transform 160ms ease;
   transform: translateY(-6px);
-  z-index: 55;
+  z-index:220;
 }
 
 .mega.open{
@@ -233,7 +233,7 @@
   opacity:0;
   pointer-events:none;
   transition: opacity 160ms ease;
-  z-index: 60;
+  z-index:500;
 }
 
 .mobileOverlay.open{

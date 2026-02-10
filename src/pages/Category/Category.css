@@ -142,13 +142,33 @@
 }
 
 .catMobileSub{
-  margin-top: 8px;
+  margin-top: 6px; /* strakker */
   color: var(--muted);
   line-height: 1.55;
 }
 
+/* Subtiele hint: swipe/scroll voor producten */
+.catMobileHint{
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.catMobileHint svg{
+  opacity: 0.8;
+}
+
 .catMobileRail{
-  margin-top: 14px;
+  margin-top: 12px;
   display:grid;
   grid-auto-flow: column;
   grid-auto-columns: min(82vw, 420px);

@@ -40,80 +40,128 @@
   opacity: 0.9;
 }
 
-/* Mobile showcase */
-.homeShowcase{
-  padding: 10px var(--page-pad) 40px;
+/* MOBILE layout (nieuwe volgorde) */
+.homeMobile{
+  padding-top: 8px;
+  display: grid;
+  gap: 18px;
 }
 
-.homeShowcaseTop{
-  position: sticky;
-  top: 86px; /* onder header */
-  z-index: 2;
-  background: var(--bg);
-  padding: 14px 0 10px;
+.homeMobileIntro{
+  display: grid;
+  gap: 8px;
 }
 
-.homeShowcaseBrand{
+.homeMobileIntroTitle{
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text);
   opacity: 0.92;
 }
 
-.homeShowcaseStack{
+.homeMobileIntroBody{
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.homeMobileCat{
+  margin-top: 6px;
+}
+
+.homeMobileCatLink{
+  text-decoration: none;
+  color: var(--text);
   display: grid;
-  gap: 18px;
-  padding-top: 10px;
+  gap: 10px;
 }
 
-.homeShowcaseSlide{
-  position: relative;
-  min-height: 70vh;
-  display: grid;
-  align-items: end;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 420ms ease, transform 420ms ease;
-}
-
-.homeShowcaseSlide.inView{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.homeShowcaseMedia{
+.homeMobileCatMedia{
   width: 100%;
-  height: 100%;
 }
 
-.homeShowcaseMedia img{
+.homeMobileCatMedia img{
   width: 100%;
-  height: 70vh;
-  object-fit: contain;
+  height: auto;
   display: block;
+  object-fit: contain;
 }
 
-.homeShowcaseCaption{
-  padding: 10px 0 0;
+.homeMobileCatCaption{
+  display: grid;
+  gap: 4px; /* kleiner: tekst stond te ver onder */
 }
 
-.homeShowcaseTitle{
+.homeMobileCatTitle{
   font-size: 14px;
   letter-spacing: 0.02em;
-  color: var(--text);
   opacity: 0.92;
 }
 
-.homeShowcaseSub{
-  margin-top: 6px;
+.homeMobileCatSub{
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-top: 0; /* kleiner: stond te ver weg */
+}
+
+.homeMobileCatList{
+  display: grid;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.homeMobileCatRow{
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.homeMobileCatRowTitle{
+  font-size: 14px;
+  opacity: 0.92;
+}
+
+.homeMobileCatRowSub{
   font-size: 12px;
   color: var(--muted);
   line-height: 1.45;
 }
 
-.homeShowcaseBottom{
-  height: 30px;
+.homeMobileFeatureHeroWrap{
+  margin-top: 6px;
+}
+
+.homeMobileFeatureHero{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.homeMobileFeatureText{
+  display: grid;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.homeMobileFeatureTitle{
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.homeMobileFeatureBody{
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.9;
 }
 
 @media (max-width: 860px){

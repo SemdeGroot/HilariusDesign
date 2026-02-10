@@ -1,4 +1,5 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import HomeMosaic from "../../components/HomeMosaic/HomeMosaic.jsx";
@@ -21,55 +22,60 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function MobileShowcase({ slides }) {
-  const refs = useRef([]);
-
-  useEffect(() => {
-    const els = refs.current.filter(Boolean);
-    if (!els.length) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) e.target.classList.add("inView");
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
+function HomeMobile({ intro, categories, feature }) {
   return (
-    <section className="homeShowcase" aria-label="Showcase">
-      {/* Top tekst: altijd bovenaan, botst niet met captions */}
-      <div className="homeShowcaseTop">
-        <div className="homeShowcaseBrand">HilariusDesign</div>
+    <section className="homeMobile" aria-label="Home">
+      {/* 1) Intro */}
+      <div className="homeMobileIntro">
+        <div className="homeMobileIntroTitle">{intro.title}</div>
+        <div className="homeMobileIntroBody">{intro.body}</div>
       </div>
 
-      <div className="homeShowcaseStack">
-        {slides.map((s, idx) => (
-          <article
-            key={s.key}
-            className="homeShowcaseSlide"
-            ref={(el) => (refs.current[idx] = el)}
-          >
-            <div className="homeShowcaseMedia" aria-hidden="true">
-              {s.src ? <img src={s.src} alt="" loading="lazy" decoding="async" /> : null}
+      {/* 2) Categorie 1 (titel + beschrijving) */}
+      {categories[0] ? (
+        <article className="homeMobileCat">
+          <Link to={`/category/${categories[0].slug}`} className="homeMobileCatLink">
+            <div className="homeMobileCatMedia" aria-hidden="true">
+              {categories[0].src ? (
+                <img src={categories[0].src} alt="" loading="lazy" decoding="async" />
+              ) : null}
             </div>
+            <div className="homeMobileCatCaption">
+              <div className="homeMobileCatTitle">{categories[0].title}</div>
+              <div className="homeMobileCatSub">{categories[0].sub}</div>
+            </div>
+          </Link>
+        </article>
+      ) : null}
 
-            {/* Caption: onderin de slide (zodat hij niet met toptekst botst) */}
-            <div className="homeShowcaseCaption">
-              <div className="homeShowcaseTitle">{s.title}</div>
-              {s.sub ? <div className="homeShowcaseSub">{s.sub}</div> : null}
-            </div>
-          </article>
+      {/* 3) Categorie 2 t/m 6 (titel + beschrijving) */}
+      <div className="homeMobileCatList" aria-label="Categories">
+        {categories.slice(1, 6).map((c) => (
+          <Link key={c.slug} to={`/category/${c.slug}`} className="homeMobileCatRow">
+            <span className="homeMobileCatRowTitle">{c.title}</span>
+            <span className="homeMobileCatRowSub">{c.sub}</span>
+          </Link>
         ))}
       </div>
 
-      {/* Bottom spacer zodat laatste caption niet tegen de rand plakt */}
-      <div className="homeShowcaseBottom" aria-hidden="true" />
+      {/* 4) Grote uitstalling foto */}
+      {feature.heroSrc ? (
+        <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
+          <img
+            className="homeMobileFeatureHero"
+            src={feature.heroSrc}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ) : null}
+
+      {/* 5) Laatste tekst */}
+      <div className="homeMobileFeatureText">
+        <div className="homeMobileFeatureTitle">{feature.title}</div>
+        <div className="homeMobileFeatureBody">{feature.body}</div>
+      </div>
     </section>
   );
 }
@@ -78,7 +84,7 @@ export default function Home() {
   const { pick } = useContext(I18nContext);
   const isMobile = useIsMobile(860);
 
-  const { tiles, feature, mobileSlides } = useMemo(() => {
+  const { tiles, feature, mobileIntro, mobileCategories } = useMemo(() => {
     const c = routesConfig.categories;
     const p = routesConfig.projects;
 
@@ -89,10 +95,7 @@ export default function Home() {
     };
 
     /**
-     * DESKTOP:
-     * - Eerste 2 rijen EXACT behouden zoals jij ze nu hebt:
-     *   -> dit zijn de eerste 6 items hieronder (incl. txt1).
-     * - Alles daarna weg (geen extra c.slice(0,6) meer).
+     * DESKTOP mosaic blijft exact zoals eerder
      */
     const baseTiles = [
       {
@@ -158,12 +161,24 @@ export default function Home() {
       }
     ];
 
-    // Feature block onder de mosaic (blijft)
+    // Feature block (desktop + mobile)
     const heroSrc = getImage("uitstalling.jpg");
 
-    // MOBILE showcase: 6 categorieën als verticale showcase
-    const slides = c.slice(0, 6).map((cat) => ({
-      key: `mob-${cat.slug}`,
+    const featureBlock = {
+      title: pick(routesConfig.copy.home, "secondTitle"),
+      body: pick(routesConfig.copy.home, "secondBody"),
+      heroSrc
+    };
+
+    // MOBILE intro
+    const intro = {
+      title: pick(routesConfig.copy.home, "leadTitle"),
+      body: pick(routesConfig.copy.home, "leadBody")
+    };
+
+    // MOBILE categorie data (1 t/m 6 met beschrijving)
+    const cats = c.slice(0, 6).map((cat) => ({
+      slug: cat.slug,
       src: coverFor(cat.slug),
       title: pick(cat, "title"),
       sub: pick(cat, "subtitle")
@@ -171,17 +186,14 @@ export default function Home() {
 
     return {
       tiles: baseTiles,
-      feature: {
-        title: pick(routesConfig.copy.home, "secondTitle"),
-        body: pick(routesConfig.copy.home, "secondBody"),
-        heroSrc
-      },
-      mobileSlides: slides
+      feature: featureBlock,
+      mobileIntro: intro,
+      mobileCategories: cats
     };
   }, [pick]);
 
   if (isMobile) {
-    return <MobileShowcase slides={mobileSlides} />;
+    return <HomeMobile intro={mobileIntro} categories={mobileCategories} feature={feature} />;
   }
 
   return (
@@ -191,7 +203,13 @@ export default function Home() {
       <div className="homeFeature">
         <div className="homeFeatureLeft">
           {feature.heroSrc ? (
-            <img className="homeFeatureHero" src={feature.heroSrc} alt="" loading="lazy" decoding="async" />
+            <img
+              className="homeFeatureHero"
+              src={feature.heroSrc}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           ) : null}
         </div>
 

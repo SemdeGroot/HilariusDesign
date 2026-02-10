@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MoveHorizontal } from "lucide-react";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
@@ -50,12 +50,11 @@ export default function Category() {
       img.onerror = () => reject(new Error("load failed"));
     });
 
-    // decode is not supported everywhere, but harmless to guard
     if (img.decode) {
       try {
         await img.decode();
       } catch {
-        // ignore decode failures, we still have onload
+        // ignore decode failures
       }
     }
   }
@@ -68,7 +67,6 @@ export default function Category() {
 
     const token = (animRef.current.token += 1);
 
-    // cancel pending
     if (animRef.current.t1) window.clearTimeout(animRef.current.t1);
     if (animRef.current.t2) window.clearTimeout(animRef.current.t2);
 
@@ -76,7 +74,6 @@ export default function Category() {
       .then(() => {
         if (animRef.current.token !== token) return;
 
-        // fade out current
         setIsFadingOut(true);
 
         animRef.current.t1 = window.setTimeout(() => {
@@ -84,7 +81,6 @@ export default function Category() {
 
           setHeroSrc(p.cover);
 
-          // next tick: fade back in
           animRef.current.t2 = window.setTimeout(() => {
             if (animRef.current.token !== token) return;
             setIsFadingOut(false);
@@ -92,7 +88,6 @@ export default function Category() {
         }, 140);
       })
       .catch(() => {
-        // if preload fails, just swap directly
         if (animRef.current.token !== token) return;
         setHeroSrc(p.cover);
         setIsFadingOut(false);
@@ -184,7 +179,13 @@ export default function Category() {
         <div className="catMobileTitle">{pick(category, "title")}</div>
         <div className="catMobileSub">{pick(category, "subtitle")}</div>
 
-        <div className="catMobileRail">
+        {/* Scroll hint (mobile) */}
+        <div className="catMobileHint" aria-hidden="true">
+          <MoveHorizontal size={18} strokeWidth={1.6} />
+          <span>{pick(routesConfig.copy.category, "scrollHint")}</span>
+        </div>
+
+        <div className="catMobileRail" aria-label="Products">
           {projects.map((p) => (
             <Link key={p.id} to={`/project/${p.id}`} className="catMobileCard">
               <div className="catMobileMedia">
