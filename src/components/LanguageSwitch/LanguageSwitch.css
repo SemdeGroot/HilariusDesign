@@ -66,8 +66,8 @@
 /* Compact variant (voor in header / mobile top) */
 .lang.compact .langBtn{
   height: 30px;
-  padding: 0 8px 0 10px;
-  gap: 6px;
+  padding: 0 7px 0 10px;
+  gap: 4px;             /* chevron dichter bij landcode */
   font-size: 11px;
   letter-spacing: 0.12em;
 }

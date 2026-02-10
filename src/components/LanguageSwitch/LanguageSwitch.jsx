@@ -16,6 +16,8 @@ export default function LanguageSwitch({ compact = false }) {
     []
   );
 
+  const chevSize = compact ? 14 : 16;
+
   return (
     <div className={`lang ${compact ? "compact" : ""}`}>
       <button
@@ -25,7 +27,11 @@ export default function LanguageSwitch({ compact = false }) {
         aria-expanded={open ? "true" : "false"}
       >
         <span className="langBtnLabel">{lang.toUpperCase()}</span>
-        <ChevronDown className={`langChev ${open ? "open" : ""}`} size={16} strokeWidth={1.8} />
+        <ChevronDown
+          className={`langChev ${open ? "open" : ""}`}
+          size={chevSize}
+          strokeWidth={1.8}
+        />
       </button>
 
       <div className={`langMenu ${open ? "open" : ""}`} role="menu" aria-label="Taalmenu">

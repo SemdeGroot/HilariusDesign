@@ -225,22 +225,28 @@
 .navMobileInline{
   display:none;
   align-items:center;
-  gap: 14px;
   flex: 1 1 auto;
   justify-content: flex-end;
   min-width: 0;
   flex-wrap: wrap;
+
+  /* gelijkere spacing over screenwidths */
+  gap: clamp(10px, 2.8vw, 14px);
 }
 
 .navMobileInlineLink{
   text-decoration:none;
   color: var(--text);
-  font-size: 12px;
-  letter-spacing: 0.10em;
   text-transform: uppercase;
   opacity: 0.86;
-  padding: 6px 0;
   white-space: nowrap;
+
+  /* gelijke padding (touch target consistent) */
+  padding: 6px 8px;
+
+  /* font-size subtiel schaalbaar per device width */
+  font-size: clamp(10px, 2.7vw, 12px);
+  letter-spacing: clamp(0.07em, 0.6vw, 0.10em);
 }
 
 .navMobileInlineLink:hover,
@@ -435,17 +441,6 @@
   .navMobileInline{ display:flex; }
   .mobileBtn{ display:inline-flex; align-items:center; justify-content:center; }
   .mega{ display:none; }
-}
-
-/* Extra compact op hele kleine schermen */
-@media (max-width: 420px){
-  .navMobileInline{
-    gap: 10px;
-  }
-  .navMobileInlineLink{
-    font-size: 11px;
-    letter-spacing: 0.08em;
-  }
 }
 
 /* Touch: hover states uit */

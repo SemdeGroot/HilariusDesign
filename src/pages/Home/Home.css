@@ -67,7 +67,10 @@
 
 .homeMobileCats{
   display: grid;
-  gap: 14px;
+
+  /* iets meer ruimte tussen categorieën (subtiel, maar duidelijker) */
+  gap: 22px;
+
   padding-top: 6px;
 }
 
@@ -113,6 +116,10 @@
   color: var(--muted);
   line-height: 1.45;
   margin-top: 0;
+}
+
+.homeRevealSentinel{
+  height: 1px;
 }
 
 .homeMobileFeatureHeroWrap{

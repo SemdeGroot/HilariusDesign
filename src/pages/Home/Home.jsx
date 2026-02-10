@@ -22,31 +22,41 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useInViewOnce(options = {}) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+function HomeMobile({ intro, categories, feature }) {
+  const [visibleCount, setVisibleCount] = useState(() => Math.min(1, categories.length));
+  const sentinelRef = useRef(null);
 
   useEffect(() => {
-    if (inView) return;
-    const el = ref.current;
+    if (visibleCount >= categories.length) return;
+    const el = sentinelRef.current;
     if (!el) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     const io = new IntersectionObserver(
       (entries) => {
         const hit = entries.some((e) => e.isIntersecting);
-        if (hit) setInView(true);
+        if (!hit) return;
+
+        // Reveal exactly one extra item at a time
+        setVisibleCount((v) => Math.min(v + 1, categories.length));
+
+        // If reduced motion, just keep going without waiting for animation timing
+        if (prefersReduced) {
+          setVisibleCount((v) => Math.min(v + 1, categories.length));
+        }
       },
-      { root: null, threshold: 0.18, rootMargin: "0px 0px -10% 0px", ...options }
+      { root: null, threshold: 0.12, rootMargin: "0px 0px -18% 0px" }
     );
 
     io.observe(el);
     return () => io.disconnect();
-  }, [inView, options]);
+  }, [visibleCount, categories.length]);
 
-  return { ref, inView };
-}
+  const shown = categories.slice(0, visibleCount);
 
-function HomeMobile({ intro, categories, feature }) {
   return (
     <section className="homeMobile" aria-label="Home">
       <div className="homeMobileIntro">
@@ -55,26 +65,22 @@ function HomeMobile({ intro, categories, feature }) {
       </div>
 
       <div className="homeMobileCats" aria-label="Categories">
-        {categories.map((c) => {
-          const { ref, inView } = useInViewOnce();
-          return (
-            <article
-              key={c.slug}
-              ref={ref}
-              className={`homeMobileCatCard ${inView ? "isIn" : ""}`}
-            >
-              <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
-                <div className="homeMobileCatMedia" aria-hidden="true">
-                  {c.src ? <img src={c.src} alt="" loading="lazy" decoding="async" /> : null}
-                </div>
-                <div className="homeMobileCatCaption">
-                  <div className="homeMobileCatTitle">{c.title}</div>
-                  <div className="homeMobileCatSub">{c.sub}</div>
-                </div>
-              </Link>
-            </article>
-          );
-        })}
+        {shown.map((c) => (
+          <article key={c.slug} className="homeMobileCatCard isIn">
+            <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
+              <div className="homeMobileCatMedia" aria-hidden="true">
+                {c.src ? <img src={c.src} alt="" loading="lazy" decoding="async" /> : null}
+              </div>
+              <div className="homeMobileCatCaption">
+                <div className="homeMobileCatTitle">{c.title}</div>
+                <div className="homeMobileCatSub">{c.sub}</div>
+              </div>
+            </Link>
+          </article>
+        ))}
+
+        {/* Sentinel: zodra je hierheen scrollt, verschijnt er 1 categorie extra */}
+        {visibleCount < categories.length ? <div ref={sentinelRef} className="homeRevealSentinel" /> : null}
       </div>
 
       {feature.heroSrc ? (

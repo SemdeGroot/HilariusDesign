@@ -27,6 +27,8 @@ export default function Category() {
   const animRef = useRef({ token: 0, t1: null, t2: null });
   const railRef = useRef(null);
 
+  const scrollAnimRef = useRef({ raf: 0 });
+
   useEffect(() => {
     if (!projects.length) return;
     const initial = projects[0];
@@ -37,6 +39,7 @@ export default function Category() {
     return () => {
       if (animRef.current.t1) window.clearTimeout(animRef.current.t1);
       if (animRef.current.t2) window.clearTimeout(animRef.current.t2);
+      if (scrollAnimRef.current.raf) cancelAnimationFrame(scrollAnimRef.current.raf);
     };
   }, [slug, projects]);
 
@@ -94,6 +97,38 @@ export default function Category() {
       });
   }
 
+  function smoothScrollToX(el, targetLeft, duration = 650) {
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReduced) {
+      el.scrollLeft = targetLeft;
+      return;
+    }
+
+    if (scrollAnimRef.current.raf) cancelAnimationFrame(scrollAnimRef.current.raf);
+
+    const startLeft = el.scrollLeft;
+    const delta = targetLeft - startLeft;
+    const start = performance.now();
+
+    const easeInOutCubic = (t) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = easeInOutCubic(t);
+      el.scrollLeft = startLeft + delta * eased;
+
+      if (t < 1) {
+        scrollAnimRef.current.raf = requestAnimationFrame(tick);
+      }
+    };
+
+    scrollAnimRef.current.raf = requestAnimationFrame(tick);
+  }
+
   function scrollRail(dir) {
     const el = railRef.current;
     if (!el) return;
@@ -111,7 +146,8 @@ export default function Category() {
     const targetIndex = Math.round(nextLeft / step);
     const target = Math.max(0, targetIndex * step);
 
-    el.scrollTo({ left: target, top: 0, behavior: "smooth" });
+    // Iets langzamer / smoother dan native smooth, zodat images kunnen laden
+    smoothScrollToX(el, target, 700);
   }
 
   if (!category) {
