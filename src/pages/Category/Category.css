@@ -179,6 +179,40 @@
   padding: 6px 2px 2px;
 }
 
+.catMobileRailWrap{
+  margin-top: 12px;
+}
+
+.catMobileControls{
+  margin-top: 10px;
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+}
+
+.catArrowBtn{
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  width: 44px;
+  height: 38px;
+  border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor: pointer;
+}
+
+.catArrowBtn:hover{
+  background: rgba(0,0,0,0.02);
+  color: var(--text);
+}
+
+@media (hover: none) and (pointer: coarse){
+  .catArrowBtn:hover{ background: transparent; color: var(--muted); }
+}
+
+
 .catMobileCard{
   scroll-snap-align:start;
   text-decoration:none;

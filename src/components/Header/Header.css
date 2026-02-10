@@ -338,3 +338,64 @@
   .mobileLink:hover{ background: transparent; }
   .mobileLinkSolo:hover{ background: transparent; }
 }
+
+/* Mobile header quick links */
+.headerMobileLinks{
+  display:none;
+  padding: 10px var(--page-pad) 12px;
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.headerMobileLink{
+  text-decoration:none;
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.88;
+  padding: 6px 0;
+  white-space: nowrap;
+}
+
+.headerMobileLink:hover,
+.headerMobileLink.active{
+  opacity: 1;
+}
+
+.headerMobileLinkLabel{
+  position: relative;
+  display:inline-block;
+}
+
+.headerMobileUnderline{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: -2px;
+  height: 1px;
+  background: rgba(10,10,10,0.70);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms ease;
+  opacity: 0.9;
+  pointer-events:none;
+}
+
+.headerMobileLink.active .headerMobileUnderline{
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (max-width: 860px){
+  .headerInner{ height: 72px; }
+  .headerMobileLinks{ display:flex; }
+}
+
+/* Touch devices: hover effecten uit */
+@media (hover: none) and (pointer: coarse){
+  .headerMobileLink:hover{ opacity: 0.88; }
+}

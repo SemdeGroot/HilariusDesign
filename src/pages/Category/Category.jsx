@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowUpRight, MoveHorizontal } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
@@ -21,11 +21,11 @@ export default function Category() {
 
   const [activeId, setActiveId] = useState(null);
 
-  // Hero image: single <img>, swap only after preload+decode to avoid “flash”
   const [heroSrc, setHeroSrc] = useState("");
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   const animRef = useRef({ token: 0, t1: null, t2: null });
+  const railRef = useRef(null);
 
   useEffect(() => {
     if (!projects.length) return;
@@ -54,7 +54,7 @@ export default function Category() {
       try {
         await img.decode();
       } catch {
-        // ignore decode failures
+        // ignore
       }
     }
   }
@@ -92,6 +92,13 @@ export default function Category() {
         setHeroSrc(p.cover);
         setIsFadingOut(false);
       });
+  }
+
+  function scrollRail(dir) {
+    const el = railRef.current;
+    if (!el) return;
+    const amount = Math.max(260, Math.floor(el.clientWidth * 0.85));
+    el.scrollBy({ left: dir * amount, top: 0, behavior: "smooth" });
   }
 
   if (!category) {
@@ -179,35 +186,50 @@ export default function Category() {
         <div className="catMobileTitle">{pick(category, "title")}</div>
         <div className="catMobileSub">{pick(category, "subtitle")}</div>
 
-        {/* Scroll hint (mobile) */}
-        <div className="catMobileHint" aria-hidden="true">
-          <MoveHorizontal size={18} strokeWidth={1.6} />
-          <span>{pick(routesConfig.copy.category, "scrollHint")}</span>
-        </div>
-
-        <div className="catMobileRail" aria-label="Products">
-          {projects.map((p) => (
-            <Link key={p.id} to={`/project/${p.id}`} className="catMobileCard">
-              <div className="catMobileMedia">
-                {p.cover ? (
-                  <img
-                    src={p.cover}
-                    alt={pick(p, "title")}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => (e.currentTarget.style.display = "none")}
-                  />
-                ) : null}
-                <div className="catHeroFallback" />
-              </div>
-              <div className="catMobileInfo">
-                <div className="catMobileName">{pick(p, "title")}</div>
-                <div className="catMobileMeta">
-                  {pick(p, "type")} · {pick(p, "year")}
+        <div className="catMobileRailWrap" aria-label="Products">
+          <div ref={railRef} className="catMobileRail">
+            {projects.map((p) => (
+              <Link key={p.id} to={`/project/${p.id}`} className="catMobileCard">
+                <div className="catMobileMedia">
+                  {p.cover ? (
+                    <img
+                      src={p.cover}
+                      alt={pick(p, "title")}
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                  ) : null}
+                  <div className="catHeroFallback" />
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="catMobileInfo">
+                  <div className="catMobileName">{pick(p, "title")}</div>
+                  <div className="catMobileMeta">
+                    {pick(p, "type")} · {pick(p, "year")}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="catMobileControls" aria-label="Scroll controls">
+            <button
+              className="catArrowBtn"
+              type="button"
+              onClick={() => scrollRail(-1)}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft size={18} strokeWidth={1.8} />
+            </button>
+            <button
+              className="catArrowBtn"
+              type="button"
+              onClick={() => scrollRail(1)}
+              aria-label="Scroll right"
+            >
+              <ChevronRight size={18} strokeWidth={1.8} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -39,8 +39,7 @@
   color: var(--text);
   opacity: 0.9;
 }
-
-/* MOBILE layout (nieuwe volgorde) */
+/* MOBILE layout (vertical, image + caption per categorie) */
 .homeMobile{
   padding-top: 8px;
   display: grid;
@@ -66,8 +65,22 @@
   opacity: 0.9;
 }
 
-.homeMobileCat{
-  margin-top: 6px;
+.homeMobileCats{
+  display: grid;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.homeMobileCatCard{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 260ms ease, transform 260ms ease;
+  will-change: opacity, transform;
+}
+
+.homeMobileCatCard.isIn{
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .homeMobileCatLink{
@@ -75,10 +88,6 @@
   color: var(--text);
   display: grid;
   gap: 10px;
-}
-
-.homeMobileCatMedia{
-  width: 100%;
 }
 
 .homeMobileCatMedia img{
@@ -90,7 +99,7 @@
 
 .homeMobileCatCaption{
   display: grid;
-  gap: 4px; /* kleiner: tekst stond te ver onder */
+  gap: 4px;
 }
 
 .homeMobileCatTitle{
@@ -103,34 +112,7 @@
   font-size: 12px;
   color: var(--muted);
   line-height: 1.45;
-  margin-top: 0; /* kleiner: stond te ver weg */
-}
-
-.homeMobileCatList{
-  display: grid;
-  gap: 10px;
-  padding-top: 6px;
-}
-
-.homeMobileCatRow{
-  text-decoration: none;
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 12px 12px;
-  display: grid;
-  gap: 4px;
-}
-
-.homeMobileCatRowTitle{
-  font-size: 14px;
-  opacity: 0.92;
-}
-
-.homeMobileCatRowSub{
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.45;
+  margin-top: 0;
 }
 
 .homeMobileFeatureHeroWrap{
@@ -162,12 +144,4 @@
   line-height: 1.8;
   color: var(--text);
   opacity: 0.9;
-}
-
-@media (max-width: 860px){
-  .homeFeature{
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 34px;
-  }
 }

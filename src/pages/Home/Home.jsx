@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
@@ -22,43 +22,61 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
+function useInViewOnce(options = {}) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (inView) return;
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.some((e) => e.isIntersecting);
+        if (hit) setInView(true);
+      },
+      { root: null, threshold: 0.18, rootMargin: "0px 0px -10% 0px", ...options }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [inView, options]);
+
+  return { ref, inView };
+}
+
 function HomeMobile({ intro, categories, feature }) {
   return (
     <section className="homeMobile" aria-label="Home">
-      {/* 1) Intro */}
       <div className="homeMobileIntro">
         <div className="homeMobileIntroTitle">{intro.title}</div>
         <div className="homeMobileIntroBody">{intro.body}</div>
       </div>
 
-      {/* 2) Categorie 1 (titel + beschrijving) */}
-      {categories[0] ? (
-        <article className="homeMobileCat">
-          <Link to={`/category/${categories[0].slug}`} className="homeMobileCatLink">
-            <div className="homeMobileCatMedia" aria-hidden="true">
-              {categories[0].src ? (
-                <img src={categories[0].src} alt="" loading="lazy" decoding="async" />
-              ) : null}
-            </div>
-            <div className="homeMobileCatCaption">
-              <div className="homeMobileCatTitle">{categories[0].title}</div>
-              <div className="homeMobileCatSub">{categories[0].sub}</div>
-            </div>
-          </Link>
-        </article>
-      ) : null}
-
-      {/* 3) Categorie 2 t/m 6 (titel + beschrijving) */}
-      <div className="homeMobileCatList" aria-label="Categories">
-        {categories.slice(1, 6).map((c) => (
-          <Link key={c.slug} to={`/category/${c.slug}`} className="homeMobileCatRow">
-            <span className="homeMobileCatRowTitle">{c.title}</span>
-            <span className="homeMobileCatRowSub">{c.sub}</span>
-          </Link>
-        ))}
+      <div className="homeMobileCats" aria-label="Categories">
+        {categories.map((c) => {
+          const { ref, inView } = useInViewOnce();
+          return (
+            <article
+              key={c.slug}
+              ref={ref}
+              className={`homeMobileCatCard ${inView ? "isIn" : ""}`}
+            >
+              <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
+                <div className="homeMobileCatMedia" aria-hidden="true">
+                  {c.src ? <img src={c.src} alt="" loading="lazy" decoding="async" /> : null}
+                </div>
+                <div className="homeMobileCatCaption">
+                  <div className="homeMobileCatTitle">{c.title}</div>
+                  <div className="homeMobileCatSub">{c.sub}</div>
+                </div>
+              </Link>
+            </article>
+          );
+        })}
       </div>
 
-      {/* 4) Grote uitstalling foto */}
       {feature.heroSrc ? (
         <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
           <img
@@ -71,7 +89,6 @@ function HomeMobile({ intro, categories, feature }) {
         </div>
       ) : null}
 
-      {/* 5) Laatste tekst */}
       <div className="homeMobileFeatureText">
         <div className="homeMobileFeatureTitle">{feature.title}</div>
         <div className="homeMobileFeatureBody">{feature.body}</div>
@@ -94,9 +111,6 @@ export default function Home() {
       return p.find((x) => x.category === slug)?.cover || "";
     };
 
-    /**
-     * DESKTOP mosaic blijft exact zoals eerder
-     */
     const baseTiles = [
       {
         key: "t1",
@@ -161,7 +175,6 @@ export default function Home() {
       }
     ];
 
-    // Feature block (desktop + mobile)
     const heroSrc = getImage("uitstalling.jpg");
 
     const featureBlock = {
@@ -170,13 +183,11 @@ export default function Home() {
       heroSrc
     };
 
-    // MOBILE intro
     const intro = {
       title: pick(routesConfig.copy.home, "leadTitle"),
       body: pick(routesConfig.copy.home, "leadBody")
     };
 
-    // MOBILE categorie data (1 t/m 6 met beschrijving)
     const cats = c.slice(0, 6).map((cat) => ({
       slug: cat.slug,
       src: coverFor(cat.slug),

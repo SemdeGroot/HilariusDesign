@@ -122,6 +122,18 @@ export default function Header() {
             {mobileOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
           </button>
         </div>
+
+        {/* Mobile: vaste header-links (Over/FAQ/Contact) */}
+        <nav className="headerMobileLinks" aria-label="Snelkoppelingen">
+          {nav.map((item) => (
+            <NavLink key={item.path} to={item.path} className="headerMobileLink">
+              <span className="headerMobileLinkLabel">
+                {pick(item, "label")}
+                <span className="headerMobileUnderline" />
+              </span>
+            </NavLink>
+          ))}
+        </nav>
       </header>
 
       <div className={`mobileOverlay ${mobileOpen ? "open" : ""}`}>
@@ -152,11 +164,7 @@ export default function Header() {
               ))}
             </div>
 
-            {nav.map((item) => (
-              <Link key={item.path} to={item.path} className="mobileLinkSolo">
-                {pick(item, "label")}
-              </Link>
-            ))}
+            {/* Over/FAQ/Contact zijn nu uit het hamburger-menu gehaald (staan in de header op mobile). */}
           </div>
         </div>
       </div>
