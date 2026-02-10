@@ -1,126 +1,189 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { menu, brand } from "./menuData";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { routesConfig } from "../../router/routesConfig";
+import { I18nContext } from "../../i18n/I18nProvider";
+import LanguageSwitch from "../LanguageSwitch/LanguageSwitch.jsx";
+import logo from "../../assets/logo.png";
 import "./Header.css";
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const overlayRef = useRef(null);
+function IconMenu({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M5 7h14M5 12h14M5 17h14"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+    </svg>
+  );
+}
 
-  const portfolioItem = useMemo(() => menu.find((m) => m.label === "Portfolio"), []);
+function IconClose({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M7 7l10 10M17 7L7 17"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+    </svg>
+  );
+}
+
+export default function Header() {
+  const { pick } = useContext(I18nContext);
+  const location = useLocation();
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const closeTimer = useRef(null);
+
+  const categories = routesConfig.categories;
+  const nav = routesConfig.nav;
+
+  const mega = useMemo(() => {
+    const map = new Map();
+    for (const c of categories) {
+      const items = routesConfig.projects.filter((p) => p.category === c.slug).slice(0, 6);
+      map.set(c.slug, items);
+    }
+    return map;
+  }, [categories]);
 
   useEffect(() => {
-    function onKeyDown(e) {
-      if (e.key === "Escape") setMobileOpen(false);
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+    setMobileOpen(false);
+    setPortfolioOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => (document.body.style.overflow = "");
   }, [mobileOpen]);
+
+  function openPortfolio() {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    setPortfolioOpen(true);
+  }
+
+  function scheduleClosePortfolio() {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setPortfolioOpen(false), 120);
+  }
 
   return (
     <header className="header">
       <div className="headerInner">
-        <Link to="/" className="brand">
-          <span className="brandName">{brand.name}</span>
-          <span className="brandTag">{brand.tagline}</span>
+        <Link to="/" className="brand" aria-label="HilariusDesign">
+          <img className="brandLogo" src={logo} alt="" />
         </Link>
 
-        {/* Desktop nav */}
         <nav className="navDesktop" aria-label="Primary">
-          {menu.map((item) => {
-            if (item.children?.length) {
-              return (
-                <div className="navGroup" key={item.label}>
-                  <NavLink to={item.path} className="navItem">
-                    {item.label}
-                  </NavLink>
+          <div
+            className={`navGroup ${portfolioOpen ? "open" : ""}`}
+            onMouseEnter={openPortfolio}
+            onMouseLeave={scheduleClosePortfolio}
+          >
+            <NavLink to="/" className="navItem">
+              <span className="navLabel">
+                {pick(routesConfig.copy.nav, "portfolio")}
+                <span className="navUnderline" />
+              </span>
+            </NavLink>
 
-                  <div className="dropdown" role="menu" aria-label={`${item.label} submenu`}>
-                    <div className="dropdownInner">
-                      {item.children.map((child) => (
-                        <NavLink key={child.path} to={child.path} className="dropdownItem">
-                          {child.label}
-                        </NavLink>
+            <div
+              className={`mega ${portfolioOpen ? "open" : ""}`}
+              role="menu"
+              aria-label="Portfolio submenu"
+              onMouseEnter={openPortfolio}
+              onMouseLeave={scheduleClosePortfolio}
+            >
+              <div className="megaInner">
+                {categories.map((c) => (
+                  <div key={c.slug} className="megaCol">
+                    <Link to={`/category/${c.slug}`} className="megaTitle">
+                      <span className="megaTitleLabel">
+                        {pick(c, "title")}
+                        <span className="megaUnderline" />
+                      </span>
+                    </Link>
+                    <div className="megaSub">{pick(c, "subtitle")}</div>
+
+                    <div className="megaItems">
+                      {(mega.get(c.slug) ?? []).map((p) => (
+                        <Link key={p.id} to={`/project/${p.id}`} className="megaItem">
+                          <span className="megaItemLabel">
+                            {pick(p, "title")}
+                            <span className="megaUnderlineThin" />
+                          </span>
+                        </Link>
                       ))}
                     </div>
                   </div>
-                </div>
-              );
-            }
+                ))}
+              </div>
+            </div>
+          </div>
 
-            return (
-              <NavLink key={item.path} to={item.path} className="navItem">
-                {item.label}
-              </NavLink>
-            );
-          })}
+          {nav.map((item) => (
+            <NavLink key={item.path} to={item.path} className="navItem">
+              <span className="navLabel">
+                {pick(item, "label")}
+                <span className="navUnderline" />
+              </span>
+            </NavLink>
+          ))}
+
+          <LanguageSwitch />
         </nav>
 
-        {/* Mobile button */}
         <button
           className="mobileBtn"
           onClick={() => setMobileOpen((v) => !v)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? "Menu sluiten" : "Menu openen"}
         >
-          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          {mobileOpen ? <IconClose /> : <IconMenu />}
         </button>
       </div>
 
-      {/* Mobile overlay */}
-      <div
-        ref={overlayRef}
-        className={`mobileOverlay ${mobileOpen ? "open" : ""}`}
-        onClick={(e) => {
-          if (e.target === overlayRef.current) setMobileOpen(false);
-        }}
-      >
+      <div className={`mobileOverlay ${mobileOpen ? "open" : ""}`}>
+        <div
+          className="mobileOverlayBg"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
         <div className="mobilePanel">
           <div className="mobileTop">
-            <div className="mobileTitle">Menu</div>
-            <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Close">
-              <X size={18} />
-            </button>
+            <div className="mobileTitle">{pick(routesConfig.copy.nav, "menu")}</div>
+            <div className="mobileTopRight">
+              <LanguageSwitch compact />
+              <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Sluiten">
+                <IconClose />
+              </button>
+            </div>
           </div>
 
           <div className="mobileNav">
-            {/* Portfolio section with subcats */}
-            {portfolioItem?.children?.length ? (
-              <div className="mobileSection">
-                <div className="mobileSectionLabel">Portfolio</div>
-                {portfolioItem.children.map((child) => (
-                  <Link
-                    key={child.path}
-                    to={child.path}
-                    className="mobileLink"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-
-            {/* Other pages */}
-            {menu
-              .filter((m) => !m.children?.length)
-              .map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="mobileLink"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
+            <div className="mobileSection">
+              <div className="mobileSectionLabel">{pick(routesConfig.copy.nav, "portfolio")}</div>
+              {categories.map((c) => (
+                <Link key={c.slug} to={`/category/${c.slug}`} className="mobileLink">
+                  <span className="mobileLinkTitle">{pick(c, "title")}</span>
+                  <span className="mobileLinkSub">{pick(c, "subtitle")}</span>
                 </Link>
               ))}
+            </div>
+
+            {nav.map((item) => (
+              <Link key={item.path} to={item.path} className="mobileLinkSolo">
+                {pick(item, "label")}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

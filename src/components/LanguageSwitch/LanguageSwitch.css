@@ -1,0 +1,64 @@
+.lang { position: relative; }
+
+.langBtn{
+  height: 34px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 10px 0 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  cursor:pointer;
+  letter-spacing:0.14em;
+  font-size:12px;
+}
+
+.langBtn:hover{ background: rgba(0,0,0,0.03); }
+
+.langChev{
+  opacity:0.65;
+  transform: translateY(0px);
+  transition: transform 160ms ease;
+}
+.langChev.open{
+  transform: rotate(180deg);
+}
+
+.langMenu{
+  position:absolute;
+  right:0;
+  top:42px;
+  min-width:96px;
+  padding:8px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background: var(--bg);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+  opacity:0;
+  pointer-events:none;
+  transform: translateY(-6px);
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index:80;
+}
+.langMenu.open{
+  opacity:1;
+  pointer-events:auto;
+  transform: translateY(0);
+}
+.langItem{
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  color: var(--text);
+  padding:10px 10px;
+  border-radius:10px;
+  cursor:pointer;
+  letter-spacing:0.14em;
+  font-size:12px;
+  opacity:0.85;
+}
+.langItem:hover{ background: rgba(0,0,0,0.03); opacity:1; }
+.langItem.active{ opacity:1; }

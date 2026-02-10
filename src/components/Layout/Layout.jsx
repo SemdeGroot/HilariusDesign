@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header.jsx";
+import { routesConfig } from "../../router/routesConfig";
 import "./Layout.css";
 
 export default function Layout() {
@@ -11,8 +12,29 @@ export default function Layout() {
       </main>
       <footer className="footer">
         <div className="footerInner">
-          <span>© {new Date().getFullYear()} Your Name</span>
-          <span className="footerRight">Amsterdam · Available worldwide</span>
+          <div className="footerBrand">HilariusDesign</div>
+          <div className="footerCols">
+            <div className="footerCol">
+              <div className="footerLabel">Contact</div>
+              <div className="footerText">{routesConfig.contact.email}</div>
+              <div className="footerText">{routesConfig.contact.phone}</div>
+              <div className="footerText">{routesConfig.contact.location}</div>
+            </div>
+            <div className="footerCol">
+              <div className="footerLabel">Social</div>
+              <a
+                className="uLink footerLink"
+                href={routesConfig.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="uLinkLabel">
+                  LinkedIn
+                  <span className="uUnderline" />
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

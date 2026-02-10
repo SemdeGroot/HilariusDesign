@@ -1,38 +1,61 @@
-.appShell {
-  min-height: 100vh;
-  display: flex;
+.appShell{
+  min-height:100vh;
+  display:flex;
   flex-direction: column;
 }
 
-.main {
-  flex: 1;
-  padding: 56px var(--page-pad) 80px;
+.main{
+  flex:1;
+  padding: 40px var(--page-pad) 80px;
 }
 
-.footer {
-  padding: 28px var(--page-pad);
+.footer{
   border-top: 1px solid var(--line);
+  padding: 60px var(--page-pad);
+  background: var(--bg);
 }
 
-.footerInner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+.footerInner{
+  display:grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items:start;
+}
+
+.footerBrand{
+  font-size: 34px;
+  letter-spacing: 0.02em;
+}
+
+.footerCols{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.footerLabel{
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--muted);
-  font-size: 13px;
+  margin-bottom: 10px;
 }
 
-.footerRight {
+.footerText{
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
   opacity: 0.9;
 }
 
-@media (max-width: 760px) {
-  .main {
-    padding-top: 24px;
-  }
-  .footerInner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.footerLink{
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding: 6px 0; /* footer compacter dan header */
+}
+
+@media (max-width: 860px){
+  .main{ padding-top: 24px; }
+  .footerInner{ grid-template-columns: 1fr; }
+  .footerCols{ grid-template-columns: 1fr; }
 }

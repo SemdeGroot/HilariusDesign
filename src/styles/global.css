@@ -1,25 +1,42 @@
-* {
-  box-sizing: border-box;
+html, body{
+  font-family: var(--font-sans);
 }
 
-html,
-body {
-  height: 100%;
+.uLink{
+  text-decoration:none;
+  color: inherit;
+  display:inline-block;
+  opacity: 0.9;
 }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-    font-family: "Gibson", "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.uLink:hover{ opacity: 1; }
+
+.uLinkLabel{
+  position: relative;
+  display:inline-block;
+  padding: 8px 0;
 }
 
-a, button {
-  font-family: inherit;
+.uUnderline{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: -2px;
+  height: 1px;
+  background: rgba(10,10,10,0.75);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms ease;
+  opacity: 0.9;
+  pointer-events:none;
 }
 
-img {
-  max-width: 100%;
+.uLink:hover .uUnderline,
+.uLink:focus-visible .uUnderline{
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.uLink:focus-visible{
+  outline: none;
 }

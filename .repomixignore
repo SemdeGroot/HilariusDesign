@@ -1,0 +1,25 @@
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Tooling caches
+.vite/
+.cache/
+
+# Logs / temp
+*.log
+tmp/
+temp/
+
+# Repomix output should not include itself
+repomix-output.*
+repomix-output*/
+
+# Optional: exclude large image directories from repomix output
+# Comment this out if you WANT images included in repomix-output.xml
+
+.gitignore
+package-lock.json

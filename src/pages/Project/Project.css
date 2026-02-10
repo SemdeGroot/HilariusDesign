@@ -1,62 +1,207 @@
-.projectTop {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 0 18px;
+.breadcrumb{
+  font-size: 13px;
+  color: var(--muted);
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  margin-bottom: 22px;
 }
 
-.projectTitle {
-  font-size: 24px;
+.crumbLink{
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+.sep{ opacity: 0.6; }
+.crumbNow{ color: var(--text); opacity: 0.85; }
+
+.projLayout{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 46px;
+  align-items:start;
+}
+
+.collage{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items:start;
+}
+
+.collageA{ grid-column: 1 / 2; }
+.collageB{ grid-column: 2 / 3; }
+.collageC{ grid-column: 1 / 2; }
+.collageD{ grid-column: 2 / 3; }
+
+.imgBox{
+  position:relative;
+  width:100%;
+
+  /* No-border treatment */
+  background: transparent;
+  border: 0;
+  border-radius: 18px;
+  overflow:hidden;
+
+  /* Padding mag, maar transparant */
+  padding: 10px;
+}
+
+.collageA .imgBox{ aspect-ratio: 1 / 1; }
+.collageB .imgBox{ aspect-ratio: 16 / 10; }
+.collageC .imgBox{ aspect-ratio: 16 / 9; }
+.collageD .imgBox{ aspect-ratio: 16 / 10; }
+
+.imgBox img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+
+.fallback{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+  pointer-events:none;
+}
+
+.projRight{
+  padding-left: 44px;
+  border-left: 1px solid var(--line);
+}
+
+.projTitle{
+  margin:0;
+  font-size: 54px;
+  line-height: 1.02;
   font-weight: 600;
 }
 
-.projectMeta {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.projIntro{
+  margin-top: 16px;
+  max-width: 44ch;
   color: var(--muted);
-  font-size: 12px;
+  line-height: 1.85;
+  font-size: 14px;
+  white-space: pre-line;
 }
 
-.back {
-  text-decoration: none;
+.projBody{
+  margin-top: 18px;
+  max-width: 62ch;
+  line-height: 1.9;
+  font-size: 14px;
   color: var(--text);
-  font-size: 13px;
+  opacity: 0.9;
+  white-space: pre-line;
+}
+
+.detailList{
+  margin-top: 34px;
+  display:grid;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.detailRow{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+}
+
+.detailKey{
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detailVal{
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.pnLink{
+  text-decoration:none;
+  color: var(--text);
+  display:inline-flex;
+  align-items:center;
+  gap: 14px;
+  font-size: 42px;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+
+.pnLink:hover{ opacity: 1; }
+
+.pnLink.right{
+  justify-content:flex-end;
+  width:100%;
+}
+
+.pnArrow{
+  font-size: 40px;
   opacity: 0.85;
 }
 
-.back:hover {
-  opacity: 1;
+.pnText{
+  font-size: 46px;
+  letter-spacing: 0.02em;
 }
 
-.projectHero {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.04);
+.pn{
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+  display:grid;
+  grid-template-columns: 1fr 140px 1fr;
+  align-items:center;
+  gap: 10px;
 }
 
-.projectHero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.pnCenter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  color: var(--text);
+  opacity: 0.7;
+  transition: opacity 160ms ease;
 }
 
-.heroFallback {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
-  opacity: 0.85;
+.pnCenter svg{
+  display:block;
 }
 
-.projectBody {
-  max-width: 860px;
-  margin-top: 22px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.88);
+.pnCenter:hover{ opacity: 1; }
+
+@media (max-width: 980px){
+  .projTitle{ font-size: 44px; }
+  .pnText{ font-size: 40px; }
+}
+
+@media (max-width: 860px){
+  .projLayout{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .projRight{
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .projTitle{ font-size: 28px; }
+  .pn{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .pnCenter{ display:none; }
+  .pnLink{ font-size: 20px; }
+  .pnText{ font-size: 24px; }
+  .pnArrow{ font-size: 22px; }
 }

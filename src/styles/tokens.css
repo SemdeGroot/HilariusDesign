@@ -1,8 +1,11 @@
-:root {
-  --bg: #0a0a0a;
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.62);
-  --line: rgba(255, 255, 255, 0.08);
+:root{
+  --bg: #ffffff;
+  --text: rgba(10, 10, 10, 0.92);
+  --muted: rgba(10, 10, 10, 0.55);
+  --line: rgba(10, 10, 10, 0.14);
 
-  --page-pad: clamp(18px, 4vw, 56px);
+  --page-pad: clamp(18px, 5vw, 64px);
+
+  /* Font: nu Manrope (Google Fonts). Later kun je dit vervangen door Gibson zodra je woff2 hebt. */
+  --font-sans: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }

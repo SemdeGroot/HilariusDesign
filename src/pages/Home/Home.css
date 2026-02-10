@@ -1,24 +1,134 @@
-.homeHero {
-  padding: 22px 0 28px;
-  display: grid;
-  gap: 10px;
+/* src/pages/Home/Home.css */
+.home{
+  padding-top: 12px;
 }
 
-.homeTitle {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
+/* Fix: Home mosaic had radius=0 in HomeMosaic.css.
+   Override alleen op Home zodat Project/Category intact blijven. */
+.home .mosaicMedia{
+  border-radius: 18px;
 }
 
-.homeSub {
-  color: var(--muted);
-  max-width: 720px;
-  line-height: 1.5;
+/* Feature block */
+.homeFeature{
+  margin-top: 72px;
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items:start;
+}
+
+.homeFeatureRight{
+  display:grid;
+  gap: 22px;
+}
+
+.homeFeatureTitle{
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.homeFeatureBody{
   font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.9;
 }
 
-@media (max-width: 760px) {
-  .homeTitle {
-    font-size: 22px;
+.homeMediaCard{
+  position: relative;
+  width: 100%;
+  overflow:hidden;
+
+  border-radius: 18px;
+  background: transparent;
+  border: 0;
+  padding: 10px;
+}
+
+.homeMediaCardHero{
+  /* zorgt dat de hero “staat” en niet te ielig is */
+  aspect-ratio: 16 / 9;
+}
+
+.homeMediaImg{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+
+.homeMediaFallback{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+  pointer-events:none;
+}
+
+/* Extras row */
+.homeExtras{
+  margin-top: 56px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.homeExtraCard{
+  text-decoration:none;
+  color: var(--text);
+  display:grid;
+  gap: 12px;
+}
+
+.homeExtraCard.isLink{ cursor:pointer; }
+
+.homeExtraMeta{
+  display:grid;
+  gap: 6px;
+}
+
+.homeExtraLabel{
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.homeExtraSub{
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .homeFeature{
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 44px;
+  }
+
+  .homeMediaCardHero{
+    aspect-ratio: 16 / 10;
+  }
+
+  .homeExtras{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px){
+  .homeExtras{
+    grid-template-columns: 1fr;
+  }
+
+  .homeMediaCard{
+    border-radius: 16px;
+  }
+
+  .home .mosaicMedia{
+    border-radius: 16px;
   }
 }

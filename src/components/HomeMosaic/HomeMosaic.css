@@ -1,0 +1,151 @@
+.mosaic{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+
+/* Sizes (approx screenshot rhythm) */
+.mosaicTile.s1 { grid-column: span 2; }
+.mosaicTile.s2 { grid-column: span 3; }
+.mosaicTile.s3 { grid-column: span 4; }
+.mosaicTile.s4 { grid-column: span 5; }
+.mosaicTile.s6 { grid-column: span 6; }
+.mosaicTile.s8 { grid-column: span 8; }
+
+.mosaicText.s4{ grid-column: span 4; }
+.mosaicText.s5{ grid-column: span 5; }
+.mosaicText.s6{ grid-column: span 6; }
+
+.mosaicTile{
+  text-decoration:none;
+  color: var(--text);
+  display:block;
+}
+
+.mosaicTile.isLink{ cursor: pointer; }
+
+.mosaicMedia{
+  position: relative;
+  width: 100%;
+  overflow:hidden;
+
+  /* was: background + border + radius + padding */
+  background: transparent;
+  border: 0;
+  border-radius: 18px;
+  padding: 0;
+}
+
+.mosaicTile.s1 .mosaicMedia,
+.mosaicTile.s2 .mosaicMedia,
+.mosaicTile.s3 .mosaicMedia{
+  aspect-ratio: 4 / 3;
+}
+
+.mosaicTile.s4 .mosaicMedia,
+.mosaicTile.s5 .mosaicMedia,
+.mosaicTile.s6 .mosaicMedia{
+  aspect-ratio: 16 / 10;
+}
+
+.mosaicTile.s8 .mosaicMedia{
+  aspect-ratio: 16 / 9;
+}
+
+.mosaicMedia img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+  transform: scale(1.0);
+  transition: transform 260ms ease;
+}
+
+/* Fallback/hover blijven (premium), maar subtieler omdat er geen card meer is */
+.mosaicFallback{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.015), rgba(0,0,0,0.00));
+  opacity: 1;
+  pointer-events:none;
+}
+
+.mosaicHover{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  padding: 14px;
+  background: rgba(255,255,255,0.88);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.mosaicHoverLabel{
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mosaicHoverSub{
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.mosaicTile:hover .mosaicHover{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mosaicTile:hover img{
+  transform: scale(1.02);
+}
+
+.mosaicText{
+  display:flex;
+  align-items:center;
+}
+
+.mosaicTextInner{
+  max-width: 360px;
+}
+
+.mosaicTextTitle{
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.mosaicTextBody{
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+@media (max-width: 1020px){
+  .mosaic{ grid-template-columns: repeat(8, 1fr); gap: 18px; }
+  .mosaicTile.s8{ grid-column: span 8; }
+  .mosaicTile.s6{ grid-column: span 8; }
+  .mosaicText.s6{ grid-column: span 8; }
+}
+
+@media (max-width: 860px){
+  .mosaic{ grid-template-columns: repeat(1, 1fr); gap: 16px; }
+  .mosaicTile.s1,
+  .mosaicTile.s2,
+  .mosaicTile.s3,
+  .mosaicTile.s4,
+  .mosaicTile.s5,
+  .mosaicTile.s6,
+  .mosaicTile.s8,
+  .mosaicText.s4,
+  .mosaicText.s5,
+  .mosaicText.s6 { grid-column: span 1; }
+}
