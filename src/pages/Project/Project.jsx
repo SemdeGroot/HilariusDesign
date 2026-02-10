@@ -5,17 +5,41 @@ import { I18nContext } from "../../i18n/I18nProvider";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import "./Project.css";
 
-function scrollTopSmooth() {
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+function smoothScrollTop(duration = 520) {
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  if (prefersReduced) {
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  const startY = window.scrollY || window.pageYOffset || 0;
+  if (startY <= 0) return;
+
+  const start = performance.now();
+
+  // easeOutCubic: voelt premium en niet “snap”
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const tick = (now) => {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = easeOutCubic(t);
+    window.scrollTo(0, Math.round(startY * (1 - eased)));
+    if (t < 1) requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
 }
 
 export default function Project() {
   const { id } = useParams();
   const { pick } = useContext(I18nContext);
 
-  // Fix: altijd naar boven bij project-wissel (ook als alleen "next" bestaat)
+  // Smooth scroll bij project-wissel (prev/next) — geen “auto” jerk meer
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    smoothScrollTop(520);
   }, [id]);
 
   const project = useMemo(() => routesConfig.projects.find((p) => p.id === id), [id]);
@@ -129,7 +153,7 @@ export default function Project() {
       <div className="pn">
         <div className="pnLeft">
           {nav.prev ? (
-            <Link to={`/project/${nav.prev.id}`} className="pnLink" onClick={scrollTopSmooth}>
+            <Link to={`/project/${nav.prev.id}`} className="pnLink">
               <span className="pnIcon" aria-hidden="true">
                 <ArrowLeft strokeWidth={1.8} />
               </span>
@@ -142,14 +166,13 @@ export default function Project() {
           to={category ? `/category/${category.slug}` : "/"}
           className="pnCenter"
           aria-label="Back to category"
-          onClick={scrollTopSmooth}
         >
           <LayoutGrid strokeWidth={1.6} />
         </Link>
 
         <div className="pnRight">
           {nav.next ? (
-            <Link to={`/project/${nav.next.id}`} className="pnLink right" onClick={scrollTopSmooth}>
+            <Link to={`/project/${nav.next.id}`} className="pnLink right">
               <span className="pnText">{pick(routesConfig.copy.project, "next")}</span>
               <span className="pnIcon" aria-hidden="true">
                 <ArrowRight strokeWidth={1.8} />

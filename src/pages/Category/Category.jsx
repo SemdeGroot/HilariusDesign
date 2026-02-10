@@ -139,15 +139,23 @@ export default function Category() {
     const styles = window.getComputedStyle(el);
     const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
     const step = first.getBoundingClientRect().width + gap;
-
     if (!step) return;
 
     const nextLeft = el.scrollLeft + dir * step;
     const targetIndex = Math.round(nextLeft / step);
     const target = Math.max(0, targetIndex * step);
 
-    // Iets langzamer / smoother dan native smooth, zodat images kunnen laden
-    smoothScrollToX(el, target, 700);
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReduced) {
+      el.scrollLeft = target;
+      return;
+    }
+
+    // Native smooth feels closest to swipe inertia + snap behavior
+    el.scrollTo({ left: target, top: 0, behavior: "smooth" });
   }
 
   if (!category) {

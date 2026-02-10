@@ -26,6 +26,34 @@ function HomeMobile({ intro, categories, feature }) {
   const [visibleCount, setVisibleCount] = useState(() => Math.min(1, categories.length));
   const sentinelRef = useRef(null);
 
+  const [inMap, setInMap] = useState(() => ({}));
+
+  useEffect(() => {
+    // markeer init items als "in" (met een echte enter transition)
+    const initial = categories.slice(0, visibleCount);
+    if (!initial.length) return;
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReduced) {
+      setInMap((prev) => {
+        const next = { ...prev };
+        for (const c of initial) next[c.slug] = true;
+        return next;
+      });
+      return;
+    }
+
+    const last = initial[initial.length - 1];
+    const raf = requestAnimationFrame(() => {
+      setInMap((prev) => ({ ...prev, [last.slug]: true }));
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [visibleCount, categories]);
+
   useEffect(() => {
     if (visibleCount >= categories.length) return;
     const el = sentinelRef.current;
@@ -40,10 +68,8 @@ function HomeMobile({ intro, categories, feature }) {
         const hit = entries.some((e) => e.isIntersecting);
         if (!hit) return;
 
-        // Reveal exactly one extra item at a time
         setVisibleCount((v) => Math.min(v + 1, categories.length));
 
-        // If reduced motion, just keep going without waiting for animation timing
         if (prefersReduced) {
           setVisibleCount((v) => Math.min(v + 1, categories.length));
         }
@@ -66,7 +92,10 @@ function HomeMobile({ intro, categories, feature }) {
 
       <div className="homeMobileCats" aria-label="Categories">
         {shown.map((c) => (
-          <article key={c.slug} className="homeMobileCatCard isIn">
+          <article
+            key={c.slug}
+            className={`homeMobileCatCard ${inMap[c.slug] ? "isIn" : ""}`}
+          >
             <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
               <div className="homeMobileCatMedia" aria-hidden="true">
                 {c.src ? <img src={c.src} alt="" loading="lazy" decoding="async" /> : null}
@@ -79,19 +108,14 @@ function HomeMobile({ intro, categories, feature }) {
           </article>
         ))}
 
-        {/* Sentinel: zodra je hierheen scrollt, verschijnt er 1 categorie extra */}
-        {visibleCount < categories.length ? <div ref={sentinelRef} className="homeRevealSentinel" /> : null}
+        {visibleCount < categories.length ? (
+          <div ref={sentinelRef} className="homeRevealSentinel" />
+        ) : null}
       </div>
 
       {feature.heroSrc ? (
         <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
-          <img
-            className="homeMobileFeatureHero"
-            src={feature.heroSrc}
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
+          <img className="homeMobileFeatureHero" src={feature.heroSrc} alt="" loading="lazy" decoding="async" />
         </div>
       ) : null}
 
@@ -201,12 +225,7 @@ export default function Home() {
       sub: pick(cat, "subtitle")
     }));
 
-    return {
-      tiles: baseTiles,
-      feature: featureBlock,
-      mobileIntro: intro,
-      mobileCategories: cats
-    };
+    return { tiles: baseTiles, feature: featureBlock, mobileIntro: intro, mobileCategories: cats };
   }, [pick]);
 
   if (isMobile) {
@@ -220,13 +239,7 @@ export default function Home() {
       <div className="homeFeature">
         <div className="homeFeatureLeft">
           {feature.heroSrc ? (
-            <img
-              className="homeFeatureHero"
-              src={feature.heroSrc}
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
+            <img className="homeFeatureHero" src={feature.heroSrc} alt="" loading="lazy" decoding="async" />
           ) : null}
         </div>
 

@@ -122,14 +122,13 @@ export default function Header() {
             <LanguageSwitch />
           </nav>
 
-          {/* Mobile: top header links + compact language, in dezelfde header-rij */}
+          {/* Mobile: top header links (zonder language switcher) */}
           <nav className="navMobileInline" aria-label="Quick links">
             {nav.map((item) => (
               <NavLink key={item.path} to={item.path} className="navMobileInlineLink">
                 {pick(item, "label")}
               </NavLink>
             ))}
-            <LanguageSwitch compact />
           </nav>
 
           <button
@@ -143,15 +142,14 @@ export default function Header() {
       </header>
 
       <div className={`mobileOverlay ${mobileOpen ? "open" : ""}`}>
-        <div
-          className="mobileOverlayBg"
-          onClick={() => setMobileOpen(false)}
-          aria-hidden="true"
-        />
+        <div className="mobileOverlayBg" onClick={() => setMobileOpen(false)} aria-hidden="true" />
         <div className="mobilePanel" role="dialog" aria-label="Menu">
           <div className="mobileTop">
             <div className="mobileTitle">{pick(routesConfig.copy.nav, "menu")}</div>
+
+            {/* LanguageSwitch pas zichtbaar als menu open is, naast kruisje */}
             <div className="mobileTopRight">
+              <LanguageSwitch compact />
               <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Sluiten">
                 <X size={20} strokeWidth={1.8} />
               </button>
@@ -159,7 +157,6 @@ export default function Header() {
           </div>
 
           <div className="mobileNav">
-            {/* Portfolio accordion met producten */}
             <div className="mobileSection">
               <div className="mobileSectionLabel">{pick(routesConfig.copy.nav, "portfolio")}</div>
 
