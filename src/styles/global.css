@@ -2,6 +2,11 @@ html, body{
   font-family: var(--font-sans);
 }
 
+/* Mobile: geen tap highlight */
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
 .uLink{
   text-decoration:none;
   color: inherit;
@@ -11,10 +16,11 @@ html, body{
 
 .uLink:hover{ opacity: 1; }
 
+/* Belangrijk: geen extra padding hier, anders underline zakt te ver weg */
 .uLinkLabel{
   position: relative;
   display:inline-block;
-  padding: 8px 0;
+  padding: 0;
 }
 
 .uUnderline{
@@ -39,4 +45,24 @@ html, body{
 
 .uLink:focus-visible{
   outline: none;
+}
+
+/* MOBILE: active/focus/hover states helemaal uit */
+@media (max-width: 860px){
+  .uUnderline{
+    transition: none;
+  }
+
+  .uLink:hover .uUnderline,
+  .uLink:focus-visible .uUnderline{
+    transform: scaleX(0);
+  }
+
+  .uLink:hover{ opacity: 0.9; }
+}
+
+/* Touch devices: hover effects uit */
+@media (hover: none) and (pointer: coarse){
+  .uLink:hover{ opacity: 0.9; }
+  .uLink:hover .uUnderline{ transform: scaleX(0); }
 }

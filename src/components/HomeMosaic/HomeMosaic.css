@@ -5,7 +5,7 @@
   align-items: start;
 }
 
-/* Sizes (approx screenshot rhythm) */
+/* Sizes */
 .mosaicTile.s1 { grid-column: span 2; }
 .mosaicTile.s2 { grid-column: span 3; }
 .mosaicTile.s3 { grid-column: span 4; }
@@ -30,10 +30,9 @@
   width: 100%;
   overflow:hidden;
 
-  /* was: background + border + radius + padding */
   background: transparent;
   border: 0;
-  border-radius: 18px;
+  border-radius: 0;
   padding: 0;
 }
 
@@ -62,7 +61,6 @@
   transition: transform 260ms ease;
 }
 
-/* Fallback/hover blijven (premium), maar subtieler omdat er geen card meer is */
 .mosaicFallback{
   position:absolute;
   inset:0;
@@ -148,4 +146,14 @@
   .mosaicText.s4,
   .mosaicText.s5,
   .mosaicText.s6 { grid-column: span 1; }
+
+  /* Mobile: hover/focus/active states uit */
+  .mosaicHover{ display:none; }
+  .mosaicMedia img{ transition: none; transform: scale(1.0); }
+}
+
+/* Touch devices: hover effects uit */
+@media (hover: none) and (pointer: coarse){
+  .mosaicTile:hover img{ transform: scale(1.0); }
+  .mosaicTile:hover .mosaicHover{ opacity: 0; transform: translateY(6px); }
 }

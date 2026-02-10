@@ -52,10 +52,9 @@
 
 .navLabel{
   position: relative;
-  display:inline-block; /* underline breedte = woord */
+  display:inline-block;
 }
 
-/* Underline: left->right in, right->left out */
 .navUnderline{
   position:absolute;
   left:0;
@@ -109,7 +108,6 @@
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 18px;
 
-  /* Scroll in dropdown */
   max-height: calc(100vh - 140px);
   overflow: auto;
   overscroll-behavior: contain;
@@ -117,7 +115,7 @@
 
 .megaCol{
   padding: 4px 6px;
-  border-left: 1px solid var(--line);   /* <-- ook vóór de eerste categorie */
+  border-left: 1px solid var(--line);
   padding-left: 18px;
 }
 
@@ -209,18 +207,25 @@
   transform-origin: left;
 }
 
-/* Mobile */
+/* Mobile button: geen rondje, muted */
 .mobileBtn{
   display:none;
-  width:42px;
-  height:42px;
-  border-radius:999px;
-  border:1px solid var(--line);
+  border: 0;
   background: transparent;
-  color: var(--text);
+  color: var(--muted);
+  width: auto;
+  height: auto;
+  padding: 10px;
 }
 
-.mobileBtn:hover{ background: rgba(0,0,0,0.03); }
+.mobileClose{
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  width: auto;
+  height: auto;
+  padding: 10px;
+}
 
 .mobileOverlay{
   position:fixed;
@@ -236,27 +241,19 @@
   pointer-events:auto;
 }
 
+/* OPAQUE overlay (niet doorschijnend) */
 .mobileOverlayBg{
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.22);
+  background: rgba(255,255,255,0.96);
 }
 
 .mobilePanel{
   position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width: min(460px, 92vw);
+  inset:0;
   background: var(--bg);
-  border-left: 1px solid var(--line);
-  transform: translateX(10px);
-  transition: transform 160ms ease;
   padding: 18px;
-}
-
-.mobileOverlay.open .mobilePanel{
-  transform: translateX(0);
+  overflow: auto;
 }
 
 .mobileTop{
@@ -270,7 +267,7 @@
 .mobileTopRight{
   display:inline-flex;
   align-items:center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .mobileTitle{
@@ -279,17 +276,6 @@
   text-transform: uppercase;
   opacity: 0.9;
 }
-
-.mobileClose{
-  width:42px;
-  height:42px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-}
-
-.mobileClose:hover{ background: rgba(0,0,0,0.03); }
 
 .mobileNav{
   padding-top: 14px;
@@ -345,4 +331,10 @@
   .navDesktop{ display:none; }
   .mobileBtn{ display:inline-flex; align-items:center; justify-content:center; }
   .mega{ display:none; }
+}
+
+/* Touch: hover states uit (menu) */
+@media (hover: none) and (pointer: coarse){
+  .mobileLink:hover{ background: transparent; }
+  .mobileLinkSolo:hover{ background: transparent; }
 }

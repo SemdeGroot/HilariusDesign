@@ -4,37 +4,8 @@ import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import LanguageSwitch from "../LanguageSwitch/LanguageSwitch.jsx";
 import logo from "../../assets/logo.png";
+import { Menu, X } from "lucide-react";
 import "./Header.css";
-
-function IconMenu({ size = 18 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M5 7h14M5 12h14M5 17h14"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        opacity="0.55"
-      />
-    </svg>
-  );
-}
-
-function IconClose({ size = 18 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M7 7l10 10M17 7L7 17"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        opacity="0.55"
-      />
-    </svg>
-  );
-}
 
 export default function Header() {
   const { pick } = useContext(I18nContext);
@@ -50,7 +21,8 @@ export default function Header() {
   const mega = useMemo(() => {
     const map = new Map();
     for (const c of categories) {
-      const items = routesConfig.projects.filter((p) => p.category === c.slug).slice(0, 6);
+      // ALLE producten tonen
+      const items = routesConfig.projects.filter((p) => p.category === c.slug);
       map.set(c.slug, items);
     }
     return map;
@@ -147,7 +119,7 @@ export default function Header() {
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? "Menu sluiten" : "Menu openen"}
         >
-          {mobileOpen ? <IconClose /> : <IconMenu />}
+          {mobileOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
         </button>
       </div>
 
@@ -157,13 +129,13 @@ export default function Header() {
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />
-        <div className="mobilePanel">
+        <div className="mobilePanel" role="dialog" aria-label="Menu">
           <div className="mobileTop">
             <div className="mobileTitle">{pick(routesConfig.copy.nav, "menu")}</div>
             <div className="mobileTopRight">
               <LanguageSwitch compact />
               <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Sluiten">
-                <IconClose />
+                <X size={20} strokeWidth={1.8} />
               </button>
             </div>
           </div>

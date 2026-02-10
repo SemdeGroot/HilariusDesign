@@ -14,17 +14,14 @@
 
 .thumb {
   position: relative;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
 
-  /* No-border treatment */
   background: transparent;
   border: 0;
+  padding: 0;
 
   aspect-ratio: 4 / 5;
-
-  /* Padding mag, maar transparant */
-  padding: 10px;
 }
 
 .thumb img {
@@ -90,6 +87,11 @@
   }
   .thumb {
     aspect-ratio: 16 / 10;
-    border-radius: 16px;
+    border-radius: 0;
   }
+}
+
+/* Touch: hover scaling uit */
+@media (hover: none) and (pointer: coarse){
+  .card:hover .thumb img{ transform: scale(1.0); }
 }

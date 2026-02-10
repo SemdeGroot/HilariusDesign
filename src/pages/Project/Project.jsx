@@ -2,21 +2,11 @@ import { useContext, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
+import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import "./Project.css";
 
-function GridIcon() {
-  return (
-    <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-        opacity="0.75"
-      />
-    </svg>
-  );
+function scrollTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
 export default function Project() {
@@ -134,8 +124,10 @@ export default function Project() {
       <div className="pn">
         <div className="pnLeft">
           {nav.prev ? (
-            <Link to={`/project/${nav.prev.id}`} className="pnLink">
-              <span className="pnArrow">←</span>
+            <Link to={`/project/${nav.prev.id}`} className="pnLink" onClick={scrollTop}>
+              <span className="pnIcon" aria-hidden="true">
+                <ArrowLeft strokeWidth={1.8} />
+              </span>
               <span className="pnText">{pick(routesConfig.copy.project, "prev")}</span>
             </Link>
           ) : <div />}
@@ -145,15 +137,18 @@ export default function Project() {
           to={category ? `/category/${category.slug}` : "/"}
           className="pnCenter"
           aria-label="Back to category"
+          onClick={scrollTop}
         >
-          <GridIcon />
+          <LayoutGrid strokeWidth={1.6} />
         </Link>
 
         <div className="pnRight">
           {nav.next ? (
-            <Link to={`/project/${nav.next.id}`} className="pnLink right">
+            <Link to={`/project/${nav.next.id}`} className="pnLink right" onClick={scrollTop}>
               <span className="pnText">{pick(routesConfig.copy.project, "next")}</span>
-              <span className="pnArrow">→</span>
+              <span className="pnIcon" aria-hidden="true">
+                <ArrowRight strokeWidth={1.8} />
+              </span>
             </Link>
           ) : <div />}
         </div>

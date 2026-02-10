@@ -30,7 +30,7 @@
 .footerCols{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap: 26px;
+  gap: 40px;
 }
 
 .footerLabel{
@@ -51,11 +51,11 @@
 .footerLink{
   font-size: 13px;
   letter-spacing: 0.02em;
-  padding: 6px 0; /* footer compacter dan header */
+  padding: 6px 0;
+  display: inline-block;
 }
 
 @media (max-width: 860px){
   .main{ padding-top: 24px; }
   .footerInner{ grid-template-columns: 1fr; }
-  .footerCols{ grid-template-columns: 1fr; }
 }

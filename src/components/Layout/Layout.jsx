@@ -20,6 +20,7 @@ export default function Layout() {
               <div className="footerText">{routesConfig.contact.phone}</div>
               <div className="footerText">{routesConfig.contact.location}</div>
             </div>
+
             <div className="footerCol">
               <div className="footerLabel">Social</div>
               <a

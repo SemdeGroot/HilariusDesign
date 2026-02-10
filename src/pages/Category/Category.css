@@ -16,14 +16,11 @@
   width:100%;
   aspect-ratio: 4 / 3;
 
-  /* No-border treatment */
   background: transparent;
   border: 0;
-  border-radius: 18px;
-  overflow:hidden;
-
-  /* Padding mag, maar transparant */
-  padding: 10px;
+  border-radius: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 .catHeroImg{
@@ -65,7 +62,7 @@
 .catTableWrap{
   margin-top: 34px;
   border-top: 1px solid var(--line);
-  max-height: calc(100vh - 260px);
+  max-height: calc(100vh - 400px);
   overflow: auto;
   padding-right: 10px;
   scroll-behavior: smooth;
@@ -167,9 +164,8 @@
   text-decoration:none;
   color: var(--text);
 
-  /* No-border treatment */
   border: 0;
-  border-radius: 14px;
+  border-radius: 0;
   overflow:hidden;
   background: transparent;
 }
@@ -178,12 +174,9 @@
   position:relative;
   aspect-ratio: 16 / 10;
 
-  /* No-border treatment */
   background: transparent;
   border-bottom: 0;
-
-  /* Padding mag, maar transparant */
-  padding: 10px;
+  padding: 0;
 }
 
 .catMobileMedia img{
@@ -193,7 +186,7 @@
   display:block;
 }
 
-.catMobileInfo{ padding: 12px 12px 14px; }
+.catMobileInfo{ padding: 12px 0 14px; }
 .catMobileName{ font-size: 14px; }
 .catMobileMeta{ margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.35; }
 
@@ -205,4 +198,9 @@
 @media (max-width: 860px){
   .catLayout{ display:none; }
   .catMobile{ display:block; }
+}
+
+/* Touch: hover-effect uit */
+@media (hover: none) and (pointer: coarse){
+  .catRow:hover{ background: transparent; }
 }
