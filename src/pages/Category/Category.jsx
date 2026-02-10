@@ -5,6 +5,25 @@ import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
 
+async function preloadAndDecode(src) {
+  if (!src) return;
+  const img = new Image();
+  img.src = src;
+
+  await new Promise((resolve, reject) => {
+    img.onload = () => resolve();
+    img.onerror = () => reject(new Error("load failed"));
+  });
+
+  if (img.decode) {
+    try {
+      await img.decode();
+    } catch {
+      // ignore
+    }
+  }
+}
+
 export default function Category() {
   const { slug } = useParams();
   const { pick } = useContext(I18nContext);
@@ -21,46 +40,28 @@ export default function Category() {
 
   const [activeId, setActiveId] = useState(null);
 
-  const [heroSrc, setHeroSrc] = useState("");
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [heroCurrent, setHeroCurrent] = useState("");
+  const [heroNext, setHeroNext] = useState("");
+  const [isCrossfading, setIsCrossfading] = useState(false);
 
-  const animRef = useRef({ token: 0, t1: null, t2: null });
+  const animRef = useRef({ token: 0 });
   const railRef = useRef(null);
-
-  const scrollAnimRef = useRef({ raf: 0 });
 
   useEffect(() => {
     if (!projects.length) return;
-    const initial = projects[0];
-    setActiveId(initial.id);
-    setHeroSrc(initial.cover || "");
-    setIsFadingOut(false);
 
-    return () => {
-      if (animRef.current.t1) window.clearTimeout(animRef.current.t1);
-      if (animRef.current.t2) window.clearTimeout(animRef.current.t2);
-      if (scrollAnimRef.current.raf) cancelAnimationFrame(scrollAnimRef.current.raf);
-    };
-  }, [slug, projects]);
+    const first = projects[0];
+    setActiveId(first.id);
 
-  async function preloadAndDecode(src) {
-    if (!src) return;
-    const img = new Image();
-    img.src = src;
+    setHeroCurrent(first.cover || "");
+    setHeroNext("");
+    setIsCrossfading(false);
 
-    await new Promise((resolve, reject) => {
-      img.onload = () => resolve();
-      img.onerror = () => reject(new Error("load failed"));
+    const token = (animRef.current.token += 1);
+    Promise.allSettled(projects.map((p) => preloadAndDecode(p.cover))).then(() => {
+      if (animRef.current.token !== token) return;
     });
-
-    if (img.decode) {
-      try {
-        await img.decode();
-      } catch {
-        // ignore
-      }
-    }
-  }
+  }, [slug, projects]);
 
   function hoverProject(p) {
     if (!p?.cover) return;
@@ -70,63 +71,37 @@ export default function Category() {
 
     const token = (animRef.current.token += 1);
 
-    if (animRef.current.t1) window.clearTimeout(animRef.current.t1);
-    if (animRef.current.t2) window.clearTimeout(animRef.current.t2);
-
     preloadAndDecode(p.cover)
       .then(() => {
         if (animRef.current.token !== token) return;
+        if (!heroCurrent) {
+          setHeroCurrent(p.cover);
+          return;
+        }
+        if (p.cover === heroCurrent) return;
 
-        setIsFadingOut(true);
-
-        animRef.current.t1 = window.setTimeout(() => {
+        setHeroNext(p.cover);
+        requestAnimationFrame(() => {
           if (animRef.current.token !== token) return;
-
-          setHeroSrc(p.cover);
-
-          animRef.current.t2 = window.setTimeout(() => {
-            if (animRef.current.token !== token) return;
-            setIsFadingOut(false);
-          }, 30);
-        }, 140);
+          setIsCrossfading(true);
+        });
       })
       .catch(() => {
         if (animRef.current.token !== token) return;
-        setHeroSrc(p.cover);
-        setIsFadingOut(false);
+        setHeroCurrent(p.cover);
+        setHeroNext("");
+        setIsCrossfading(false);
       });
   }
 
-  function smoothScrollToX(el, targetLeft, duration = 650) {
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  function onNextTransitionEnd(e) {
+    if (e.propertyName !== "opacity") return;
+    if (!isCrossfading) return;
+    if (!heroNext) return;
 
-    if (prefersReduced) {
-      el.scrollLeft = targetLeft;
-      return;
-    }
-
-    if (scrollAnimRef.current.raf) cancelAnimationFrame(scrollAnimRef.current.raf);
-
-    const startLeft = el.scrollLeft;
-    const delta = targetLeft - startLeft;
-    const start = performance.now();
-
-    const easeInOutCubic = (t) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = easeInOutCubic(t);
-      el.scrollLeft = startLeft + delta * eased;
-
-      if (t < 1) {
-        scrollAnimRef.current.raf = requestAnimationFrame(tick);
-      }
-    };
-
-    scrollAnimRef.current.raf = requestAnimationFrame(tick);
+    setHeroCurrent(heroNext);
+    setHeroNext("");
+    setIsCrossfading(false);
   }
 
   function scrollRail(dir) {
@@ -154,7 +129,6 @@ export default function Category() {
       return;
     }
 
-    // Native smooth feels closest to swipe inertia + snap behavior
     el.scrollTo({ left: target, top: 0, behavior: "smooth" });
   }
 
@@ -181,18 +155,33 @@ export default function Category() {
           className="catHero"
           aria-label="Open project"
         >
-          <div className={`catHeroMedia ${isFadingOut ? "isFadingOut" : ""}`}>
-            {heroSrc ? (
-              <img
-                className="catHeroImg"
-                src={heroSrc}
-                alt={currentProject ? pick(currentProject, "title") : ""}
-                loading="eager"
-                decoding="async"
-                onError={(e) => (e.currentTarget.style.display = "none")}
-              />
-            ) : null}
-            <div className="catHeroFallback" />
+          <div className={`catHeroMedia ${isCrossfading ? "isCrossfading" : ""}`}>
+            <div className="catHeroStack">
+              {heroCurrent ? (
+                <img
+                  className="catHeroImgLayer isCurrent"
+                  src={heroCurrent}
+                  alt={currentProject ? pick(currentProject, "title") : ""}
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              ) : null}
+
+              {heroNext ? (
+                <img
+                  className="catHeroImgLayer isNext"
+                  src={heroNext}
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                  onTransitionEnd={onNextTransitionEnd}
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              ) : null}
+
+              <div className="catHeroFallback" />
+            </div>
           </div>
         </Link>
 
@@ -252,7 +241,7 @@ export default function Category() {
                     <img
                       src={p.cover}
                       alt={pick(p, "title")}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                       onError={(e) => (e.currentTarget.style.display = "none")}
                     />

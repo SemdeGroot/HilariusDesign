@@ -2,6 +2,40 @@
   padding-top: 12px;
 }
 
+/* Generic reveal blocks (desktop + mobile) */
+.homeRevealBlock{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.homeRevealBlock.isIn{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image reveal (avoid popping/flash) */
+.revealImg{
+  opacity: 0;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.revealImg.isLoaded{
+  opacity: 1;
+}
+
+/* Subtle fallback behind images */
+.homeImgFallback{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.015), rgba(0,0,0,0.00));
+  pointer-events:none;
+}
+
+/* Desktop feature */
 .homeFeature{
   margin-top: 54px;
   display:grid;
@@ -11,6 +45,11 @@
 }
 
 .homeFeatureLeft{
+  width: 100%;
+}
+
+.homeFeatureHeroWrap{
+  position: relative;
   width: 100%;
 }
 
@@ -39,7 +78,8 @@
   color: var(--text);
   opacity: 0.9;
 }
-/* MOBILE layout (vertical, image + caption per categorie) */
+
+/* MOBILE layout */
 .homeMobile{
   padding-top: 8px;
   display: grid;
@@ -67,27 +107,10 @@
 
 .homeMobileCats{
   display: grid;
-
-  /* iets meer ruimte tussen categorieën (subtiel, maar duidelijker) */
   gap: 22px;
-
   padding-top: 6px;
 }
 
-.homeMobileCatCard{
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
-              transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.homeMobileCatCard.isIn{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Meer afstand tussen image en tekst (mobile) */
 .homeMobileCatLink{
   text-decoration: none;
   color: var(--text);
@@ -98,6 +121,10 @@
 .homeMobileCatCaption{
   display: grid;
   gap: 6px;
+}
+
+.homeMobileCatMedia{
+  position: relative;
 }
 
 .homeMobileCatMedia img{
@@ -120,12 +147,14 @@
   margin-top: 0;
 }
 
-.homeRevealSentinel{
-  height: 1px;
+.homeMobileFeature{
+  display: grid;
+  gap: 14px;
 }
 
 .homeMobileFeatureHeroWrap{
   margin-top: 6px;
+  position: relative;
 }
 
 .homeMobileFeatureHero{
@@ -153,4 +182,17 @@
   line-height: 1.8;
   color: var(--text);
   opacity: 0.9;
+}
+
+/* Reduced motion: no transitions */
+@media (prefers-reduced-motion: reduce){
+  .homeRevealBlock{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .revealImg{
+    opacity: 1;
+    transition: none;
+  }
 }

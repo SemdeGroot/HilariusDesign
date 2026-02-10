@@ -22,106 +22,140 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function HomeMobile({ intro, categories, feature }) {
-  const [visibleCount, setVisibleCount] = useState(() => Math.min(1, categories.length));
-  const sentinelRef = useRef(null);
-
+function useScrollReveal({ threshold = 0.18, rootMargin = "0px 0px -10% 0px" } = {}) {
   const [inMap, setInMap] = useState(() => ({}));
+  const observerRef = useRef(null);
 
   useEffect(() => {
-    // markeer init items als "in" (met een echte enter transition)
-    const initial = categories.slice(0, visibleCount);
-    if (!initial.length) return;
-
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     if (prefersReduced) {
-      setInMap((prev) => {
-        const next = { ...prev };
-        for (const c of initial) next[c.slug] = true;
-        return next;
-      });
+      observerRef.current = null;
       return;
     }
 
-    const last = initial[initial.length - 1];
-    const raf = requestAnimationFrame(() => {
-      setInMap((prev) => ({ ...prev, [last.slug]: true }));
-    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        const next = {};
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const key = e.target?.dataset?.revealKey;
+            if (key) next[key] = true;
+          }
+        }
+        if (Object.keys(next).length) {
+          setInMap((prev) => ({ ...prev, ...next }));
+        }
+      },
+      { root: null, threshold, rootMargin }
+    );
 
-    return () => cancelAnimationFrame(raf);
-  }, [visibleCount, categories]);
+    observerRef.current = io;
+    return () => io.disconnect();
+  }, [threshold, rootMargin]);
 
-  useEffect(() => {
-    if (visibleCount >= categories.length) return;
-    const el = sentinelRef.current;
+  function observe(el) {
     if (!el) return;
-
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const hit = entries.some((e) => e.isIntersecting);
-        if (!hit) return;
+    if (prefersReduced) {
+      const key = el.dataset?.revealKey;
+      if (key) setInMap((prev) => ({ ...prev, [key]: true }));
+      return;
+    }
 
-        setVisibleCount((v) => Math.min(v + 1, categories.length));
+    observerRef.current?.observe(el);
+  }
 
-        if (prefersReduced) {
-          setVisibleCount((v) => Math.min(v + 1, categories.length));
-        }
-      },
-      { root: null, threshold: 0.12, rootMargin: "0px 0px -18% 0px" }
-    );
+  return { inMap, observe };
+}
 
-    io.observe(el);
-    return () => io.disconnect();
-  }, [visibleCount, categories.length]);
+function HomeMobile({ intro, categories, feature }) {
+  const { inMap, observe } = useScrollReveal({
+    threshold: 0.18,
+    rootMargin: "0px 0px -14% 0px"
+  });
 
-  const shown = categories.slice(0, visibleCount);
+  const [loaded, setLoaded] = useState(() => ({}));
 
   return (
     <section className="homeMobile" aria-label="Home">
-      <div className="homeMobileIntro">
+      <div
+        className={`homeMobileIntro homeRevealBlock ${inMap["intro"] ? "isIn" : ""}`}
+        data-reveal-key="intro"
+        ref={observe}
+      >
         <div className="homeMobileIntroTitle">{intro.title}</div>
         <div className="homeMobileIntroBody">{intro.body}</div>
       </div>
 
       <div className="homeMobileCats" aria-label="Categories">
-        {shown.map((c) => (
-          <article
-            key={c.slug}
-            className={`homeMobileCatCard ${inMap[c.slug] ? "isIn" : ""}`}
-          >
-            <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
-              <div className="homeMobileCatMedia" aria-hidden="true">
-                {c.src ? <img src={c.src} alt="" loading="lazy" decoding="async" /> : null}
-              </div>
-              <div className="homeMobileCatCaption">
-                <div className="homeMobileCatTitle">{c.title}</div>
-                <div className="homeMobileCatSub">{c.sub}</div>
-              </div>
-            </Link>
-          </article>
-        ))}
+        {categories.map((c) => {
+          const key = `cat-${c.slug}`;
+          const isIn = !!inMap[key];
+          const isLoaded = !!loaded[key];
 
-        {visibleCount < categories.length ? (
-          <div ref={sentinelRef} className="homeRevealSentinel" />
-        ) : null}
+          return (
+            <article
+              key={c.slug}
+              className={`homeMobileCatCard homeRevealBlock ${isIn ? "isIn" : ""}`}
+              data-reveal-key={key}
+              ref={observe}
+            >
+              <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
+                <div className="homeMobileCatMedia" aria-hidden="true">
+                  {c.src ? (
+                    <img
+                      src={c.src}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
+                      onLoad={() => setLoaded((p) => ({ ...p, [key]: true }))}
+                      onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                  ) : null}
+                  <div className="homeImgFallback" />
+                </div>
+
+                <div className="homeMobileCatCaption">
+                  <div className="homeMobileCatTitle">{c.title}</div>
+                  <div className="homeMobileCatSub">{c.sub}</div>
+                </div>
+              </Link>
+            </article>
+          );
+        })}
       </div>
 
-      {feature.heroSrc ? (
-        <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
-          <img className="homeMobileFeatureHero" src={feature.heroSrc} alt="" loading="lazy" decoding="async" />
-        </div>
-      ) : null}
+      <div
+        className={`homeMobileFeature homeRevealBlock ${inMap["feature"] ? "isIn" : ""}`}
+        data-reveal-key="feature"
+        ref={observe}
+      >
+        {feature.heroSrc ? (
+          <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
+            <img
+              className={`homeMobileFeatureHero revealImg ${loaded["feature-hero"] ? "isLoaded" : ""}`}
+              src={feature.heroSrc}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setLoaded((p) => ({ ...p, "feature-hero": true }))}
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+            <div className="homeImgFallback" />
+          </div>
+        ) : null}
 
-      <div className="homeMobileFeatureText">
-        <div className="homeMobileFeatureTitle">{feature.title}</div>
-        <div className="homeMobileFeatureBody">{feature.body}</div>
+        <div className="homeMobileFeatureText">
+          <div className="homeMobileFeatureTitle">{feature.title}</div>
+          <div className="homeMobileFeatureBody">{feature.body}</div>
+        </div>
       </div>
     </section>
   );
@@ -228,18 +262,46 @@ export default function Home() {
     return { tiles: baseTiles, feature: featureBlock, mobileIntro: intro, mobileCategories: cats };
   }, [pick]);
 
+  const { inMap, observe } = useScrollReveal({
+    threshold: 0.18,
+    rootMargin: "0px 0px -12% 0px"
+  });
+
+  const [loaded, setLoaded] = useState(() => ({}));
+
   if (isMobile) {
     return <HomeMobile intro={mobileIntro} categories={mobileCategories} feature={feature} />;
   }
 
   return (
     <section className="home">
-      <HomeMosaic tiles={tiles} />
+      <div
+        className={`homeRevealBlock ${inMap["mosaic"] ? "isIn" : ""}`}
+        data-reveal-key="mosaic"
+        ref={observe}
+      >
+        <HomeMosaic tiles={tiles} />
+      </div>
 
-      <div className="homeFeature">
+      <div
+        className={`homeFeature homeRevealBlock ${inMap["feature-desktop"] ? "isIn" : ""}`}
+        data-reveal-key="feature-desktop"
+        ref={observe}
+      >
         <div className="homeFeatureLeft">
           {feature.heroSrc ? (
-            <img className="homeFeatureHero" src={feature.heroSrc} alt="" loading="lazy" decoding="async" />
+            <div className="homeFeatureHeroWrap" aria-hidden="true">
+              <img
+                className={`homeFeatureHero revealImg ${loaded["feature-desktop-hero"] ? "isLoaded" : ""}`}
+                src={feature.heroSrc}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setLoaded((p) => ({ ...p, "feature-desktop-hero": true }))}
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+              <div className="homeImgFallback" />
+            </div>
           ) : null}
         </div>
 
