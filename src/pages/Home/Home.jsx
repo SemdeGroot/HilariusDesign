@@ -22,7 +22,7 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useScrollReveal({ threshold = 0.18, rootMargin = "0px 0px -10% 0px" } = {}) {
+function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } = {}) {
   const [inMap, setInMap] = useState(() => ({}));
   const observerRef = useRef(null);
 
@@ -76,8 +76,8 @@ function useScrollReveal({ threshold = 0.18, rootMargin = "0px 0px -10% 0px" } =
 
 function HomeMobile({ intro, categories, feature }) {
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.18,
-    rootMargin: "0px 0px -14% 0px"
+    threshold: 0.24,
+    rootMargin: "0px 0px -22% 0px"
   });
 
   const [loaded, setLoaded] = useState(() => ({}));
@@ -263,8 +263,8 @@ export default function Home() {
   }, [pick]);
 
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.18,
-    rootMargin: "0px 0px -12% 0px"
+    threshold: 0.22,
+    rootMargin: "0px 0px -20% 0px"
   });
 
   const [loaded, setLoaded] = useState(() => ({}));

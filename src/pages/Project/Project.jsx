@@ -1,48 +1,19 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import "./Project.css";
 
-function smoothScrollTop(duration = 520) {
-  const prefersReduced =
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-  if (prefersReduced) {
-    window.scrollTo(0, 0);
-    return;
-  }
-
-  const startY = window.scrollY || window.pageYOffset || 0;
-  if (startY <= 0) return;
-
-  const start = performance.now();
-
-  // easeOutCubic: voelt premium en niet “snap”
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-  const tick = (now) => {
-    const t = Math.min(1, (now - start) / duration);
-    const eased = easeOutCubic(t);
-    window.scrollTo(0, Math.round(startY * (1 - eased)));
-    if (t < 1) requestAnimationFrame(tick);
-  };
-
-  requestAnimationFrame(tick);
-}
-
 export default function Project() {
   const { id } = useParams();
   const { pick } = useContext(I18nContext);
 
-  // Smooth scroll bij project-wissel (prev/next) — geen “auto” jerk meer
-  useEffect(() => {
-    smoothScrollTop(520);
-  }, [id]);
+  const project = useMemo(
+    () => routesConfig.projects.find((p) => p.id === id),
+    [id]
+  );
 
-  const project = useMemo(() => routesConfig.projects.find((p) => p.id === id), [id]);
   const category = useMemo(() => {
     if (!project) return null;
     return routesConfig.categories.find((c) => c.slug === project.category) ?? null;
@@ -65,13 +36,20 @@ export default function Project() {
   if (!project) {
     return (
       <section className="proj">
-        <h1 className="projTitle">{pick(routesConfig.copy.common, "notFound")}</h1>
-        <Link to="/" className="projBack">{pick(routesConfig.copy.common, "backHome")}</Link>
+        <h1 className="projTitle">
+          {pick(routesConfig.copy.common, "notFound")}
+        </h1>
+        <Link to="/" className="projBack">
+          {pick(routesConfig.copy.common, "backHome")}
+        </Link>
       </section>
     );
   }
 
-  const images = project.images?.length ? project.images : [project.cover].filter(Boolean);
+  const images = project.images?.length
+    ? project.images
+    : [project.cover].filter(Boolean);
+
   const description = pick(project, "description");
   const body = pick(project, "body");
 
@@ -85,6 +63,7 @@ export default function Project() {
           </span>
         </Link>
         <span className="sep">/</span>
+
         {category ? (
           <>
             <Link to={`/category/${category.slug}`} className="uLink crumbLink">
@@ -96,6 +75,7 @@ export default function Project() {
             <span className="sep">/</span>
           </>
         ) : null}
+
         <span className="crumbNow">{pick(project, "title")}</span>
       </div>
 
@@ -103,22 +83,31 @@ export default function Project() {
         <div className="collage">
           <div className="collageA">
             <div className="imgBox">
-              {images[0] ? <img src={images[0]} alt={pick(project, "title")} loading="lazy" /> : null}
+              {images[0] ? (
+                <img
+                  src={images[0]}
+                  alt={pick(project, "title")}
+                  loading="lazy"
+                />
+              ) : null}
               <div className="fallback" />
             </div>
           </div>
+
           <div className="collageB">
             <div className="imgBox">
               {images[1] ? <img src={images[1]} alt="" loading="lazy" /> : null}
               <div className="fallback" />
             </div>
           </div>
+
           <div className="collageC">
             <div className="imgBox">
               {images[2] ? <img src={images[2]} alt="" loading="lazy" /> : null}
               <div className="fallback" />
             </div>
           </div>
+
           <div className="collageD">
             <div className="imgBox">
               {images[3] ? <img src={images[3]} alt="" loading="lazy" /> : null}
@@ -130,21 +119,34 @@ export default function Project() {
         <aside className="projRight">
           <h1 className="projTitle">{pick(project, "title")}</h1>
 
-          {description ? <p className="projIntro">{description}</p> : null}
+          {description ? (
+            <p className="projIntro">{description}</p>
+          ) : null}
+
           {body ? <div className="projBody">{body}</div> : null}
 
           <div className="detailList">
             <div className="detailRow">
-              <div className="detailKey">{pick(routesConfig.copy.project, "year")}</div>
+              <div className="detailKey">
+                {pick(routesConfig.copy.project, "year")}
+              </div>
               <div className="detailVal">{pick(project, "year")}</div>
             </div>
+
             <div className="detailRow">
-              <div className="detailKey">{pick(routesConfig.copy.project, "type")}</div>
+              <div className="detailKey">
+                {pick(routesConfig.copy.project, "type")}
+              </div>
               <div className="detailVal">{pick(project, "type")}</div>
             </div>
+
             <div className="detailRow">
-              <div className="detailKey">{pick(routesConfig.copy.project, "materials")}</div>
-              <div className="detailVal">{pick(project, "materials")}</div>
+              <div className="detailKey">
+                {pick(routesConfig.copy.project, "materials")}
+              </div>
+              <div className="detailVal">
+                {pick(project, "materials")}
+              </div>
             </div>
           </div>
         </aside>
@@ -157,9 +159,13 @@ export default function Project() {
               <span className="pnIcon" aria-hidden="true">
                 <ArrowLeft strokeWidth={1.8} />
               </span>
-              <span className="pnText">{pick(routesConfig.copy.project, "prev")}</span>
+              <span className="pnText">
+                {pick(routesConfig.copy.project, "prev")}
+              </span>
             </Link>
-          ) : <div />}
+          ) : (
+            <div />
+          )}
         </div>
 
         <Link
@@ -173,12 +179,16 @@ export default function Project() {
         <div className="pnRight">
           {nav.next ? (
             <Link to={`/project/${nav.next.id}`} className="pnLink right">
-              <span className="pnText">{pick(routesConfig.copy.project, "next")}</span>
+              <span className="pnText">
+                {pick(routesConfig.copy.project, "next")}
+              </span>
               <span className="pnIcon" aria-hidden="true">
                 <ArrowRight strokeWidth={1.8} />
               </span>
             </Link>
-          ) : <div />}
+          ) : (
+            <div />
+          )}
         </div>
       </div>
     </section>

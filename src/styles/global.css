@@ -7,11 +7,13 @@ html, body{
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Links: subtieler baseline, minder “flikkeren” */
 .uLink{
   text-decoration:none;
   color: inherit;
   display:inline-block;
-  opacity: 0.9;
+  opacity: 0.92;
+  transition: opacity 160ms ease;
 }
 
 .uLink:hover{ opacity: 1; }
@@ -47,8 +49,13 @@ html, body{
   outline: none;
 }
 
-/* MOBILE: active/focus/hover states helemaal uit */
+/* MOBILE: hover/focus animaties uit, opacity stabiel */
 @media (max-width: 860px){
+  .uLink{
+    transition: none;
+    opacity: 0.92;
+  }
+
   .uUnderline{
     transition: none;
   }
@@ -58,11 +65,16 @@ html, body{
     transform: scaleX(0);
   }
 
-  .uLink:hover{ opacity: 0.9; }
+  .uLink:hover{ opacity: 0.92; }
 }
 
 /* Touch devices: hover effects uit */
 @media (hover: none) and (pointer: coarse){
-  .uLink:hover{ opacity: 0.9; }
+  .uLink{
+    transition: none;
+    opacity: 0.92;
+  }
+
+  .uLink:hover{ opacity: 0.92; }
   .uLink:hover .uUnderline{ transform: scaleX(0); }
 }

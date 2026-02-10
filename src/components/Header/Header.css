@@ -5,10 +5,11 @@
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+  --header-h: 86px;
 }
 
 .headerInner{
-  height: 86px;
+  height: var(--header-h);
   padding: 0 var(--page-pad);
   display:flex;
   align-items:center;
@@ -47,6 +48,7 @@
   text-transform: uppercase;
   padding: 12px 0;
   opacity: 0.88;
+  transition: opacity 160ms ease;
 }
 
 .navItem:hover,
@@ -84,10 +86,16 @@
 /* Mega (desktop) */
 .mega{
   position: fixed;
-  left: var(--page-pad);
-  right: var(--page-pad);
-  top: 86px;
+  left: 0;
+  right: 0;
+
+  /* altijd exact onder de header, ongeacht scroll */
+  top: var(--header-h);
+
   padding-top: 18px;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+
   opacity:0;
   pointer-events:none;
   transition: opacity 160ms ease, transform 160ms ease;
@@ -180,6 +188,7 @@
   padding: 8px 0;
   opacity: 0.85;
   font-weight: 400;
+  transition: opacity 160ms ease;
 }
 
 .megaItemLabel{
@@ -226,24 +235,34 @@
 .navMobileInline{
   display:none;
   align-items:center;
-
-  /* niet meer flex:1, dat veroorzaakte de grote gap na logo */
   flex: 0 0 auto;
-
   min-width: 0;
   flex-wrap: wrap;
-  gap: clamp(10px, 2.8vw, 14px);
+
+  /* Belangrijk: gelijke spacing, net als headerInner */
+  gap: 12px;
 }
 
 .navMobileInlineLink{
   text-decoration:none;
   color: var(--text);
   text-transform: uppercase;
-  opacity: 0.86;
   white-space: nowrap;
-  padding: 6px 8px;
-  font-size: clamp(10px, 2.7vw, 12px);
-  letter-spacing: clamp(0.07em, 0.6vw, 0.10em);
+
+  /* Tap target baseline (wordt op mobile exact 44px) */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  /* Subtielere states */
+  opacity: 0.90;
+  transition: opacity 160ms ease;
+
+  /* Ruimte zonder rare “gaps” */
+  padding: 0 10px;
+
+  font-size: 12px;
+  letter-spacing: 0.10em;
 }
 
 .navMobileInlineLink:hover,
@@ -414,9 +433,10 @@
   text-decoration:none;
   color: var(--text);
   font-size: 13px;
-  opacity: 0.88;
+  opacity: 0.90;
   padding: 8px 0;
   border-bottom: 1px solid rgba(10,10,10,0.06);
+  transition: opacity 160ms ease;
 }
 
 .mobileAccProduct:last-child{
@@ -436,25 +456,85 @@
   .headerInner{
     height: 72px;
     justify-content: flex-start;
-    gap: 14px;
+
+    /* Gelijke spacing tussen ALLES */
+    gap: 12px;
+  }
+
+  /* Tap targets: exact 44px */
+  .brand{
+    min-height: 44px;
+    padding: 0 6px;
+  }
+
+  .brandLogo{
+    width: 32px;
+    height: 32px;
   }
 
   .navDesktop{ display:none; }
   .navMobileInline{ display:flex; }
 
+  .navMobileInlineLink{
+    min-height: 44px;
+    padding: 0 10px;
+
+    /* Font sizes niet “te eager” aanpassen: stabiel en consistent */
+    font-size: 12px;
+    letter-spacing: 0.10em;
+  }
+
   .mobileBtn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    margin-left: auto; /* menu knop altijd rechts */
+
+    /* zelfde tap target */
+    min-height: 44px;
+    min-width: 44px;
+
+    padding: 0;
+    border-radius: 999px;
+  }
+
+  /* Belangrijk: GEEN margin-left:auto -> geen grote gap meer */
+  .mobileBtn{
+    margin-left: 0;
+  }
+
+  /* Als het erg krap wordt: links mogen wrap’en, spacing blijft gelijk */
+  .navMobileInline{
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    gap: 12px;
   }
 
   .mega{ display:none; }
 }
 
-/* Touch: hover states uit */
+/* Touch: hover states uit / subtieler (minder “sticky hover” op mobile) */
 @media (hover: none) and (pointer: coarse){
+  .navMobileInlineLink{
+    transition: none;
+    opacity: 0.92;
+  }
+  .navMobileInlineLink:hover{ opacity: 0.92; }
+  .navMobileInlineLink.active{ opacity: 1; }
+
   .mobileAccBtn:hover{ background: transparent; }
-  .mobileAccProduct:hover{ opacity: 0.88; }
-  .navMobileInlineLink:hover{ opacity: 0.86; }
+  .mobileAccProduct:hover{ opacity: 0.90; }
+}
+
+@media (max-width: 860px){
+  .header{
+    --header-h: 72px;
+  }
+
+  .headerInner{
+    height: var(--header-h);
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .mega{ display:none; }
 }
