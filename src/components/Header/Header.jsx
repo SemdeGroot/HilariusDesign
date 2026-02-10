@@ -15,6 +15,9 @@ export default function Header() {
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const closeTimer = useRef(null);
 
+  // Desktop mega scroll reset
+  const megaInnerRef = useRef(null);
+
   // Mobile menu: accordion state per category
   const [openCats, setOpenCats] = useState(() => ({}));
 
@@ -33,6 +36,9 @@ export default function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setPortfolioOpen(false);
+
+    // Bij page change: vergeet mega scrollpositie
+    if (megaInnerRef.current) megaInnerRef.current.scrollTop = 0;
   }, [location.pathname]);
 
   useEffect(() => {
@@ -42,6 +48,10 @@ export default function Header() {
 
   function openPortfolio() {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
+
+    // Elke keer dat je opent: begin bovenaan
+    if (megaInnerRef.current) megaInnerRef.current.scrollTop = 0;
+
     setPortfolioOpen(true);
   }
 
@@ -83,7 +93,7 @@ export default function Header() {
                 onMouseEnter={openPortfolio}
                 onMouseLeave={scheduleClosePortfolio}
               >
-                <div className="megaInner">
+                <div className="megaInner" ref={megaInnerRef}>
                   {categories.map((c) => (
                     <div key={c.slug} className="megaCol">
                       <Link to={`/category/${c.slug}`} className="megaTitle">
