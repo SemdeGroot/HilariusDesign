@@ -98,7 +98,7 @@
 
   opacity:0;
   pointer-events:none;
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition: opacity 260ms ease, transform 260ms ease;
   transform: translateY(-6px);
   z-index:220;
 }
