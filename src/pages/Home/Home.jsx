@@ -74,7 +74,7 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
   return { inMap, observe };
 }
 
-function HomeMobile({ intro, categories, feature }) {
+function HomeMobile({ intro, categories }) {
   const { inMap, observe } = useScrollReveal({
     threshold: 0.24,
     rootMargin: "0px 0px -22% 0px"
@@ -131,32 +131,6 @@ function HomeMobile({ intro, categories, feature }) {
           );
         })}
       </div>
-
-      <div
-        className={`homeMobileFeature homeRevealBlock ${inMap["feature"] ? "isIn" : ""}`}
-        data-reveal-key="feature"
-        ref={observe}
-      >
-        {feature.heroSrc ? (
-          <div className="homeMobileFeatureHeroWrap" aria-hidden="true">
-            <img
-              className={`homeMobileFeatureHero revealImg ${loaded["feature-hero"] ? "isLoaded" : ""}`}
-              src={feature.heroSrc}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              onLoad={() => setLoaded((p) => ({ ...p, "feature-hero": true }))}
-              onError={(e) => (e.currentTarget.style.display = "none")}
-            />
-            <div className="homeImgFallback" />
-          </div>
-        ) : null}
-
-        <div className="homeMobileFeatureText">
-          <div className="homeMobileFeatureTitle">{feature.title}</div>
-          <div className="homeMobileFeatureBody">{feature.body}</div>
-        </div>
-      </div>
     </section>
   );
 }
@@ -165,7 +139,7 @@ export default function Home() {
   const { pick } = useContext(I18nContext);
   const isMobile = useIsMobile(860);
 
-  const { tiles, feature, mobileIntro, mobileCategories } = useMemo(() => {
+  const { tiles, mobileIntro, mobileCategories } = useMemo(() => {
     const c = routesConfig.categories;
     const p = routesConfig.projects;
 
@@ -239,14 +213,6 @@ export default function Home() {
       }
     ];
 
-    const heroSrc = getImage("uitstalling.jpg");
-
-    const featureBlock = {
-      title: pick(routesConfig.copy.home, "secondTitle"),
-      body: pick(routesConfig.copy.home, "secondBody"),
-      heroSrc
-    };
-
     const intro = {
       title: pick(routesConfig.copy.home, "leadTitle"),
       body: pick(routesConfig.copy.home, "leadBody")
@@ -259,7 +225,7 @@ export default function Home() {
       sub: pick(cat, "subtitle")
     }));
 
-    return { tiles: baseTiles, feature: featureBlock, mobileIntro: intro, mobileCategories: cats };
+    return { tiles: baseTiles, mobileIntro: intro, mobileCategories: cats };
   }, [pick]);
 
   const { inMap, observe } = useScrollReveal({
@@ -267,10 +233,8 @@ export default function Home() {
     rootMargin: "0px 0px -20% 0px"
   });
 
-  const [loaded, setLoaded] = useState(() => ({}));
-
   if (isMobile) {
-    return <HomeMobile intro={mobileIntro} categories={mobileCategories} feature={feature} />;
+    return <HomeMobile intro={mobileIntro} categories={mobileCategories} />;
   }
 
   return (
@@ -281,36 +245,6 @@ export default function Home() {
         ref={observe}
       >
         <HomeMosaic tiles={tiles} />
-      </div>
-
-      <div
-        className={`homeFeature homeRevealBlock ${inMap["feature-desktop"] ? "isIn" : ""}`}
-        data-reveal-key="feature-desktop"
-        ref={observe}
-      >
-        <div className="homeFeatureLeft">
-          {feature.heroSrc ? (
-            <div className="homeFeatureHeroWrap" aria-hidden="true">
-              <img
-                className={`homeFeatureHero revealImg ${loaded["feature-desktop-hero"] ? "isLoaded" : ""}`}
-                src={feature.heroSrc}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                onLoad={() => setLoaded((p) => ({ ...p, "feature-desktop-hero": true }))}
-                onError={(e) => (e.currentTarget.style.display = "none")}
-              />
-              <div className="homeImgFallback" />
-            </div>
-          ) : null}
-        </div>
-
-        <div className="homeFeatureRight">
-          <div className="homeFeatureText">
-            <div className="homeFeatureTitle">{feature.title}</div>
-            <div className="homeFeatureBody">{feature.body}</div>
-          </div>
-        </div>
       </div>
     </section>
   );

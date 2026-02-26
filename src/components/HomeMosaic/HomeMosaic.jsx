@@ -15,7 +15,6 @@ export default function HomeMosaic({ tiles }) {
                   alt="World of Board"
                   className="mosaicWob"
                 />
-                <div className="mosaicTextSub">{t.body}</div>
               </div>
             </div>
           );

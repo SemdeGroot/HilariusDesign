@@ -45,14 +45,15 @@ export default function Layout() {
       </main>
 
       <footer className="footer">
-        <div className="footerTagline">
-          <span>IDEAS MADE OF BOARD</span>
-          <span className="footerTaglineSep">/</span>
-          <span>WHERE MATERIAL MEETS CREATION</span>
-        </div>
-
         <div className="footerInner">
-          <div className="footerBrand">HilariusDesign</div>
+          <div className="footerLeft">
+            <div className="footerBrand">HilariusDesign</div>
+            <div className="footerTaglineInline">
+              IDEAS MADE OF BOARD
+              <span className="footerTaglineSep">/</span>
+              WHERE MATERIAL MEETS CREATION
+            </div>
+          </div>
 
           <div className="footerCols">
             <div className="footerCol">
@@ -67,6 +68,7 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
+
                 <a
                   className="uLink footerLink footerContactLink"
                   href={`tel:${routesConfig.contact.phone.replace(/\s/g, "")}`}
@@ -76,7 +78,13 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
+
                 <div className="footerText">{routesConfig.contact.address}</div>
+
+                <div className="footerSpacer" />
+
+                <div className="footerText">KVK 34321364</div>
+                <div className="footerText">BTW NL001184466B83</div>
               </div>
             </div>
 
@@ -94,15 +102,18 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
+
+                <div className="footerLegalRight">
+                  All showed items are registrated by:
+                  <br />
+                  CC Proof © 2026 Hilarius Design
+                </div>
               </div>
             </div>
 
             <div className="footerCol">
-              <div className="footerLabel">Bedrijfsgegevens</div>
-              <div className="footerBody">
-                <div className="footerText">KVK 34321364</div>
-                <div className="footerText">BTW NL001184466B83</div>
-              </div>
+              <div className="footerLabel"> </div>
+              <div className="footerBody" />
             </div>
           </div>
         </div>

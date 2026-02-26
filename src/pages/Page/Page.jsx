@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import "./Page.css";
 
 /* ─── About ─────────────────────────────────────────────────── */
@@ -50,14 +50,18 @@ function FaqItem({ q, a }) {
         aria-expanded={open}
       >
         <span className="faqQ">{q}</span>
-        <ChevronDown
+        <Plus
           size={18}
           strokeWidth={1.8}
-          className={`faqChev ${open ? "open" : ""}`}
+          className={`faqPlus ${open ? "open" : ""}`}
+          aria-hidden="true"
         />
       </button>
-      <div className="faqPanel">
-        <p className="faqA">{a}</p>
+
+      <div className={`faqPanel ${open ? "open" : ""}`}>
+        <div className="faqPanelInner">
+          <p className="faqA">{a}</p>
+        </div>
       </div>
     </div>
   );

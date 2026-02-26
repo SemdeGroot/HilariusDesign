@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
@@ -40,11 +40,11 @@ export default function Category() {
 
   const [activeId, setActiveId] = useState(null);
 
-  const [heroCurrent, setHeroCurrent] = useState("");
-  const [heroNext, setHeroNext] = useState("");
-  const [isCrossfading, setIsCrossfading] = useState(false);
+  // hero: single source, preloaded on page load
+  const [heroSrc, setHeroSrc] = useState("");
+  const [heroFadeKey, setHeroFadeKey] = useState(0);
 
-  const animRef = useRef({ token: 0 });
+  const preloadedRef = useRef(new Set());
   const railRef = useRef(null);
 
   useEffect(() => {
@@ -52,15 +52,24 @@ export default function Category() {
 
     const first = projects[0];
     setActiveId(first.id);
+    setHeroSrc(first.cover || "");
+    setHeroFadeKey((k) => k + 1);
 
-    setHeroCurrent(first.cover || "");
-    setHeroNext("");
-    setIsCrossfading(false);
+    let cancelled = false;
 
-    const token = (animRef.current.token += 1);
-    Promise.allSettled(projects.map((p) => preloadAndDecode(p.cover))).then(() => {
-      if (animRef.current.token !== token) return;
+    Promise.allSettled(projects.map((p) => preloadAndDecode(p.cover))).then((results) => {
+      if (cancelled) return;
+      for (let i = 0; i < projects.length; i += 1) {
+        const src = projects[i]?.cover;
+        if (src && results[i]?.status === "fulfilled") {
+          preloadedRef.current.add(src);
+        }
+      }
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, [slug, projects]);
 
   function hoverProject(p) {
@@ -69,39 +78,24 @@ export default function Category() {
 
     setActiveId(p.id);
 
-    const token = (animRef.current.token += 1);
+    // swap instantly if already preloaded (no “double render” feel)
+    if (preloadedRef.current.has(p.cover)) {
+      setHeroSrc(p.cover);
+      setHeroFadeKey((k) => k + 1);
+      return;
+    }
 
+    // fallback: still load once, but no crossfade-stack
     preloadAndDecode(p.cover)
       .then(() => {
-        if (animRef.current.token !== token) return;
-        if (!heroCurrent) {
-          setHeroCurrent(p.cover);
-          return;
-        }
-        if (p.cover === heroCurrent) return;
-
-        setHeroNext(p.cover);
-        requestAnimationFrame(() => {
-          if (animRef.current.token !== token) return;
-          setIsCrossfading(true);
-        });
+        preloadedRef.current.add(p.cover);
+        setHeroSrc(p.cover);
+        setHeroFadeKey((k) => k + 1);
       })
       .catch(() => {
-        if (animRef.current.token !== token) return;
-        setHeroCurrent(p.cover);
-        setHeroNext("");
-        setIsCrossfading(false);
+        setHeroSrc(p.cover);
+        setHeroFadeKey((k) => k + 1);
       });
-  }
-
-  function onNextTransitionEnd(e) {
-    if (e.propertyName !== "opacity") return;
-    if (!isCrossfading) return;
-    if (!heroNext) return;
-
-    setHeroCurrent(heroNext);
-    setHeroNext("");
-    setIsCrossfading(false);
   }
 
   function scrollRail(dir) {
@@ -155,31 +149,19 @@ export default function Category() {
           className="catHero"
           aria-label="Open project"
         >
-          <div className={`catHeroMedia ${isCrossfading ? "isCrossfading" : ""}`}>
+          <div className="catHeroMedia">
             <div className="catHeroStack">
-              {heroCurrent ? (
+              {heroSrc ? (
                 <img
-                  className="catHeroImgLayer isCurrent"
-                  src={heroCurrent}
+                  key={heroFadeKey}
+                  className="catHeroImg"
+                  src={heroSrc}
                   alt={currentProject ? pick(currentProject, "title") : ""}
                   loading="eager"
                   decoding="async"
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
               ) : null}
-
-              {heroNext ? (
-                <img
-                  className="catHeroImgLayer isNext"
-                  src={heroNext}
-                  alt=""
-                  loading="eager"
-                  decoding="async"
-                  onTransitionEnd={onNextTransitionEnd}
-                  onError={(e) => (e.currentTarget.style.display = "none")}
-                />
-              ) : null}
-
               <div className="catHeroFallback" />
             </div>
           </div>
@@ -198,8 +180,6 @@ export default function Category() {
             <div className="catTable">
               <div className="catTableHead">
                 <div className="th">{pick(routesConfig.copy.category, "colProject")}</div>
-                <div className="th">{pick(routesConfig.copy.category, "colType")}</div>
-                <div className="th right">{pick(routesConfig.copy.category, "colYear")}</div>
               </div>
 
               {projects.map((p) => {
@@ -212,12 +192,9 @@ export default function Category() {
                     onMouseEnter={() => hoverProject(p)}
                     onFocus={() => hoverProject(p)}
                   >
-                    <div className="td project">
-                      <ArrowUpRight size={18} strokeWidth={1.8} className="rowIcon" />
+                    <div className="td projectOnly">
                       <span className="linkish">{pick(p, "title")}</span>
                     </div>
-                    <div className="td">{pick(p, "type")}</div>
-                    <div className="td right">{pick(p, "year")}</div>
                   </Link>
                 );
               })}
@@ -250,9 +227,6 @@ export default function Category() {
                 </div>
                 <div className="catMobileInfo">
                   <div className="catMobileName">{pick(p, "title")}</div>
-                  <div className="catMobileMeta">
-                    {pick(p, "type")} · {pick(p, "year")}
-                  </div>
                 </div>
               </Link>
             ))}
