@@ -39,21 +39,27 @@ export const texts = {
       i18n: {
         nl: {
           title: "Over Wim",
+          heading: "Wim Hilarius",
           intro: "Ontwerp in gerecycled karton, met een heldere signatuur.",
           body:
-            "Wim Hilarius ontwerpt al tientallen jaren kartonnen producten voor de zakelijke markt. HilariusDesign ontwikkelt originele relatiegeschenken, give-aways en verpakkingen met focus op eenvoud, functionaliteit en uitstraling.\n\nEen bekend voorbeeld is de Viko-koker: een kartonnen koker met een slimme sluiting, bedoeld om een premium gevoel te geven zonder ingewikkelde handling.\n\nVan eerste schets tot productie: het uitgangspunt is altijd een sterk idee dat goed maakbaar is en klopt in detail."
+            "Bij Hilarius Design draait alles om vindingrijkheid, vakmanschap en doordachte eenvoud. Al meer dan veertig jaar ontwerp ik producten waarin creativiteit en constructie samenkomen — van relatiegeschenken en verpakkingen tot transportmodellen en interieurelementen, allemaal vervaardigd uit gerecycled karton.\n\nKarton is een materiaal dat mensen onderschatten. Het is licht, sterk, duurzaam en vormt de basis voor producten die opvallen zonder te schreeuwen. Elk ontwerp begint met een idee: hoe kan iets tegelijk slim, mooi en maakbaar zijn?\n\nVan eerste schets tot productie begeleid ik het volledige traject. Het resultaat is altijd een product dat klopt in detail en past bij uw merk.",
+          cta: "Bekijk mijn werk"
         },
         en: {
           title: "About Wim",
+          heading: "Wim Hilarius",
           intro: "Design in recycled board, with a clear signature.",
           body:
-            "Wim Hilarius has designed board-based products for the business market for decades. HilariusDesign creates original corporate gifts, giveaways and packaging with a focus on simplicity, functionality and presence.\n\nA well-known example is the Viko tube: a cardboard tube with a smart closure, designed to feel premium without complicated handling.\n\nFrom first sketch to production: the starting point is always a strong idea that is manufacturable and refined in detail."
+            "Hilarius Design is about ingenuity, craftsmanship and considered simplicity. For over forty years I have designed products where creativity and construction meet — from corporate gifts and packaging to transport models and interior elements, all made from recycled board.\n\nBoard is a material people underestimate. It is light, strong, sustainable and forms the basis for products that stand out without shouting. Every design starts with an idea: how can something be smart, beautiful and manufacturable at the same time?\n\nFrom first sketch to production I guide the full process. The result is always a product that holds up in detail and fits your brand.",
+          cta: "View my work"
         },
         de: {
           title: "Über Wim",
+          heading: "Wim Hilarius",
           intro: "Design aus recycelter Pappe, mit klarer Handschrift.",
           body:
-            "Wim Hilarius entwirft seit vielen Jahren Produkte aus Pappe für den Business-Markt. HilariusDesign entwickelt originelle Werbegeschenke, Give-aways und Verpackungen mit Fokus auf Einfachheit, Funktion und Wirkung.\n\nEin bekanntes Beispiel ist die Viko-Hülse: eine Kartonhülse mit smartem Verschluss, die hochwertig wirkt und dabei praktisch bleibt.\n\nVon der Skizze bis zur Produktion: ein starkes, gut produzierbares Konzept steht im Mittelpunkt."
+            "Bei Hilarius Design dreht sich alles um Einfallsreichtum, Handwerkskunst und durchdachte Einfachheit. Seit mehr als vierzig Jahren entwerfe ich Produkte, in denen Kreativität und Konstruktion zusammenkommen — von Werbegeschenken und Verpackungen bis hin zu Transportmodellen und Innenraumelementen, alle aus recycelter Pappe.\n\nPappe ist ein Material, das Menschen unterschätzen. Es ist leicht, stark, nachhaltig und bildet die Grundlage für Produkte, die auffallen ohne zu schreien. Jeder Entwurf beginnt mit einer Idee: Wie kann etwas gleichzeitig clever, schön und produzierbar sein?\n\nVon der ersten Skizze bis zur Produktion begleite ich den gesamten Prozess. Das Ergebnis ist immer ein Produkt, das im Detail stimmt und zu Ihrer Marke passt.",
+          cta: "Meine Arbeit ansehen"
         }
       }
     },
@@ -63,20 +69,68 @@ export const texts = {
         nl: {
           title: "FAQ",
           intro: "Veelgestelde vragen over ontwerp, productie en levering.",
-          body:
-            "Wat is de minimale oplage?\nDat hangt af van het product en de afwerking. Neem contact op, dan adviseren we passend bij het doel en budget.\n\nKunnen jullie ook een prototype maken?\nJa. Een prototype is handig om vorm, passing en presentatie te beoordelen voordat we opschalen.\n\nDoen jullie ook bedrukking en afwerking?\nJa. Bedrukking en afwerking stemmen we af op toepassing, huisstijl en gewenste uitstraling.\n\nWat is de levertijd?\nLevertijd is afhankelijk van complexiteit, oplage en afwerking. We geven altijd een realistische planning na afstemming."
+          items: [
+            {
+              q: "Wat is de minimale oplage?",
+              a: "Dat hangt af van het product en de afwerking. Neem contact op, dan adviseren we passend bij het doel en budget."
+            },
+            {
+              q: "Kunnen jullie ook een prototype maken?",
+              a: "Ja. Een prototype is handig om vorm, passing en presentatie te beoordelen voordat we opschalen."
+            },
+            {
+              q: "Doen jullie ook bedrukking en afwerking?",
+              a: "Ja. Bedrukking en afwerking stemmen we af op toepassing, huisstijl en gewenste uitstraling."
+            },
+            {
+              q: "Wat is de levertijd?",
+              a: "Levertijd is afhankelijk van complexiteit, oplage en afwerking. We geven altijd een realistische planning na afstemming."
+            }
+          ]
         },
         en: {
           title: "FAQ",
           intro: "Common questions about design, production and delivery.",
-          body:
-            "What is the minimum order quantity?\nIt depends on the product and finishing. Contact us and we’ll advise based on your goal and budget.\n\nDo you make prototypes?\nYes. A prototype helps validate shape, fit and presentation before scaling.\n\nDo you offer printing and finishing?\nYes. Printing and finishing are tailored to the use case, brand and desired look.\n\nWhat about lead time?\nLead time depends on complexity, quantity and finishing. After alignment we provide a realistic schedule."
+          items: [
+            {
+              q: "What is the minimum order quantity?",
+              a: "It depends on the product and finishing. Contact us and we will advise based on your goal and budget."
+            },
+            {
+              q: "Do you make prototypes?",
+              a: "Yes. A prototype helps validate shape, fit and presentation before scaling."
+            },
+            {
+              q: "Do you offer printing and finishing?",
+              a: "Yes. Printing and finishing are tailored to the use case, brand and desired look."
+            },
+            {
+              q: "What about lead time?",
+              a: "Lead time depends on complexity, quantity and finishing. After alignment we provide a realistic schedule."
+            }
+          ]
         },
         de: {
           title: "FAQ",
           intro: "Häufige Fragen zu Design, Produktion und Lieferung.",
-          body:
-            "Was ist die Mindestauflage?\nDas hängt von Produkt und Veredelung ab. Kontaktieren Sie uns – wir beraten passend zu Ziel und Budget.\n\nMacht ihr Prototypen?\nJa. Ein Prototyp hilft, Form, Passung und Wirkung vor der Serie zu prüfen.\n\nBietet ihr Druck und Veredelung an?\nJa. Druck und Veredelung passen wir an Einsatz, Marke und gewünschte Anmutung an.\n\nWie ist die Lieferzeit?\nDie Lieferzeit hängt von Komplexität, Auflage und Veredelung ab. Nach Abstimmung nennen wir einen realistischen Termin."
+          items: [
+            {
+              q: "Was ist die Mindestauflage?",
+              a: "Das hängt von Produkt und Veredelung ab. Kontaktieren Sie uns — wir beraten passend zu Ziel und Budget."
+            },
+            {
+              q: "Macht ihr Prototypen?",
+              a: "Ja. Ein Prototyp hilft, Form, Passung und Wirkung vor der Serie zu prüfen."
+            },
+            {
+              q: "Bietet ihr Druck und Veredelung an?",
+              a: "Ja. Druck und Veredelung passen wir an Einsatz, Marke und gewünschte Anmutung an."
+            },
+            {
+              q: "Wie ist die Lieferzeit?",
+              a: "Die Lieferzeit hängt von Komplexität, Auflage und Veredelung ab. Nach Abstimmung nennen wir einen realistischen Termin."
+            }
+          ]
         }
       }
     },
@@ -86,20 +140,35 @@ export const texts = {
         nl: {
           title: "Contact",
           intro: "Neem contact op voor ideeën, prototypes of een offerte.",
-          body:
-            "E-mail: info@hilariusdesign.com\nTelefoon: +31 6 24 67 36 20\nLocatie: Koog a/d Zaan\n\nOf stuur een bericht via LinkedIn."
+          formLabels: {
+            name: "Naam",
+            email: "E-mailadres",
+            message: "Bericht",
+            send: "Verstuur",
+            success: "Bedankt voor uw bericht. We nemen zo snel mogelijk contact op."
+          }
         },
         en: {
           title: "Contact",
           intro: "Reach out for ideas, prototypes or a quote.",
-          body:
-            "Email: info@hilariusdesign.com\nPhone: +31 6 24 67 36 20\nLocation: Koog a/d Zaan\n\nOr message via LinkedIn."
+          formLabels: {
+            name: "Name",
+            email: "Email address",
+            message: "Message",
+            send: "Send",
+            success: "Thank you for your message. We will get back to you as soon as possible."
+          }
         },
         de: {
           title: "Kontakt",
           intro: "Kontakt für Ideen, Prototypen oder ein Angebot.",
-          body:
-            "E-Mail: info@hilariusdesign.com\nTelefon: +31 6 24 67 36 20\nOrt: Koog a/d Zaan\n\nOder per LinkedIn schreiben."
+          formLabels: {
+            name: "Name",
+            email: "E-Mail-Adresse",
+            message: "Nachricht",
+            send: "Senden",
+            success: "Vielen Dank für Ihre Nachricht. Wir melden uns so schnell wie möglich."
+          }
         }
       }
     }

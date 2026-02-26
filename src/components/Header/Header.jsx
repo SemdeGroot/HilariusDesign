@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import LanguageSwitch from "../LanguageSwitch/LanguageSwitch.jsx";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.svg";
 import { ChevronDown, Menu, X } from "lucide-react";
 import "./Header.css";
 

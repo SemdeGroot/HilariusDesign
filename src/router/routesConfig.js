@@ -213,7 +213,6 @@ export const routesConfig = {
     }
   ],
 
-  // Mooie selectie voor homescreen (handmatig per categorie)
   homeCovers: {
     "bureau-accessoires": "bureau-accessoires/klokken/klokken.jpg",
     transport: "transport/vrachtwagens/vrachtwagens.jpg",
@@ -249,9 +248,10 @@ export const routesConfig = {
   linkedin: "https://www.linkedin.com/in/wim-hilarius-529817228/",
 
   contact: {
-    email: "info@hilariusdesign.com",
+    email: "info@hilariusdesign.nl",
     phone: "+31 6 24 67 36 20",
-    location: "Koog a/d Zaan"
+    location: "Koog a/d Zaan",
+    address: "Rozeboom 68\n1541 RK Koog a/d Zaan"
   },
 
   projects: [

@@ -7,7 +7,7 @@ import "./styles/fonts.css";
 import "./styles/global.css";
 
 import I18nProvider from "./i18n/I18nProvider.jsx";
-import logoUrl from "./assets/logo.png";
+import logoUrl from "./assets/logo.svg";
 
 function ensureFavicon(href) {
   const existing = document.querySelector('link[rel="icon"]');

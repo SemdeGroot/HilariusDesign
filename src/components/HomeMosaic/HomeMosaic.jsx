@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import WorldOfBoard from "../../assets/WorldOfBoard.svg";
 import "./HomeMosaic.css";
 
 export default function HomeMosaic({ tiles }) {
@@ -9,8 +10,12 @@ export default function HomeMosaic({ tiles }) {
           return (
             <div key={t.key} className={`mosaicText ${t.size || ""}`}>
               <div className="mosaicTextInner">
-                <div className="mosaicTextTitle">{t.title}</div>
-                <div className="mosaicTextBody">{t.body}</div>
+                <img
+                  src={WorldOfBoard}
+                  alt="World of Board"
+                  className="mosaicWob"
+                />
+                <div className="mosaicTextSub">{t.body}</div>
               </div>
             </div>
           );

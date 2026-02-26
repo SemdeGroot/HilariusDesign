@@ -45,23 +45,43 @@ export default function Layout() {
       </main>
 
       <footer className="footer">
+        <div className="footerTagline">
+          <span>IDEAS MADE OF BOARD</span>
+          <span className="footerTaglineSep">/</span>
+          <span>WHERE MATERIAL MEETS CREATION</span>
+        </div>
+
         <div className="footerInner">
           <div className="footerBrand">HilariusDesign</div>
 
           <div className="footerCols">
             <div className="footerCol">
               <div className="footerLabel">Contact</div>
-
               <div className="footerBody">
-                <div className="footerText">{routesConfig.contact.email}</div>
-                <div className="footerText">{routesConfig.contact.phone}</div>
-                <div className="footerText">{routesConfig.contact.location}</div>
+                <a
+                  className="uLink footerLink footerContactLink"
+                  href={`mailto:${routesConfig.contact.email}`}
+                >
+                  <span className="uLinkLabel">
+                    {routesConfig.contact.email}
+                    <span className="uUnderline" />
+                  </span>
+                </a>
+                <a
+                  className="uLink footerLink footerContactLink"
+                  href={`tel:${routesConfig.contact.phone.replace(/\s/g, "")}`}
+                >
+                  <span className="uLinkLabel">
+                    {routesConfig.contact.phone}
+                    <span className="uUnderline" />
+                  </span>
+                </a>
+                <div className="footerText">{routesConfig.contact.address}</div>
               </div>
             </div>
 
             <div className="footerCol">
               <div className="footerLabel">Social</div>
-
               <div className="footerBody">
                 <a
                   className="uLink footerLink"
@@ -74,6 +94,14 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
+              </div>
+            </div>
+
+            <div className="footerCol">
+              <div className="footerLabel">Bedrijfsgegevens</div>
+              <div className="footerBody">
+                <div className="footerText">KVK 34321364</div>
+                <div className="footerText">BTW NL001184466B83</div>
               </div>
             </div>
           </div>

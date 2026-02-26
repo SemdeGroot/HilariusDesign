@@ -5,7 +5,6 @@
   align-items: start;
 }
 
-/* Reveal wrapper per tile */
 .mosaicItem{
   opacity: 0;
   transform: translateY(14px);
@@ -43,7 +42,6 @@
   position: relative;
   width: 100%;
   overflow:hidden;
-
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -118,27 +116,31 @@
   transform: scale(1.02);
 }
 
+/* Text tile */
 .mosaicText{
   display:flex;
   align-items:center;
 }
 
 .mosaicTextInner{
-  max-width: 360px;
+  max-width: 400px;
+  display:grid;
+  gap: 18px;
 }
 
-.mosaicTextTitle{
+.mosaicWob{
+  width: 100%;
+  height: auto;
+  display:block;
+  max-width: 380px;
+}
+
+.mosaicTextSub{
   font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.mosaicTextBody{
-  font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--text);
-  opacity: 0.9;
+  opacity: 0.75;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 1020px){
@@ -161,12 +163,10 @@
   .mosaicText.s5,
   .mosaicText.s6 { grid-column: span 1; }
 
-  /* Mobile: hover/focus/active states uit */
   .mosaicHover{ display:none; }
   .mosaicMedia img{ transition: none; transform: scale(1.0); }
 }
 
-/* Touch devices: hover effects uit */
 @media (hover: none) and (pointer: coarse){
   .mosaicTile:hover img{ transform: scale(1.0); }
   .mosaicTile:hover .mosaicHover{ opacity: 0; transform: translateY(6px); }
