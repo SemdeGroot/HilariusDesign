@@ -5,6 +5,90 @@ import { I18nContext } from "../../i18n/I18nProvider";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import "./Project.css";
 
+function Collage({ images, title }) {
+  const count = images.length;
+
+  if (count === 0) return null;
+
+  if (count === 1) {
+    return (
+      <div className="collage collage--1">
+        <div className="collageSlot">
+          <div className="imgBox imgBox--single">
+            <img src={images[0]} alt={title} loading="lazy" />
+            <div className="fallback" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (count === 2) {
+    return (
+      <div className="collage collage--2">
+        {images.slice(0, 2).map((src, i) => (
+          <div key={i} className="collageSlot">
+            <div className="imgBox imgBox--half">
+              <img src={src} alt={i === 0 ? title : ""} loading="lazy" />
+              <div className="fallback" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (count === 3) {
+    return (
+      <div className="collage collage--3">
+        <div className="collageSlot collageSlot--wide">
+          <div className="imgBox imgBox--wide">
+            <img src={images[0]} alt={title} loading="lazy" />
+            <div className="fallback" />
+          </div>
+        </div>
+        {images.slice(1, 3).map((src, i) => (
+          <div key={i} className="collageSlot">
+            <div className="imgBox imgBox--square">
+              <img src={src} alt="" loading="lazy" />
+              <div className="fallback" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="collage collage--4">
+      <div className="collageA">
+        <div className="imgBox">
+          <img src={images[0]} alt={title} loading="lazy" />
+          <div className="fallback" />
+        </div>
+      </div>
+      <div className="collageB">
+        <div className="imgBox">
+          {images[1] ? <img src={images[1]} alt="" loading="lazy" /> : null}
+          <div className="fallback" />
+        </div>
+      </div>
+      <div className="collageC">
+        <div className="imgBox">
+          {images[2] ? <img src={images[2]} alt="" loading="lazy" /> : null}
+          <div className="fallback" />
+        </div>
+      </div>
+      <div className="collageD">
+        <div className="imgBox">
+          {images[3] ? <img src={images[3]} alt="" loading="lazy" /> : null}
+          <div className="fallback" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Project() {
   const { id } = useParams();
   const { pick } = useContext(I18nContext);
@@ -80,41 +164,7 @@ export default function Project() {
       </div>
 
       <div className="projLayout">
-        <div className="collage">
-          <div className="collageA">
-            <div className="imgBox">
-              {images[0] ? (
-                <img
-                  src={images[0]}
-                  alt={pick(project, "title")}
-                  loading="lazy"
-                />
-              ) : null}
-              <div className="fallback" />
-            </div>
-          </div>
-
-          <div className="collageB">
-            <div className="imgBox">
-              {images[1] ? <img src={images[1]} alt="" loading="lazy" /> : null}
-              <div className="fallback" />
-            </div>
-          </div>
-
-          <div className="collageC">
-            <div className="imgBox">
-              {images[2] ? <img src={images[2]} alt="" loading="lazy" /> : null}
-              <div className="fallback" />
-            </div>
-          </div>
-
-          <div className="collageD">
-            <div className="imgBox">
-              {images[3] ? <img src={images[3]} alt="" loading="lazy" /> : null}
-              <div className="fallback" />
-            </div>
-          </div>
-        </div>
+        <Collage images={images} title={pick(project, "title")} />
 
         <aside className="projRight">
           <h1 className="projTitle">{pick(project, "title")}</h1>
@@ -124,31 +174,6 @@ export default function Project() {
           ) : null}
 
           {body ? <div className="projBody">{body}</div> : null}
-
-          <div className="detailList">
-            <div className="detailRow">
-              <div className="detailKey">
-                {pick(routesConfig.copy.project, "year")}
-              </div>
-              <div className="detailVal">{pick(project, "year")}</div>
-            </div>
-
-            <div className="detailRow">
-              <div className="detailKey">
-                {pick(routesConfig.copy.project, "type")}
-              </div>
-              <div className="detailVal">{pick(project, "type")}</div>
-            </div>
-
-            <div className="detailRow">
-              <div className="detailKey">
-                {pick(routesConfig.copy.project, "materials")}
-              </div>
-              <div className="detailVal">
-                {pick(project, "materials")}
-              </div>
-            </div>
-          </div>
         </aside>
       </div>
 

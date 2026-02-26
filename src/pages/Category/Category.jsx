@@ -40,7 +40,6 @@ export default function Category() {
 
   const [activeId, setActiveId] = useState(null);
 
-  // hero: single source, preloaded on page load
   const [heroSrc, setHeroSrc] = useState("");
   const [heroFadeKey, setHeroFadeKey] = useState(0);
 
@@ -78,14 +77,12 @@ export default function Category() {
 
     setActiveId(p.id);
 
-    // swap instantly if already preloaded (no “double render” feel)
     if (preloadedRef.current.has(p.cover)) {
       setHeroSrc(p.cover);
       setHeroFadeKey((k) => k + 1);
       return;
     }
 
-    // fallback: still load once, but no crossfade-stack
     preloadAndDecode(p.cover)
       .then(() => {
         preloadedRef.current.add(p.cover);
@@ -110,9 +107,9 @@ export default function Category() {
     const step = first.getBoundingClientRect().width + gap;
     if (!step) return;
 
-    const nextLeft = el.scrollLeft + dir * step;
-    const targetIndex = Math.round(nextLeft / step);
-    const target = Math.max(0, targetIndex * step);
+    const currentIndex = Math.round(el.scrollLeft / step);
+    const targetIndex = currentIndex + dir;
+    const target = targetIndex * step;
 
     const prefersReduced =
       typeof window !== "undefined" &&
@@ -210,6 +207,15 @@ export default function Category() {
         <div className="catMobileSub">{pick(category, "subtitle")}</div>
 
         <div className="catMobileRailWrap" aria-label="Products">
+          <button
+            className="catArrowBtn"
+            type="button"
+            onClick={() => scrollRail(-1)}
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={18} strokeWidth={1.8} />
+          </button>
+
           <div ref={railRef} className="catMobileRail">
             {projects.map((p) => (
               <Link key={p.id} to={`/project/${p.id}`} className="catMobileCard">
@@ -232,24 +238,14 @@ export default function Category() {
             ))}
           </div>
 
-          <div className="catMobileControls" aria-label="Scroll controls">
-            <button
-              className="catArrowBtn"
-              type="button"
-              onClick={() => scrollRail(-1)}
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={18} strokeWidth={1.8} />
-            </button>
-            <button
-              className="catArrowBtn"
-              type="button"
-              onClick={() => scrollRail(1)}
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={18} strokeWidth={1.8} />
-            </button>
-          </div>
+          <button
+            className="catArrowBtn"
+            type="button"
+            onClick={() => scrollRail(1)}
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={18} strokeWidth={1.8} />
+          </button>
         </div>
       </div>
     </section>

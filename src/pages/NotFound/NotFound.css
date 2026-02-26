@@ -1,0 +1,67 @@
+.notFound{
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+}
+
+.notFoundInner{
+  display: grid;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.notFoundCode{
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.notFoundTitle{
+  margin: 0;
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.notFoundBody{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.notFoundCta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 4px;
+  opacity: 0.88;
+  transition: opacity 160ms ease, gap 160ms ease;
+  align-self: start;
+}
+
+.notFoundCta:hover{
+  opacity: 1;
+  gap: 14px;
+}
+
+.notFoundCtaArrow{
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+@media (max-width: 860px){
+  .notFoundTitle{ font-size: 36px; }
+  .notFound{ padding-top: 40px; }
+}

@@ -114,8 +114,8 @@ function ContactPage({ page }) {
   }
 
   return (
-    <section className="contactLayout">
-      <div className="contactLeft">
+    <div className="contactLayout">
+      <div className="contactInfo">
         <h1 className="pageTitle">{pick(page, "title")}</h1>
         <p className="pageIntro">{pick(page, "intro")}</p>
 
@@ -132,9 +132,6 @@ function ContactPage({ page }) {
           >
             {routesConfig.contact.phone}
           </a>
-          <div className="contactDetailText" style={{ whiteSpace: "pre-line" }}>
-            {routesConfig.contact.address}
-          </div>
           <a
             className="contactDetailLink"
             href={routesConfig.linkedin}
@@ -143,8 +140,15 @@ function ContactPage({ page }) {
           >
             LinkedIn
           </a>
+          <div className="contactDetailText" style={{ whiteSpace: "pre-line" }}>
+            {routesConfig.contact.address}
+          </div>
+          <div className="contactDetailText">KVK 34321364</div>
+          <div className="contactDetailText">BTW NL001184466B83</div>
         </div>
+      </div>
 
+      <div className="contactFormCol">
         {sent ? (
           <div className="contactSuccess">{labels.success}</div>
         ) : (
@@ -210,18 +214,7 @@ function ContactPage({ page }) {
           </form>
         )}
       </div>
-
-      <div className="contactRight">
-        <div className="contactImgWrap">
-          <img
-            src="/uitstalling.jpg"
-            alt=""
-            className="contactImg"
-            onError={(e) => (e.currentTarget.parentElement.style.display = "none")}
-          />
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
 

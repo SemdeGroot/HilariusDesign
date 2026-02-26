@@ -116,7 +116,7 @@
   transform: scale(1.02);
 }
 
-/* Text tile */
+/* Text tile — aligned left */
 .mosaicText{
   display:flex;
   align-items:flex-start;
@@ -135,6 +135,8 @@
   height: auto;
   display:block;
   max-width: 380px;
+  /* explicitly left-aligned */
+  margin-right: auto;
 }
 
 @media (max-width: 1020px){
@@ -160,7 +162,6 @@
   .mosaicHover{ display:none; }
   .mosaicMedia img{ transition: none; transform: scale(1.0); }
 
-  /* WorldOfBoard bovenaan op mobile */
   .mosaicText{ align-items:flex-start; }
 }
 

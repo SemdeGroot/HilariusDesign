@@ -22,7 +22,55 @@
   align-items:start;
 }
 
-.collage{
+/* ─── Collage variants ───────────────────────────────────────── */
+
+/* 1 image: full width */
+.collage--1{
+  display:block;
+}
+
+.collage--1 .collageSlot{
+  width: 100%;
+}
+
+.imgBox--single{
+  aspect-ratio: 4 / 3;
+}
+
+/* 2 images: side by side */
+.collage--2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.imgBox--half{
+  aspect-ratio: 3 / 4;
+}
+
+/* 3 images: big on top, two below */
+.collage--3{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.collageSlot--wide{
+  grid-column: 1 / -1;
+}
+
+.imgBox--wide{
+  aspect-ratio: 16 / 9;
+}
+
+.imgBox--square{
+  aspect-ratio: 1 / 1;
+}
+
+/* 4 images: original 2x2 */
+.collage--4{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
@@ -34,21 +82,21 @@
 .collageC{ grid-column: 1 / 2; }
 .collageD{ grid-column: 2 / 3; }
 
+.collageA .imgBox{ aspect-ratio: 1 / 1; }
+.collageB .imgBox{ aspect-ratio: 16 / 10; }
+.collageC .imgBox{ aspect-ratio: 16 / 9; }
+.collageD .imgBox{ aspect-ratio: 16 / 10; }
+
+/* Shared imgBox */
 .imgBox{
   position:relative;
   width:100%;
-
   background: transparent;
   border: 0;
   border-radius: 0;
   overflow:hidden;
   padding: 0;
 }
-
-.collageA .imgBox{ aspect-ratio: 1 / 1; }
-.collageB .imgBox{ aspect-ratio: 16 / 10; }
-.collageC .imgBox{ aspect-ratio: 16 / 9; }
-.collageD .imgBox{ aspect-ratio: 16 / 10; }
 
 .imgBox img{
   width:100%;
@@ -64,6 +112,7 @@
   pointer-events:none;
 }
 
+/* ─── Right panel ────────────────────────────────────────────── */
 .projRight{
   padding-left: 44px;
   border-left: 1px solid var(--line);
@@ -122,6 +171,7 @@
   line-height: 1.6;
 }
 
+/* ─── Prev/Next nav ──────────────────────────────────────────── */
 .pn{
   margin-top: 56px;
   border-top: 1px solid var(--line);
@@ -218,7 +268,7 @@
   }
 
   .pnCenter{
-    opacity: 0.85; /* blijft zichtbaar op mobile */
+    opacity: 0.85;
   }
 
   .pnCenter svg{
@@ -227,7 +277,6 @@
   }
 }
 
-/* Touch: hover effect uit */
 @media (hover: none) and (pointer: coarse){
   .pnLink:hover{ opacity: 0.92; }
   .pnCenter:hover{ opacity: 0.85; }

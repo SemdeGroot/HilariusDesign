@@ -171,32 +171,30 @@
 .faqPlus{
   opacity: 0.60;
   flex-shrink: 0;
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease;
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease;
 }
 
 .faqPlus.open{
-  transform: rotate(45deg); /* + -> x */
+  transform: rotate(45deg);
   opacity: 0.80;
 }
 
-/* Panel: max-height anim (no “answers already visible”) */
 .faqPanel{
-  max-height: 0;
   overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  transform: translateY(-4px);
-  transition: max-height 260ms cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 180ms ease,
-              transform 180ms ease;
+  transition: grid-template-rows 340ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 260ms ease;
 }
 
 .faqPanel.open{
-  max-height: 520px;
+  grid-template-rows: 1fr;
   opacity: 1;
-  transform: translateY(0);
 }
 
 .faqPanelInner{
+  overflow: hidden;
   padding-bottom: 22px;
 }
 
@@ -214,6 +212,15 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items:start;
+}
+
+/* Contact left: info block + form side by side */
+.contactLeft{
+  display:contents;
+}
+
+.contactInfo{
+  padding-top: 0;
 }
 
 .contactDetails{
@@ -244,6 +251,11 @@
   line-height: 1.65;
   color: var(--text);
   opacity: 0.75;
+}
+
+/* Form column */
+.contactFormCol{
+  padding-top: 0;
 }
 
 /* Form */
@@ -315,32 +327,14 @@
   padding-left: 14px;
 }
 
-/* Right: afbeelding */
-.contactRight{
-  position: sticky;
-  top: 110px;
-}
-
-.contactImgWrap{
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow:hidden;
-  background: rgba(0,0,0,0.04);
-}
-
-.contactImg{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display:block;
-}
-
 @media (max-width: 860px){
   .contactLayout{
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .contactRight{ display:none; }
+  .contactLeft{
+    display: block;
+  }
 }
 
 @media (hover: none) and (pointer: coarse){

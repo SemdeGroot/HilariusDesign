@@ -88,8 +88,6 @@
   position: fixed;
   left: 0;
   right: 0;
-
-  /* altijd exact onder de header, ongeacht scroll */
   top: var(--header-h);
 
   padding-top: 18px;
@@ -235,12 +233,11 @@
 .navMobileInline{
   display:none;
   align-items:center;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   min-width: 0;
-  flex-wrap: wrap;
-
-  /* Belangrijk: gelijke spacing, net als headerInner */
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 0;
+  justify-content: flex-start;
 }
 
 .navMobileInlineLink{
@@ -248,21 +245,15 @@
   color: var(--text);
   text-transform: uppercase;
   white-space: nowrap;
-
-  /* Tap target baseline (wordt op mobile exact 44px) */
   display:inline-flex;
   align-items:center;
   justify-content:center;
-
-  /* Subtielere states */
+  min-height: 44px;
   opacity: 0.90;
   transition: opacity 160ms ease;
-
-  /* Ruimte zonder rare “gaps” */
-  padding: 0 10px;
-
-  font-size: 12px;
-  letter-spacing: 0.10em;
+  padding: 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
 }
 
 .navMobileInlineLink:hover,
@@ -453,66 +444,45 @@
 }
 
 @media (max-width: 860px){
-  .headerInner{
-    height: 72px;
-    justify-content: flex-start;
-
-    /* Gelijke spacing tussen ALLES */
-    gap: 12px;
+  .header{
+    --header-h: 62px;
   }
 
-  /* Tap targets: exact 44px */
+  .headerInner{
+    height: var(--header-h);
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 var(--page-pad);
+  }
+
   .brand{
     min-height: 44px;
-    padding: 0 6px;
+    padding: 0 4px;
   }
 
   .brandLogo{
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .navDesktop{ display:none; }
   .navMobileInline{ display:flex; }
 
-  .navMobileInlineLink{
-    min-height: 44px;
-    padding: 0 10px;
-
-    /* Font sizes niet “te eager” aanpassen: stabiel en consistent */
-    font-size: 12px;
-    letter-spacing: 0.10em;
-  }
-
   .mobileBtn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
-    /* zelfde tap target */
     min-height: 44px;
     min-width: 44px;
-
     padding: 0;
     border-radius: 999px;
-  }
-
-  /* Belangrijk: GEEN margin-left:auto -> geen grote gap meer */
-  .mobileBtn{
     margin-left: 0;
-  }
-
-  /* Als het erg krap wordt: links mogen wrap’en, spacing blijft gelijk */
-  .navMobileInline{
-    flex: 1 1 auto;
-    justify-content: flex-start;
-    gap: 12px;
+    flex-shrink: 0;
   }
 
   .mega{ display:none; }
 }
 
-/* Touch: hover states uit / subtieler (minder “sticky hover” op mobile) */
 @media (hover: none) and (pointer: coarse){
   .navMobileInlineLink{
     transition: none;
@@ -523,18 +493,4 @@
 
   .mobileAccBtn:hover{ background: transparent; }
   .mobileAccProduct:hover{ opacity: 0.90; }
-}
-
-@media (max-width: 860px){
-  .header{
-    --header-h: 72px;
-  }
-
-  .headerInner{
-    height: var(--header-h);
-    justify-content: flex-start;
-    gap: 12px;
-  }
-
-  .mega{ display:none; }
 }

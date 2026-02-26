@@ -46,12 +46,11 @@ export default function Layout() {
 
       <footer className="footer">
         <div className="footerInner">
-          <div className="footerLeft">
+          <div className="footerBrandBlock">
             <div className="footerBrand">HilariusDesign</div>
-            <div className="footerTaglineInline">
-              IDEAS MADE OF BOARD
-              <span className="footerTaglineSep">/</span>
-              WHERE MATERIAL MEETS CREATION
+            <div className="footerTagline">
+              <div>IDEAS MADE OF BOARD</div>
+              <div>WHERE MATERIAL MEETS CREATION</div>
             </div>
           </div>
 
@@ -79,10 +78,15 @@ export default function Layout() {
                   </span>
                 </a>
 
-                <div className="footerText">{routesConfig.contact.address}</div>
+                <div className="footerText" style={{ whiteSpace: "pre-line" }}>
+                  {routesConfig.contact.address}
+                </div>
+              </div>
+            </div>
 
-                <div className="footerSpacer" />
-
+            <div className="footerCol">
+              <div className="footerLabel">Bedrijfsgegevens</div>
+              <div className="footerBody">
                 <div className="footerText">KVK 34321364</div>
                 <div className="footerText">BTW NL001184466B83</div>
               </div>
@@ -103,17 +107,14 @@ export default function Layout() {
                   </span>
                 </a>
 
-                <div className="footerLegalRight">
+                <div className="footerSpacer" />
+
+                <div className="footerLegal">
                   All showed items are registrated by:
                   <br />
                   CC Proof © 2026 Hilarius Design
                 </div>
               </div>
-            </div>
-
-            <div className="footerCol">
-              <div className="footerLabel"> </div>
-              <div className="footerBody" />
             </div>
           </div>
         </div>

@@ -16,15 +16,16 @@
 
 .footerInner{
   display:grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 40px;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
   align-items:start;
   padding: 48px var(--page-pad) 60px;
 }
 
-.footerLeft{
+.footerBrandBlock{
   display:grid;
   gap: 10px;
+  min-width: 180px;
 }
 
 .footerBrand{
@@ -32,19 +33,13 @@
   letter-spacing: 0.02em;
 }
 
-.footerTaglineInline{
+.footerTagline{
+  display:grid;
+  gap: 2px;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.footerTaglineSep{
-  opacity: 0.4;
 }
 
 .footerCols{
@@ -94,23 +89,23 @@
   height: 10px;
 }
 
-/* Fix underline spacing in footer: match the rest of the site */
+/* Footer underline: tight, same as rest of site */
 .footer .uLinkLabel{
   position: relative;
   display: inline-block;
 }
 
 .footer .uUnderline{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom: -2px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
   height: 1px;
-  background: rgba(10,10,10,0.65);
+  background: rgba(10,10,10,0.55);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 200ms ease;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .footer .uLink:hover .uUnderline{
@@ -118,12 +113,13 @@
   transform-origin: left;
 }
 
-.footerLegalRight{
-  margin-top: 14px;
+/* Copyright block: same min-width as address lines so they align */
+.footerLegal{
   font-size: 12px;
-  line-height: 1.55;
+  line-height: 1.65;
   color: var(--muted);
   white-space: normal;
+  min-width: 180px;
 }
 
 @media (max-width: 1100px){
@@ -132,7 +128,10 @@
 
 @media (max-width: 860px){
   .main{ padding-top: 24px; }
-  .footerInner{ grid-template-columns: 1fr; gap: 32px; }
+  .footerInner{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .footerCols{ grid-template-columns: 1fr 1fr; gap: 28px; }
 }
 
