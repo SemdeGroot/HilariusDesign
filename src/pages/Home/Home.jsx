@@ -4,6 +4,7 @@ import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import HomeMosaic from "../../components/HomeMosaic/HomeMosaic.jsx";
 import { getImage } from "../../router/images";
+import WorldOfBoard from "../../assets/WorldOfBoard.svg";
 import "./Home.css";
 
 function useIsMobile(breakpoint = 860) {
@@ -85,12 +86,11 @@ function HomeMobile({ intro, categories }) {
   return (
     <section className="homeMobile" aria-label="Home">
       <div
-        className={`homeMobileIntro homeRevealBlock ${inMap["intro"] ? "isIn" : ""}`}
-        data-reveal-key="intro"
+        className={`homeMobileWob homeRevealBlock ${inMap["wob"] ? "isIn" : ""}`}
+        data-reveal-key="wob"
         ref={observe}
       >
-        <div className="homeMobileIntroTitle">{intro.title}</div>
-        <div className="homeMobileIntroBody">{intro.body}</div>
+        <img src={WorldOfBoard} alt="World of Board" className="homeMobileWobImg" />
       </div>
 
       <div className="homeMobileCats" aria-label="Categories">
@@ -149,7 +149,15 @@ export default function Home() {
       return p.find((x) => x.category === slug)?.cover || "";
     };
 
+    // Text tile first so WoB SVG appears top-left in the 12-col grid
     const baseTiles = [
+      {
+        key: "txt1",
+        type: "text",
+        size: "s5",
+        title: pick(routesConfig.copy.home, "leadTitle"),
+        body: pick(routesConfig.copy.home, "leadBody")
+      },
       {
         key: "t1",
         type: "image",
@@ -158,13 +166,6 @@ export default function Home() {
         src: coverFor(c[0].slug),
         label: pick(c[0], "title"),
         sub: pick(c[0], "subtitle")
-      },
-      {
-        key: "txt1",
-        type: "text",
-        size: "s5",
-        title: pick(routesConfig.copy.home, "leadTitle"),
-        body: pick(routesConfig.copy.home, "leadBody")
       },
       {
         key: "c2a",

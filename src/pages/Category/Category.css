@@ -37,7 +37,8 @@
   display:block;
 
   opacity: 0;
-  animation: catHeroFadeIn 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  /* Smoother: longer + ease-out curve */
+  animation: catHeroFadeIn 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   will-change: opacity;
 }
 
@@ -173,7 +174,6 @@
   padding: 6px 2px 2px;
   overscroll-behavior-x: contain;
 
-  /* hide scrollbar visually */
   scrollbar-width: none;
 }
 
@@ -181,11 +181,13 @@
   display: none;
 }
 
-/* Arrow buttons flanking the rail */
+/* Arrow buttons — no border, no background, just the icon.
+   Touch area preserved via min-width/height + padding. */
 .catArrowBtn{
   flex-shrink: 0;
-  border: 1px solid var(--line);
-  background: var(--bg);
+  border: 0;
+  background: transparent;
+  /* Same color as the menu SVG strokes (--text at ~0.55 opacity = --muted) */
   color: var(--muted);
   width: 40px;
   height: 40px;
@@ -194,12 +196,10 @@
   align-items:center;
   justify-content:center;
   cursor: pointer;
-  transition: background 160ms ease, color 160ms ease, opacity 160ms ease;
-  /* vertically centered by parent flexbox */
+  transition: color 160ms ease, opacity 160ms ease;
 }
 
 .catArrowBtn:hover{
-  background: rgba(0,0,0,0.04);
   color: var(--text);
 }
 
@@ -209,7 +209,7 @@
 }
 
 @media (hover: none) and (pointer: coarse){
-  .catArrowBtn:hover{ background: var(--bg); color: var(--muted); }
+  .catArrowBtn:hover{ color: var(--muted); }
 }
 
 .catMobileCard{
@@ -226,10 +226,10 @@
 .catMobileMedia{
   position:relative;
   aspect-ratio: 16 / 10;
-
   background: transparent;
   border-bottom: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .catMobileMedia img{
@@ -237,6 +237,14 @@
   height:100%;
   object-fit: contain;
   display:block;
+  /* Fade in on scroll-snap, matching arrow scroll speed */
+  opacity: 0;
+  transition: opacity 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Cards that are in the visible snap area get the .isVisible class (set via JS) */
+.catMobileCard.isVisible .catMobileMedia img{
+  opacity: 1;
 }
 
 .catMobileInfo{ padding: 12px 0 14px; }

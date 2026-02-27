@@ -116,7 +116,7 @@
   transform: scale(1.02);
 }
 
-/* Text tile — aligned left */
+/* Text tile — top-left aligned on desktop */
 .mosaicText{
   display:flex;
   align-items:flex-start;
@@ -135,7 +135,6 @@
   height: auto;
   display:block;
   max-width: 380px;
-  /* explicitly left-aligned */
   margin-right: auto;
 }
 
@@ -162,6 +161,7 @@
   .mosaicHover{ display:none; }
   .mosaicMedia img{ transition: none; transform: scale(1.0); }
 
+  /* On mobile the text tile is not rendered (Home.jsx switches to HomeMobile) */
   .mosaicText{ align-items:flex-start; }
 }
 

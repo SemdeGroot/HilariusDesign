@@ -42,16 +42,21 @@
   gap: 18px;
 }
 
+/* WoB logo on top for mobile */
+.homeMobileWob{
+  padding-bottom: 4px;
+}
+
+.homeMobileWobImg{
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+}
+
 .homeMobileIntro{
   display: grid;
   gap: 8px;
-}
-
-.homeMobileIntroTitle{
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.92;
 }
 
 .homeMobileIntroBody{

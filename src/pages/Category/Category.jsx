@@ -46,6 +46,9 @@ export default function Category() {
   const preloadedRef = useRef(new Set());
   const railRef = useRef(null);
 
+  // Track which cards are visible in the snap rail for fade-in
+  const [visibleIds, setVisibleIds] = useState(() => new Set());
+
   useEffect(() => {
     if (!projects.length) return;
 
@@ -53,6 +56,9 @@ export default function Category() {
     setActiveId(first.id);
     setHeroSrc(first.cover || "");
     setHeroFadeKey((k) => k + 1);
+
+    // First card immediately visible
+    setVisibleIds(new Set([first.id]));
 
     let cancelled = false;
 
@@ -70,6 +76,35 @@ export default function Category() {
       cancelled = true;
     };
   }, [slug, projects]);
+
+  // IntersectionObserver on rail cards for the fade effect
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    const cards = Array.from(rail.querySelectorAll("[data-project-id]"));
+    if (!cards.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        setVisibleIds((prev) => {
+          const next = new Set(prev);
+          for (const e of entries) {
+            const id = e.target.dataset.projectId;
+            if (e.isIntersecting) next.add(id);
+          }
+          return next;
+        });
+      },
+      {
+        root: rail,
+        threshold: 0.3
+      }
+    );
+
+    for (const card of cards) io.observe(card);
+    return () => io.disconnect();
+  }, [projects]);
 
   function hoverProject(p) {
     if (!p?.cover) return;
@@ -218,7 +253,12 @@ export default function Category() {
 
           <div ref={railRef} className="catMobileRail">
             {projects.map((p) => (
-              <Link key={p.id} to={`/project/${p.id}`} className="catMobileCard">
+              <Link
+                key={p.id}
+                to={`/project/${p.id}`}
+                className={`catMobileCard ${visibleIds.has(p.id) ? "isVisible" : ""}`}
+                data-project-id={p.id}
+              >
                 <div className="catMobileMedia">
                   {p.cover ? (
                     <img

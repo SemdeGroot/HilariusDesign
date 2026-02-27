@@ -34,3 +34,9 @@ repomix-output*/
 repomix.config.json
 
 repomix.instructions.md
+
+.repomixignore
+
+CLAUDE.md
+.claude/
+.claudeignore
