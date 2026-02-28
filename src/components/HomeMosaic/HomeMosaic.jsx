@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import WorldOfBoard from "../../assets/WorldOfBoard.svg";
 import "./HomeMosaic.css";
 
 export default function HomeMosaic({ tiles }) {
+  const [loaded, setLoaded] = useState({});
+
+  const handleLoad = (key) => {
+    setLoaded((prev) => ({ ...prev, [key]: true }));
+  };
+
   return (
     <div className="mosaic">
       {tiles.map((t) => {
@@ -28,6 +35,8 @@ export default function HomeMosaic({ tiles }) {
         }
 
         const Wrapper = t.to ? Link : "div";
+        const isLoaded = !!loaded[t.key];
+
         return (
           <Wrapper
             key={t.key}
@@ -39,15 +48,16 @@ export default function HomeMosaic({ tiles }) {
               {t.src ? (
                 <img
                   src={t.src}
-                  alt={t.alt || ""}
+                  alt={t.alt || t.label || ""}
                   loading="lazy"
-                  onError={(e) => (e.currentTarget.style.display = "none")}
+                  decoding="async"
+                  className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
+                  onLoad={() => handleLoad(t.key)}
                 />
               ) : null}
               <div className="mosaicFallback" />
             </div>
 
-            {/* Caption lives below the image — slides up on hover */}
             <div className="mosaicCaption">
               <div className="mosaicCaptionLabel">{t.label}</div>
               {t.sub ? <div className="mosaicCaptionSub">{t.sub}</div> : null}

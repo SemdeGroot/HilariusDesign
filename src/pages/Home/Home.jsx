@@ -78,8 +78,8 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
 
 function HomeMobile({ categories }) {
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.24,
-    rootMargin: "0px 0px -22% 0px"
+    threshold: 0.1, // Lower threshold for better trigger
+    rootMargin: "0px 0px 100px 0px" // Start revealing slightly before it enters
   });
 
   const [loaded, setLoaded] = useState(() => ({}));
@@ -97,9 +97,8 @@ function HomeMobile({ categories }) {
       <div className="homeMobileCats" aria-label="Categories">
         {categories.map((c) => {
           const key = `cat-${c.slug}`;
-          const isLoaded = !!loaded[key];
-          // Block the reveal until the image has loaded — text and image appear together
-          const isIn = !!inMap[key] && isLoaded;
+          // REVEAL as soon as it is in view, regardless of image load
+          const isIn = !!inMap[key];
 
           return (
             <article
@@ -116,7 +115,7 @@ function HomeMobile({ categories }) {
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      className="revealImg isLoaded"
+                      className={`revealImg ${loaded[key] ? "isLoaded" : ""}`}
                       onLoad={() => setLoaded((p) => ({ ...p, [key]: true }))}
                       onError={() => setLoaded((p) => ({ ...p, [key]: true }))}
                     />
