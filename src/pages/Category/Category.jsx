@@ -73,6 +73,8 @@ export default function Category() {
   // Ref so the auto-timer closure always sees the latest value without re-creating
   const activeIndexRef = useRef(0);
   const autoTimerRef = useRef(null);
+  // Track touch start position to distinguish tap from swipe on image cells
+  const cellTouchStartX = useRef(0);
 
   const scrollToIndex = useCallback((index) => {
     const rail = railRef.current;
@@ -250,10 +252,19 @@ export default function Category() {
         {/* Image-only scroll rail */}
         <div ref={railRef} className="catMobileImgRail">
           {projects.map((p, i) => (
-            <div
+            <Link
               key={p.id}
+              to={`/project/${p.id}`}
               className="catMobileImgCell"
               data-index={i}
+              onTouchStart={(e) => {
+                cellTouchStartX.current = e.touches[0].clientX;
+              }}
+              onClick={(e) => {
+                // Cancel navigation if this was a horizontal swipe (>8px)
+                const dx = Math.abs(e.clientX - cellTouchStartX.current);
+                if (dx > 8) e.preventDefault();
+              }}
             >
               {p.cover ? (
                 <img
@@ -265,7 +276,7 @@ export default function Category() {
                 />
               ) : null}
               <div className="catHeroFallback" />
-            </div>
+            </Link>
           ))}
         </div>
 

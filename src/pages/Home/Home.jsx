@@ -97,8 +97,9 @@ function HomeMobile({ categories }) {
       <div className="homeMobileCats" aria-label="Categories">
         {categories.map((c) => {
           const key = `cat-${c.slug}`;
-          const isIn = !!inMap[key];
           const isLoaded = !!loaded[key];
+          // Block the reveal until the image has loaded — text and image appear together
+          const isIn = !!inMap[key] && isLoaded;
 
           return (
             <article
@@ -115,9 +116,9 @@ function HomeMobile({ categories }) {
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
+                      className="revealImg isLoaded"
                       onLoad={() => setLoaded((p) => ({ ...p, [key]: true }))}
-                      onError={(e) => (e.currentTarget.style.display = "none")}
+                      onError={() => setLoaded((p) => ({ ...p, [key]: true }))}
                     />
                   ) : null}
                   <div className="homeImgFallback" />

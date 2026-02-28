@@ -19,7 +19,7 @@
 .footerInner{
   display:grid;
   grid-template-columns: auto 1fr;
-  gap: 48px;
+  gap: 80px;
   align-items:start;
   padding: 48px var(--page-pad) 60px;
 }
@@ -49,8 +49,9 @@
 
 .footerCols{
   display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  gap: 80px;
   align-items: start;
 }
 
@@ -58,6 +59,10 @@
   display:grid;
   grid-template-rows: auto 1fr;
   align-items:start;
+}
+
+.footerColSocial{
+  justify-self: end;
 }
 
 .footerLabel{
@@ -93,6 +98,10 @@
 
 .footerSpacer{
   height: 10px;
+}
+
+.footerSpacerRow{
+  height: 22px;
 }
 
 .footer .uLinkLabel{
@@ -152,7 +161,16 @@
 
   .footerCols{
     grid-template-columns: 1fr 1fr;
+    justify-content: start;
     gap: 24px 32px;
+  }
+
+  .footerColSocial{
+    justify-self: start;
+  }
+
+  .footerSpacerRow{
+    height: 22px;
   }
 }
 

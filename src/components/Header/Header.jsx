@@ -72,19 +72,20 @@ export default function Header() {
             <img className="brandLogo" src={logo} alt="" />
           </Link>
 
-          {/* Desktop: exact zoals het was */}
+          {/* Desktop nav */}
           <nav className="navDesktop" aria-label="Primary">
             <div
               className={`navGroup ${portfolioOpen ? "open" : ""}`}
               onMouseEnter={openPortfolio}
               onMouseLeave={scheduleClosePortfolio}
             >
-              <NavLink to="/" className="navItem">
+              {/* Plain Link — nooit active class, hover underline werkt wel via CSS */}
+              <Link to="/" className="navItem">
                 <span className="navLabel">
                   {pick(routesConfig.copy.nav, "portfolio")}
                   <span className="navUnderline" />
                 </span>
-              </NavLink>
+              </Link>
 
               <div
                 className={`mega ${portfolioOpen ? "open" : ""}`}

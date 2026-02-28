@@ -116,7 +116,7 @@ export default function Layout() {
               </div>
             </div>
 
-            <div className="footerCol">
+            <div className="footerCol footerColSocial">
               <div className="footerLabel">Social</div>
               <div className="footerBody">
                 <a
@@ -130,6 +130,8 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
+
+                <div className="footerSpacerRow" aria-hidden="true" />
 
                 <div className="footerLegal">
                   All showed items are registrated by:

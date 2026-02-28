@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: catMobileFadeIn 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .catHero{
@@ -90,7 +93,7 @@
   border-top: 1px solid var(--line);
   max-height: calc(100vh - 400px);
   overflow: auto;
-  padding-right: 10px;
+  padding-right: 12px;
   scroll-behavior: smooth;
 }
 
@@ -126,6 +129,11 @@
 .catRow:hover{ background: rgba(0,0,0,0.02); }
 .catRow.active{ background: rgba(0,0,0,0.02); }
 
+.th,
+.td{
+  padding-left: 4px;
+}
+
 .td{
   font-size: 18px;
   line-height: 1.35;
@@ -150,7 +158,17 @@
 }
 
 /* ─── Mobile ─────────────────────────────────────────────────── */
-.catMobile{ display:none; margin-top: 18px; }
+.catMobile{
+  display: none;
+  margin-top: 18px;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: catMobileFadeIn 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes catMobileFadeIn{
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .catMobileTitle{
   font-size: 24px;
@@ -185,7 +203,7 @@
   scroll-snap-align: start;
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 5 / 6;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -235,13 +253,13 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 0 0;
+  padding: 16px 0 0;
   text-decoration: none;
   color: var(--text);
 }
 
 .catMobileName{
-  font-size: 14px;
+  font-size: 16px;
   opacity: 0;
   animation: catNameFadeIn 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
