@@ -97,15 +97,23 @@ function ContactPage({ page }) {
     setSubmitting(true);
 
     const form = e.target;
-    const data = new FormData(form);
+    const formData = new FormData(form);
+    
+    // Ensure "form-name" is present in the submission
+    // This must match the name="contact" in your HTML
+    formData.set("form-name", "contact"); 
 
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data).toString()
+      body: new URLSearchParams(formData).toString()
     })
-      .then(() => {
-        setSent(true);
+      .then((response) => {
+        if (response.ok) {
+          setSent(true);
+        } else {
+          throw new Error("Form submission failed");
+        }
         setSubmitting(false);
       })
       .catch(() => {
