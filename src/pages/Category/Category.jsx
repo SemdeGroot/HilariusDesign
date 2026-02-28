@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
@@ -155,7 +155,19 @@ export default function Category() {
       return;
     }
 
-    el.scrollTo({ left: target, top: 0, behavior: "smooth" });
+    const startLeft = el.scrollLeft;
+    const distance = target - startLeft;
+    const duration = 420;
+    const startTime = performance.now();
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const animate = (now) => {
+      const t = Math.min(1, (now - startTime) / duration);
+      el.scrollLeft = startLeft + distance * easeOutCubic(t);
+      if (t < 1) requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   }
 
   if (!category) {
@@ -226,6 +238,12 @@ export default function Category() {
                   >
                     <div className="td projectOnly">
                       <span className="linkish">{pick(p, "title")}</span>
+                      <ArrowUpRight
+                        className="catRowIcon"
+                        size={16}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
                     </div>
                   </Link>
                 );
@@ -273,6 +291,12 @@ export default function Category() {
                 </div>
                 <div className="catMobileInfo">
                   <div className="catMobileName">{pick(p, "title")}</div>
+                  <ArrowUpRight
+                    className="catCardIcon"
+                    size={16}
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                 </div>
               </Link>
             ))}

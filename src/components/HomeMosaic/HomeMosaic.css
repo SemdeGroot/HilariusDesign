@@ -1,7 +1,8 @@
 .mosaic{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 26px;
+  column-gap: 24px;
+  row-gap: 6px; /* Caption provides most of the vertical breathing room */
   align-items: start;
 }
 
@@ -22,13 +23,10 @@
 .mosaicTile.s1 { grid-column: span 2; }
 .mosaicTile.s2 { grid-column: span 3; }
 .mosaicTile.s3 { grid-column: span 4; }
+
 .mosaicTile.s4 { grid-column: span 5; }
 .mosaicTile.s6 { grid-column: span 6; }
 .mosaicTile.s8 { grid-column: span 8; }
-
-.mosaicText.s4{ grid-column: span 4; }
-.mosaicText.s5{ grid-column: span 5; }
-.mosaicText.s6{ grid-column: span 6; }
 
 .mosaicTile{
   text-decoration:none;
@@ -70,7 +68,7 @@
   object-fit: contain;
   display:block;
   transform: scale(1.0);
-  transition: transform 260ms ease;
+  transition: transform 280ms ease;
 }
 
 .mosaicFallback{
@@ -81,33 +79,33 @@
   pointer-events:none;
 }
 
-.mosaicHover{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction: column;
-  justify-content:flex-end;
-  padding: 14px;
-  background: rgba(255,255,255,0.88);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 180ms ease, transform 180ms ease;
+/* Caption below image — appears on hover, provides whitespace between rows */
+.mosaicCaption{
+  padding: 10px 0 20px;
+  min-height: 44px;
 }
 
-.mosaicHoverLabel{
+.mosaicCaptionLabel{
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.mosaicHoverSub{
-  margin-top: 6px;
-  font-size: 13px;
+.mosaicCaptionSub{
+  margin-top: 5px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.45;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 200ms ease 30ms, transform 200ms ease 30ms;
 }
 
-.mosaicTile:hover .mosaicHover{
+.mosaicTile:hover .mosaicCaptionLabel,
+.mosaicTile:hover .mosaicCaptionSub{
   opacity: 1;
   transform: translateY(0);
 }
@@ -116,58 +114,49 @@
   transform: scale(1.02);
 }
 
-/* Text tile — top-left aligned on desktop */
-.mosaicText{
+/* WoB tile — same aspect ratio as s3 image tiles, SVG centered within */
+.mosaicMediaWob{
   display:flex;
-  align-items:flex-start;
-  justify-content:flex-start;
+  align-items:center;
+  justify-content:center;
+  background: transparent;
 }
 
-.mosaicTextInner{
-  width: 100%;
-  display:flex;
-  align-items:flex-start;
-  justify-content:flex-start;
-}
-
-.mosaicWob{
-  width: 100%;
-  height: auto;
+/* More specific than .mosaicMedia img to override width/height */
+.mosaicMediaWob .mosaicWobImg{
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
   display:block;
-  max-width: 380px;
-  margin-right: auto;
+  transform: none;
+  transition: none;
 }
 
 @media (max-width: 1020px){
-  .mosaic{ grid-template-columns: repeat(8, 1fr); gap: 18px; }
-  .mosaicTile.s8{ grid-column: span 8; }
-  .mosaicTile.s6{ grid-column: span 8; }
-  .mosaicText.s6{ grid-column: span 8; }
+  /* Reduce gap slightly on medium screens */
+  .mosaic{ column-gap: 18px; }
 }
 
 @media (max-width: 860px){
-  .mosaic{ grid-template-columns: repeat(1, 1fr); gap: 16px; }
+  .mosaic{ grid-template-columns: repeat(1, 1fr); column-gap: 0; row-gap: 12px; }
   .mosaicTile.s1,
   .mosaicTile.s2,
   .mosaicTile.s3,
   .mosaicTile.s4,
   .mosaicTile.s5,
   .mosaicTile.s6,
-  .mosaicTile.s8,
-  .mosaicText.s4,
-  .mosaicText.s5,
-  .mosaicText.s6 { grid-column: span 1; }
+  .mosaicTile.s8 { grid-column: span 1; }
 
-  .mosaicHover{ display:none; }
+  .mosaicCaption{ display:none; }
   .mosaicMedia img{ transition: none; transform: scale(1.0); }
 
-  /* On mobile the text tile is not rendered (Home.jsx switches to HomeMobile) */
-  .mosaicText{ align-items:flex-start; }
+  /* On mobile the mosaic is not rendered (Home.jsx switches to HomeMobile) */
 }
 
 @media (hover: none) and (pointer: coarse){
   .mosaicTile:hover img{ transform: scale(1.0); }
-  .mosaicTile:hover .mosaicHover{ opacity: 0; transform: translateY(6px); }
+  .mosaicTile:hover .mosaicCaptionLabel,
+  .mosaicTile:hover .mosaicCaptionSub{ opacity: 0; transform: translateY(5px); }
 }
 
 @media (prefers-reduced-motion: reduce){

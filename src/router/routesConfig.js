@@ -157,20 +157,19 @@ export const routesConfig = {
   },
 
   nav: [
-    { path: "/about", i18n: { nl: { label: "Over Wim" }, en: { label: "About Wim" }, de: { label: "Über Wim" } } },
+    {
+      path: "/about",
+      i18n: {
+        nl: { label: "Over HilariusDesign", labelMobile: "Over HD" },
+        en: { label: "About HilariusDesign", labelMobile: "About HD" },
+        de: { label: "Über HilariusDesign", labelMobile: "Über HD" }
+      }
+    },
     { path: "/faq", i18n: { nl: { label: "FAQ" }, en: { label: "FAQ" }, de: { label: "FAQ" } } },
     { path: "/contact", i18n: { nl: { label: "Contact" }, en: { label: "Contact" }, de: { label: "Kontakt" } } }
   ],
 
   categories: [
-    {
-      slug: "bureau-accessoires",
-      i18n: {
-        nl: { title: "Bureau accessoires", subtitle: "Bureaukalenders, (wand)klokken en meer.", titleLine1: "Bureau", titleLine2: "accessoires.", titleLine3: "" },
-        en: { title: "Desk accessories", subtitle: "Desk calendars, (wall) clocks and more.", titleLine1: "Desk", titleLine2: "accessories.", titleLine3: "" },
-        de: { title: "Schreibtisch", subtitle: "Schreibtischkalender, (Wand-)Uhren und mehr.", titleLine1: "Schreibtisch", titleLine2: "accessoires.", titleLine3: "" }
-      }
-    },
     {
       slug: "transport",
       i18n: {
@@ -180,11 +179,19 @@ export const routesConfig = {
       }
     },
     {
-      slug: "wijnverpakkingen-displays",
+      slug: "bureau-accessoires",
       i18n: {
-        nl: { title: "(Wijn)verpakkingen & Displays", subtitle: "Luxe verpakkingen, kokers en displays.", titleLine1: "Verpakking", titleLine2: "& display.", titleLine3: "" },
-        en: { title: "(Wine) packaging & Displays", subtitle: "Premium packaging, tubes and displays.", titleLine1: "Packaging", titleLine2: "& display.", titleLine3: "" },
-        de: { title: "(Wein)verpackung & Displays", subtitle: "Premium-Verpackungen, Hülsen und Displays.", titleLine1: "Verpackung", titleLine2: "& display.", titleLine3: "" }
+        nl: { title: "Bureau accessoires", subtitle: "Bureaukalenders, (wand)klokken en meer.", titleLine1: "Bureau", titleLine2: "accessoires.", titleLine3: "" },
+        en: { title: "Desk accessories", subtitle: "Desk calendars, (wall) clocks and more.", titleLine1: "Desk", titleLine2: "accessories.", titleLine3: "" },
+        de: { title: "Schreibtisch", subtitle: "Schreibtischkalender, (Wand-)Uhren und mehr.", titleLine1: "Schreibtisch", titleLine2: "accessoires.", titleLine3: "" }
+      }
+    },
+    {
+      slug: "verpakkingen",
+      i18n: {
+        nl: { title: "Verpakkingen", subtitle: "Luxe verpakkingen, kokers en displays.", titleLine1: "Verpak-", titleLine2: "kingen.", titleLine3: "" },
+        en: { title: "Packaging", subtitle: "Premium packaging, tubes and displays.", titleLine1: "Pack-", titleLine2: "aging.", titleLine3: "" },
+        de: { title: "Verpackungen", subtitle: "Premium-Verpackungen, Hülsen und Displays.", titleLine1: "Ver-", titleLine2: "packungen.", titleLine3: "" }
       }
     },
     {
@@ -196,52 +203,40 @@ export const routesConfig = {
       }
     },
     {
-      slug: "kerst-spellen",
+      slug: "spellen",
       i18n: {
-        nl: { title: "Kerst & Spellen", subtitle: "Kerstproducten en (bord)spellen.", titleLine1: "Kerst", titleLine2: "& spellen.", titleLine3: "" },
-        en: { title: "Holiday & Games", subtitle: "Holiday products and board games.", titleLine1: "Holiday", titleLine2: "& games.", titleLine3: "" },
-        de: { title: "Weihnachten & Spiele", subtitle: "Weihnachtsprodukte und Brettspiele.", titleLine1: "Weihnachten", titleLine2: "& spiele.", titleLine3: "" }
+        nl: { title: "Spellen", subtitle: "Bord- en werpspellen, puzzels en meer.", titleLine1: "Spellen.", titleLine2: "", titleLine3: "" },
+        en: { title: "Games", subtitle: "Board games, throwing games, puzzles and more.", titleLine1: "Games.", titleLine2: "", titleLine3: "" },
+        de: { title: "Spiele", subtitle: "Brettspiele, Wurfspiele, Puzzles und mehr.", titleLine1: "Spiele.", titleLine2: "", titleLine3: "" }
       }
     },
     {
-      slug: "interieur-exterieur",
+      slug: "the-art-of-board",
       i18n: {
-        nl: { title: "Interieur & Exterieur", subtitle: "Standbouw, maquettes en presentaties.", titleLine1: "Interieur", titleLine2: "& exterieur.", titleLine3: "" },
-        en: { title: "Interior & Exterior", subtitle: "Booth builds, scale models and presentations.", titleLine1: "Interior", titleLine2: "& exterior.", titleLine3: "" },
-        de: { title: "Innen & Außen", subtitle: "Messestand, Modelle und Präsentationen.", titleLine1: "Innen", titleLine2: "& außen.", titleLine3: "" }
+        nl: { title: "The Art Of Board", subtitle: "Standbouw, maquettes en bijzondere presentaties.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
+        en: { title: "The Art Of Board", subtitle: "Booth builds, scale models and presentations.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
+        de: { title: "The Art Of Board", subtitle: "Messestand, Modelle und Präsentationen.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" }
+      }
+    },
+    {
+      slug: "eindejaarsgeschenken",
+      i18n: {
+        nl: { title: "Eindejaarsgeschenken", subtitle: "Sfeervolle producten voor het einde van het jaar.", titleLine1: "Einde-", titleLine2: "jaars-", titleLine3: "geschenken." },
+        en: { title: "Year-end Gifts", subtitle: "Festive products for the end of the year.", titleLine1: "Year-end", titleLine2: "gifts.", titleLine3: "" },
+        de: { title: "Jahresendgeschenke", subtitle: "Stimmungsvolle Produkte für das Jahresende.", titleLine1: "Jahres-", titleLine2: "end-", titleLine3: "geschenke." }
       }
     }
   ],
 
   homeCovers: {
-    "bureau-accessoires": "bureau-accessoires/klokken/klokken.jpg",
     transport: "transport/vrachtwagens/vrachtwagens.jpg",
-    "wijnverpakkingen-displays": "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg",
+    "bureau-accessoires": "bureau-accessoires/klokken/klokken.jpg",
+    verpakkingen: "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg",
     "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen.jpg",
-    "kerst-spellen": "kerst-spellen/schaakspel/schaakspel.jpg",
-    "interieur-exterieur": "interieur-exterieur/maquette/maquette.jpg"
+    spellen: "kerst-spellen/schaakspel/schaakspel.jpg",
+    "the-art-of-board": "interieur-exterieur/maquette/maquette.jpg",
+    eindejaarsgeschenken: "kerst-spellen/kerstversiering/kerstversiering.jpg"
   },
-
-  homeExtras: [
-    {
-      key: "extra-dieplader",
-      file: "transport/dieplader/dieplader.jpg",
-      i18n: {
-        nl: { label: "Dieplader", sub: "Transportmodellen" },
-        en: { label: "Low loader", sub: "Transport models" },
-        de: { label: "Tieflader", sub: "Transportmodelle" }
-      }
-    },
-    {
-      key: "extra-treinen",
-      file: "transport/treinen/treinen.jpg",
-      i18n: {
-        nl: { label: "Treinen", sub: "Transportmodellen" },
-        en: { label: "Trains", sub: "Transport models" },
-        de: { label: "Züge", sub: "Transportmodelle" }
-      }
-    }
-  ],
 
   pages: texts.pages,
 
@@ -255,25 +250,6 @@ export const routesConfig = {
   },
 
   projects: [
-    ...buildCategoryProjects(
-      "bureau-accessoires",
-      [
-        "bureau-accessoires/bureaukalenders/bureaukalenders.jpg",
-        "bureau-accessoires/fotolijstjes/fotolijstjes.jpg",
-        "bureau-accessoires/groenepostbak/groenepostbak.jpg",
-        "bureau-accessoires/klokken/klokken.jpg",
-        "bureau-accessoires/korenbloem/korenbloem.jpg",
-        "bureau-accessoires/memobakjes/memobakjes.jpg",
-        "bureau-accessoires/onderzetters/onderzetters.jpg",
-        "bureau-accessoires/popup/popup.jpg"
-      ],
-      {
-        nl: { type: "Bureau-accessoire" },
-        en: { type: "Desk accessory" },
-        de: { type: "Schreibtisch-Accessoire" }
-      }
-    ),
-
     ...buildCategoryProjects(
       "transport",
       [
@@ -294,7 +270,26 @@ export const routesConfig = {
     ),
 
     ...buildCategoryProjects(
-      "wijnverpakkingen-displays",
+      "bureau-accessoires",
+      [
+        "bureau-accessoires/bureaukalenders/bureaukalenders.jpg",
+        "bureau-accessoires/fotolijstjes/fotolijstjes.jpg",
+        "bureau-accessoires/groenepostbak/groenepostbak.jpg",
+        "bureau-accessoires/klokken/klokken.jpg",
+        "bureau-accessoires/korenbloem/korenbloem.jpg",
+        "bureau-accessoires/memobakjes/memobakjes.jpg",
+        "bureau-accessoires/onderzetters/onderzetters.jpg",
+        "bureau-accessoires/popup/popup.jpg"
+      ],
+      {
+        nl: { type: "Bureau-accessoire" },
+        en: { type: "Desk accessory" },
+        de: { type: "Schreibtisch-Accessoire" }
+      }
+    ),
+
+    ...buildCategoryProjects(
+      "verpakkingen",
       [
         "wijnverpakkingen-displays/2-vakswijndoos/2-vakswijndoos.jpg",
         "wijnverpakkingen-displays/africa/africa.jpg",
@@ -339,24 +334,23 @@ export const routesConfig = {
     ),
 
     ...buildCategoryProjects(
-      "kerst-spellen",
+      "spellen",
       [
         "kerst-spellen/bordspellen/bordspellen.jpg",
-        "kerst-spellen/kerstversiering/kerstversiering.jpg",
         "kerst-spellen/poulebal/poulebal.jpg",
         "kerst-spellen/puzzel/puzzel.jpg",
         "kerst-spellen/schaakspel/schaakspel.jpg",
         "kerst-spellen/werpspel/werpspel.jpg"
       ],
       {
-        nl: { type: "Spel / Seizoensproduct" },
-        en: { type: "Game / Seasonal" },
-        de: { type: "Spiel / Saison" }
+        nl: { type: "Spel / Give-away" },
+        en: { type: "Game / Give-away" },
+        de: { type: "Spiel / Give-away" }
       }
     ),
 
     ...buildCategoryProjects(
-      "interieur-exterieur",
+      "the-art-of-board",
       [
         "interieur-exterieur/apothekerskast/apothekerskast.jpg",
         "interieur-exterieur/argent/argent.jpg",
@@ -370,6 +364,18 @@ export const routesConfig = {
         nl: { type: "Interieur / Exterieur" },
         en: { type: "Interior / Exterior" },
         de: { type: "Innen / Außen" }
+      }
+    ),
+
+    ...buildCategoryProjects(
+      "eindejaarsgeschenken",
+      [
+        "kerst-spellen/kerstversiering/kerstversiering.jpg"
+      ],
+      {
+        nl: { type: "Eindejaarsgeschenk" },
+        en: { type: "Year-end gift" },
+        de: { type: "Jahresendgeschenk" }
       }
     )
   ]

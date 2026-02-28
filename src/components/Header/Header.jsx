@@ -136,7 +136,7 @@ export default function Header() {
           <nav className="navMobileInline" aria-label="Quick links">
             {nav.map((item) => (
               <NavLink key={item.path} to={item.path} className="navMobileInlineLink">
-                {pick(item, "label")}
+                {pick(item, "labelMobile") || pick(item, "label")}
               </NavLink>
             ))}
           </nav>

@@ -6,17 +6,24 @@ export default function HomeMosaic({ tiles }) {
   return (
     <div className="mosaic">
       {tiles.map((t) => {
-        if (t.type === "text") {
+        if (t.type === "wob") {
+          const WobWrapper = t.to ? Link : "div";
           return (
-            <div key={t.key} className={`mosaicText ${t.size || ""}`}>
-              <div className="mosaicTextInner">
+            <WobWrapper
+              key={t.key}
+              to={t.to}
+              className={`mosaicTile ${t.size || ""} ${t.to ? "isLink" : ""}`}
+              aria-label="The Art Of Board"
+            >
+              <div className="mosaicMedia mosaicMediaWob">
                 <img
                   src={WorldOfBoard}
                   alt="World of Board"
-                  className="mosaicWob"
+                  className="mosaicWobImg"
                 />
               </div>
-            </div>
+              <div className="mosaicCaption" aria-hidden="true" />
+            </WobWrapper>
           );
         }
 
@@ -38,10 +45,12 @@ export default function HomeMosaic({ tiles }) {
                 />
               ) : null}
               <div className="mosaicFallback" />
-              <div className="mosaicHover">
-                <div className="mosaicHoverLabel">{t.label}</div>
-                {t.sub ? <div className="mosaicHoverSub">{t.sub}</div> : null}
-              </div>
+            </div>
+
+            {/* Caption lives below the image — slides up on hover */}
+            <div className="mosaicCaption">
+              <div className="mosaicCaptionLabel">{t.label}</div>
+              {t.sub ? <div className="mosaicCaptionSub">{t.sub}</div> : null}
             </div>
           </Wrapper>
         );

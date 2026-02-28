@@ -1,5 +1,7 @@
+/* src/components/Layout/Layout.css */
 .appShell{
   min-height:100vh;
+  min-height:100svh;
   display:flex;
   flex-direction: column;
 }
@@ -32,9 +34,9 @@
 
 .footerBrand{
   font-size: 34px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: 1;
-  /* Align visually with the col labels */
   margin-bottom: 10px;
 }
 
@@ -49,9 +51,8 @@
 
 .footerCols{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
-  /* All cols same height, items start at top */
   align-items: start;
 }
 
@@ -106,7 +107,6 @@
   position: absolute;
   left: 0;
   right: 0;
-  /* Reduced from -1px to match site-wide -2px offset */
   bottom: -2px;
   height: 1px;
   background: rgba(10,10,10,0.55);
@@ -114,6 +114,13 @@
   transform-origin: right;
   transition: transform 200ms ease;
   pointer-events: none;
+}
+
+/* Desktop: bring underline closer to text */
+@media (min-width: 861px){
+  .footer .uUnderline{
+    bottom: -1px;
+  }
 }
 
 .footer .uLink:hover .uUnderline{
@@ -129,12 +136,12 @@
   white-space: normal;
 }
 
-@media (max-width: 1100px){
-  .footerCols{ grid-template-columns: 1fr 1fr; }
-}
+/* Already 2 columns at desktop — no extra breakpoint needed */
 
 @media (max-width: 860px){
   .main{ padding-top: 24px; }
+
+  .footerLegal{ font-size: 10px; line-height: 1.55; }
 
   .footerInner{
     /* Stack brand + cols vertically */

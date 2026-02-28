@@ -1,14 +1,20 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <link rel="stylesheet" href="https://use.typekit.net/zko8kch.css">
     <title>HilariusDesign</title>
   </head>
   <body>
     <!-- Netlify form pre-render: required for static form detection -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>

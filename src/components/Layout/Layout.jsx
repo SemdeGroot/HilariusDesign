@@ -1,3 +1,4 @@
+// src/components/Layout/Layout.jsx
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "../Header/Header.jsx";
@@ -30,12 +31,44 @@ function smoothScrollTop(duration = 520) {
   requestAnimationFrame(tick);
 }
 
+function isCoarsePointer() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia?.("(hover: none) and (pointer: coarse)")?.matches ?? false;
+}
+
+function nudgeScrollToRestoreHitTesting() {
+  const x = window.scrollX || 0;
+  const y = window.scrollY || 0;
+  window.scrollTo(x, y + 1);
+  window.scrollTo(x, y);
+}
+
 export default function Layout() {
   const location = useLocation();
 
   useEffect(() => {
     smoothScrollTop(520);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!isCoarsePointer()) return;
+
+    const onFocusOut = (e) => {
+      const t = e.target;
+      const tag = t?.tagName?.toLowerCase?.();
+      if (tag !== "input" && tag !== "textarea" && tag !== "select") return;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          nudgeScrollToRestoreHitTesting();
+        });
+      });
+    };
+
+    window.addEventListener("focusout", onFocusOut, true);
+    return () => window.removeEventListener("focusout", onFocusOut, true);
+  }, []);
 
   return (
     <div className="appShell">
@@ -47,7 +80,7 @@ export default function Layout() {
       <footer className="footer">
         <div className="footerInner">
           <div className="footerBrandBlock">
-            <div className="footerBrand">HilariusDesign</div>
+            <div className="footerBrand">HILARIUSDESIGN</div>
             <div className="footerTagline">
               <div>IDEAS MADE OF BOARD</div>
               <div>WHERE MATERIAL MEETS CREATION</div>
@@ -78,15 +111,6 @@ export default function Layout() {
                   </span>
                 </a>
 
-                <div className="footerText" style={{ whiteSpace: "pre-line" }}>
-                  {routesConfig.contact.address}
-                </div>
-              </div>
-            </div>
-
-            <div className="footerCol">
-              <div className="footerLabel">Bedrijfsgegevens</div>
-              <div className="footerBody">
                 <div className="footerText">KVK 34321364</div>
                 <div className="footerText">BTW NL001184466B83</div>
               </div>
@@ -106,8 +130,6 @@ export default function Layout() {
                     <span className="uUnderline" />
                   </span>
                 </a>
-
-                <div className="footerSpacer" />
 
                 <div className="footerLegal">
                   All showed items are registrated by:

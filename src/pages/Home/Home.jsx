@@ -1,3 +1,4 @@
+// src/pages/Home/Home.jsx
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
@@ -75,6 +76,25 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
   return { inMap, observe };
 }
 
+async function preloadAndDecode(src) {
+  if (!src) return;
+  const img = new Image();
+  img.src = src;
+
+  await new Promise((resolve, reject) => {
+    img.onload = () => resolve();
+    img.onerror = () => reject(new Error("load failed"));
+  });
+
+  if (img.decode) {
+    try {
+      await img.decode();
+    } catch {
+      // ignore
+    }
+  }
+}
+
 function HomeMobile({ intro, categories }) {
   const { inMap, observe } = useScrollReveal({
     threshold: 0.24,
@@ -149,69 +169,19 @@ export default function Home() {
       return p.find((x) => x.category === slug)?.cover || "";
     };
 
-    // Text tile first so WoB SVG appears top-left in the 12-col grid
     const baseTiles = [
-      {
-        key: "txt1",
-        type: "text",
-        size: "s5",
-        title: pick(routesConfig.copy.home, "leadTitle"),
-        body: pick(routesConfig.copy.home, "leadBody")
-      },
-      {
-        key: "t1",
-        type: "image",
-        size: "s3",
-        to: `/category/${c[0].slug}`,
-        src: coverFor(c[0].slug),
-        label: pick(c[0], "title"),
-        sub: pick(c[0], "subtitle")
-      },
-      {
-        key: "c2a",
-        type: "image",
-        size: "s2",
-        to: `/category/${c[1].slug}`,
-        src: coverFor(c[1].slug),
-        label: pick(c[1], "title"),
-        sub: pick(c[1], "subtitle")
-      },
-      {
-        key: "c3a",
-        type: "image",
-        size: "s2",
-        to: `/category/${c[2].slug}`,
-        src: coverFor(c[2].slug),
-        label: pick(c[2], "title"),
-        sub: pick(c[2], "subtitle")
-      },
-      {
-        key: "c4a",
-        type: "image",
-        size: "s2",
-        to: `/category/${c[3].slug}`,
-        src: coverFor(c[3].slug),
-        label: pick(c[3], "title"),
-        sub: pick(c[3], "subtitle")
-      },
-      {
-        key: "c5a",
-        type: "image",
-        size: "s2",
-        to: `/category/${c[4].slug}`,
-        src: coverFor(c[4].slug),
-        label: pick(c[4], "title"),
-        sub: pick(c[4], "subtitle")
-      },
-      {
-        key: "c6a",
-        type: "image",
-        size: "s2",
-        to: `/category/${c[5].slug}`,
-        src: coverFor(c[5].slug),
-        label: pick(c[5], "title"),
-        sub: pick(c[5], "subtitle")
-      }
+      { key: "wob", type: "wob", size: "s3", to: "/category/the-art-of-board" },
+      ...c
+        .filter((cat) => cat.slug !== "the-art-of-board")
+        .map((cat, i) => ({
+          key: `c${i}`,
+          type: "image",
+          size: i < 2 ? "s3" : "s2",
+          to: `/category/${cat.slug}`,
+          src: coverFor(cat.slug),
+          label: pick(cat, "title"),
+          sub: pick(cat, "subtitle")
+        }))
     ];
 
     const intro = {
@@ -219,7 +189,7 @@ export default function Home() {
       body: pick(routesConfig.copy.home, "leadBody")
     };
 
-    const cats = c.slice(0, 6).map((cat) => ({
+    const cats = c.map((cat) => ({
       slug: cat.slug,
       src: coverFor(cat.slug),
       title: pick(cat, "title"),
@@ -228,6 +198,46 @@ export default function Home() {
 
     return { tiles: baseTiles, mobileIntro: intro, mobileCategories: cats };
   }, [pick]);
+
+  // Preload Home imagery on mount to avoid "flash" after navigation,
+  // while keeping scroll reveal + fade-in (your CSS still controls opacity).
+  useEffect(() => {
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    // Even with reduced motion, caching the images is still beneficial.
+    // (We don't change any animation behavior here.)
+    const srcs = new Set();
+
+    for (const t of tiles) {
+      if (t?.type === "image" && t?.src) srcs.add(t.src);
+    }
+    for (const c of mobileCategories) {
+      if (c?.src) srcs.add(c.src);
+    }
+
+    if (!srcs.size) return;
+
+    let cancelled = false;
+
+    // Small concurrency: sequential keeps things stable and avoids spiking network
+    (async () => {
+      for (const src of srcs) {
+        if (cancelled) return;
+        try {
+          // decode helps avoid "late paint" flashes on some browsers
+          await preloadAndDecode(src);
+        } catch {
+          // ignore failed preloads; normal <img> load will handle it
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [tiles, mobileCategories]);
 
   const { inMap, observe } = useScrollReveal({
     threshold: 0.22,

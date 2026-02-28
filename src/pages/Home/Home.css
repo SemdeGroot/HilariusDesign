@@ -1,5 +1,14 @@
+/* src/pages/Home/Home.css */
+/* src/pages/Home/Home.css */
 .home{
   padding-top: 12px;
+}
+
+/* Reduce excess whitespace under the mosaic on desktop only */
+@media (min-width: 861px){
+  .home{
+    margin-bottom: -32px;
+  }
 }
 
 /* Generic reveal blocks (desktop + mobile) */
@@ -45,6 +54,9 @@
 /* WoB logo on top for mobile */
 .homeMobileWob{
   padding-bottom: 4px;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .homeMobileWobImg{
@@ -68,7 +80,7 @@
 
 .homeMobileCats{
   display: grid;
-  gap: 22px;
+  gap: 34px;
   padding-top: 6px;
 }
 
@@ -106,6 +118,19 @@
   color: var(--muted);
   line-height: 1.45;
   margin-top: 0;
+}
+
+/* Mobile: slower + smoother reveal */
+@media (max-width: 860px){
+  .homeRevealBlock{
+    transform: translateY(10px);
+    transition: opacity 1350ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .revealImg{
+    transition: opacity 1350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 /* Reduced motion: no transitions */
