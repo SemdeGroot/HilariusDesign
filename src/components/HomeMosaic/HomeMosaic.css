@@ -2,7 +2,7 @@
   display:grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
-  row-gap: 6px; /* Caption provides most of the vertical breathing room */
+  row-gap: 6px;
   align-items: start;
 }
 
@@ -79,7 +79,7 @@
   pointer-events:none;
 }
 
-/* Caption below image — appears on hover, provides whitespace between rows */
+/* Caption below image — appears on hover */
 .mosaicCaption{
   padding: 10px 0 20px;
   min-height: 44px;
@@ -114,7 +114,9 @@
   transform: scale(1.02);
 }
 
-/* WoB tile — same aspect ratio as s3 image tiles, SVG centered within */
+/* ─── WoB tile ───────────────────────────────────────────────── */
+/* Same aspect ratio and hover behaviour as image tiles.
+   The SVG scales slightly on hover just like the product photos. */
 .mosaicMediaWob{
   display:flex;
   align-items:center;
@@ -122,18 +124,22 @@
   background: transparent;
 }
 
-/* More specific than .mosaicMedia img to override width/height */
 .mosaicMediaWob .mosaicWobImg{
   width: 88%;
   height: 88%;
   object-fit: contain;
   display:block;
-  transform: none;
-  transition: none;
+  /* Participate in the same scale transition as img inside mosaicMedia */
+  transform: scale(1.0);
+  transition: transform 280ms ease;
+}
+
+/* Hover: scale WoB SVG the same way product images scale */
+.mosaicTile:hover .mosaicMediaWob .mosaicWobImg{
+  transform: scale(1.02);
 }
 
 @media (max-width: 1020px){
-  /* Reduce gap slightly on medium screens */
   .mosaic{ column-gap: 18px; }
 }
 
@@ -149,12 +155,11 @@
 
   .mosaicCaption{ display:none; }
   .mosaicMedia img{ transition: none; transform: scale(1.0); }
-
-  /* On mobile the mosaic is not rendered (Home.jsx switches to HomeMobile) */
 }
 
 @media (hover: none) and (pointer: coarse){
   .mosaicTile:hover img{ transform: scale(1.0); }
+  .mosaicTile:hover .mosaicWobImg{ transform: scale(1.0); }
   .mosaicTile:hover .mosaicCaptionLabel,
   .mosaicTile:hover .mosaicCaptionSub{ opacity: 0; transform: translateY(5px); }
 }

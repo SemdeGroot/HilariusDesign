@@ -1,6 +1,6 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import "./Category.css";
@@ -9,20 +9,16 @@ async function preloadAndDecode(src) {
   if (!src) return;
   const img = new Image();
   img.src = src;
-
   await new Promise((resolve, reject) => {
     img.onload = () => resolve();
     img.onerror = () => reject(new Error("load failed"));
   });
-
   if (img.decode) {
-    try {
-      await img.decode();
-    } catch {
-      // ignore
-    }
+    try { await img.decode(); } catch { /* ignore */ }
   }
 }
+
+const AUTO_DELAY = 6000;
 
 export default function Category() {
   const { slug } = useParams();
@@ -38,136 +34,136 @@ export default function Category() {
     return routesConfig.projects.filter((p) => p.category === category.slug);
   }, [category]);
 
+  // ─── Desktop hero ────────────────────────────────────────────
   const [activeId, setActiveId] = useState(null);
-
   const [heroSrc, setHeroSrc] = useState("");
   const [heroFadeKey, setHeroFadeKey] = useState(0);
-
   const preloadedRef = useRef(new Set());
-  const railRef = useRef(null);
-
-  // Track which cards are visible in the snap rail for fade-in
-  const [visibleIds, setVisibleIds] = useState(() => new Set());
 
   useEffect(() => {
     if (!projects.length) return;
-
     const first = projects[0];
     setActiveId(first.id);
     setHeroSrc(first.cover || "");
     setHeroFadeKey((k) => k + 1);
 
-    // First card immediately visible
-    setVisibleIds(new Set([first.id]));
-
     let cancelled = false;
-
     Promise.allSettled(projects.map((p) => preloadAndDecode(p.cover))).then((results) => {
       if (cancelled) return;
-      for (let i = 0; i < projects.length; i += 1) {
-        const src = projects[i]?.cover;
-        if (src && results[i]?.status === "fulfilled") {
-          preloadedRef.current.add(src);
+      projects.forEach((p, i) => {
+        if (p?.cover && results[i]?.status === "fulfilled") {
+          preloadedRef.current.add(p.cover);
         }
-      }
+      });
     });
-
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [slug, projects]);
 
-  // IntersectionObserver on rail cards for the fade effect
+  function hoverProject(p) {
+    if (!p?.cover || p.id === activeId) return;
+    setActiveId(p.id);
+    const show = () => { setHeroSrc(p.cover); setHeroFadeKey((k) => k + 1); };
+    if (preloadedRef.current.has(p.cover)) { show(); return; }
+    preloadAndDecode(p.cover).then(() => { preloadedRef.current.add(p.cover); show(); }).catch(show);
+  }
+
+  // ─── Mobile: image rail + static dots/title ──────────────────
+  const railRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  // Ref so the auto-timer closure always sees the latest value without re-creating
+  const activeIndexRef = useRef(0);
+  const autoTimerRef = useRef(null);
+
+  const scrollToIndex = useCallback((index) => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const cell = rail.children[index];
+    if (!cell) return;
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    rail.scrollTo({ left: cell.offsetLeft, behavior: prefersReduced ? "auto" : "smooth" });
+  }, []);
+
+  const startAutoTimer = useCallback(() => {
+    if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+    autoTimerRef.current = setInterval(() => {
+      const next = activeIndexRef.current < projects.length - 1
+        ? activeIndexRef.current + 1
+        : 0;
+      scrollToIndex(next);
+      // activeIndex state + ref will be updated by the IntersectionObserver
+    }, AUTO_DELAY);
+  }, [projects.length, scrollToIndex]);
+
+  // ─── IntersectionObserver: fires as soon as a cell is ≥50% visible ──
+  // This is what updates dots and title — works identically for swipe
+  // and programmatic scroll, with zero debounce delay.
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail || !projects.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.index);
+            if (!Number.isNaN(index)) {
+              activeIndexRef.current = index;
+              setActiveIndex(index);
+            }
+          }
+        }
+      },
+      {
+        root: rail,
+        threshold: 0.5, // fires when cell is half-visible — feels instant mid-swipe
+      }
+    );
+
+    Array.from(rail.children).forEach((cell) => io.observe(cell));
+    return () => io.disconnect();
+  }, [projects.length, slug]);
+
+  // Reset on slug change
+  useEffect(() => {
+    if (!projects.length) return;
+    activeIndexRef.current = 0;
+    setActiveIndex(0);
+    const rail = railRef.current;
+    if (rail) rail.scrollLeft = 0;
+    startAutoTimer();
+    return () => {
+      if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+    };
+  }, [slug, projects.length, startAutoTimer]);
+
+  // Reset auto-timer after any manual swipe ends
+  // We still use a scroll-end listener for timer reset only — no state update here
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
 
-    const cards = Array.from(rail.querySelectorAll("[data-project-id]"));
-    if (!cards.length) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        setVisibleIds((prev) => {
-          const next = new Set(prev);
-          for (const e of entries) {
-            const id = e.target.dataset.projectId;
-            if (e.isIntersecting) next.add(id);
-          }
-          return next;
-        });
-      },
-      {
-        root: rail,
-        threshold: 0.3
-      }
-    );
-
-    for (const card of cards) io.observe(card);
-    return () => io.disconnect();
-  }, [projects]);
-
-  function hoverProject(p) {
-    if (!p?.cover) return;
-    if (p.id === activeId) return;
-
-    setActiveId(p.id);
-
-    if (preloadedRef.current.has(p.cover)) {
-      setHeroSrc(p.cover);
-      setHeroFadeKey((k) => k + 1);
-      return;
-    }
-
-    preloadAndDecode(p.cover)
-      .then(() => {
-        preloadedRef.current.add(p.cover);
-        setHeroSrc(p.cover);
-        setHeroFadeKey((k) => k + 1);
-      })
-      .catch(() => {
-        setHeroSrc(p.cover);
-        setHeroFadeKey((k) => k + 1);
-      });
-  }
-
-  function scrollRail(dir) {
-    const el = railRef.current;
-    if (!el) return;
-
-    const first = el.firstElementChild;
-    if (!first) return;
-
-    const styles = window.getComputedStyle(el);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
-    const step = first.getBoundingClientRect().width + gap;
-    if (!step) return;
-
-    const currentIndex = Math.round(el.scrollLeft / step);
-    const targetIndex = currentIndex + dir;
-    const target = targetIndex * step;
-
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-    if (prefersReduced) {
-      el.scrollLeft = target;
-      return;
-    }
-
-    const startLeft = el.scrollLeft;
-    const distance = target - startLeft;
-    const duration = 420;
-    const startTime = performance.now();
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-    const animate = (now) => {
-      const t = Math.min(1, (now - startTime) / duration);
-      el.scrollLeft = startLeft + distance * easeOutCubic(t);
-      if (t < 1) requestAnimationFrame(animate);
+    let settleTimer = null;
+    const onScroll = () => {
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => {
+        startAutoTimer();
+      }, 120);
     };
 
-    requestAnimationFrame(animate);
+    rail.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      rail.removeEventListener("scroll", onScroll);
+      if (settleTimer) clearTimeout(settleTimer);
+    };
+  }, [startAutoTimer]);
+
+  function handleDotClick(e, index) {
+    e.preventDefault();
+    if (index === activeIndex) return;
+    scrollToIndex(index);
+    startAutoTimer();
   }
 
   if (!category) {
@@ -175,18 +171,18 @@ export default function Category() {
       <section className="catPage">
         <div className="catTop">
           <h1 className="catTitle">{pick(routesConfig.copy.common, "notFound")}</h1>
-          <Link className="catBack" to="/">
-            {pick(routesConfig.copy.common, "backHome")}
-          </Link>
+          <Link className="catBack" to="/">{pick(routesConfig.copy.common, "backHome")}</Link>
         </div>
       </section>
     );
   }
 
   const currentProject = projects.find((p) => p.id === activeId) ?? projects[0] ?? null;
+  const mobileProject = projects[activeIndex] ?? null;
 
   return (
     <section className="catPage">
+      {/* ─── Desktop ────────────────────────────────────────────── */}
       <div className="catLayout">
         <Link
           to={currentProject ? `/project/${currentProject.id}` : "#"}
@@ -225,29 +221,20 @@ export default function Category() {
               <div className="catTableHead">
                 <div className="th">{pick(routesConfig.copy.category, "colProject")}</div>
               </div>
-
-              {projects.map((p) => {
-                const isActive = p.id === activeId;
-                return (
-                  <Link
-                    key={p.id}
-                    to={`/project/${p.id}`}
-                    className={`catRow ${isActive ? "active" : ""}`}
-                    onMouseEnter={() => hoverProject(p)}
-                    onFocus={() => hoverProject(p)}
-                  >
-                    <div className="td projectOnly">
-                      <span className="linkish">{pick(p, "title")}</span>
-                      <ArrowUpRight
-                        className="catRowIcon"
-                        size={16}
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </Link>
-                );
-              })}
+              {projects.map((p) => (
+                <Link
+                  key={p.id}
+                  to={`/project/${p.id}`}
+                  className={`catRow ${p.id === activeId ? "active" : ""}`}
+                  onMouseEnter={() => hoverProject(p)}
+                  onFocus={() => hoverProject(p)}
+                >
+                  <div className="td projectOnly">
+                    <span className="linkish">{pick(p, "title")}</span>
+                    <ArrowUpRight className="catRowIcon" size={16} strokeWidth={2} aria-hidden="true" />
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -255,62 +242,60 @@ export default function Category() {
         </div>
       </div>
 
+      {/* ─── Mobile ─────────────────────────────────────────────── */}
       <div className="catMobile">
         <div className="catMobileTitle">{pick(category, "title")}</div>
         <div className="catMobileSub">{pick(category, "subtitle")}</div>
 
-        <div className="catMobileRailWrap" aria-label="Products">
-          <button
-            className="catArrowBtn"
-            type="button"
-            onClick={() => scrollRail(-1)}
-            aria-label="Scroll left"
-          >
-            <ChevronLeft size={18} strokeWidth={1.8} />
-          </button>
+        {/* Image-only scroll rail */}
+        <div ref={railRef} className="catMobileImgRail">
+          {projects.map((p, i) => (
+            <div
+              key={p.id}
+              className="catMobileImgCell"
+              data-index={i}
+            >
+              {p.cover ? (
+                <img
+                  src={p.cover}
+                  alt={pick(p, "title")}
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              ) : null}
+              <div className="catHeroFallback" />
+            </div>
+          ))}
+        </div>
 
-          <div ref={railRef} className="catMobileRail">
-            {projects.map((p) => (
-              <Link
-                key={p.id}
-                to={`/project/${p.id}`}
-                className={`catMobileCard ${visibleIds.has(p.id) ? "isVisible" : ""}`}
-                data-project-id={p.id}
-              >
-                <div className="catMobileMedia">
-                  {p.cover ? (
-                    <img
-                      src={p.cover}
-                      alt={pick(p, "title")}
-                      loading="eager"
-                      decoding="async"
-                      onError={(e) => (e.currentTarget.style.display = "none")}
-                    />
-                  ) : null}
-                  <div className="catHeroFallback" />
-                </div>
-                <div className="catMobileInfo">
-                  <div className="catMobileName">{pick(p, "title")}</div>
-                  <ArrowUpRight
-                    className="catCardIcon"
-                    size={16}
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </div>
-              </Link>
+        {/* Dots — static, driven by activeIndex */}
+        {projects.length > 1 ? (
+          <div className="catDots" role="tablist" aria-label="Product navigation">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === activeIndex}
+                aria-label={`Go to product ${i + 1}`}
+                className={`catDot${i === activeIndex ? " catDotActive" : ""}`}
+                onClick={(e) => handleDotClick(e, i)}
+              />
             ))}
           </div>
+        ) : null}
 
-          <button
-            className="catArrowBtn"
-            type="button"
-            onClick={() => scrollRail(1)}
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={18} strokeWidth={1.8} />
-          </button>
-        </div>
+        {/* Title — static, fades when index changes */}
+        <Link
+          to={mobileProject ? `/project/${mobileProject.id}` : "#"}
+          className="catMobileInfo"
+        >
+          <div key={activeIndex} className="catMobileName">
+            {mobileProject ? pick(mobileProject, "title") : ""}
+          </div>
+          <ArrowUpRight className="catCardIcon" size={16} strokeWidth={2} aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );

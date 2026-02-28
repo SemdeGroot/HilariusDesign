@@ -76,26 +76,7 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
   return { inMap, observe };
 }
 
-async function preloadAndDecode(src) {
-  if (!src) return;
-  const img = new Image();
-  img.src = src;
-
-  await new Promise((resolve, reject) => {
-    img.onload = () => resolve();
-    img.onerror = () => reject(new Error("load failed"));
-  });
-
-  if (img.decode) {
-    try {
-      await img.decode();
-    } catch {
-      // ignore
-    }
-  }
-}
-
-function HomeMobile({ intro, categories }) {
+function HomeMobile({ categories }) {
   const { inMap, observe } = useScrollReveal({
     threshold: 0.24,
     rootMargin: "0px 0px -22% 0px"
@@ -159,7 +140,7 @@ export default function Home() {
   const { pick } = useContext(I18nContext);
   const isMobile = useIsMobile(860);
 
-  const { tiles, mobileIntro, mobileCategories } = useMemo(() => {
+  const { tiles, mobileCategories } = useMemo(() => {
     const c = routesConfig.categories;
     const p = routesConfig.projects;
 
@@ -184,11 +165,6 @@ export default function Home() {
         }))
     ];
 
-    const intro = {
-      title: pick(routesConfig.copy.home, "leadTitle"),
-      body: pick(routesConfig.copy.home, "leadBody")
-    };
-
     const cats = c.map((cat) => ({
       slug: cat.slug,
       src: coverFor(cat.slug),
@@ -196,48 +172,8 @@ export default function Home() {
       sub: pick(cat, "subtitle")
     }));
 
-    return { tiles: baseTiles, mobileIntro: intro, mobileCategories: cats };
+    return { tiles: baseTiles, mobileCategories: cats };
   }, [pick]);
-
-  // Preload Home imagery on mount to avoid "flash" after navigation,
-  // while keeping scroll reveal + fade-in (your CSS still controls opacity).
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-    // Even with reduced motion, caching the images is still beneficial.
-    // (We don't change any animation behavior here.)
-    const srcs = new Set();
-
-    for (const t of tiles) {
-      if (t?.type === "image" && t?.src) srcs.add(t.src);
-    }
-    for (const c of mobileCategories) {
-      if (c?.src) srcs.add(c.src);
-    }
-
-    if (!srcs.size) return;
-
-    let cancelled = false;
-
-    // Small concurrency: sequential keeps things stable and avoids spiking network
-    (async () => {
-      for (const src of srcs) {
-        if (cancelled) return;
-        try {
-          // decode helps avoid "late paint" flashes on some browsers
-          await preloadAndDecode(src);
-        } catch {
-          // ignore failed preloads; normal <img> load will handle it
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [tiles, mobileCategories]);
 
   const { inMap, observe } = useScrollReveal({
     threshold: 0.22,
@@ -245,7 +181,7 @@ export default function Home() {
   });
 
   if (isMobile) {
-    return <HomeMobile intro={mobileIntro} categories={mobileCategories} />;
+    return <HomeMobile categories={mobileCategories} />;
   }
 
   return (

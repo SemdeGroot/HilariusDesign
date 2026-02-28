@@ -8,7 +8,7 @@
 
 .main{
   flex:1;
-  padding: 40px var(--page-pad) 80px;
+  padding: 40px var(--page-pad) 48px;
 }
 
 .footer{
@@ -18,7 +18,6 @@
 
 .footerInner{
   display:grid;
-  /* Brand col auto-width, rest fills: columns align tops */
   grid-template-columns: auto 1fr;
   gap: 48px;
   align-items:start;
@@ -28,7 +27,6 @@
 .footerBrandBlock{
   display:flex;
   flex-direction: column;
-  /* Match the height of the cols beside it naturally via CSS */
   min-width: 180px;
 }
 
@@ -97,7 +95,6 @@
   height: 10px;
 }
 
-/* Footer underline: tight, match site-wide spacing */
 .footer .uLinkLabel{
   position: relative;
   display: inline-block;
@@ -116,7 +113,6 @@
   pointer-events: none;
 }
 
-/* Desktop: bring underline closer to text */
 @media (min-width: 861px){
   .footer .uUnderline{
     bottom: -1px;
@@ -128,7 +124,6 @@
   transform-origin: left;
 }
 
-/* Copyright: same line-height as address text so they align */
 .footerLegal{
   font-size: 12px;
   line-height: 1.65;
@@ -136,15 +131,12 @@
   white-space: normal;
 }
 
-/* Already 2 columns at desktop — no extra breakpoint needed */
-
 @media (max-width: 860px){
-  .main{ padding-top: 24px; }
+  .main{ padding-top: 24px; padding-bottom: 36px; }
 
   .footerLegal{ font-size: 10px; line-height: 1.55; }
 
   .footerInner{
-    /* Stack brand + cols vertically */
     grid-template-columns: 1fr;
     gap: 28px;
     padding: 32px var(--page-pad) 40px;
@@ -158,7 +150,6 @@
     font-size: 26px;
   }
 
-  /* 2×2 compact grid on mobile */
   .footerCols{
     grid-template-columns: 1fr 1fr;
     gap: 24px 32px;
