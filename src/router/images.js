@@ -1,36 +1,27 @@
 // src/router/images.js
-// Zorgt dat Vite alle images mee-bundelt (ook in productie).
 
-const modules = import.meta.glob("../assets/images/**/*.{jpg,jpeg,png,webp}", {
+const modules = import.meta.glob("../assets/images/**/*.{jpg,jpeg,png,webp,svg}", {
   eager: true,
   import: "default"
 });
 
-function normalize(p) {
-  return p.replace(/^\/+/, "");
-}
-
 export function getImage(path) {
-  const key = `../assets/images/${normalize(path)}`;
+  // Ensure the path starts exactly how the glob sees it
+  const key = `../assets/images/${path}`;
   const hit = modules[key];
 
   if (!hit) {
-    // eslint-disable-next-line no-console
     console.warn(`[images] not found: ${key}`);
     return "";
   }
   return hit;
 }
 
-// Geeft alle images terug die in een directory zitten (relatief aan src/assets/images/)
-// Voorbeeld: getImagesInDir("transport/vrachtwagens/")
 export function getImagesInDir(dir) {
-  const prefix = `../assets/images/${normalize(dir)}`;
-  const hits = Object.entries(modules)
+  const prefix = `../assets/images/${dir}`;
+  return Object.entries(modules)
     .filter(([k]) => k.startsWith(prefix))
     .sort(([a], [b]) => a.localeCompare(b, "nl"))
     .map(([, v]) => v)
     .filter(Boolean);
-
-  return hits;
 }
