@@ -6,8 +6,8 @@ import "./HomeMosaic.css";
 export default function HomeMosaic({ tiles }) {
   const [loaded, setLoaded] = useState({});
 
-  const handleLoad = (key) => {
-    setLoaded((prev) => ({ ...prev, [key]: true }));
+  const markLoaded = (key) => {
+    setLoaded((prev) => (prev[key] ? prev : { ...prev, [key]: true }));
   };
 
   return (
@@ -52,7 +52,12 @@ export default function HomeMosaic({ tiles }) {
                   loading="lazy"
                   decoding="async"
                   className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
-                  onLoad={() => handleLoad(t.key)}
+                  onLoad={() => markLoaded(t.key)}
+                  onError={() => markLoaded(t.key)}
+                  ref={(img) => {
+                    // If the image is already cached, onLoad may not fire reliably
+                    if (img && img.complete) markLoaded(t.key);
+                  }}
                 />
               ) : null}
               <div className="mosaicFallback" />
