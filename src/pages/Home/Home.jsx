@@ -24,7 +24,7 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } = {}) {
+function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } = {}) {
   const [inMap, setInMap] = useState(() => ({}));
   const observerRef = useRef(null);
 
@@ -60,13 +60,15 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
 
   function observe(el) {
     if (!el) return;
+    const key = el.dataset?.revealKey;
+    if (!key) return;
+
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     if (prefersReduced) {
-      const key = el.dataset?.revealKey;
-      if (key) setInMap((prev) => ({ ...prev, [key]: true }));
+      setInMap((prev) => ({ ...prev, [key]: true }));
       return;
     }
 
@@ -77,11 +79,7 @@ function useScrollReveal({ threshold = 0.22, rootMargin = "0px 0px -20% 0px" } =
 }
 
 function HomeMobile({ categories }) {
-  const { inMap, observe } = useScrollReveal({
-    threshold: 0.1, // Lower threshold for better trigger
-    rootMargin: "0px 0px 100px 0px" // Start revealing slightly before it enters
-  });
-
+  const { inMap, observe } = useScrollReveal();
   const [loaded, setLoaded] = useState(() => ({}));
 
   return (
@@ -97,7 +95,6 @@ function HomeMobile({ categories }) {
       <div className="homeMobileCats" aria-label="Categories">
         {categories.map((c) => {
           const key = `cat-${c.slug}`;
-          // REVEAL as soon as it is in view, regardless of image load
           const isIn = !!inMap[key];
 
           return (
@@ -175,9 +172,10 @@ export default function Home() {
     return { tiles: baseTiles, mobileCategories: cats };
   }, [pick]);
 
+  // FIX: Gebruik lagere threshold en positieve margin voor desktop reveal
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.22,
-    rootMargin: "0px 0px -20% 0px"
+    threshold: 0.05,
+    rootMargin: "0px 0px 200px 0px"
   });
 
   if (isMobile) {
