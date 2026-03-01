@@ -24,9 +24,10 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } = {}) {
+function useScrollReveal({ threshold = 0.1, rootMargin = "0px" } = {}) {
   const [inMap, setInMap] = useState(() => ({}));
   const observerRef = useRef(null);
+  const pendingRef = useRef([]);
 
   useEffect(() => {
     const prefersReduced =
@@ -35,6 +36,14 @@ function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } =
 
     if (prefersReduced) {
       observerRef.current = null;
+      setInMap((prev) => {
+        const all = {};
+        for (const el of pendingRef.current) {
+          const key = el.dataset?.revealKey;
+          if (key) all[key] = true;
+        }
+        return { ...prev, ...all };
+      });
       return;
     }
 
@@ -55,31 +64,52 @@ function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } =
     );
 
     observerRef.current = io;
+
+    // Observe elements that were registered before the effect ran
+    for (const el of pendingRef.current) {
+      io.observe(el);
+    }
+
     return () => io.disconnect();
   }, [threshold, rootMargin]);
 
   function observe(el) {
     if (!el) return;
-    const key = el.dataset?.revealKey;
-    if (!key) return;
 
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     if (prefersReduced) {
-      setInMap((prev) => ({ ...prev, [key]: true }));
+      const key = el.dataset?.revealKey;
+      if (key) setInMap((prev) => ({ ...prev, [key]: true }));
       return;
     }
 
-    observerRef.current?.observe(el);
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (alreadyVisible) {
+      const key = el.dataset?.revealKey;
+      if (key) setInMap((prev) => ({ ...prev, [key]: true }));
+      return;
+    }
+
+    if (observerRef.current) {
+      observerRef.current.observe(el);
+    } else {
+      pendingRef.current.push(el);
+    }
   }
 
   return { inMap, observe };
 }
 
 function HomeMobile({ categories }) {
-  const { inMap, observe } = useScrollReveal();
+  const { inMap, observe } = useScrollReveal({
+    threshold: 0.24,
+    rootMargin: "0px 0px -22% 0px"
+  });
+
   const [loaded, setLoaded] = useState(() => ({}));
 
   return (
@@ -95,7 +125,9 @@ function HomeMobile({ categories }) {
       <div className="homeMobileCats" aria-label="Categories">
         {categories.map((c) => {
           const key = `cat-${c.slug}`;
-          const isIn = !!inMap[key];
+          const isLoaded = !!loaded[key];
+          // Block the reveal until the image has loaded — text and image appear together
+          const isIn = !!inMap[key] && isLoaded;
 
           return (
             <article
@@ -112,7 +144,7 @@ function HomeMobile({ categories }) {
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      className={`revealImg ${loaded[key] ? "isLoaded" : ""}`}
+                      className="revealImg isLoaded"
                       onLoad={() => setLoaded((p) => ({ ...p, [key]: true }))}
                       onError={() => setLoaded((p) => ({ ...p, [key]: true }))}
                     />
@@ -172,10 +204,9 @@ export default function Home() {
     return { tiles: baseTiles, mobileCategories: cats };
   }, [pick]);
 
-  // FIX: Gebruik lagere threshold en positieve margin voor desktop reveal
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.05,
-    rootMargin: "0px 0px 200px 0px"
+    threshold: 0.1,
+    rootMargin: "0px"
   });
 
   if (isMobile) {

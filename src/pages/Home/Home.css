@@ -25,19 +25,14 @@
   transform: translateY(0);
 }
 
-.homeMobileCatCard {
-  min-height: 200px; /* Crucial: gives the observer a target before the image loads */
-}
-
-.revealImg {
+/* Image reveal (avoid popping/flash) */
+.revealImg{
   opacity: 0;
-  transition: opacity 800ms ease;
-  width: 100%;
-  height: auto;
-  display: block;
+  transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
 }
 
-.revealImg.isLoaded {
+.revealImg.isLoaded{
   opacity: 1;
 }
 
