@@ -1,12 +1,12 @@
-.mosaic{
-  display:grid;
+.mosaic {
+  display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
   row-gap: 6px;
   align-items: start;
 }
 
-.mosaicItem{
+.mosaicItem {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -14,7 +14,7 @@
   will-change: opacity, transform;
 }
 
-.mosaicItem.isIn{
+.mosaicItem.isIn {
   opacity: 1;
   transform: translateY(0);
 }
@@ -23,23 +23,22 @@
 .mosaicTile.s1 { grid-column: span 2; }
 .mosaicTile.s2 { grid-column: span 3; }
 .mosaicTile.s3 { grid-column: span 4; }
-
 .mosaicTile.s4 { grid-column: span 5; }
 .mosaicTile.s6 { grid-column: span 6; }
 .mosaicTile.s8 { grid-column: span 8; }
 
-.mosaicTile{
-  text-decoration:none;
+.mosaicTile {
+  text-decoration: none;
   color: var(--text);
-  display:block;
+  display: block;
 }
 
-.mosaicTile.isLink{ cursor: pointer; }
+.mosaicTile.isLink { cursor: pointer; }
 
-.mosaicMedia{
+.mosaicMedia {
   position: relative;
   width: 100%;
-  overflow:hidden;
+  overflow: hidden;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -48,44 +47,54 @@
 
 .mosaicTile.s1 .mosaicMedia,
 .mosaicTile.s2 .mosaicMedia,
-.mosaicTile.s3 .mosaicMedia{
+.mosaicTile.s3 .mosaicMedia {
   aspect-ratio: 4 / 3;
 }
 
 .mosaicTile.s4 .mosaicMedia,
 .mosaicTile.s5 .mosaicMedia,
-.mosaicTile.s6 .mosaicMedia{
+.mosaicTile.s6 .mosaicMedia {
   aspect-ratio: 16 / 10;
 }
 
-.mosaicTile.s8 .mosaicMedia{
+.mosaicTile.s8 .mosaicMedia {
   aspect-ratio: 16 / 9;
 }
 
-.mosaicMedia img{
-  width:100%;
-  height:100%;
+.mosaicMedia img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  display:block;
+  display: block;
   transform: scale(1.0);
   transition: transform 280ms ease;
 }
 
-.mosaicFallback{
-  position:absolute;
-  inset:0;
+/* Fade in on load — desktop */
+.mosaicMedia img.revealImg {
+  opacity: 0;
+  transition: opacity 600ms ease, transform 280ms ease;
+}
+
+.mosaicMedia img.revealImg.isLoaded {
+  opacity: 1;
+}
+
+.mosaicFallback {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(135deg, rgba(0,0,0,0.015), rgba(0,0,0,0.00));
   opacity: 1;
-  pointer-events:none;
+  pointer-events: none;
 }
 
 /* Caption below image — appears on hover */
-.mosaicCaption{
+.mosaicCaption {
   padding: 10px 0 20px;
   min-height: 44px;
 }
 
-.mosaicCaptionLabel{
+.mosaicCaptionLabel {
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -94,7 +103,7 @@
   transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.mosaicCaptionSub{
+.mosaicCaptionSub {
   margin-top: 5px;
   font-size: 12px;
   color: var(--muted);
@@ -105,46 +114,51 @@
 }
 
 .mosaicTile:hover .mosaicCaptionLabel,
-.mosaicTile:hover .mosaicCaptionSub{
+.mosaicTile:hover .mosaicCaptionSub {
   opacity: 1;
   transform: translateY(0);
 }
 
-.mosaicTile:hover img{
+.mosaicTile:hover img {
   transform: scale(1.02);
 }
 
-/* ─── WoB tile ───────────────────────────────────────────────── */
-/* Same aspect ratio and hover behaviour as image tiles.
-   The SVG scales slightly on hover just like the product photos. */
-.mosaicMediaWob{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* WoB tile */
+.mosaicMediaWob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
 }
 
-.mosaicMediaWob .mosaicWobImg{
+.mosaicMediaWob .mosaicWobImg {
   width: 88%;
   height: 88%;
   object-fit: contain;
-  display:block;
-  /* Participate in the same scale transition as img inside mosaicMedia */
+  display: block;
   transform: scale(1.0);
   transition: transform 280ms ease;
 }
 
-/* Hover: scale WoB SVG the same way product images scale */
-.mosaicTile:hover .mosaicMediaWob .mosaicWobImg{
+.mosaicMediaWob .mosaicWobImg.revealImg {
+  opacity: 0;
+  transition: opacity 600ms ease, transform 280ms ease;
+}
+
+.mosaicMediaWob .mosaicWobImg.revealImg.isLoaded {
+  opacity: 1;
+}
+
+.mosaicTile:hover .mosaicMediaWob .mosaicWobImg {
   transform: scale(1.02);
 }
 
-@media (max-width: 1020px){
-  .mosaic{ column-gap: 18px; }
+@media (max-width: 1020px) {
+  .mosaic { column-gap: 18px; }
 }
 
-@media (max-width: 860px){
-  .mosaic{ grid-template-columns: repeat(1, 1fr); column-gap: 0; row-gap: 12px; }
+@media (max-width: 860px) {
+  .mosaic { grid-template-columns: repeat(1, 1fr); column-gap: 0; row-gap: 12px; }
   .mosaicTile.s1,
   .mosaicTile.s2,
   .mosaicTile.s3,
@@ -152,22 +166,19 @@
   .mosaicTile.s5,
   .mosaicTile.s6,
   .mosaicTile.s8 { grid-column: span 1; }
-
-  .mosaicCaption{ display:none; }
-  .mosaicMedia img{ transition: none; transform: scale(1.0); }
+  .mosaicCaption { display: none; }
+  .mosaicMedia img { transition: none; transform: scale(1.0); }
 }
 
-@media (hover: none) and (pointer: coarse){
-  .mosaicTile:hover img{ transform: scale(1.0); }
-  .mosaicTile:hover .mosaicWobImg{ transform: scale(1.0); }
+@media (hover: none) and (pointer: coarse) {
+  .mosaicTile:hover img { transform: scale(1.0); }
+  .mosaicTile:hover .mosaicWobImg { transform: scale(1.0); }
   .mosaicTile:hover .mosaicCaptionLabel,
-  .mosaicTile:hover .mosaicCaptionSub{ opacity: 0; transform: translateY(5px); }
+  .mosaicTile:hover .mosaicCaptionSub { opacity: 0; transform: translateY(5px); }
 }
 
-@media (prefers-reduced-motion: reduce){
-  .mosaicItem{
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .mosaicItem { opacity: 1; transform: none; transition: none; }
+  .mosaicMedia img.revealImg { opacity: 1; transition: none; }
+  .mosaicMediaWob .mosaicWobImg.revealImg { opacity: 1; transition: none; }
 }

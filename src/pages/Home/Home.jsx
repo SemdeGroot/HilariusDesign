@@ -1,5 +1,5 @@
 // src/pages/Home/Home.jsx
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
@@ -24,75 +24,12 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } = {}) {
-  const [inMap, setInMap] = useState(() => ({}));
-  const observerRef = useRef(null);
-
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-    if (prefersReduced) {
-      observerRef.current = null;
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const next = {};
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            const key = e.target?.dataset?.revealKey;
-            if (key) next[key] = true;
-          }
-        }
-        if (Object.keys(next).length) {
-          setInMap((prev) => ({ ...prev, ...next }));
-        }
-      },
-      { root: null, threshold, rootMargin }
-    );
-
-    observerRef.current = io;
-    return () => io.disconnect();
-  }, [threshold, rootMargin]);
-
-  const observe = useCallback((el) => {
-    if (!el) return;
-    const key = el.dataset?.revealKey;
-    if (!key) return;
-
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-    if (prefersReduced) {
-      setInMap((prev) => ({ ...prev, [key]: true }));
-      return;
-    }
-
-    observerRef.current?.observe(el);
-  }, []);
-
-  return { inMap, observe };
-}
-
 function HomeMobile({ categories }) {
-  const { inMap, observe } = useScrollReveal({
-    threshold: 0.1,
-    rootMargin: "0px 0px 100px 0px"
-  });
-
   const [loaded, setLoaded] = useState(() => ({}));
 
   return (
     <section className="homeMobile" aria-label="Home">
-      <div
-        className={`homeMobileWob homeRevealBlock ${inMap["wob"] ? "isIn" : ""}`}
-        data-reveal-key="wob"
-        ref={observe}
-      >
+      <div className="homeMobileWob homeRevealBlock isIn">
         <img src={WorldOfBoard} alt="World of Board" className="homeMobileWobImg" />
       </div>
 
@@ -100,14 +37,11 @@ function HomeMobile({ categories }) {
         {categories.map((c) => {
           const key = `cat-${c.slug}`;
           const isLoaded = !!loaded[key];
-          const isIn = !!inMap[key] && isLoaded;
 
           return (
             <article
               key={c.slug}
-              className={`homeMobileCatCard homeRevealBlock ${isIn ? "isIn" : ""}`}
-              data-reveal-key={key}
-              ref={observe}
+              className={`homeMobileCatCard ${isLoaded ? "textLoaded" : ""}`}
             >
               <Link to={`/category/${c.slug}`} className="homeMobileCatLink">
                 <div className="homeMobileCatMedia" aria-hidden="true">

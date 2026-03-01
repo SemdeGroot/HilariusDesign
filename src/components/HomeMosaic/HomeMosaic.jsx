@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import WorldOfBoard from "../../assets/WorldOfBoard.svg";
 import "./HomeMosaic.css";
 
 export default function HomeMosaic({ tiles }) {
+  const [loaded, setLoaded] = useState({});
+  const [wobLoaded, setWobLoaded] = useState(false);
+
   return (
     <div className="mosaic">
       {tiles.map((t) => {
@@ -19,7 +23,9 @@ export default function HomeMosaic({ tiles }) {
                 <img
                   src={WorldOfBoard}
                   alt="World of Board"
-                  className="mosaicWobImg"
+                  className={`mosaicWobImg revealImg ${wobLoaded ? "isLoaded" : ""}`}
+                  onLoad={() => setWobLoaded(true)}
+                  onError={() => setWobLoaded(true)}
                 />
               </div>
               <div className="mosaicCaption" aria-hidden="true" />
@@ -28,6 +34,8 @@ export default function HomeMosaic({ tiles }) {
         }
 
         const Wrapper = t.to ? Link : "div";
+        const isLoaded = !!loaded[t.key];
+
         return (
           <Wrapper
             key={t.key}
@@ -41,13 +49,14 @@ export default function HomeMosaic({ tiles }) {
                   src={t.src}
                   alt={t.alt || ""}
                   loading="lazy"
-                  onError={(e) => (e.currentTarget.style.display = "none")}
+                  decoding="async"
+                  className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
+                  onLoad={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
+                  onError={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
                 />
               ) : null}
               <div className="mosaicFallback" />
             </div>
-
-            {/* Caption lives below the image — slides up on hover */}
             <div className="mosaicCaption">
               <div className="mosaicCaptionLabel">{t.label}</div>
               {t.sub ? <div className="mosaicCaptionSub">{t.sub}</div> : null}

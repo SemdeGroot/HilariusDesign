@@ -120,6 +120,25 @@
   margin-top: 0;
 }
 
+.homeMobileCatTitle,
+.homeMobileCatSub {
+  opacity: 0;
+  transition: opacity 1350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.homeMobileCatCard.textLoaded .homeMobileCatTitle,
+.homeMobileCatCard.textLoaded .homeMobileCatSub {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeMobileCatTitle,
+  .homeMobileCatSub {
+    opacity: 1;
+    transition: none;
+  }
+}
+
 /* Mobile: slower + smoother reveal */
 @media (max-width: 860px){
   .homeRevealBlock{
