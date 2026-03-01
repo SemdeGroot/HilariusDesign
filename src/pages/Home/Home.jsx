@@ -1,5 +1,5 @@
 // src/pages/Home/Home.jsx
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
@@ -24,7 +24,7 @@ function useIsMobile(breakpoint = 860) {
   return isMobile;
 }
 
-function useScrollReveal({ threshold = 0.24, rootMargin = "0px 0px -22% 0px" } = {}) {
+function useScrollReveal({ threshold = 0.1, rootMargin = "0px 0px 100px 0px" } = {}) {
   const [inMap, setInMap] = useState(() => ({}));
   const observerRef = useRef(null);
 
@@ -58,28 +58,30 @@ function useScrollReveal({ threshold = 0.24, rootMargin = "0px 0px -22% 0px" } =
     return () => io.disconnect();
   }, [threshold, rootMargin]);
 
-  const observe = useRef((el) => {
+  const observe = useCallback((el) => {
     if (!el) return;
+    const key = el.dataset?.revealKey;
+    if (!key) return;
+
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     if (prefersReduced) {
-      const key = el.dataset?.revealKey;
-      if (key) setInMap((prev) => ({ ...prev, [key]: true }));
+      setInMap((prev) => ({ ...prev, [key]: true }));
       return;
     }
 
     observerRef.current?.observe(el);
-  }).current;
+  }, []);
 
   return { inMap, observe };
 }
 
 function HomeMobile({ categories }) {
   const { inMap, observe } = useScrollReveal({
-    threshold: 0.24,
-    rootMargin: "0px 0px -22% 0px"
+    threshold: 0.1,
+    rootMargin: "0px 0px 100px 0px"
   });
 
   const [loaded, setLoaded] = useState(() => ({}));
@@ -115,14 +117,13 @@ function HomeMobile({ categories }) {
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      className="revealImg isLoaded"
+                      className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
                       onLoad={() => setLoaded((p) => ({ ...p, [key]: true }))}
                       onError={() => setLoaded((p) => ({ ...p, [key]: true }))}
                     />
                   ) : null}
                   <div className="homeImgFallback" />
                 </div>
-
                 <div className="homeMobileCatCaption">
                   <div className="homeMobileCatTitle">{c.title}</div>
                   <div className="homeMobileCatSub">{c.sub}</div>
