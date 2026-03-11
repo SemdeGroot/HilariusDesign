@@ -1,24 +1,24 @@
+"use client";
+
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import LanguageSwitch from "../LanguageSwitch/LanguageSwitch.jsx";
-import logo from "../../assets/logo.svg";
 import { ChevronDown, Menu, X } from "lucide-react";
 import "./Header.css";
 
 export default function Header() {
   const { pick } = useContext(I18nContext);
-  const location = useLocation();
+  const pathname = usePathname();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const closeTimer = useRef(null);
 
-  // Desktop mega scroll reset
   const megaInnerRef = useRef(null);
 
-  // Mobile menu: accordion state per category
   const [openCats, setOpenCats] = useState(() => ({}));
 
   const categories = routesConfig.categories;
@@ -37,9 +37,8 @@ export default function Header() {
     setMobileOpen(false);
     setPortfolioOpen(false);
 
-    // Bij page change: vergeet mega scrollpositie
     if (megaInnerRef.current) megaInnerRef.current.scrollTop = 0;
-  }, [location.pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -49,7 +48,6 @@ export default function Header() {
   function openPortfolio() {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
 
-    // Elke keer dat je opent: begin bovenaan
     if (megaInnerRef.current) megaInnerRef.current.scrollTop = 0;
 
     setPortfolioOpen(true);
@@ -68,8 +66,8 @@ export default function Header() {
     <>
       <header className="header">
         <div className="headerInner">
-          <Link to="/" className="brand" aria-label="HilariusDesign">
-            <img className="brandLogo" src={logo} alt="" />
+          <Link href="/" className="brand" aria-label="HilariusDesign">
+            <img className="brandLogo" src="/logo.svg" alt="" />
           </Link>
 
           {/* Desktop nav */}
@@ -79,8 +77,7 @@ export default function Header() {
               onMouseEnter={openPortfolio}
               onMouseLeave={scheduleClosePortfolio}
             >
-              {/* Plain Link — nooit active class, hover underline werkt wel via CSS */}
-              <Link to="/" className="navItem">
+              <Link href="/" className="navItem">
                 <span className="navLabel">
                   {pick(routesConfig.copy.nav, "portfolio")}
                   <span className="navUnderline" />
@@ -97,7 +94,7 @@ export default function Header() {
                 <div className="megaInner" ref={megaInnerRef}>
                   {categories.map((c) => (
                     <div key={c.slug} className="megaCol">
-                      <Link to={`/category/${c.slug}`} className="megaTitle">
+                      <Link href={`/category/${c.slug}`} className="megaTitle">
                         <span className="megaTitleLabel">
                           {pick(c, "title")}
                           <span className="megaUnderline" />
@@ -107,7 +104,7 @@ export default function Header() {
 
                       <div className="megaItems">
                         {(mega.get(c.slug) ?? []).map((p) => (
-                          <Link key={p.id} to={`/project/${p.id}`} className="megaItem">
+                          <Link key={p.id} href={`/project/${p.id}`} className="megaItem">
                             <span className="megaItemLabel">
                               {pick(p, "title")}
                               <span className="megaUnderlineThin" />
@@ -122,23 +119,31 @@ export default function Header() {
             </div>
 
             {nav.map((item) => (
-              <NavLink key={item.path} to={item.path} className="navItem">
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`navItem${pathname === item.path ? " active" : ""}`}
+              >
                 <span className="navLabel">
                   {pick(item, "label")}
                   <span className="navUnderline" />
                 </span>
-              </NavLink>
+              </Link>
             ))}
 
             <LanguageSwitch />
           </nav>
 
-          {/* Mobile: top header links (zonder language switcher) */}
+          {/* Mobile: top header links */}
           <nav className="navMobileInline" aria-label="Quick links">
             {nav.map((item) => (
-              <NavLink key={item.path} to={item.path} className="navMobileInlineLink">
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`navMobileInlineLink${pathname === item.path ? " active" : ""}`}
+              >
                 {pick(item, "labelMobile") || pick(item, "label")}
-              </NavLink>
+              </Link>
             ))}
           </nav>
 
@@ -158,7 +163,6 @@ export default function Header() {
           <div className="mobileTop">
             <div className="mobileTitle">{pick(routesConfig.copy.nav, "menu")}</div>
 
-            {/* LanguageSwitch pas zichtbaar als menu open is, naast kruisje */}
             <div className="mobileTopRight">
               <LanguageSwitch compact />
               <button className="mobileClose" onClick={() => setMobileOpen(false)} aria-label="Sluiten">
@@ -193,13 +197,13 @@ export default function Header() {
                       </button>
 
                       <div id={`cat-${c.slug}`} className={`mobileAccPanel ${isOpen ? "open" : ""}`}>
-                        <Link to={`/category/${c.slug}`} className="mobileAccAll">
+                        <Link href={`/category/${c.slug}`} className="mobileAccAll">
                           {pick(c, "subtitle")}
                         </Link>
 
                         <div className="mobileAccProducts">
                           {items.map((p) => (
-                            <Link key={p.id} to={`/project/${p.id}`} className="mobileAccProduct">
+                            <Link key={p.id} href={`/project/${p.id}`} className="mobileAccProduct">
                               {pick(p, "title")}
                             </Link>
                           ))}

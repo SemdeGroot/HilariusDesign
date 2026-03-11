@@ -23,9 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# Vite build
-dist/
-.vite/
+# Next.js
+.next/
+out/
 
 # Repomix output
 repomix-output.*

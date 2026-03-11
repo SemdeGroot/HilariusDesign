@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext, useMemo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { I18nContext } from "../../i18n/I18nProvider";

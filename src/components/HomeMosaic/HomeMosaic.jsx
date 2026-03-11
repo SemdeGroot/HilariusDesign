@@ -1,7 +1,30 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import WorldOfBoard from "../../assets/WorldOfBoard.svg";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import "./HomeMosaic.css";
+
+// Handles the case where the image loads before React attaches onLoad (SSR/cache).
+function RevealImg({ src, alt, loading, decoding, className, onReveal }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current?.complete) onReveal?.();
+  }, []);
+
+  return (
+    <img
+      ref={ref}
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding={decoding}
+      className={className}
+      onLoad={onReveal}
+      onError={onReveal}
+    />
+  );
+}
 
 export default function HomeMosaic({ tiles }) {
   const [loaded, setLoaded] = useState({});
@@ -15,17 +38,16 @@ export default function HomeMosaic({ tiles }) {
           return (
             <WobWrapper
               key={t.key}
-              to={t.to}
+              href={t.to}
               className={`mosaicTile ${t.size || ""} ${t.to ? "isLink" : ""}`}
               aria-label="The Art Of Board"
             >
               <div className="mosaicMedia mosaicMediaWob">
-                <img
-                  src={WorldOfBoard}
+                <RevealImg
+                  src="/WorldOfBoard.svg"
                   alt="World of Board"
                   className={`mosaicWobImg revealImg ${wobLoaded ? "isLoaded" : ""}`}
-                  onLoad={() => setWobLoaded(true)}
-                  onError={() => setWobLoaded(true)}
+                  onReveal={() => setWobLoaded(true)}
                 />
               </div>
               <div className="mosaicCaption" aria-hidden="true" />
@@ -39,20 +61,19 @@ export default function HomeMosaic({ tiles }) {
         return (
           <Wrapper
             key={t.key}
-            to={t.to}
+            href={t.to}
             className={`mosaicTile ${t.size || ""} ${t.to ? "isLink" : ""}`}
             aria-label={t.alt || t.label}
           >
             <div className="mosaicMedia">
               {t.src ? (
-                <img
+                <RevealImg
                   src={t.src}
                   alt={t.alt || ""}
                   loading="lazy"
                   decoding="async"
                   className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
-                  onLoad={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
-                  onError={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
+                  onReveal={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
                 />
               ) : null}
               <div className="mosaicFallback" />

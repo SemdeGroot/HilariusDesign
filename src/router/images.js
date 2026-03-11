@@ -1,27 +1,13 @@
-// src/router/images.js
-
-const modules = import.meta.glob("../assets/images/**/*.{jpg,jpeg,png,webp,svg}", {
-  eager: true,
-  import: "default"
-});
+// Images are served as static paths from /public/images/
 
 export function getImage(path) {
-  // Ensure the path starts exactly how the glob sees it
-  const key = `../assets/images/${path}`;
-  const hit = modules[key];
-
-  if (!hit) {
-    console.warn(`[images] not found: ${key}`);
-    return "";
-  }
-  return hit;
+  if (!path) return "";
+  return `/images/${path}`;
 }
 
 export function getImagesInDir(dir) {
-  const prefix = `../assets/images/${dir}`;
-  return Object.entries(modules)
-    .filter(([k]) => k.startsWith(prefix))
-    .sort(([a], [b]) => a.localeCompare(b, "nl"))
-    .map(([, v]) => v)
-    .filter(Boolean);
+  // Dynamic directory scanning is not available in browser context.
+  // Projects fall back to their cover image.
+  // To show multiple images per project, list them explicitly in projectsData.js.
+  return [];
 }

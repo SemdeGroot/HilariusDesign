@@ -1,5 +1,6 @@
-// src/components/Layout/Layout.jsx
-import { Outlet, useLocation } from "react-router-dom";
+"use client";
+
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Header from "../Header/Header.jsx";
 import { routesConfig } from "../../router/routesConfig";
@@ -43,12 +44,12 @@ function nudgeScrollToRestoreHitTesting() {
   window.scrollTo(x, y);
 }
 
-export default function Layout() {
-  const location = useLocation();
+export default function Layout({ children }) {
+  const pathname = usePathname();
 
   useEffect(() => {
     smoothScrollTop(520);
-  }, [location.pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -74,7 +75,7 @@ export default function Layout() {
     <div className="appShell">
       <Header />
       <main className="main">
-        <Outlet />
+        {children}
       </main>
 
       <footer className="footer">

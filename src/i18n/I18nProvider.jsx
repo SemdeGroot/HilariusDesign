@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { routesConfig } from "../router/routesConfig";
 
@@ -12,6 +14,7 @@ export default function I18nProvider({ children }) {
   const fallback = routesConfig.i18n?.fallback ?? "nl";
 
   const [lang, setLangState] = useState(() => {
+    if (typeof window === "undefined") return routesConfig.i18n?.default ?? "nl";
     const saved = localStorage.getItem("hd_lang");
     return supported.includes(saved) ? saved : (routesConfig.i18n?.default ?? "nl");
   });
