@@ -5,9 +5,10 @@ export function generateStaticParams() {
   return routesConfig.projects.map((p) => ({ id: p.id }));
 }
 
-export function generateMetadata({ params }) {
-  const project = routesConfig.projects.find((p) => p.id === params.id);
-  const title = project?.i18n?.nl?.title ?? params.id;
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const project = routesConfig.projects.find((p) => p.id === id);
+  const title = project?.i18n?.nl?.title ?? id;
   return {
     title,
     description: project?.i18n?.nl?.description ?? ""

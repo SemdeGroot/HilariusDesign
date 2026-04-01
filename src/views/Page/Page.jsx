@@ -1,30 +1,41 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import { Plus } from "lucide-react";
 import "./Page.css";
 
+/* ─── Fade-in hook ──────────────────────────────────────────── */
+function useFadeIn(delay = 0) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), delay);
+    return () => clearTimeout(t);
+  }, [delay]);
+  return visible;
+}
+
 /* ─── About ─────────────────────────────────────────────────── */
 function AboutPage({ page }) {
   const { pick } = useContext(I18nContext);
+  const imgVisible = useFadeIn(100);
+  const textVisible = useFadeIn(300);
 
   return (
     <section className="aboutLayout">
       <div className="aboutLeft">
-        <div className="aboutImgWrap">
+        <div className={`aboutImgWrap pageFade ${imgVisible ? "visible" : ""}`}>
           <img
-            src="/about-wim.jpg"
+            src="/over-wim.JPG"
             alt="Wim Hilarius"
             className="aboutImg"
-            onError={(e) => (e.currentTarget.style.display = "none")}
           />
         </div>
       </div>
 
-      <div className="aboutRight">
+      <div className={`aboutRight pageFade ${textVisible ? "visible" : ""}`}>
         <p className="aboutSuper">Over Hilarius Design</p>
         <h1 className="aboutHeading">{pick(page, "heading")}</h1>
         <p className="aboutIntro">{pick(page, "intro")}</p>
@@ -93,6 +104,8 @@ function ContactPage({ page }) {
   const labels = pick(page, "formLabels") ?? {};
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const imgVisible = useFadeIn(100);
+  const formVisible = useFadeIn(300);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -123,6 +136,14 @@ function ContactPage({ page }) {
   return (
     <div className="contactLayout">
       <div className="contactInfo">
+        <div className={`contactImgWrap pageFade ${imgVisible ? "visible" : ""}`}>
+          <img
+            src="/contact-image.JPG"
+            alt="HilariusDesign contact"
+            className="contactImg"
+          />
+        </div>
+
         <h1 className="pageTitle">{pick(page, "title")}</h1>
         <p className="pageIntro">{pick(page, "intro")}</p>
 
@@ -155,7 +176,7 @@ function ContactPage({ page }) {
         </div>
       </div>
 
-      <div className="contactFormCol">
+      <div className={`contactFormCol pageFade ${formVisible ? "visible" : ""}`}>
         {sent ? (
           <div className="contactSuccess">{labels.success}</div>
         ) : (

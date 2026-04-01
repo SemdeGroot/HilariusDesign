@@ -229,13 +229,13 @@ export const routesConfig = {
   ],
 
   homeCovers: {
-    transport: "transport/vrachtwagens/vrachtwagens.jpg",
-    "bureau-accessoires": "bureau-accessoires/klokken/klokken.jpg",
-    verpakkingen: "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg",
-    "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen.jpg",
-    spellen: "kerst-spellen/schaakspel/schaakspel.jpg",
-    "the-art-of-board": "interieur-exterieur/maquette/maquette.jpg",
-    eindejaarsgeschenken: "kerst-spellen/kerstversiering/kerstversiering.jpg"
+    transport: "transport/vrachtwagens/vrachtwagens2-2.jpg",
+    "bureau-accessoires": "bureau-accessoires/klokken/klokken2.jpg",
+    verpakkingen: "verpakkingen/magic-packaging/magictubes2.jpg",
+    "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg",
+    spellen: "spellen/schaakspel/schaakspel2.jpg",
+    "the-art-of-board": "interieur-exterieur/maquette/maquette2-1.jpg",
+    eindejaarsgeschenken: "eindejaarsgeschenken/kerst/kerstversiering2.jpg"
   },
 
   pages: texts.pages,
@@ -253,14 +253,14 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "transport",
       [
-        "transport/bedrijfsautos/bedrijfsautos.jpg",
-        "transport/containers/containers.jpg",
-        "transport/dieplader/dieplader.jpg",
-        "transport/heineken/heineken.jpg",
-        "transport/tankauto/tankauto.jpg",
-        "transport/treinen/treinen.jpg",
-        "transport/vliegtuigen/vliegtuigen.jpg",
-        "transport/vrachtwagens/vrachtwagens.jpg"
+        "transport/bedrijfsautos/bedrijfsautos2.jpg",
+        "transport/bierwagen/IMG_0548Biertransport.jpg",
+        "transport/containers/IMG_0562ContainerRoodHL.jpg",
+        "transport/diepladers/dieplader2.jpg",
+        "transport/tankauto/tankauto2.jpg",
+        "transport/treinen/treinen2.jpg",
+        "transport/vliegtuigen/vliegtuigen2.jpg",
+        "transport/vrachtwagens/vrachtwagens2-2.jpg"
       ],
       {
         nl: { type: "Transportmodel / Relatiegeschenk" },
@@ -272,14 +272,12 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "bureau-accessoires",
       [
-        "bureau-accessoires/bureaukalenders/bureaukalenders.jpg",
-        "bureau-accessoires/fotolijstjes/fotolijstjes.jpg",
-        "bureau-accessoires/groenepostbak/groenepostbak.jpg",
-        "bureau-accessoires/klokken/klokken.jpg",
-        "bureau-accessoires/korenbloem/korenbloem.jpg",
-        "bureau-accessoires/memobakjes/memobakjes.jpg",
-        "bureau-accessoires/onderzetters/onderzetters.jpg",
-        "bureau-accessoires/popup/popup.jpg"
+        "bureau-accessoires/bureaukalenders/bureaukalenders3.jpg",
+        "bureau-accessoires/fotolijstjes/fotolijstjes2.jpg",
+        "bureau-accessoires/klokken/klokken2.jpg",
+        "bureau-accessoires/memobakjes/memobakjes2.jpg",
+        "bureau-accessoires/onderzetters/onderzetters2.jpg",
+        "bureau-accessoires/pop-up/popup2.jpg"
       ],
       {
         nl: { type: "Bureau-accessoire" },
@@ -291,20 +289,17 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "verpakkingen",
       [
-        "wijnverpakkingen-displays/2-vakswijndoos/2-vakswijndoos.jpg",
-        "wijnverpakkingen-displays/africa/africa.jpg",
-        "wijnverpakkingen-displays/bloemendozen/bloemendozen.jpg",
-        "wijnverpakkingen-displays/cdverpakking/cdverpakking.jpg",
-        "wijnverpakkingen-displays/chocoladedoosje/chocoladedoosje.jpg",
-        "wijnverpakkingen-displays/divadistrict/divadistrict.jpg",
-        "wijnverpakkingen-displays/draagtassen/draagtassen.jpg",
-        "wijnverpakkingen-displays/luxarnw/luxarnw.jpg",
-        "wijnverpakkingen-displays/magictubes/magictubes.jpg",
-        "wijnverpakkingen-displays/metopdoos/metopdoos.jpg",
-        "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg",
-        "wijnverpakkingen-displays/viko-shockproof/viko_shockproof.jpg",
-        "wijnverpakkingen-displays/vikokoker/vikokoker.jpg",
-        "wijnverpakkingen-displays/wijnvogelhuisje/wijnvogelhuisje.jpg"
+        "verpakkingen/bloemenverpakking/bloemendozen2.jpg",
+        "verpakkingen/cd-verpakking/cdverpakking2.jpg",
+        "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.jpg",
+        "verpakkingen/handtasjes/IMG_1012.jpg",
+        "verpakkingen/magic-packaging/magictubes2.jpg",
+        "verpakkingen/ontspiegelde-showcase/luxar2.jpg",
+        "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.jpg",
+        "verpakkingen/uitklapdoos/metopdoos2.jpg",
+        "verpakkingen/viko-kokers/vikokoker2.jpg",
+        "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.jpg",
+        "verpakkingen/zakken/zakkengroot.jpg"
       ],
       {
         nl: { type: "Verpakking / Display" },
@@ -316,15 +311,14 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "boeken-mappen",
       [
-        "boeken-mappen/euromap/euromap.jpg",
-        "boeken-mappen/golfrecords/golfrecords3.jpg",
-        "boeken-mappen/grafiekmappen/grafiekmappen.jpg",
-        "boeken-mappen/herdenkingsboek/herdenkingsboek.jpg",
-        "boeken-mappen/informatiemap/informatiemap.jpg",
-        "boeken-mappen/kunstmappen/kunstmappen.jpg",
-        "boeken-mappen/libris/libris.jpg",
-        "boeken-mappen/mappen/mappen.jpg",
-        "boeken-mappen/stalenboek/stalenboek.jpg"
+        "boeken-mappen/boekverpakkingen/libris2.jpg",
+        "boeken-mappen/euromap/euromap2.jpg",
+        "boeken-mappen/golfrecords/golfrecords2.jpg",
+        "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg",
+        "boeken-mappen/herdenkingsboek/herdenkingsboek2.jpg",
+        "boeken-mappen/informatiemap/informatiemap2.jpg",
+        "boeken-mappen/kunstmappen/kunstmappen2.jpg",
+        "boeken-mappen/zelfsluitende-mappen/mappen3.jpg"
       ],
       {
         nl: { type: "Boek / Map" },
@@ -336,11 +330,11 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "spellen",
       [
-        "kerst-spellen/bordspellen/bordspellen.jpg",
-        "kerst-spellen/poulebal/poulebal.jpg",
-        "kerst-spellen/puzzel/puzzel.jpg",
-        "kerst-spellen/schaakspel/schaakspel.jpg",
-        "kerst-spellen/werpspel/werpspel.jpg"
+        "spellen/bordspellen/bordspellen2.jpg",
+        "spellen/poulebal/poulebal2.jpg",
+        "spellen/puzzel/puzzel2.jpg",
+        "spellen/schaakspel/schaakspel2.jpg",
+        "spellen/werpspel/werpspel2.jpg"
       ],
       {
         nl: { type: "Spel / Give-away" },
@@ -352,13 +346,15 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "the-art-of-board",
       [
-        "interieur-exterieur/apothekerskast/apothekerskast.jpg",
-        "interieur-exterieur/argent/argent.jpg",
-        "interieur-exterieur/caleidoscoop/caleidoscoop.jpg",
-        "interieur-exterieur/maquette/maquette.jpg",
-        "interieur-exterieur/oogwereld/oogwereld.jpg",
-        "interieur-exterieur/standbouw/standbouw.jpg",
-        "interieur-exterieur/visafslag-volendam/visafslag-volendam.jpg"
+        "the-art-of-board/eiffeltoren/eiffeltoren1.JPG",
+        "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.jpg",
+        "the-art-of-board/tezeras/tezeras.jpg",
+        "the-art-of-board/westminster-abbey/westminster-abbey1.JPG",
+        "the-art-of-board/wild-flowers/klaproos.jpg",
+        "interieur-exterieur/apothekerskast/apothekerskast2.jpg",
+        "interieur-exterieur/enorme-displays/oogwereld2.jpg",
+        "interieur-exterieur/gebouwen/villavna.jpg",
+        "interieur-exterieur/maquette/maquette2-1.jpg"
       ],
       {
         nl: { type: "Interieur / Exterieur" },
@@ -370,7 +366,8 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "eindejaarsgeschenken",
       [
-        "kerst-spellen/kerstversiering/kerstversiering.jpg"
+        "eindejaarsgeschenken/compilatie/compilatie-1.jpg",
+        "eindejaarsgeschenken/kerst/kerstversiering2.jpg"
       ],
       {
         nl: { type: "Eindejaarsgeschenk" },

@@ -126,8 +126,16 @@
   transition: opacity 1350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.homeMobileCatCard.textLoaded .homeMobileCatTitle,
-.homeMobileCatCard.textLoaded .homeMobileCatSub {
+.homeMobileCatTitle {
+  transition-delay: 150ms;
+}
+
+.homeMobileCatSub {
+  transition-delay: 280ms;
+}
+
+.homeMobileCatCard.isIn .homeMobileCatTitle,
+.homeMobileCatCard.isIn .homeMobileCatSub {
   opacity: 1;
 }
 

@@ -6,6 +6,7 @@ import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import HomeMosaic from "../../components/HomeMosaic/HomeMosaic.jsx";
 import { getImage } from "../../router/images";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import "./Home.css";
 
 function useIsMobile(breakpoint = 860) {
@@ -45,9 +46,39 @@ function RevealImg({ src, alt, loading, decoding, className, onReveal }) {
   );
 }
 
-function HomeMobile({ categories }) {
-  const [loaded, setLoaded] = useState(() => ({}));
+function MobileCatCard({ c }) {
+  const [ref, isRevealed] = useScrollReveal();
+  const [imgLoaded, setImgLoaded] = useState(false);
 
+  return (
+    <article
+      ref={ref}
+      className={`homeMobileCatCard homeRevealBlock ${isRevealed ? "isIn" : ""}`}
+    >
+      <Link href={`/category/${c.slug}`} className="homeMobileCatLink">
+        <div className="homeMobileCatMedia" aria-hidden="true">
+          {c.src ? (
+            <RevealImg
+              src={c.src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className={`revealImg ${imgLoaded ? "isLoaded" : ""}`}
+              onReveal={() => setImgLoaded(true)}
+            />
+          ) : null}
+          <div className="homeImgFallback" />
+        </div>
+        <div className="homeMobileCatCaption">
+          <div className="homeMobileCatTitle">{c.title}</div>
+          <div className="homeMobileCatSub">{c.sub}</div>
+        </div>
+      </Link>
+    </article>
+  );
+}
+
+function HomeMobile({ categories }) {
   return (
     <section className="homeMobile" aria-label="Home">
       <div className="homeMobileWob homeRevealBlock isIn">
@@ -55,37 +86,9 @@ function HomeMobile({ categories }) {
       </div>
 
       <div className="homeMobileCats" aria-label="Categories">
-        {categories.map((c) => {
-          const key = `cat-${c.slug}`;
-          const isLoaded = !!loaded[key];
-
-          return (
-            <article
-              key={c.slug}
-              className={`homeMobileCatCard ${isLoaded ? "textLoaded" : ""}`}
-            >
-              <Link href={`/category/${c.slug}`} className="homeMobileCatLink">
-                <div className="homeMobileCatMedia" aria-hidden="true">
-                  {c.src ? (
-                    <RevealImg
-                      src={c.src}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
-                      onReveal={() => setLoaded((p) => ({ ...p, [key]: true }))}
-                    />
-                  ) : null}
-                  <div className="homeImgFallback" />
-                </div>
-                <div className="homeMobileCatCaption">
-                  <div className="homeMobileCatTitle">{c.title}</div>
-                  <div className="homeMobileCatSub">{c.sub}</div>
-                </div>
-              </Link>
-            </article>
-          );
-        })}
+        {categories.map((c) => (
+          <MobileCatCard key={c.slug} c={c} />
+        ))}
       </div>
     </section>
   );

@@ -1,487 +1,1039 @@
 // src/router/projectsData.js
-// Per-project overrides: title, type, year, description, body — in NL, EN, DE.
-// Key = exact image path under src/assets/images/
+// Productteksten per project. Vul description en body in per taal.
+// Gebruik backticks (template literals) voor tekst met meerdere regels:
+//
+//   description: `Eerste regel.
+// Tweede regel.
+//
+// Nieuwe alinea.`,
+//
+// Key = pad naar cover image (relatief aan public/images/).
 
 export const projectOverrides = {
-  // ─── Transport ────────────────────────────────────────────────
-  "transport/bedrijfsautos/bedrijfsautos.jpg": {
+  // ═══════════════════════════════════════════════════════════════
+  // TRANSPORT
+  // ═══════════════════════════════════════════════════════════════
+
+  "transport/bedrijfsautos/bedrijfsautos2.jpg": {
     i18n: {
       nl: {
         title: "Bedrijfsauto's",
-        type: "Transportmodel / Relatiegeschenk",
-        year: "—",
-        description:
-          "Kartonnen transportmodel voor relatiegeschenken en merkpresentaties.\n\nOntworpen voor eenvoudige assemblage en sterke visuele impact op een bureau of in een showroom.",
-        body:
-          "Extra tekst (optioneel):\n- Variaties in formaat en afwerking\n- Mogelijkheid voor persoonlijke boodschap\n- Inzetbaar voor mailing of event"
+        description: ``,
+        body: ``
       },
       en: {
         title: "Company cars",
-        type: "Transport model / Gift",
-        year: "—",
-        description:
-          "Cardboard transport model for corporate gifts and brand presentations.\n\nDesigned for easy assembly and a strong visual presence on desks or in showrooms.",
-        body: ""
+        description: ``,
+        body: ``
       },
       de: {
         title: "Firmenwagen",
-        type: "Transportmodell / Geschenk",
-        year: "—",
-        description:
-          "Transportmodell aus Pappe für Werbegeschenke und Markenpräsentationen.\n\nKonzipiert für einfache Montage und starke Wirkung am Arbeitsplatz oder im Showroom.",
-        body: ""
+        description: ``,
+        body: ``
       }
     }
   },
 
-  "transport/containers/containers.jpg": {
+  "transport/bierwagen/IMG_0548Biertransport.jpg": {
     i18n: {
-      nl: { title: "Containers" },
-      en: { title: "Containers" },
-      de: { title: "Container" }
+      nl: {
+        title: "Bierwagen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Beer wagon",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Bierwagen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/dieplader/dieplader.jpg": {
+  "transport/containers/IMG_0562ContainerRoodHL.jpg": {
     i18n: {
-      nl: { title: "Dieplader" },
-      en: { title: "Low loader" },
-      de: { title: "Tieflader" }
+      nl: {
+        title: "Containers",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Containers",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Container",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/heineken/heineken.jpg": {
+  "transport/diepladers/dieplader2.jpg": {
     i18n: {
-      nl: { title: "Heineken" },
-      en: { title: "Heineken" },
-      de: { title: "Heineken" }
+      nl: {
+        title: "Diepladers",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Low loaders",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Tieflader",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/tankauto/tankauto.jpg": {
+  "transport/tankauto/tankauto2.jpg": {
     i18n: {
-      nl: { title: "Tankauto" },
-      en: { title: "Tanker truck" },
-      de: { title: "Tankwagen" }
+      nl: {
+        title: "Tankauto",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Tanker truck",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Tankwagen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/treinen/treinen.jpg": {
+  "transport/treinen/treinen2.jpg": {
     i18n: {
-      nl: { title: "Treinen" },
-      en: { title: "Trains" },
-      de: { title: "Züge" }
+      nl: {
+        title: "Treinen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Trains",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Züge",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/vliegtuigen/vliegtuigen.jpg": {
+  "transport/vliegtuigen/vliegtuigen2.jpg": {
     i18n: {
-      nl: { title: "Vliegtuigen" },
-      en: { title: "Aircraft" },
-      de: { title: "Flugzeuge" }
+      nl: {
+        title: "Vliegtuigen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Aircraft",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Flugzeuge",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "transport/vrachtwagens/vrachtwagens.jpg": {
+  "transport/vrachtwagens/vrachtwagens2-2.jpg": {
     i18n: {
       nl: {
         title: "Vrachtwagens",
-        type: "Transportmodel / Relatiegeschenk",
-        year: "—",
-        description:
-          "Vrachtwagenmodellen in gerecycled karton, geschikt voor acties, events en langdurige merkzichtbaarheid.\n\nLeverbaar in verschillende formaten en volledig te personaliseren."
+        description: ``,
+        body: ``
       },
-      en: { title: "Trucks" },
-      de: { title: "LKW" }
+      en: {
+        title: "Trucks",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "LKW",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  // ─── Bureau accessoires ───────────────────────────────────────
-  "bureau-accessoires/bureaukalenders/bureaukalenders.jpg": {
+  // ═══════════════════════════════════════════════════════════════
+  // BUREAU ACCESSOIRES
+  // ═══════════════════════════════════════════════════════════════
+
+  "bureau-accessoires/bureaukalenders/bureaukalenders3.jpg": {
     i18n: {
-      nl: { title: "Bureaukalenders" },
-      en: { title: "Desk calendars" },
-      de: { title: "Schreibtischkalender" }
+      nl: {
+        title: "Bureaukalenders",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Desk calendars",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Schreibtischkalender",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "bureau-accessoires/fotolijstjes/fotolijstjes.jpg": {
+  "bureau-accessoires/fotolijstjes/fotolijstjes2.jpg": {
     i18n: {
-      nl: { title: "Fotolijstjes" },
-      en: { title: "Photo frames" },
-      de: { title: "Fotorahmen" }
+      nl: {
+        title: "Fotolijstjes",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Photo frames",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Fotorahmen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "bureau-accessoires/groenepostbak/groenepostbak.jpg": {
-    i18n: {
-      nl: { title: "Groene postbak" },
-      en: { title: "Green letter tray" },
-      de: { title: "Grüner Briefkorb" }
-    }
-  },
-
-  "bureau-accessoires/klokken/klokken.jpg": {
+  "bureau-accessoires/klokken/klokken2.jpg": {
     i18n: {
       nl: {
         title: "Klokken",
-        type: "Bureau-accessoire",
-        year: "—",
-        description:
-          "Compacte (wand)klok in gerecycled karton. Strak ontwerp met veel ruimte voor branding.\n\nGeschikt als mailing item of give-away bij productintroducties."
+        description: ``,
+        body: ``
       },
-      en: { title: "Clocks" },
-      de: { title: "Uhren" }
+      en: {
+        title: "Clocks",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Uhren",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "bureau-accessoires/korenbloem/korenbloem.jpg": {
-    i18n: {
-      nl: { title: "Korenbloem" },
-      en: { title: "Cornflower" },
-      de: { title: "Kornblume" }
-    }
-  },
-
-  "bureau-accessoires/memobakjes/memobakjes.jpg": {
-    i18n: {
-      nl: { title: "Memobakjes" },
-      en: { title: "Memo trays" },
-      de: { title: "Memo-Ablagen" }
-    }
-  },
-
-  "bureau-accessoires/onderzetters/onderzetters.jpg": {
-    i18n: {
-      nl: { title: "Onderzetters" },
-      en: { title: "Coasters" },
-      de: { title: "Untersetzer" }
-    }
-  },
-
-  "bureau-accessoires/popup/popup.jpg": {
-    i18n: {
-      nl: { title: "Pop-up" },
-      en: { title: "Pop-up" },
-      de: { title: "Pop-up" }
-    }
-  },
-
-  // ─── Verpakkingen (was wijnverpakkingen-displays) ─────────────
-  "wijnverpakkingen-displays/2-vakswijndoos/2-vakswijndoos.jpg": {
-    i18n: {
-      nl: { title: "2-vaks wijndoos" },
-      en: { title: "2-slot wine box" },
-      de: { title: "Zweiteilige Weinbox" }
-    }
-  },
-
-  "wijnverpakkingen-displays/africa/africa.jpg": {
-    i18n: {
-      nl: { title: "Africa box" },
-      en: { title: "Africa box" },
-      de: { title: "Afrika-Box" }
-    }
-  },
-
-  "wijnverpakkingen-displays/bloemendozen/bloemendozen.jpg": {
-    i18n: {
-      nl: { title: "Bloemendozen" },
-      en: { title: "Flower boxes" },
-      de: { title: "Blumenboxen" }
-    }
-  },
-
-  "wijnverpakkingen-displays/cdverpakking/cdverpakking.jpg": {
-    i18n: {
-      nl: { title: "CD-verpakking" },
-      en: { title: "CD packaging" },
-      de: { title: "CD-Verpackung" }
-    }
-  },
-
-  "wijnverpakkingen-displays/chocoladedoosje/chocoladedoosje.jpg": {
-    i18n: {
-      nl: { title: "Chocoladedoosje" },
-      en: { title: "Chocolate box" },
-      de: { title: "Schokoladendöschen" }
-    }
-  },
-
-  "wijnverpakkingen-displays/divadistrict/divadistrict.jpg": {
-    i18n: {
-      nl: { title: "Diva District" },
-      en: { title: "Diva District" },
-      de: { title: "Diva District" }
-    }
-  },
-
-  "wijnverpakkingen-displays/draagtassen/draagtassen.jpg": {
-    i18n: {
-      nl: { title: "Draagtassen" },
-      en: { title: "Carrier bags" },
-      de: { title: "Tragetaschen" }
-    }
-  },
-
-  "wijnverpakkingen-displays/luxarnw/luxarnw.jpg": {
-    i18n: {
-      nl: { title: "Luxe verpakking" },
-      en: { title: "Luxury box" },
-      de: { title: "Luxusbox" }
-    }
-  },
-
-  "wijnverpakkingen-displays/magictubes/magictubes.jpg": {
-    i18n: {
-      nl: { title: "Magic tubes" },
-      en: { title: "Magic tubes" },
-      de: { title: "Magic Tubes" }
-    }
-  },
-
-  "wijnverpakkingen-displays/metopdoos/metopdoos.jpg": {
-    i18n: {
-      nl: { title: "Doos met opdruk" },
-      en: { title: "Printed box" },
-      de: { title: "Bedruckte Schachtel" }
-    }
-  },
-
-  "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg": {
-    i18n: {
-      nl: { title: "Uitklapverpakking" },
-      en: { title: "Fold-out packaging" },
-      de: { title: "Aufklappverpackung" }
-    }
-  },
-
-  "wijnverpakkingen-displays/viko-shockproof/viko_shockproof.jpg": {
-    i18n: {
-      nl: { title: "Viko Shockproof" },
-      en: { title: "Viko Shockproof" },
-      de: { title: "Viko Schlagfest" }
-    }
-  },
-
-  "wijnverpakkingen-displays/vikokoker/vikokoker.jpg": {
+  "bureau-accessoires/memobakjes/memobakjes2.jpg": {
     i18n: {
       nl: {
-        title: "Viko koker",
-        type: "Verpakking / Koker",
-        year: "2009",
-        description:
-          "Luxe kartonnen koker met slimme sluiting (Europees patent).\n\nDoel: premium uitstraling zonder nietjes of tape, en snel op te zetten in productie."
+        title: "Memobakjes",
+        description: ``,
+        body: ``
       },
-      en: { title: "Viko tube" },
-      de: { title: "Viko-Koker" }
+      en: {
+        title: "Memo trays",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Memo-Ablagen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "wijnverpakkingen-displays/wijnvogelhuisje/wijnvogelhuisje.jpg": {
+  "bureau-accessoires/onderzetters/onderzetters2.jpg": {
     i18n: {
-      nl: { title: "Wijn vogelhuisje" },
-      en: { title: "Wine birdhouse" },
-      de: { title: "Wein-Vogelhaus" }
+      nl: {
+        title: "Onderzetters",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Coasters",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Untersetzer",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  // ─── Boeken & Mappen ──────────────────────────────────────────
-  "boeken-mappen/euromap/euromap.jpg": {
+  "bureau-accessoires/pop-up/popup2.jpg": {
     i18n: {
-      nl: { title: "Euromap" },
-      en: { title: "Euromap folder" },
-      de: { title: "Euromap-Mappe" }
+      nl: {
+        title: "Pop-up",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Pop-up",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Pop-up",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/golfrecords/golfrecords3.jpg": {
+  // ═══════════════════════════════════════════════════════════════
+  // VERPAKKINGEN
+  // ═══════════════════════════════════════════════════════════════
+
+  "verpakkingen/bloemenverpakking/bloemendozen2.jpg": {
     i18n: {
-      nl: { title: "Golf records" },
-      en: { title: "Golf records book" },
-      de: { title: "Golfrekorde-Buch" }
+      nl: {
+        title: "Bloemenverpakking",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Flower packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Blumenverpackung",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/grafiekmappen/grafiekmappen.jpg": {
+  "verpakkingen/cd-verpakking/cdverpakking2.jpg": {
     i18n: {
-      nl: { title: "Grafiekmappen" },
-      en: { title: "Graphic folders" },
-      de: { title: "Grafikmappe" }
+      nl: {
+        title: "CD-verpakking",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "CD packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "CD-Verpackung",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/herdenkingsboek/herdenkingsboek.jpg": {
+  "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.jpg": {
     i18n: {
-      nl: { title: "Herdenkingsboek" },
-      en: { title: "Memorial book" },
-      de: { title: "Gedenkbuch" }
+      nl: {
+        title: "Chocoladedoosje",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Chocolate box",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Schokoladendöschen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/informatiemap/informatiemap.jpg": {
+  "verpakkingen/handtasjes/IMG_1012.jpg": {
     i18n: {
-      nl: { title: "Informatiemap" },
-      en: { title: "Information folder" },
-      de: { title: "Informationsmappe" }
+      nl: {
+        title: "Handtasjes",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Handbags",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Handtaschen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/kunstmappen/kunstmappen.jpg": {
+  "verpakkingen/magic-packaging/magictubes2.jpg": {
     i18n: {
-      nl: { title: "Kunstmappen" },
-      en: { title: "Art folders" },
-      de: { title: "Kunstmappe" }
+      nl: {
+        title: "Magic Packaging",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Magic Packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Magic Packaging",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/libris/libris.jpg": {
+  "verpakkingen/ontspiegelde-showcase/luxar2.jpg": {
     i18n: {
-      nl: { title: "Libris" },
-      en: { title: "Libris" },
-      de: { title: "Libris" }
+      nl: {
+        title: "Ontspiegelde showcase",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Anti-reflective showcase",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Entspiegelte Vitrine",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/mappen/mappen.jpg": {
+  "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.jpg": {
     i18n: {
-      nl: { title: "Mappen" },
-      en: { title: "Folders" },
-      de: { title: "Mappen" }
+      nl: {
+        title: "Shockproof wijnverpakking",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Shockproof wine packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Stoßfeste Weinverpackung",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "boeken-mappen/stalenboek/stalenboek.jpg": {
+  "verpakkingen/uitklapdoos/metopdoos2.jpg": {
     i18n: {
-      nl: { title: "Stalenboek" },
-      en: { title: "Sample book" },
-      de: { title: "Musterbuch" }
+      nl: {
+        title: "Uitklapdoos",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Fold-out box",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Aufklappbox",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  // ─── Spellen (was kerst-spellen) ──────────────────────────────
-  "kerst-spellen/bordspellen/bordspellen.jpg": {
+  "verpakkingen/viko-kokers/vikokoker2.jpg": {
     i18n: {
-      nl: { title: "Bordspellen" },
-      en: { title: "Board games" },
-      de: { title: "Brettspiele" }
+      nl: {
+        title: "Viko kokers",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Viko tubes",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Viko-Hülsen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "kerst-spellen/poulebal/poulebal.jpg": {
+  "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.jpg": {
     i18n: {
-      nl: { title: "Poulebal" },
-      en: { title: "Poule ball game" },
-      de: { title: "Poule-Spiel" }
+      nl: {
+        title: "Wijnverpakkingen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Wine packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Weinverpackungen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "kerst-spellen/puzzel/puzzel.jpg": {
+  "verpakkingen/zakken/zakkengroot.jpg": {
     i18n: {
-      nl: { title: "Puzzel" },
-      en: { title: "Puzzle" },
-      de: { title: "Puzzle" }
+      nl: {
+        title: "Zakken",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Bags",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Taschen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "kerst-spellen/schaakspel/schaakspel.jpg": {
+  // ═══════════════════════════════════════════════════════════════
+  // BOEKEN & MAPPEN
+  // ═══════════════════════════════════════════════════════════════
+
+  "boeken-mappen/boekverpakkingen/libris2.jpg": {
     i18n: {
-      nl: { title: "Schaakspel" },
-      en: { title: "Chess set" },
-      de: { title: "Schachspiel" }
+      nl: {
+        title: "Boekverpakkingen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Book packaging",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Buchverpackungen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "kerst-spellen/werpspel/werpspel.jpg": {
+  "boeken-mappen/euromap/euromap2.jpg": {
     i18n: {
-      nl: { title: "Werpspel" },
-      en: { title: "Throwing game" },
-      de: { title: "Wurfspiel" }
+      nl: {
+        title: "Euromap",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Euromap folder",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Euromap-Mappe",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  // ─── Eindejaarsgeschenken ─────────────────────────────────────
-  "kerst-spellen/kerstversiering/kerstversiering.jpg": {
+  "boeken-mappen/golfrecords/golfrecords2.jpg": {
     i18n: {
-      nl: { title: "Kerstversiering" },
-      en: { title: "Christmas decorations" },
-      de: { title: "Weihnachtsdekoration" }
+      nl: {
+        title: "Golf records",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Golf records book",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Golfrekorde-Buch",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  // ─── The Art Of Board (was interieur-exterieur) ───────────────
-  "interieur-exterieur/apothekerskast/apothekerskast.jpg": {
+  "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg": {
     i18n: {
-      nl: { title: "Apothekerskast" },
-      en: { title: "Pharmacist's cabinet" },
-      de: { title: "Apothekerschrank" }
+      nl: {
+        title: "Grafiekmappen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Graphic folders",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Grafikmappe",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/argent/argent.jpg": {
+  "boeken-mappen/herdenkingsboek/herdenkingsboek2.jpg": {
     i18n: {
-      nl: { title: "Argent" },
-      en: { title: "Argent display" },
-      de: { title: "Argent-Display" }
+      nl: {
+        title: "Herdenkingsboek",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Memorial book",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Gedenkbuch",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/caleidoscoop/caleidoscoop.jpg": {
+  "boeken-mappen/informatiemap/informatiemap2.jpg": {
     i18n: {
-      nl: { title: "Caleidoscoop" },
-      en: { title: "Kaleidoscope" },
-      de: { title: "Kaleidoskop" }
+      nl: {
+        title: "Informatiemap",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Information folder",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Informationsmappe",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/maquette/maquette.jpg": {
+  "boeken-mappen/kunstmappen/kunstmappen2.jpg": {
     i18n: {
-      nl: { title: "Maquette" },
-      en: { title: "Scale model" },
-      de: { title: "Modell" }
+      nl: {
+        title: "Kunstmappen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Art folders",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Kunstmappe",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/oogwereld/oogwereld.jpg": {
+  "boeken-mappen/zelfsluitende-mappen/mappen3.jpg": {
     i18n: {
-      nl: { title: "Oogwereld" },
-      en: { title: "Eye world" },
-      de: { title: "Augenwelt" }
+      nl: {
+        title: "Zelfsluitende mappen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Self-closing folders",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Selbstschließende Mappen",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/standbouw/standbouw.jpg": {
+  // ═══════════════════════════════════════════════════════════════
+  // SPELLEN
+  // ═══════════════════════════════════════════════════════════════
+
+  "spellen/bordspellen/bordspellen2.jpg": {
     i18n: {
-      nl: { title: "Standbouw" },
-      en: { title: "Booth construction" },
-      de: { title: "Messebau" }
+      nl: {
+        title: "Bordspellen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Board games",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Brettspiele",
+        description: ``,
+        body: ``
+      }
     }
   },
 
-  "interieur-exterieur/visafslag-volendam/visafslag-volendam.jpg": {
+  "spellen/poulebal/poulebal2.jpg": {
     i18n: {
-      nl: { title: "Visafslag Volendam" },
-      en: { title: "Fish auction Volendam" },
-      de: { title: "Fischauktion Volendam" }
+      nl: {
+        title: "Poulebal",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Poule ball game",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Poule-Spiel",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "spellen/puzzel/puzzel2.jpg": {
+    i18n: {
+      nl: {
+        title: "Puzzel",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Puzzle",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Puzzle",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "spellen/schaakspel/schaakspel2.jpg": {
+    i18n: {
+      nl: {
+        title: "Schaakspel",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Chess set",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Schachspiel",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "spellen/werpspel/werpspel2.jpg": {
+    i18n: {
+      nl: {
+        title: "Werpspel",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Throwing game",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Wurfspiel",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // THE ART OF BOARD
+  // ═══════════════════════════════════════════════════════════════
+
+  "the-art-of-board/eiffeltoren/eiffeltoren1.JPG": {
+    i18n: {
+      nl: {
+        title: "Eiffeltoren",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Eiffel Tower",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Eiffelturm",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.jpg": {
+    i18n: {
+      nl: {
+        title: "Golfkartonnen stoel",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Corrugated cardboard chair",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Wellpappenstuhl",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "the-art-of-board/tezeras/tezeras.jpg": {
+    i18n: {
+      nl: {
+        title: "Tezeras",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Tezeras",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Tezeras",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "the-art-of-board/westminster-abbey/westminster-abbey1.JPG": {
+    i18n: {
+      nl: {
+        title: "Westminster Abbey",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Westminster Abbey",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Westminster Abbey",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "the-art-of-board/wild-flowers/klaproos.jpg": {
+    i18n: {
+      nl: {
+        title: "Wild Flowers",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Wild Flowers",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Wildblumen",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "interieur-exterieur/apothekerskast/apothekerskast2.jpg": {
+    i18n: {
+      nl: {
+        title: "Apothekerskast",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Pharmacist's cabinet",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Apothekerschrank",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "interieur-exterieur/enorme-displays/oogwereld2.jpg": {
+    i18n: {
+      nl: {
+        title: "Enorme displays",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Huge displays",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Riesendisplays",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "interieur-exterieur/gebouwen/villavna.jpg": {
+    i18n: {
+      nl: {
+        title: "Gebouwen",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Buildings",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Gebäude",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "interieur-exterieur/maquette/maquette2-1.jpg": {
+    i18n: {
+      nl: {
+        title: "Maquette",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Scale model",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Modell",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // EINDEJAARSGESCHENKEN
+  // ═══════════════════════════════════════════════════════════════
+
+  "eindejaarsgeschenken/compilatie/compilatie-1.jpg": {
+    i18n: {
+      nl: {
+        title: "Compilatie",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Compilation",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Zusammenstellung",
+        description: ``,
+        body: ``
+      }
+    }
+  },
+
+  "eindejaarsgeschenken/kerst/kerstversiering2.jpg": {
+    i18n: {
+      nl: {
+        title: "Kerstversiering",
+        description: ``,
+        body: ``
+      },
+      en: {
+        title: "Christmas decorations",
+        description: ``,
+        body: ``
+      },
+      de: {
+        title: "Weihnachtsdekoration",
+        description: ``,
+        body: ``
+      }
     }
   }
 };
 
-// Volgorde in categorie-tabellen.
-// Alles wat hier niet in staat komt daarna alfabetisch.
+// Volgorde in categorie-overzichten.
+// Producten die hier staan komen eerst, de rest volgt alfabetisch.
 export const projectOrder = {
   transport: [
-    "transport/vrachtwagens/vrachtwagens.jpg",
-    "transport/bedrijfsautos/bedrijfsautos.jpg"
+    "transport/vrachtwagens/vrachtwagens2-2.jpg",
+    "transport/bedrijfsautos/bedrijfsautos2.jpg"
   ],
   "bureau-accessoires": [
-    "bureau-accessoires/klokken/klokken.jpg"
+    "bureau-accessoires/klokken/klokken2.jpg"
   ],
   verpakkingen: [
-    "wijnverpakkingen-displays/vikokoker/vikokoker.jpg",
-    "wijnverpakkingen-displays/uitklapverpakking/uitklapverpakking.jpg"
+    "verpakkingen/viko-kokers/vikokoker2.jpg",
+    "verpakkingen/magic-packaging/magictubes2.jpg"
   ],
   spellen: [
-    "kerst-spellen/schaakspel/schaakspel.jpg"
+    "spellen/schaakspel/schaakspel2.jpg"
   ]
 };
