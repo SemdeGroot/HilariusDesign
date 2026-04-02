@@ -3,13 +3,20 @@
 .pageFade{
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pageFade.visible{
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (min-width: 861px){
+  .pageFadeSlowDesktop{
+    transition: opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
 }
 
 /* ─── Shared ──────────────────────────────────────────────── */
@@ -33,6 +40,10 @@
 
 @media (max-width: 860px){
   .pageTitle{ font-size: 28px; }
+  .pageFade{
+    transform: none;
+    transition: opacity 1350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 /* ─── About ──────────────────────────────────────────────── */
@@ -133,7 +144,7 @@
 @media (max-width: 860px){
   .aboutLayout{
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 0;
   }
   .aboutLeft{ position: static; }
   .aboutImgWrap{ aspect-ratio: 4 / 3; }
@@ -142,7 +153,8 @@
     border-left: 0;
     padding-left: 0;
     border-top: 1px solid var(--line);
-    padding-top: 18px;
+    margin-top: 24px;
+    padding-top: 20px;
   }
 }
 
@@ -401,15 +413,21 @@
 @media (max-width: 860px){
   .contactLayout{
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 0;
   }
   .contactLeft{
     display: block;
   }
 
   .contactImgWrap{
-    margin-bottom: 24px;
+    margin-bottom: 0;
     aspect-ratio: 16 / 9;
+  }
+
+  .contactCopy{
+    border-top: 1px solid var(--line);
+    margin-top: 24px;
+    padding-top: 20px;
   }
 
   .contactDetails{
@@ -421,7 +439,8 @@
     border-left: 0;
     padding-left: 0;
     border-top: 1px solid var(--line);
-    padding-top: 18px;
+    margin-top: 24px;
+    padding-top: 20px;
   }
 }
 

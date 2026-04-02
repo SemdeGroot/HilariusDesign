@@ -33,7 +33,6 @@
 .footerBrand{
   font-size: 34px;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   line-height: 1;
   margin-bottom: 10px;
 }
@@ -57,25 +56,22 @@
 
 .footerCol{
   display:grid;
-  grid-template-rows: auto 1fr;
   align-items:start;
 }
 
-.footerColSocial{
-  justify-self: end;
+.footerColLinks{
+  min-width: 0;
 }
 
-.footerLabel{
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 16px;
+.footerColMeta{
+  justify-self: end;
+  text-align: left;
 }
 
 .footerBody{
   display:grid;
   gap: 8px;
+  min-width: 0;
 }
 
 .footerText{
@@ -83,6 +79,7 @@
   line-height: 1.65;
   color: var(--text);
   opacity: 0.9;
+  white-space: nowrap;
 }
 
 .footerLink{
@@ -90,24 +87,18 @@
   line-height: 1.65;
   padding: 0;
   display: block;
+  min-width: 0;
 }
 
 .footerContactLink{
   opacity: 0.9;
 }
 
-.footerSpacer{
-  height: 10px;
-}
-
-.footerSpacerRow{
-  height: 22px;
-}
-
 .footer .uLinkLabel{
   position: relative;
   display: inline-block;
   line-height: normal;
+  max-width: 100%;
 }
 
 .footer .uUnderline{
@@ -129,16 +120,14 @@
 }
 
 .footerLegal{
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.65;
   color: var(--muted);
-  white-space: normal;
+  white-space: nowrap;
 }
 
 @media (max-width: 860px){
   .main{ padding-top: 24px; padding-bottom: 36px; }
-
-  .footerLegal{ font-size: 10px; line-height: 1.55; }
 
   .footerInner{
     grid-template-columns: 1fr;
@@ -160,15 +149,28 @@
     gap: 24px 32px;
   }
 
-  .footerColSocial{
+  .footerColMeta{
     justify-self: start;
-  }
-
-  .footerSpacerRow{
-    height: 22px;
+    text-align: left;
   }
 }
 
 @media (max-width: 480px){
-  .footerCols{ grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+  .footerCols{
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px 24px;
+  }
+
+  .footerText,
+  .footerLink,
+  .footerLegal{
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .footerText,
+  .footerLegal{
+    white-space: normal;
+    text-wrap: balance;
+  }
 }

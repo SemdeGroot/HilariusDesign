@@ -123,7 +123,7 @@ export default function Home() {
         }))
     ];
 
-    const cats = c.filter((cat) => cat.slug !== "interieur-exterieur").map((cat) => ({
+    const cats = c.filter((cat) => cat.slug !== "interieur-exterieur" && cat.slug !== "the-art-of-board").map((cat) => ({
       slug: cat.slug,
       src: coverFor(cat.slug),
       title: pick(cat, "title"),

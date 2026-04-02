@@ -1,4 +1,8 @@
 /* src/components/Header/Header.css */
+:root{
+  --header-h: 86px;
+}
+
 .header{
   position: sticky;
   top:0;
@@ -6,7 +10,6 @@
   /* Always solid white — no backdrop-filter opacity effect */
   background: #ffffff;
   border-bottom: 1px solid var(--line);
-  --header-h: 86px;
 }
 
 .headerInner{
@@ -222,7 +225,9 @@
   align-items:center;
   justify-content:center;
   padding: 0;
+  cursor: pointer;
 }
+
 
 /* ─── MOBILE INLINE NAV ──────────────────────────────────────── */
 /* Hidden on desktop */
@@ -279,7 +284,7 @@
   position:absolute;
   inset:0;
   background: var(--bg);
-  padding: 18px;
+  padding: 0 var(--page-pad) 18px;
   overflow: auto;
 }
 
@@ -287,7 +292,7 @@
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding-bottom: 12px;
+  height: var(--header-h);
   border-bottom: 1px solid var(--line);
 }
 
@@ -412,7 +417,7 @@
 }
 
 @media (max-width: 860px){
-  .header{ --header-h: 62px; }
+  :root{ --header-h: 62px; }
 
   /* space-between distributes equal gaps between all 5 flex items:
      logo ↔ Over HD ↔ FAQ ↔ Contact ↔ Menu button.
@@ -458,6 +463,11 @@
   .mobileBtn{
     display:inline-flex;
     flex-shrink: 0;
+  }
+
+  .mobileTop{
+    margin: 0 calc(var(--page-pad) * -1);
+    padding: 0 var(--page-pad);
   }
 
   .mega{ display:none; }

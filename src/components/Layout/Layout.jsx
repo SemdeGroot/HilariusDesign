@@ -81,7 +81,7 @@ export default function Layout({ children }) {
       <footer className="footer">
         <div className="footerInner">
           <div className="footerBrandBlock">
-            <div className="footerBrand">HILARIUSDESIGN</div>
+            <div className="footerBrand">HilariusDesign</div>
             <div className="footerTagline">
               <div>IDEAS MADE OF BOARD</div>
               <div>WHERE MATERIAL MEETS CREATION</div>
@@ -89,8 +89,7 @@ export default function Layout({ children }) {
           </div>
 
           <div className="footerCols">
-            <div className="footerCol">
-              <div className="footerLabel">Contact</div>
+            <div className="footerCol footerColLinks">
               <div className="footerBody">
                 <a
                   className="uLink footerLink footerContactLink"
@@ -111,15 +110,6 @@ export default function Layout({ children }) {
                     <span className="uUnderline" />
                   </span>
                 </a>
-
-                <div className="footerText">KVK 34321364</div>
-                <div className="footerText">BTW NL001184466B83</div>
-              </div>
-            </div>
-
-            <div className="footerCol footerColSocial">
-              <div className="footerLabel">Social</div>
-              <div className="footerBody">
                 <a
                   className="uLink footerLink"
                   href={routesConfig.linkedin}
@@ -131,14 +121,14 @@ export default function Layout({ children }) {
                     <span className="uUnderline" />
                   </span>
                 </a>
+              </div>
+            </div>
 
-                <div className="footerSpacerRow" aria-hidden="true" />
-
-                <div className="footerLegal">
-                  All showed items are registrated by:
-                  <br />
-                  CC Proof © 2026 Hilarius Design
-                </div>
+            <div className="footerCol footerColMeta">
+              <div className="footerBody">
+                <div className="footerText">KVK 34321364</div>
+                <div className="footerText">BTW NL001184466B83</div>
+                <div className="footerLegal">© 2026 Hilarius Design</div>
               </div>
             </div>
           </div>

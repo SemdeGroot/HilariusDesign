@@ -19,7 +19,7 @@ export function useScrollReveal({
 
     const isMobile = window.matchMedia("(max-width: 860px)").matches;
     const opts = isMobile
-      ? { threshold: 0.2, rootMargin: "0px" }
+      ? { threshold: 0.22, rootMargin: "0px 0px -22% 0px" }
       : { threshold, rootMargin };
 
     const observer = new IntersectionObserver(

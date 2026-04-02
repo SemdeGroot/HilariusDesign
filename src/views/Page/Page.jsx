@@ -25,7 +25,7 @@ function AboutPage({ page }) {
   return (
     <section className="aboutLayout">
       <div className="aboutLeft">
-        <div className={`aboutImgWrap pageFade ${imgVisible ? "visible" : ""}`}>
+        <div className={`aboutImgWrap pageFade pageFadeSlowDesktop ${imgVisible ? "visible" : ""}`}>
           <img
             src="/over-wim.JPG"
             alt="Wim Hilarius"
@@ -34,7 +34,7 @@ function AboutPage({ page }) {
         </div>
       </div>
 
-      <div className={`aboutRight pageFade ${textVisible ? "visible" : ""}`}>
+      <div className={`aboutRight pageFade pageFadeSlowDesktop ${textVisible ? "visible" : ""}`}>
         <p className="aboutSuper">Over Hilarius Design</p>
         <h1 className="aboutHeading">{pick(page, "heading")}</h1>
         <p className="aboutIntro">{pick(page, "intro")}</p>
@@ -116,7 +116,8 @@ function ContactPage({ page }) {
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const imgVisible = useFadeIn(100);
-  const formVisible = useFadeIn(300);
+  const textVisible = useFadeIn(220);
+  const formVisible = useFadeIn(340);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -147,7 +148,7 @@ function ContactPage({ page }) {
   return (
     <div className="contactLayout">
       <div className="contactInfo">
-        <div className={`contactImgWrap pageFade ${imgVisible ? "visible" : ""}`}>
+        <div className={`contactImgWrap pageFade pageFadeSlowDesktop ${imgVisible ? "visible" : ""}`}>
           <img
             src="/contact-image.JPG"
             alt="HilariusDesign contact"
@@ -155,39 +156,41 @@ function ContactPage({ page }) {
           />
         </div>
 
-        <h1 className="pageTitle">{pick(page, "title")}</h1>
-        <p className="pageIntro">{pick(page, "intro")}</p>
+        <div className={`contactCopy pageFade pageFadeSlowDesktop ${textVisible ? "visible" : ""}`}>
+          <h1 className="pageTitle">{pick(page, "title")}</h1>
+          <p className="pageIntro">{pick(page, "intro")}</p>
 
-        <div className="contactDetails">
-          <a
-            className="contactDetailLink"
-            href={`mailto:${routesConfig.contact.email}`}
-          >
-            <span className="contactDetailLinkLabel">{routesConfig.contact.email}<span className="contactDetailUnderline" /></span>
-          </a>
-          <a
-            className="contactDetailLink"
-            href={`tel:${routesConfig.contact.phone.replace(/\s/g, "")}`}
-          >
-            <span className="contactDetailLinkLabel">{routesConfig.contact.phone}<span className="contactDetailUnderline" /></span>
-          </a>
-          <a
-            className="contactDetailLink"
-            href={routesConfig.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span className="contactDetailLinkLabel">LinkedIn<span className="contactDetailUnderline" /></span>
-          </a>
-          <div className="contactDetailText" style={{ whiteSpace: "pre-line" }}>
-            {routesConfig.contact.address}
+          <div className="contactDetails">
+            <a
+              className="contactDetailLink"
+              href={`mailto:${routesConfig.contact.email}`}
+            >
+              <span className="contactDetailLinkLabel">{routesConfig.contact.email}<span className="contactDetailUnderline" /></span>
+            </a>
+            <a
+              className="contactDetailLink"
+              href={`tel:${routesConfig.contact.phone.replace(/\s/g, "")}`}
+            >
+              <span className="contactDetailLinkLabel">{routesConfig.contact.phone}<span className="contactDetailUnderline" /></span>
+            </a>
+            <a
+              className="contactDetailLink"
+              href={routesConfig.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="contactDetailLinkLabel">LinkedIn<span className="contactDetailUnderline" /></span>
+            </a>
+            <div className="contactDetailText" style={{ whiteSpace: "pre-line" }}>
+              {routesConfig.contact.address}
+            </div>
+            <div className="contactDetailText">KVK 34321364</div>
+            <div className="contactDetailText">BTW NL001184466B83</div>
           </div>
-          <div className="contactDetailText">KVK 34321364</div>
-          <div className="contactDetailText">BTW NL001184466B83</div>
         </div>
       </div>
 
-      <div className={`contactFormCol pageFade ${formVisible ? "visible" : ""}`}>
+      <div className={`contactFormCol pageFade pageFadeSlowDesktop ${formVisible ? "visible" : ""}`}>
         {sent ? (
           <div className="contactSuccess">{labels.success}</div>
         ) : (
