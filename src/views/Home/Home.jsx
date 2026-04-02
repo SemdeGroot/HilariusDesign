@@ -106,15 +106,16 @@ export default function Home() {
       return p.find((x) => x.category === slug)?.cover || "";
     };
 
+    const hideOnHome = ["the-art-of-board", "interieur-exterieur"];
     const wobCat = c.find((cat) => cat.slug === "the-art-of-board");
     const baseTiles = [
-      { key: "wob", type: "wob", size: "s2", to: "/category/the-art-of-board", label: wobCat ? pick(wobCat, "title") : "", sub: wobCat ? pick(wobCat, "subtitle") : "" },
+      { key: "wob", type: "wob", size: "s3", to: "/category/the-art-of-board", label: wobCat ? pick(wobCat, "title") : "", sub: wobCat ? pick(wobCat, "subtitle") : "" },
       ...c
-        .filter((cat) => cat.slug !== "the-art-of-board")
+        .filter((cat) => !hideOnHome.includes(cat.slug))
         .map((cat, i) => ({
           key: `c${i}`,
           type: "image",
-          size: "s2",
+          size: i < 2 ? "s3" : "s2",
           to: `/category/${cat.slug}`,
           src: coverFor(cat.slug),
           label: pick(cat, "title"),
@@ -122,7 +123,7 @@ export default function Home() {
         }))
     ];
 
-    const cats = c.map((cat) => ({
+    const cats = c.filter((cat) => cat.slug !== "interieur-exterieur").map((cat) => ({
       slug: cat.slug,
       src: coverFor(cat.slug),
       title: pick(cat, "title"),

@@ -163,13 +163,13 @@ function ContactPage({ page }) {
             className="contactDetailLink"
             href={`mailto:${routesConfig.contact.email}`}
           >
-            {routesConfig.contact.email}
+            <span className="contactDetailLinkLabel">{routesConfig.contact.email}<span className="contactDetailUnderline" /></span>
           </a>
           <a
             className="contactDetailLink"
             href={`tel:${routesConfig.contact.phone.replace(/\s/g, "")}`}
           >
-            {routesConfig.contact.phone}
+            <span className="contactDetailLinkLabel">{routesConfig.contact.phone}<span className="contactDetailUnderline" /></span>
           </a>
           <a
             className="contactDetailLink"
@@ -177,7 +177,7 @@ function ContactPage({ page }) {
             target="_blank"
             rel="noreferrer"
           >
-            LinkedIn
+            <span className="contactDetailLinkLabel">LinkedIn<span className="contactDetailUnderline" /></span>
           </a>
           <div className="contactDetailText" style={{ whiteSpace: "pre-line" }}>
             {routesConfig.contact.address}
