@@ -219,6 +219,14 @@ export const routesConfig = {
       }
     },
     {
+      slug: "interieur-exterieur",
+      i18n: {
+        nl: { title: "Interieur & Exterieur", subtitle: "Displays, maquettes en ruimtelijke presentaties.", titleLine1: "Interieur", titleLine2: "& exterieur.", titleLine3: "" },
+        en: { title: "Interior & Exterior", subtitle: "Displays, scale models and spatial presentations.", titleLine1: "Interior", titleLine2: "& exterior.", titleLine3: "" },
+        de: { title: "Innen & Außen", subtitle: "Displays, Modelle und räumliche Präsentationen.", titleLine1: "Innen", titleLine2: "& außen.", titleLine3: "" }
+      }
+    },
+    {
       slug: "eindejaarsgeschenken",
       i18n: {
         nl: { title: "Eindejaarsgeschenken", subtitle: "Sfeervolle producten voor het einde van het jaar.", titleLine1: "Einde-", titleLine2: "jaars-", titleLine3: "geschenken." },
@@ -234,7 +242,8 @@ export const routesConfig = {
     verpakkingen: "verpakkingen/magic-packaging/magictubes2.jpg",
     "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg",
     spellen: "spellen/schaakspel/schaakspel2.jpg",
-    "the-art-of-board": "interieur-exterieur/maquette/maquette2-1.jpg",
+    "the-art-of-board": "the-art-of-board/eiffeltoren/eiffeltoren1.JPG",
+    "interieur-exterieur": "interieur-exterieur/maquette/maquette2-1.jpg",
     eindejaarsgeschenken: "eindejaarsgeschenken/kerst/kerstversiering2.jpg"
   },
 
@@ -350,7 +359,18 @@ export const routesConfig = {
         "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.jpg",
         "the-art-of-board/tezeras/tezeras.jpg",
         "the-art-of-board/westminster-abbey/westminster-abbey1.JPG",
-        "the-art-of-board/wild-flowers/klaproos.jpg",
+        "the-art-of-board/wild-flowers/klaproos.jpg"
+      ],
+      {
+        nl: { type: "Kunstwerk / Karton" },
+        en: { type: "Art piece / Board" },
+        de: { type: "Kunstwerk / Pappe" }
+      }
+    ),
+
+    ...buildCategoryProjects(
+      "interieur-exterieur",
+      [
         "interieur-exterieur/apothekerskast/apothekerskast2.jpg",
         "interieur-exterieur/enorme-displays/oogwereld2.jpg",
         "interieur-exterieur/gebouwen/villavna.jpg",

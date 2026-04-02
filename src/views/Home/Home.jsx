@@ -107,13 +107,13 @@ export default function Home() {
     };
 
     const baseTiles = [
-      { key: "wob", type: "wob", size: "s3", to: "/category/the-art-of-board" },
+      { key: "wob", type: "wob", size: "s2", to: "/category/the-art-of-board" },
       ...c
         .filter((cat) => cat.slug !== "the-art-of-board")
         .map((cat, i) => ({
           key: `c${i}`,
           type: "image",
-          size: i < 2 ? "s3" : "s2",
+          size: "s2",
           to: `/category/${cat.slug}`,
           src: coverFor(cat.slug),
           label: pick(cat, "title"),

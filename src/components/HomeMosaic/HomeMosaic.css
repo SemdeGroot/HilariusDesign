@@ -23,6 +23,7 @@
 .mosaicTile:nth-child(5) { animation-delay: 240ms; }
 .mosaicTile:nth-child(6) { animation-delay: 300ms; }
 .mosaicTile:nth-child(7) { animation-delay: 360ms; }
+.mosaicTile:nth-child(8) { animation-delay: 420ms; }
 
 /* Sizes */
 .mosaicTile.s1 { grid-column: span 2; }
