@@ -106,8 +106,9 @@ export default function Home() {
       return p.find((x) => x.category === slug)?.cover || "";
     };
 
+    const wobCat = c.find((cat) => cat.slug === "the-art-of-board");
     const baseTiles = [
-      { key: "wob", type: "wob", size: "s2", to: "/category/the-art-of-board" },
+      { key: "wob", type: "wob", size: "s2", to: "/category/the-art-of-board", label: wobCat ? pick(wobCat, "title") : "", sub: wobCat ? pick(wobCat, "subtitle") : "" },
       ...c
         .filter((cat) => cat.slug !== "the-art-of-board")
         .map((cat, i) => ({

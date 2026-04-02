@@ -50,7 +50,10 @@ export default function HomeMosaic({ tiles }) {
                   onReveal={() => setWobLoaded(true)}
                 />
               </div>
-              <div className="mosaicCaption" aria-hidden="true" />
+              <div className="mosaicCaption">
+                <div className="mosaicCaptionLabel">{t.label}</div>
+                {t.sub ? <div className="mosaicCaptionSub">{t.sub}</div> : null}
+              </div>
             </WobWrapper>
           );
         }

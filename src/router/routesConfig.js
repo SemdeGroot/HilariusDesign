@@ -213,9 +213,9 @@ export const routesConfig = {
     {
       slug: "the-art-of-board",
       i18n: {
-        nl: { title: "The Art Of Board", subtitle: "Standbouw, maquettes en bijzondere presentaties.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
-        en: { title: "The Art Of Board", subtitle: "Booth builds, scale models and presentations.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
-        de: { title: "The Art Of Board", subtitle: "Messestand, Modelle und Präsentationen.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" }
+        nl: { title: "The Art Of Board", subtitle: "Ideeën van karton.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
+        en: { title: "The Art Of Board", subtitle: "Ideas made of board.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" },
+        de: { title: "The Art Of Board", subtitle: "Ideen aus Karton.", titleLine1: "The Art", titleLine2: "Of Board.", titleLine3: "" }
       }
     },
     {
