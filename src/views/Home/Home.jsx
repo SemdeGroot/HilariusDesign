@@ -10,13 +10,11 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import "./Home.css";
 
 function useIsMobile(breakpoint = 860) {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
-  });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    setIsMobile(mq.matches);
     const onChange = (e) => setIsMobile(e.matches);
     mq.addEventListener?.("change", onChange);
     return () => mq.removeEventListener?.("change", onChange);

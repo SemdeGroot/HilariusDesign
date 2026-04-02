@@ -13,11 +13,15 @@ export default function I18nProvider({ children }) {
   const supported = routesConfig.i18n?.supported ?? ["nl", "en", "de"];
   const fallback = routesConfig.i18n?.fallback ?? "nl";
 
-  const [lang, setLangState] = useState(() => {
-    if (typeof window === "undefined") return routesConfig.i18n?.default ?? "nl";
+  const defaultLang = routesConfig.i18n?.default ?? "nl";
+  const [lang, setLangState] = useState(defaultLang);
+
+  useEffect(() => {
     const saved = localStorage.getItem("hd_lang");
-    return supported.includes(saved) ? saved : (routesConfig.i18n?.default ?? "nl");
-  });
+    if (saved && supported.includes(saved) && saved !== defaultLang) {
+      setLangState(saved);
+    }
+  }, []);
 
   const setLang = useCallback((next) => {
     if (!supported.includes(next)) return;

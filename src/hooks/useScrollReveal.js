@@ -17,6 +17,11 @@ export function useScrollReveal({
       return;
     }
 
+    const isMobile = window.matchMedia("(max-width: 860px)").matches;
+    const opts = isMobile
+      ? { threshold: 0.2, rootMargin: "0px" }
+      : { threshold, rootMargin };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +29,7 @@ export function useScrollReveal({
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin }
+      opts
     );
 
     observer.observe(el);

@@ -7,7 +7,6 @@ import { I18nContext } from "../../i18n/I18nProvider";
 import { Plus } from "lucide-react";
 import "./Page.css";
 
-/* ─── Fade-in hook ──────────────────────────────────────────── */
 function useFadeIn(delay = 0) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -80,18 +79,30 @@ function FaqItem({ q, a }) {
   );
 }
 
+function FaqItemFade({ index, q, a }) {
+  const visible = useFadeIn(200 + index * 80);
+  return (
+    <div className={`pageFade ${visible ? "visible" : ""}`}>
+      <FaqItem q={q} a={a} />
+    </div>
+  );
+}
+
 function FaqPage({ page }) {
   const { pick } = useContext(I18nContext);
   const items = pick(page, "items") ?? [];
+  const headerVisible = useFadeIn(100);
 
   return (
     <section className="page">
-      <h1 className="pageTitle">{pick(page, "title")}</h1>
-      <p className="pageIntro">{pick(page, "intro")}</p>
+      <div className={`pageFade ${headerVisible ? "visible" : ""}`}>
+        <h1 className="pageTitle">{pick(page, "title")}</h1>
+        <p className="pageIntro">{pick(page, "intro")}</p>
+      </div>
 
       <div className="faqList">
         {items.map((item, i) => (
-          <FaqItem key={i} q={item.q} a={item.a} />
+          <FaqItemFade key={i} index={i} q={item.q} a={item.a} />
         ))}
       </div>
     </section>

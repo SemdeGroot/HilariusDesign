@@ -6,9 +6,9 @@ import ClientProviders from "../components/ClientProviders";
 export const metadata = {
   title: {
     default: "Hilarius Design",
-    template: "%s — Hilarius Design"
+    template: "%s - Hilarius Design"
   },
-  description: "Ideas Made of Board — Where Material Meets Creation",
+  description: "Ideas Made of Board - Where Material Meets Creation",
   icons: { icon: "/logo.svg" }
 };
 

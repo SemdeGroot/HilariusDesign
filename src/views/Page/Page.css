@@ -149,11 +149,14 @@
 /* ─── FAQ ────────────────────────────────────────────────── */
 .faqList{
   margin-top: 36px;
-  border-top: 1px solid var(--line);
 }
 
 .faqItem{
   border-bottom: 1px solid var(--line);
+}
+
+.faqList > :first-child .faqItem{
+  border-top: 1px solid var(--line);
 }
 
 .faqBtn{
@@ -294,6 +297,8 @@
 
 .contactFormCol{
   padding-top: 0;
+  border-left: 1px solid var(--line);
+  padding-left: 44px;
 }
 
 @media (min-width: 861px){
@@ -388,6 +393,13 @@
   .contactDetails{
     margin-top: 18px;
     margin-bottom: 22px;
+  }
+
+  .contactFormCol{
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
   }
 }
 
