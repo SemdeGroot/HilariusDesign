@@ -5,7 +5,7 @@ import Link from "next/link";
 import "./HomeMosaic.css";
 
 // Handles the case where the image loads before React attaches onLoad (SSR/cache).
-function RevealImg({ src, alt, loading, decoding, className, onReveal }) {
+function RevealImg({ src, alt, loading, decoding, fetchPriority, className, onReveal }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ function RevealImg({ src, alt, loading, decoding, className, onReveal }) {
       alt={alt}
       loading={loading}
       decoding={decoding}
+      fetchPriority={fetchPriority}
       className={className}
       onLoad={onReveal}
       onError={onReveal}
@@ -32,7 +33,7 @@ export default function HomeMosaic({ tiles }) {
 
   return (
     <div className="mosaic">
-      {tiles.map((t) => {
+      {tiles.map((t, i) => {
         if (t.type === "wob") {
           const WobWrapper = t.to ? Link : "div";
           return (
@@ -46,6 +47,7 @@ export default function HomeMosaic({ tiles }) {
                 <RevealImg
                   src="/WorldOfBoard.svg"
                   alt="World of Board"
+                  fetchPriority="high"
                   className={`mosaicWobImg revealImg ${wobLoaded ? "isLoaded" : ""}`}
                   onReveal={() => setWobLoaded(true)}
                 />
@@ -73,8 +75,9 @@ export default function HomeMosaic({ tiles }) {
                 <RevealImg
                   src={t.src}
                   alt={t.alt || ""}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
+                  fetchPriority={i === 1 ? "high" : "auto"}
                   className={`revealImg ${isLoaded ? "isLoaded" : ""}`}
                   onReveal={() => setLoaded((p) => ({ ...p, [t.key]: true }))}
                 />

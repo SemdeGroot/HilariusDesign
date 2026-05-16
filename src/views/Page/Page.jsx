@@ -30,6 +30,7 @@ function AboutPage({ page }) {
             src="/over-wim.JPG"
             alt="Wim Hilarius"
             className="aboutImg"
+            fetchPriority="high"
           />
         </div>
       </div>
@@ -153,6 +154,7 @@ function ContactPage({ page }) {
             src="/contact-image.JPG"
             alt="HilariusDesign contact"
             className="contactImg"
+            fetchPriority="high"
           />
         </div>
 

@@ -10,31 +10,32 @@ import "./Project.css";
 
 function Collage({ images, title }) {
   const count = images.length;
-  const [loaded, setLoaded] = useState(() => ({}));
+  const [loaded, setLoaded] = useState({});
 
   function markLoaded(src) {
     if (!src) return;
     setLoaded((prev) => (prev[src] ? prev : { ...prev, [src]: true }));
   }
 
+  const renderImg = (src, alt = "") => (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className={loaded[src] ? "isLoaded" : ""}
+      onLoad={() => markLoaded(src)}
+    />
+  );
+
   if (count === 0) return null;
 
   if (count === 1) {
-    const src = images[0];
     return (
       <div className="collage collage--1">
-        <div className="collageSlot">
-          <div className="imgBox imgBox--single">
-            <img
-              src={src}
-              alt={title}
-              loading="lazy"
-              decoding="async"
-              className={loaded[src] ? "isLoaded" : ""}
-              onLoad={() => markLoaded(src)}
-            />
-            <div className="fallback" />
-          </div>
+        <div className="imgBox">
+          {renderImg(images[0], title)}
+          <div className="fallback" />
         </div>
       </div>
     );
@@ -43,21 +44,14 @@ function Collage({ images, title }) {
   if (count === 2) {
     return (
       <div className="collage collage--2">
-        {images.slice(0, 2).map((src, i) => (
-          <div key={i} className="collageSlot">
-            <div className="imgBox imgBox--half">
-              <img
-                src={src}
-                alt={i === 0 ? title : ""}
-                loading="lazy"
-                decoding="async"
-                className={loaded[src] ? "isLoaded" : ""}
-                onLoad={() => markLoaded(src)}
-              />
-              <div className="fallback" />
-            </div>
-          </div>
-        ))}
+        <div className="imgBox imgBox--main">
+          {renderImg(images[0], title)}
+          <div className="fallback" />
+        </div>
+        <div className="imgBox imgBox--accent">
+          {renderImg(images[1])}
+          <div className="fallback" />
+        </div>
       </div>
     );
   }
@@ -65,97 +59,35 @@ function Collage({ images, title }) {
   if (count === 3) {
     return (
       <div className="collage collage--3">
-        <div className="collageSlot collageSlot--wide">
-          <div className="imgBox imgBox--wide">
-            <img
-              src={images[0]}
-              alt={title}
-              loading="lazy"
-              decoding="async"
-              className={loaded[images[0]] ? "isLoaded" : ""}
-              onLoad={() => markLoaded(images[0])}
-            />
-            <div className="fallback" />
-          </div>
+        <div className="imgBox imgBox--tall">
+          {renderImg(images[0], title)}
+          <div className="fallback" />
         </div>
-        {images.slice(1, 3).map((src, i) => (
-          <div key={i} className="collageSlot">
-            <div className="imgBox imgBox--square">
-              <img
-                src={src}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className={loaded[src] ? "isLoaded" : ""}
-                onLoad={() => markLoaded(src)}
-              />
+        <div className="collageStack">
+          {images.slice(1, 3).map((src, i) => (
+            <div key={i} className="imgBox imgBox--thumb">
+              {renderImg(src)}
               <div className="fallback" />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <div className="collage collage--4">
-      <div className="collageA">
-        <div className="imgBox">
-          <img
-            src={images[0]}
-            alt={title}
-            loading="lazy"
-            decoding="async"
-            className={loaded[images[0]] ? "isLoaded" : ""}
-            onLoad={() => markLoaded(images[0])}
-          />
-          <div className="fallback" />
-        </div>
+      <div className="imgBox imgBox--hero">
+        {renderImg(images[0], title)}
+        <div className="fallback" />
       </div>
-      <div className="collageB">
-        <div className="imgBox">
-          {images[1] ? (
-            <img
-              src={images[1]}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className={loaded[images[1]] ? "isLoaded" : ""}
-              onLoad={() => markLoaded(images[1])}
-            />
-          ) : null}
-          <div className="fallback" />
-        </div>
-      </div>
-      <div className="collageC">
-        <div className="imgBox">
-          {images[2] ? (
-            <img
-              src={images[2]}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className={loaded[images[2]] ? "isLoaded" : ""}
-              onLoad={() => markLoaded(images[2])}
-            />
-          ) : null}
-          <div className="fallback" />
-        </div>
-      </div>
-      <div className="collageD">
-        <div className="imgBox">
-          {images[3] ? (
-            <img
-              src={images[3]}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className={loaded[images[3]] ? "isLoaded" : ""}
-              onLoad={() => markLoaded(images[3])}
-            />
-          ) : null}
-          <div className="fallback" />
-        </div>
+      <div className="collageRow">
+        {images.slice(1, 4).map((src, i) => (
+          <div key={i} className="imgBox imgBox--tile">
+            {renderImg(src)}
+            <div className="fallback" />
+          </div>
+        ))}
       </div>
     </div>
   );

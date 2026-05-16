@@ -10,7 +10,10 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import "./Home.css";
 
 function useIsMobile(breakpoint = 860) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);

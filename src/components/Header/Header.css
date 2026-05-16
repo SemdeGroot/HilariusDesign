@@ -368,19 +368,23 @@
 .mobileAccChev.open{ transform: rotate(180deg); }
 
 .mobileAccPanel{
-  max-height: 0;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
   transform: translateY(-4px);
-  transition: max-height 220ms ease, opacity 180ms ease, transform 180ms ease;
-  padding: 0 6px;
+  transition: grid-template-rows 220ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .mobileAccPanel.open{
-  max-height: 900px;
+  grid-template-rows: 1fr;
   opacity: 1;
   transform: translateY(0);
-  padding: 4px 6px 10px;
+}
+
+.mobileAccPanelInner{
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 6px;
 }
 
 .mobileAccAll{

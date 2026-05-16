@@ -1,4 +1,18 @@
-/* src/pages/Project/Project.css */
+/* src/views/Project/Project.css */
+.proj {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: projFadeIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes projFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proj { animation: none; opacity: 1; transform: none; }
+}
+
 .breadcrumb{
   font-size: 13px;
   color: var(--muted);
@@ -25,68 +39,54 @@
 
 /* ─── Collage variants ───────────────────────────────────────── */
 
-/* 1 image: full width */
-.collage--1{
-  display:block;
-}
-
-.collage--1 .collageSlot{
-  width: 100%;
-}
-
-.imgBox--single{
+/* 1 image: full width, 4:3 */
+.collage--1 .imgBox{
   aspect-ratio: 4 / 3;
 }
 
-/* 2 images: side by side */
+/* 2 images: wide portrait main + square accent */
 .collage--2{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 10px;
   align-items: start;
 }
 
-.imgBox--half{
-  aspect-ratio: 3 / 4;
-}
+.imgBox--main   { aspect-ratio: 3 / 4; }
+.imgBox--accent { aspect-ratio: 1 / 1; }
 
-/* 3 images: big on top, two below */
+/* 3 images: tall portrait left + 2 landscape stacked right */
 .collage--3{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 10px;
   align-items: start;
 }
 
-.collageSlot--wide{
-  grid-column: 1 / -1;
+.collage--3 .collageStack{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.imgBox--wide{
-  aspect-ratio: 16 / 9;
-}
+.imgBox--tall  { aspect-ratio: 2 / 3; }
+.imgBox--thumb { aspect-ratio: 4 / 3; }
 
-.imgBox--square{
-  aspect-ratio: 1 / 1;
-}
-
-/* 4 images: original 2x2 */
+/* 4 images: cinematic hero + row of 3 tiles */
 .collage--4{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  align-items:start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.collageA{ grid-column: 1 / 2; }
-.collageB{ grid-column: 2 / 3; }
-.collageC{ grid-column: 1 / 2; }
-.collageD{ grid-column: 2 / 3; }
+.collage--4 .collageRow{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
 
-.collageA .imgBox{ aspect-ratio: 1 / 1; }
-.collageB .imgBox{ aspect-ratio: 16 / 10; }
-.collageC .imgBox{ aspect-ratio: 16 / 9; }
-.collageD .imgBox{ aspect-ratio: 16 / 10; }
+.imgBox--hero { aspect-ratio: 16 / 9; }
+.imgBox--tile { aspect-ratio: 1 / 1; }
 
 /* Shared imgBox */
 .imgBox{
@@ -262,6 +262,24 @@
     padding-top: 18px;
   }
   .projTitle{ font-size: 28px; }
+
+  /* Collage mobile */
+  .collage--2{
+    grid-template-columns: 1fr;
+  }
+  .imgBox--main,
+  .imgBox--accent{
+    aspect-ratio: 4 / 3;
+  }
+
+  .collage--3{
+    grid-template-columns: 1fr;
+  }
+  .imgBox--tall{ aspect-ratio: 4 / 3; }
+  .collage--3 .collageStack{
+    flex-direction: row;
+  }
+  .imgBox--thumb{ aspect-ratio: 1 / 1; }
 
   .pn{
     grid-template-columns: 1fr 56px 1fr;

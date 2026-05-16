@@ -16,7 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="nl">
       <head>
+        <link rel="dns-prefetch" href="https://use.typekit.net" />
+        <link rel="dns-prefetch" href="https://p.typekit.net" />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.typekit.net/zko8kch.css" />
       </head>
       <body>

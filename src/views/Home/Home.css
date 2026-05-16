@@ -1,5 +1,4 @@
-/* src/pages/Home/Home.css */
-/* src/pages/Home/Home.css */
+/* src/views/Home/Home.css */
 .home{
   padding-top: 12px;
 }
@@ -136,7 +135,10 @@
   transition-delay: 280ms;
 }
 
-.homeMobileCatCard.isIn .homeMobileCatTitle,
+.homeMobileCatCard.isIn .homeMobileCatTitle {
+  opacity: 0.92;
+}
+
 .homeMobileCatCard.isIn .homeMobileCatSub {
   opacity: 1;
 }

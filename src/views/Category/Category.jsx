@@ -192,6 +192,7 @@ export default function Category() {
                   alt={currentProject ? pick(currentProject, "title") : ""}
                   loading="eager"
                   decoding="async"
+                  fetchPriority="high"
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
               ) : null}

@@ -67,7 +67,7 @@ export default function Header() {
       <header className="header">
         <div className="headerInner">
           <Link href="/" className="brand" aria-label="HilariusDesign">
-            <img className="brandLogo" src="/logo.svg" alt="" />
+            <img className="brandLogo" src="/logo.svg" alt="" width="34" height="34" />
           </Link>
 
           {/* Desktop nav */}
@@ -197,16 +197,18 @@ export default function Header() {
                       </button>
 
                       <div id={`cat-${c.slug}`} className={`mobileAccPanel ${isOpen ? "open" : ""}`}>
-                        <Link href={`/category/${c.slug}`} className="mobileAccAll">
-                          {pick(c, "subtitle")}
-                        </Link>
+                        <div className="mobileAccPanelInner">
+                          <Link href={`/category/${c.slug}`} className="mobileAccAll">
+                            {pick(c, "subtitle")}
+                          </Link>
 
-                        <div className="mobileAccProducts">
-                          {items.map((p) => (
-                            <Link key={p.id} href={`/project/${p.id}`} className="mobileAccProduct">
-                              {pick(p, "title")}
-                            </Link>
-                          ))}
+                          <div className="mobileAccProducts">
+                            {items.map((p) => (
+                              <Link key={p.id} href={`/project/${p.id}`} className="mobileAccProduct">
+                                {pick(p, "title")}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
