@@ -14,7 +14,7 @@ export const projectOverrides = {
   // TRANSPORT
   // ═══════════════════════════════════════════════════════════════
 
-  "transport/bedrijfsautos/bedrijfsautos2.jpg": {
+  "transport/bedrijfsautos/bedrijfsautos2.webp": {
     i18n: {
       nl: {
         title: "Bedrijfsauto's",
@@ -40,7 +40,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/bierwagen/IMG_0548Biertransport.jpg": {
+  "transport/bierwagen/IMG_0548Biertransport.webp": {
     i18n: {
       nl: {
         title: "Bierwagen",
@@ -60,7 +60,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/containers/IMG_0562ContainerRoodHL.jpg": {
+  "transport/containers/IMG_0562ContainerRoodHL.webp": {
     i18n: {
       nl: {
         title: "Containers",
@@ -80,7 +80,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/diepladers/dieplader2.jpg": {
+  "transport/diepladers/dieplader2.webp": {
     i18n: {
       nl: {
         title: "Diepladers",
@@ -100,7 +100,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/tankauto/tankauto2.jpg": {
+  "transport/tankauto/tankauto2.webp": {
     i18n: {
       nl: {
         title: "Tankauto",
@@ -120,7 +120,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/treinen/treinen2.jpg": {
+  "transport/treinen/treinen2.webp": {
     i18n: {
       nl: {
         title: "Treinen",
@@ -140,7 +140,7 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     }
   },
 
-  "transport/vliegtuigen/vliegtuigen2.jpg": {
+  "transport/vliegtuigen/vliegtuigen2.webp": {
     i18n: {
       nl: {
         title: "Vliegtuigen",
@@ -166,7 +166,7 @@ The sky is the limit!`
     }
   },
 
-  "transport/vrachtwagens/vrachtwagens2-2.jpg": {
+  "transport/vrachtwagens/vrachtwagens2-2.webp": {
     i18n: {
       nl: {
         title: "Vrachtwagens",
@@ -202,7 +202,7 @@ Interesse an anderen Kartonfahrzeugen? Besuchen Sie hilariusdesign.nl oder nehme
   // BUREAU ACCESSOIRES
   // ═══════════════════════════════════════════════════════════════
 
-  "bureau-accessoires/bureaukalenders/bureaukalenders3.jpg": {
+  "bureau-accessoires/bureaukalenders/bureaukalenders3.webp": {
     i18n: {
       nl: {
         title: "Bureaukalenders",
@@ -240,7 +240,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "bureau-accessoires/fotolijstjes/fotolijstjes2.jpg": {
+  "bureau-accessoires/fotolijstjes/fotolijstjes2.webp": {
     i18n: {
       nl: {
         title: "Fotolijstjes",
@@ -260,7 +260,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "bureau-accessoires/klokken/klokken2.jpg": {
+  "bureau-accessoires/klokken/klokken2.webp": {
     i18n: {
       nl: {
         title: "Klokken",
@@ -280,7 +280,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "bureau-accessoires/memobakjes/memobakjes2.jpg": {
+  "bureau-accessoires/memobakjes/memobakjes2.webp": {
     i18n: {
       nl: {
         title: "Memobakjes",
@@ -300,7 +300,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "bureau-accessoires/onderzetters/onderzetters2.jpg": {
+  "bureau-accessoires/onderzetters/onderzetters2.webp": {
     i18n: {
       nl: {
         title: "Onderzetters",
@@ -320,7 +320,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "bureau-accessoires/pop-up/popup2.jpg": {
+  "bureau-accessoires/pop-up/popup2.webp": {
     i18n: {
       nl: {
         title: "Pop-up",
@@ -344,7 +344,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
   // VERPAKKINGEN
   // ═══════════════════════════════════════════════════════════════
 
-  "verpakkingen/bloemenverpakking/bloemendozen2.jpg": {
+  "verpakkingen/bloemenverpakking/bloemendozen2.webp": {
     i18n: {
       nl: {
         title: "Bloemenverpakking",
@@ -364,7 +364,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "verpakkingen/cd-verpakking/cdverpakking2.jpg": {
+  "verpakkingen/cd-verpakking/cdverpakking2.webp": {
     i18n: {
       nl: {
         title: "CD-verpakking",
@@ -384,7 +384,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.jpg": {
+  "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.webp": {
     i18n: {
       nl: {
         title: "Chocoladedoosje",
@@ -404,7 +404,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     }
   },
 
-  "verpakkingen/handtasjes/IMG_1012.jpg": {
+  "verpakkingen/handtasjes/IMG_1012.webp": {
     i18n: {
       nl: {
         title: "Handtasjes",
@@ -436,7 +436,7 @@ Preis auf Anfrage ab 250 Stück. Inklusive Artwork und einer Korrekturr­unde, e
     }
   },
 
-  "verpakkingen/magic-packaging/magictubes2.jpg": {
+  "verpakkingen/magic-packaging/magictubes2.webp": {
     i18n: {
       nl: {
         title: "Magic Packaging",
@@ -462,7 +462,7 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
     }
   },
 
-  "verpakkingen/ontspiegelde-showcase/luxar2.jpg": {
+  "verpakkingen/ontspiegelde-showcase/luxar2.webp": {
     i18n: {
       nl: {
         title: "Ontspiegelde showcase",
@@ -482,7 +482,7 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
     }
   },
 
-  "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.jpg": {
+  "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.webp": {
     i18n: {
       nl: {
         title: "Shockproof wijnverpakking",
@@ -502,7 +502,7 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
     }
   },
 
-  "verpakkingen/uitklapdoos/metopdoos2.jpg": {
+  "verpakkingen/uitklapdoos/metopdoos2.webp": {
     i18n: {
       nl: {
         title: "Uitklapdoos",
@@ -522,7 +522,7 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
     }
   },
 
-  "verpakkingen/viko-kokers/vikokoker2.jpg": {
+  "verpakkingen/viko-kokers/vikokoker2.webp": {
     i18n: {
       nl: {
         title: "Viko kokers",
@@ -542,7 +542,7 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
     }
   },
 
-  "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.jpg": {
+  "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.webp": {
     i18n: {
       nl: {
         title: "Wijnverpakkingen",
@@ -568,7 +568,7 @@ Vollständig in Ihrem Corporate Design personalisierbar.`
     }
   },
 
-  "verpakkingen/zakken/zakkengroot.jpg": {
+  "verpakkingen/zakken/zakkengroot.webp": {
     i18n: {
       nl: {
         title: "Zakken",
@@ -592,7 +592,7 @@ Vollständig in Ihrem Corporate Design personalisierbar.`
   // BOEKEN & MAPPEN
   // ═══════════════════════════════════════════════════════════════
 
-  "boeken-mappen/boekverpakkingen/libris2.jpg": {
+  "boeken-mappen/boekverpakkingen/libris2.webp": {
     i18n: {
       nl: {
         title: "Boekverpakkingen",
@@ -618,7 +618,7 @@ Die abgebildete Buchverpackung wurde bei der Verleihung des Libris-Preises verwe
     }
   },
 
-  "boeken-mappen/euromap/euromap2.jpg": {
+  "boeken-mappen/euromap/euromap2.webp": {
     i18n: {
       nl: {
         title: "Euromap",
@@ -638,7 +638,7 @@ Die abgebildete Buchverpackung wurde bei der Verleihung des Libris-Preises verwe
     }
   },
 
-  "boeken-mappen/golfrecords/golfrecords2.jpg": {
+  "boeken-mappen/golfrecords/golfrecords2.webp": {
     i18n: {
       nl: {
         title: "Golf records",
@@ -664,7 +664,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
     }
   },
 
-  "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg": {
+  "boeken-mappen/grafiekmappen/grafiekmappen2-1.webp": {
     i18n: {
       nl: {
         title: "Grafiekmappen",
@@ -684,7 +684,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
     }
   },
 
-  "boeken-mappen/herdenkingsboek/herdenkingsboek2.jpg": {
+  "boeken-mappen/herdenkingsboek/herdenkingsboek2.webp": {
     i18n: {
       nl: {
         title: "Herdenkingsboek",
@@ -704,7 +704,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
     }
   },
 
-  "boeken-mappen/informatiemap/informatiemap2.jpg": {
+  "boeken-mappen/informatiemap/informatiemap2.webp": {
     i18n: {
       nl: {
         title: "Informatiemap",
@@ -724,7 +724,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
     }
   },
 
-  "boeken-mappen/kunstmappen/kunstmappen2.jpg": {
+  "boeken-mappen/kunstmappen/kunstmappen2.webp": {
     i18n: {
       nl: {
         title: "Kunstmappen",
@@ -744,7 +744,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
     }
   },
 
-  "boeken-mappen/zelfsluitende-mappen/mappen3.jpg": {
+  "boeken-mappen/zelfsluitende-mappen/mappen3.webp": {
     i18n: {
       nl: {
         title: "Zelfsluitende mappen",
@@ -774,7 +774,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
   // SPELLEN
   // ═══════════════════════════════════════════════════════════════
 
-  "spellen/bordspellen/bordspellen2.jpg": {
+  "spellen/bordspellen/bordspellen2.webp": {
     i18n: {
       nl: {
         title: "Bordspellen",
@@ -794,7 +794,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
     }
   },
 
-  "spellen/poulebal/poulebal2.jpg": {
+  "spellen/poulebal/poulebal2.webp": {
     i18n: {
       nl: {
         title: "Poulebal",
@@ -814,7 +814,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
     }
   },
 
-  "spellen/puzzel/puzzel2.jpg": {
+  "spellen/puzzel/puzzel2.webp": {
     i18n: {
       nl: {
         title: "Puzzel",
@@ -834,7 +834,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
     }
   },
 
-  "spellen/schaakspel/schaakspel2.jpg": {
+  "spellen/schaakspel/schaakspel2.webp": {
     i18n: {
       nl: {
         title: "Schaakspel",
@@ -854,7 +854,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
     }
   },
 
-  "spellen/werpspel/werpspel2.jpg": {
+  "spellen/werpspel/werpspel2.webp": {
     i18n: {
       nl: {
         title: "Werpspel",
@@ -878,7 +878,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
   // THE ART OF BOARD
   // ═══════════════════════════════════════════════════════════════
 
-  "the-art-of-board/eiffeltoren/eiffeltoren1.JPG": {
+  "the-art-of-board/eiffeltoren/eiffeltoren1.webp": {
     i18n: {
       nl: {
         title: "Eiffeltoren",
@@ -904,7 +904,7 @@ Haben Sie ein anderes Gebäude im Sinn? Das fertigen wir gerne nach Maß.`
     }
   },
 
-  "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.jpg": {
+  "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.webp": {
     i18n: {
       nl: {
         title: "Golfkartonnen stoel",
@@ -930,7 +930,7 @@ Entworfen und gefertigt von Hilarius Design, wo Karton Charakter bekommt und Des
     }
   },
 
-  "the-art-of-board/tezeras/tezeras.jpg": {
+  "the-art-of-board/tezeras/tezeras.webp": {
     i18n: {
       nl: {
         title: "Tezeras",
@@ -956,7 +956,7 @@ Verbunden durch Kartonstreifen, als wären sie buchstäblich aneinandergereiht �
     }
   },
 
-  "the-art-of-board/westminster-abbey/westminster-abbey1.JPG": {
+  "the-art-of-board/westminster-abbey/westminster-abbey1.webp": {
     i18n: {
       nl: {
         title: "Westminster Abbey",
@@ -982,7 +982,7 @@ Haben Sie ein anderes Gebäude im Sinn? Das fertigen wir gerne nach Maß.`
     }
   },
 
-  "the-art-of-board/wild-flowers/klaproos.jpg": {
+  "the-art-of-board/wild-flowers/klaproos.webp": {
     i18n: {
       nl: {
         title: "Wild Flowers",
@@ -1008,7 +1008,7 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
     }
   },
 
-  "interieur-exterieur/apothekerskast/apothekerskast2.jpg": {
+  "interieur-exterieur/apothekerskast/apothekerskast2.webp": {
     i18n: {
       nl: {
         title: "Apothekerskast",
@@ -1028,7 +1028,7 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
     }
   },
 
-  "interieur-exterieur/enorme-displays/oogwereld2.jpg": {
+  "interieur-exterieur/enorme-displays/oogwereld2.webp": {
     i18n: {
       nl: {
         title: "Enorme displays",
@@ -1048,7 +1048,7 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
     }
   },
 
-  "interieur-exterieur/gebouwen/villavna.jpg": {
+  "interieur-exterieur/gebouwen/villavna.webp": {
     i18n: {
       nl: {
         title: "Gebouwen",
@@ -1068,7 +1068,7 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
     }
   },
 
-  "interieur-exterieur/maquette/maquette2-1.jpg": {
+  "interieur-exterieur/maquette/maquette2-1.webp": {
     i18n: {
       nl: {
         title: "Maquette",
@@ -1092,7 +1092,7 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
   // EINDEJAARSGESCHENKEN
   // ═══════════════════════════════════════════════════════════════
 
-  "eindejaarsgeschenken/compilatie/compilatie-1.jpg": {
+  "eindejaarsgeschenken/compilatie/compilatie-1.webp": {
     i18n: {
       nl: {
         title: "Compilatie",
@@ -1124,7 +1124,7 @@ Es ist eine Investition in Wertschätzung und langfristige Beziehungen.`
     }
   },
 
-  "eindejaarsgeschenken/kerst/kerstversiering2.jpg": {
+  "eindejaarsgeschenken/kerst/kerstversiering2.webp": {
     i18n: {
       nl: {
         title: "Kerstversiering",
@@ -1149,17 +1149,17 @@ Es ist eine Investition in Wertschätzung und langfristige Beziehungen.`
 // Producten die hier staan komen eerst, de rest volgt alfabetisch.
 export const projectOrder = {
   transport: [
-    "transport/vrachtwagens/vrachtwagens2-2.jpg",
-    "transport/bedrijfsautos/bedrijfsautos2.jpg"
+    "transport/vrachtwagens/vrachtwagens2-2.webp",
+    "transport/bedrijfsautos/bedrijfsautos2.webp"
   ],
   "bureau-accessoires": [
-    "bureau-accessoires/klokken/klokken2.jpg"
+    "bureau-accessoires/klokken/klokken2.webp"
   ],
   verpakkingen: [
-    "verpakkingen/viko-kokers/vikokoker2.jpg",
-    "verpakkingen/magic-packaging/magictubes2.jpg"
+    "verpakkingen/viko-kokers/vikokoker2.webp",
+    "verpakkingen/magic-packaging/magictubes2.webp"
   ],
   spellen: [
-    "spellen/schaakspel/schaakspel2.jpg"
+    "spellen/schaakspel/schaakspel2.webp"
   ]
 };

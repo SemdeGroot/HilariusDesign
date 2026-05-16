@@ -27,7 +27,7 @@ function AboutPage({ page }) {
       <div className="aboutLeft">
         <div className={`aboutImgWrap pageFade pageFadeSlowDesktop ${imgVisible ? "visible" : ""}`}>
           <img
-            src="/over-wim.JPG"
+            src="/over-wim.webp"
             alt="Wim Hilarius"
             className="aboutImg"
             fetchPriority="high"
@@ -151,7 +151,7 @@ function ContactPage({ page }) {
       <div className="contactInfo">
         <div className={`contactImgWrap pageFade pageFadeSlowDesktop ${imgVisible ? "visible" : ""}`}>
           <img
-            src="/contact-image.JPG"
+            src="/contact-image.webp"
             alt="HilariusDesign contact"
             className="contactImg"
             fetchPriority="high"

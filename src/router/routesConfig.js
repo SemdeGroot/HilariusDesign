@@ -237,14 +237,14 @@ export const routesConfig = {
   ],
 
   homeCovers: {
-    transport: "transport/vrachtwagens/vrachtwagens2-2.jpg",
-    "bureau-accessoires": "bureau-accessoires/klokken/klokken2.jpg",
-    verpakkingen: "verpakkingen/magic-packaging/magictubes2.jpg",
-    "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg",
-    spellen: "spellen/schaakspel/schaakspel2.jpg",
-    "the-art-of-board": "the-art-of-board/eiffeltoren/eiffeltoren1.JPG",
-    "interieur-exterieur": "interieur-exterieur/maquette/maquette2-1.jpg",
-    eindejaarsgeschenken: "eindejaarsgeschenken/kerst/kerstversiering2.jpg"
+    transport: "transport/vrachtwagens/vrachtwagens2-2.webp",
+    "bureau-accessoires": "bureau-accessoires/klokken/klokken2.webp",
+    verpakkingen: "verpakkingen/magic-packaging/magictubes2.webp",
+    "boeken-mappen": "boeken-mappen/grafiekmappen/grafiekmappen2-1.webp",
+    spellen: "spellen/schaakspel/schaakspel2.webp",
+    "the-art-of-board": "the-art-of-board/eiffeltoren/eiffeltoren1.webp",
+    "interieur-exterieur": "interieur-exterieur/maquette/maquette2-1.webp",
+    eindejaarsgeschenken: "eindejaarsgeschenken/kerst/kerstversiering2.webp"
   },
 
   pages: texts.pages,
@@ -262,14 +262,14 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "transport",
       [
-        "transport/bedrijfsautos/bedrijfsautos2.jpg",
-        "transport/bierwagen/IMG_0548Biertransport.jpg",
-        "transport/containers/IMG_0562ContainerRoodHL.jpg",
-        "transport/diepladers/dieplader2.jpg",
-        "transport/tankauto/tankauto2.jpg",
-        "transport/treinen/treinen2.jpg",
-        "transport/vliegtuigen/vliegtuigen2.jpg",
-        "transport/vrachtwagens/vrachtwagens2-2.jpg"
+        "transport/bedrijfsautos/bedrijfsautos2.webp",
+        "transport/bierwagen/IMG_0548Biertransport.webp",
+        "transport/containers/IMG_0562ContainerRoodHL.webp",
+        "transport/diepladers/dieplader2.webp",
+        "transport/tankauto/tankauto2.webp",
+        "transport/treinen/treinen2.webp",
+        "transport/vliegtuigen/vliegtuigen2.webp",
+        "transport/vrachtwagens/vrachtwagens2-2.webp"
       ],
       {
         nl: { type: "Transportmodel / Relatiegeschenk" },
@@ -281,12 +281,12 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "bureau-accessoires",
       [
-        "bureau-accessoires/bureaukalenders/bureaukalenders3.jpg",
-        "bureau-accessoires/fotolijstjes/fotolijstjes2.jpg",
-        "bureau-accessoires/klokken/klokken2.jpg",
-        "bureau-accessoires/memobakjes/memobakjes2.jpg",
-        "bureau-accessoires/onderzetters/onderzetters2.jpg",
-        "bureau-accessoires/pop-up/popup2.jpg"
+        "bureau-accessoires/bureaukalenders/bureaukalenders3.webp",
+        "bureau-accessoires/fotolijstjes/fotolijstjes2.webp",
+        "bureau-accessoires/klokken/klokken2.webp",
+        "bureau-accessoires/memobakjes/memobakjes2.webp",
+        "bureau-accessoires/onderzetters/onderzetters2.webp",
+        "bureau-accessoires/pop-up/popup2.webp"
       ],
       {
         nl: { type: "Bureau-accessoire" },
@@ -298,17 +298,17 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "verpakkingen",
       [
-        "verpakkingen/bloemenverpakking/bloemendozen2.jpg",
-        "verpakkingen/cd-verpakking/cdverpakking2.jpg",
-        "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.jpg",
-        "verpakkingen/handtasjes/IMG_1012.jpg",
-        "verpakkingen/magic-packaging/magictubes2.jpg",
-        "verpakkingen/ontspiegelde-showcase/luxar2.jpg",
-        "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.jpg",
-        "verpakkingen/uitklapdoos/metopdoos2.jpg",
-        "verpakkingen/viko-kokers/vikokoker2.jpg",
-        "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.jpg",
-        "verpakkingen/zakken/zakkengroot.jpg"
+        "verpakkingen/bloemenverpakking/bloemendozen2.webp",
+        "verpakkingen/cd-verpakking/cdverpakking2.webp",
+        "verpakkingen/chocoladedoosje/twee_chocoladedoosjes.webp",
+        "verpakkingen/handtasjes/IMG_1012.webp",
+        "verpakkingen/magic-packaging/magictubes2.webp",
+        "verpakkingen/ontspiegelde-showcase/luxar2.webp",
+        "verpakkingen/schockproof-wijnverpakking/viko_shockproof2.webp",
+        "verpakkingen/uitklapdoos/metopdoos2.webp",
+        "verpakkingen/viko-kokers/vikokoker2.webp",
+        "verpakkingen/wijnverpakkingen/IMG_0579_3vakswijndoos.webp",
+        "verpakkingen/zakken/zakkengroot.webp"
       ],
       {
         nl: { type: "Verpakking / Display" },
@@ -320,14 +320,14 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "boeken-mappen",
       [
-        "boeken-mappen/boekverpakkingen/libris2.jpg",
-        "boeken-mappen/euromap/euromap2.jpg",
-        "boeken-mappen/golfrecords/golfrecords2.jpg",
-        "boeken-mappen/grafiekmappen/grafiekmappen2-1.jpg",
-        "boeken-mappen/herdenkingsboek/herdenkingsboek2.jpg",
-        "boeken-mappen/informatiemap/informatiemap2.jpg",
-        "boeken-mappen/kunstmappen/kunstmappen2.jpg",
-        "boeken-mappen/zelfsluitende-mappen/mappen3.jpg"
+        "boeken-mappen/boekverpakkingen/libris2.webp",
+        "boeken-mappen/euromap/euromap2.webp",
+        "boeken-mappen/golfrecords/golfrecords2.webp",
+        "boeken-mappen/grafiekmappen/grafiekmappen2-1.webp",
+        "boeken-mappen/herdenkingsboek/herdenkingsboek2.webp",
+        "boeken-mappen/informatiemap/informatiemap2.webp",
+        "boeken-mappen/kunstmappen/kunstmappen2.webp",
+        "boeken-mappen/zelfsluitende-mappen/mappen3.webp"
       ],
       {
         nl: { type: "Boek / Map" },
@@ -339,11 +339,11 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "spellen",
       [
-        "spellen/bordspellen/bordspellen2.jpg",
-        "spellen/poulebal/poulebal2.jpg",
-        "spellen/puzzel/puzzel2.jpg",
-        "spellen/schaakspel/schaakspel2.jpg",
-        "spellen/werpspel/werpspel2.jpg"
+        "spellen/bordspellen/bordspellen2.webp",
+        "spellen/poulebal/poulebal2.webp",
+        "spellen/puzzel/puzzel2.webp",
+        "spellen/schaakspel/schaakspel2.webp",
+        "spellen/werpspel/werpspel2.webp"
       ],
       {
         nl: { type: "Spel / Give-away" },
@@ -355,11 +355,11 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "the-art-of-board",
       [
-        "the-art-of-board/eiffeltoren/eiffeltoren1.JPG",
-        "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.jpg",
-        "the-art-of-board/tezeras/tezeras.jpg",
-        "the-art-of-board/westminster-abbey/westminster-abbey1.JPG",
-        "the-art-of-board/wild-flowers/klaproos.jpg"
+        "the-art-of-board/eiffeltoren/eiffeltoren1.webp",
+        "the-art-of-board/golfkartonnen-stoel/stoelkarton-Hilariusdesign.webp",
+        "the-art-of-board/tezeras/tezeras.webp",
+        "the-art-of-board/westminster-abbey/westminster-abbey1.webp",
+        "the-art-of-board/wild-flowers/klaproos.webp"
       ],
       {
         nl: { type: "Kunstwerk / Karton" },
@@ -371,10 +371,10 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "interieur-exterieur",
       [
-        "interieur-exterieur/apothekerskast/apothekerskast2.jpg",
-        "interieur-exterieur/enorme-displays/oogwereld2.jpg",
-        "interieur-exterieur/gebouwen/villavna.jpg",
-        "interieur-exterieur/maquette/maquette2-1.jpg"
+        "interieur-exterieur/apothekerskast/apothekerskast2.webp",
+        "interieur-exterieur/enorme-displays/oogwereld2.webp",
+        "interieur-exterieur/gebouwen/villavna.webp",
+        "interieur-exterieur/maquette/maquette2-1.webp"
       ],
       {
         nl: { type: "Interieur / Exterieur" },
@@ -386,8 +386,8 @@ export const routesConfig = {
     ...buildCategoryProjects(
       "eindejaarsgeschenken",
       [
-        "eindejaarsgeschenken/compilatie/compilatie-1.jpg",
-        "eindejaarsgeschenken/kerst/kerstversiering2.jpg"
+        "eindejaarsgeschenken/compilatie/compilatie-1.webp",
+        "eindejaarsgeschenken/kerst/kerstversiering2.webp"
       ],
       {
         nl: { type: "Eindejaarsgeschenk" },
