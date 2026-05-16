@@ -41,3 +41,5 @@ CLAUDE.md
 .claude/
 .claudeignore
 .codex
+content/
+prompts/
