@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useId, useMemo, useState } from "react";
+import { useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { routesConfig } from "../../router/routesConfig";
@@ -50,35 +50,39 @@ function LogoSkeleton() {
   );
 }
 
-function Collage({ images, title }) {
-  const count = images.length;
-  const [loaded, setLoaded] = useState({});
+function ImgBox({ src, alt }) {
+  const imgRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
-  function markLoaded(src) {
-    if (!src) return;
-    setLoaded((prev) => (prev[src] ? prev : { ...prev, [src]: true }));
-  }
+  useEffect(() => {
+    setLoaded(false);
+    if (imgRef.current?.complete) setLoaded(true);
+  }, [src]);
 
-  const renderImg = (src, alt = "") => (
-    <>
+  return (
+    <div className="imgBox">
       <img
+        ref={imgRef}
         src={src}
         alt={alt}
-        loading="lazy"
         decoding="async"
-        className={loaded[src] ? "isLoaded" : ""}
-        onLoad={() => markLoaded(src)}
+        className={loaded ? "isLoaded" : ""}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
       />
-      <LogoSkeleton />
-    </>
+      {!loaded && <LogoSkeleton />}
+    </div>
   );
+}
 
+function Collage({ images, title }) {
+  const count = images.length;
   if (count === 0) return null;
 
   if (count === 1) {
     return (
       <div className="collage collage--1">
-        <div className="imgBox">{renderImg(images[0], title)}</div>
+        <ImgBox src={images[0]} alt={title} />
       </div>
     );
   }
@@ -87,9 +91,7 @@ function Collage({ images, title }) {
     return (
       <div className="collage collage--2">
         {images.slice(0, 2).map((src, i) => (
-          <div key={i} className="imgBox">
-            {renderImg(src, i === 0 ? title : "")}
-          </div>
+          <ImgBox key={src} src={src} alt={i === 0 ? title : ""} />
         ))}
       </div>
     );
@@ -99,9 +101,7 @@ function Collage({ images, title }) {
     return (
       <div className="collage collage--3">
         {images.slice(0, 3).map((src, i) => (
-          <div key={i} className="imgBox">
-            {renderImg(src, i === 0 ? title : "")}
-          </div>
+          <ImgBox key={src} src={src} alt={i === 0 ? title : ""} />
         ))}
       </div>
     );
@@ -110,9 +110,7 @@ function Collage({ images, title }) {
   return (
     <div className="collage collage--4">
       {images.slice(0, 4).map((src, i) => (
-        <div key={i} className="imgBox">
-          {renderImg(src, i === 0 ? title : "")}
-        </div>
+        <ImgBox key={src} src={src} alt={i === 0 ? title : ""} />
       ))}
     </div>
   );

@@ -39,7 +39,22 @@
 
 /* ─── Collage variants ───────────────────────────────────────── */
 
-/* 1 image: full width, natural height */
+/* 1 image: natural size, capped so it never goes huge */
+.collage--1 {
+  display: flex;
+  justify-content: center;
+}
+
+.collage--1 .imgBox {
+  width: auto;
+  max-width: 100%;
+}
+
+.collage--1 .imgBox img {
+  width: auto;
+  max-width: 100%;
+  max-height: 65vh;
+}
 
 /* 2 images: two equal columns */
 .collage--2{
