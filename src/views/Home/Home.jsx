@@ -11,10 +11,7 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import "./Home.css";
 
 function useIsMobile(breakpoint = 860) {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
-  });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
@@ -80,12 +77,16 @@ function MobileCatCard({ c }) {
   );
 }
 
-function HomeMobile({ categories }) {
+function HomeMobile({ categories, wobHref }) {
   return (
     <section className="homeMobile" aria-label="Home">
-      <div className="homeMobileWob">
+      <Link
+        href={wobHref}
+        className="homeMobileWob"
+        aria-label="The Art Of Board"
+      >
         <WorldOfBoard className="homeMobileWobImg" />
-      </div>
+      </Link>
 
       <div className="homeMobileCats" aria-label="Categories">
         {categories.map((c) => (
@@ -100,7 +101,7 @@ export default function Home() {
   const { pick } = useContext(I18nContext);
   const isMobile = useIsMobile(860);
 
-  const { tiles, mobileCategories } = useMemo(() => {
+  const { tiles, mobileCategories, wobHref } = useMemo(() => {
     const c = routesConfig.categories;
     const p = routesConfig.projects;
 
@@ -134,11 +135,13 @@ export default function Home() {
       sub: pick(cat, "subtitle")
     }));
 
-    return { tiles: baseTiles, mobileCategories: cats };
+    const wobHref = wobCat ? `/category/${wobCat.slug}` : "/category/the-art-of-board";
+
+    return { tiles: baseTiles, mobileCategories: cats, wobHref };
   }, [pick]);
 
   if (isMobile) {
-    return <HomeMobile categories={mobileCategories} />;
+    return <HomeMobile categories={mobileCategories} wobHref={wobHref} />;
   }
 
   return (
