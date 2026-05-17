@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import WorldOfBoard from "../WorldOfBoard/WorldOfBoard.jsx";
 import "./HomeMosaic.css";
 
 // Handles the case where the image loads before React attaches onLoad (SSR/cache).
@@ -29,7 +30,6 @@ function RevealImg({ src, alt, loading, decoding, fetchPriority, className, onRe
 
 export default function HomeMosaic({ tiles }) {
   const [loaded, setLoaded] = useState({});
-  const [wobLoaded, setWobLoaded] = useState(false);
 
   return (
     <div className="mosaic">
@@ -44,13 +44,7 @@ export default function HomeMosaic({ tiles }) {
               aria-label="The Art Of Board"
             >
               <div className="mosaicMedia mosaicMediaWob">
-                <RevealImg
-                  src="/WorldOfBoard.svg"
-                  alt="World of Board"
-                  fetchPriority="high"
-                  className={`mosaicWobImg revealImg ${wobLoaded ? "isLoaded" : ""}`}
-                  onReveal={() => setWobLoaded(true)}
-                />
+                <WorldOfBoard className="mosaicWobImg" />
               </div>
               <div className="mosaicCaption">
                 <div className="mosaicCaptionLabel">{t.label}</div>

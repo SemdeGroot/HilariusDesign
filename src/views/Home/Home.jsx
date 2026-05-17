@@ -5,6 +5,7 @@ import Link from "next/link";
 import { routesConfig } from "../../router/routesConfig";
 import { I18nContext } from "../../i18n/I18nProvider";
 import HomeMosaic from "../../components/HomeMosaic/HomeMosaic.jsx";
+import WorldOfBoard from "../../components/WorldOfBoard/WorldOfBoard.jsx";
 import { getImage } from "../../router/images";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import "./Home.css";
@@ -82,8 +83,8 @@ function MobileCatCard({ c }) {
 function HomeMobile({ categories }) {
   return (
     <section className="homeMobile" aria-label="Home">
-      <div className="homeMobileWob homeRevealBlock isIn">
-        <img src="/WorldOfBoard.svg" alt="World of Board" className="homeMobileWobImg" />
+      <div className="homeMobileWob">
+        <WorldOfBoard className="homeMobileWobImg" />
       </div>
 
       <div className="homeMobileCats" aria-label="Categories">

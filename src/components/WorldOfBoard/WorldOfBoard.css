@@ -1,0 +1,78 @@
+.wob {
+  display: block;
+  max-width: 100%;
+}
+
+.wob .wobWord path {
+  fill: #1d1d1b;
+}
+
+.wob .wobLine path {
+  fill: #010101;
+}
+
+/* Resting state before reveal */
+.wob .wobLetter,
+.wob .wobLine {
+  opacity: 0;
+}
+
+@keyframes wobLetterIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wobFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Letters of "World of Board" fade in one by one, left to right */
+.wob.isIn .wobLetter {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wobLetterIn 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.wob.isIn .wobLetter:nth-child(1)  { animation-delay:   0ms; }
+.wob.isIn .wobLetter:nth-child(2)  { animation-delay:  65ms; }
+.wob.isIn .wobLetter:nth-child(3)  { animation-delay: 130ms; }
+.wob.isIn .wobLetter:nth-child(4)  { animation-delay: 195ms; }
+.wob.isIn .wobLetter:nth-child(5)  { animation-delay: 260ms; }
+.wob.isIn .wobLetter:nth-child(6)  { animation-delay: 325ms; }
+.wob.isIn .wobLetter:nth-child(7)  { animation-delay: 390ms; }
+.wob.isIn .wobLetter:nth-child(8)  { animation-delay: 455ms; }
+.wob.isIn .wobLetter:nth-child(9)  { animation-delay: 520ms; }
+.wob.isIn .wobLetter:nth-child(10) { animation-delay: 585ms; }
+.wob.isIn .wobLetter:nth-child(11) { animation-delay: 650ms; }
+.wob.isIn .wobLetter:nth-child(12) { animation-delay: 715ms; }
+
+/* Subtitles fade in as blocks, in the typewriter's pace (one-shot per line) */
+.wob.isIn .wobSub1 {
+  animation: wobFadeIn 340ms cubic-bezier(0.22, 1, 0.36, 1) 900ms both;
+}
+
+.wob.isIn .wobSub2 {
+  animation: wobFadeIn 340ms cubic-bezier(0.22, 1, 0.36, 1) 1200ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wob .wobLetter,
+  .wob .wobLine,
+  .wob.isIn .wobLetter,
+  .wob.isIn .wobLine {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

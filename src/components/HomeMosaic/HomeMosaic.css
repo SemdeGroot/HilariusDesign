@@ -146,15 +146,6 @@
   transition: transform 280ms ease;
 }
 
-.mosaicMediaWob .mosaicWobImg.revealImg {
-  opacity: 0;
-  transition: opacity 600ms ease, transform 280ms ease;
-}
-
-.mosaicMediaWob .mosaicWobImg.revealImg.isLoaded {
-  opacity: 1;
-}
-
 .mosaicTile:hover .mosaicMediaWob .mosaicWobImg {
   transform: scale(1.02);
 }
@@ -186,5 +177,4 @@
 @media (prefers-reduced-motion: reduce) {
   .mosaicTile { animation: none; }
   .mosaicMedia img.revealImg { opacity: 1; transition: none; }
-  .mosaicMediaWob .mosaicWobImg.revealImg { opacity: 1; transition: none; }
 }
