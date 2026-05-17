@@ -80,13 +80,8 @@ export default function WorldOfBoard({ className = "" }) {
           <path key={i} className="wobLetter" d={d} />
         ))}
       </g>
-      <g className="wobLine wobSub1">
-        {SUSTAINABLE_PATHS.map((d, i) => (
-          <path key={i} d={d} />
-        ))}
-      </g>
-      <g className="wobLine wobSub2">
-        {CRAFT_PATHS.map((d, i) => (
+      <g className="wobLine wobSub">
+        {[...SUSTAINABLE_PATHS, ...CRAFT_PATHS].map((d, i) => (
           <path key={i} d={d} />
         ))}
       </g>
