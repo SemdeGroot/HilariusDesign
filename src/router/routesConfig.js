@@ -160,9 +160,9 @@ export const routesConfig = {
     {
       path: "/about",
       i18n: {
-        nl: { label: "Over HilariusDesign", labelMobile: "Over HD" },
-        en: { label: "About HilariusDesign", labelMobile: "About HD" },
-        de: { label: "Über HilariusDesign", labelMobile: "Über HD" }
+        nl: { label: "Over Hilarius Design", labelMobile: "Over HD" },
+        en: { label: "About Hilarius Design", labelMobile: "About HD" },
+        de: { label: "Über Hilarius Design", labelMobile: "Über HD" }
       }
     },
     { path: "/faq", i18n: { nl: { label: "FAQ" }, en: { label: "FAQ" }, de: { label: "FAQ" } } },

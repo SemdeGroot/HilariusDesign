@@ -81,7 +81,7 @@ export default function Layout({ children }) {
       <footer className="footer">
         <div className="footerInner">
           <div className="footerBrandBlock">
-            <div className="footerBrand">HilariusDesign</div>
+            <div className="footerBrand">Hilarius Design</div>
             <div className="footerTagline">
               <div>IDEAS MADE OF BOARD</div>
               <div>WHERE MATERIAL MEETS CREATION</div>

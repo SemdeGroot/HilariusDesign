@@ -66,7 +66,7 @@ export default function Header() {
     <>
       <header className="header">
         <div className="headerInner">
-          <Link href="/" className="brand" aria-label="HilariusDesign">
+          <Link href="/" className="brand" aria-label="Hilarius Design">
             <img className="brandLogo" src="/logo.svg" alt="" width="34" height="34" />
           </Link>
 

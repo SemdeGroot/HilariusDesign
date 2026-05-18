@@ -152,7 +152,7 @@ function ContactPage({ page }) {
         <div className={`contactImgWrap pageFade pageFadeSlowDesktop ${imgVisible ? "visible" : ""}`}>
           <img
             src="/contact-image.webp"
-            alt="HilariusDesign contact"
+            alt="Hilarius Design contact"
             className="contactImg"
             fetchPriority="high"
           />

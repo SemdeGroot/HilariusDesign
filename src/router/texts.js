@@ -2,32 +2,32 @@ export const texts = {
   home: {
     i18n: {
       nl: {
-        leadTitle: "HilariusDesign",
+        leadTitle: "Hilarius Design",
         leadBody:
           "Ontwerp en productie van originele relatiegeschenken, give-aways en verpakkingen in gerecycled karton. Slim bedacht, helder vormgegeven en passend bij uw huisstijl.",
         secondTitle: "Van idee tot uitvoering",
         secondBody:
-          "Van kartonnen bureau-accessoires en transportmodellen tot luxe (wijn)verpakkingen, mappen en spellen. HilariusDesign combineert eenvoud met impact en verzorgt het traject van concept tot realisatie.",
+          "Van kartonnen bureau-accessoires en transportmodellen tot luxe (wijn)verpakkingen, mappen en spellen. Hilarius Design combineert eenvoud met impact en verzorgt het traject van concept tot realisatie.",
         hoverHint: "Bekijk categorie",
         extraLabel: "Uitgelicht"
       },
       en: {
-        leadTitle: "HilariusDesign",
+        leadTitle: "Hilarius Design",
         leadBody:
           "Design and production of original corporate gifts, giveaways and packaging in recycled board. Smart concepts, clean design, tailored to your brand.",
         secondTitle: "From idea to execution",
         secondBody:
-          "From desk accessories and transport models to premium (wine) packaging, folders and games. HilariusDesign delivers impact with simplicity, from concept to production.",
+          "From desk accessories and transport models to premium (wine) packaging, folders and games. Hilarius Design delivers impact with simplicity, from concept to production.",
         hoverHint: "View category",
         extraLabel: "Featured"
       },
       de: {
-        leadTitle: "HilariusDesign",
+        leadTitle: "Hilarius Design",
         leadBody:
           "Design und Produktion origineller Werbegeschenke, Give-aways und Verpackungen aus recycelter Pappe. Smart gedacht, klar gestaltet, passend zu Ihrer Marke.",
         secondTitle: "Von der Idee bis zur Umsetzung",
         secondBody:
-          "Von Schreibtisch-Accessoires und Transportmodellen bis zu Premium-(Wein)Verpackungen, Mappen und Spielen. HilariusDesign begleitet von Konzept bis Produktion.",
+          "Von Schreibtisch-Accessoires und Transportmodellen bis zu Premium-(Wein)Verpackungen, Mappen und Spielen. Hilarius Design begleitet von Konzept bis Produktion.",
         hoverHint: "Kategorie ansehen",
         extraLabel: "Highlight"
       }
