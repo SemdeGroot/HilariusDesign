@@ -21,7 +21,7 @@ async function preloadAndDecode(src) {
   }
 }
 
-const AUTO_DELAY = 6000;
+const AUTO_DELAY = 4000;
 
 export default function Category() {
   const { slug } = useParams();
@@ -172,6 +172,13 @@ export default function Category() {
 
   const currentProject = projects.find((p) => p.id === activeId) ?? projects[0] ?? null;
   const mobileProject = projects[activeIndex] ?? null;
+  const headingLines = ["titleLine1", "titleLine2", "titleLine3"]
+    .map((key, index) => ({
+      key,
+      text: pick(category, key),
+      strong: index === 1
+    }))
+    .filter((line) => line.text?.trim());
 
   return (
     <section className="catPage">
@@ -203,11 +210,14 @@ export default function Category() {
 
         <div className="catRight">
           <h1 className="catHeading">
-            {pick(category, "titleLine1")}
-            <br />
-            <span className="catStrong">{pick(category, "titleLine2")}</span>
-            <br />
-            {pick(category, "titleLine3")}
+            {headingLines.map((line) => (
+              <span
+                key={line.key}
+                className={`catHeadingLine${line.strong ? " catStrong" : ""}`}
+              >
+                {line.text}
+              </span>
+            ))}
           </h1>
 
           <div className="catTableWrap">

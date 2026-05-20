@@ -13,7 +13,9 @@ export default function LanguageSwitch({ compact = false }) {
     () => [
       { key: "nl", label: "NL" },
       { key: "en", label: "EN" },
-      { key: "de", label: "DE" }
+      { key: "de", label: "DE" },
+      { key: "fr", label: "FR" },
+      { key: "es", label: "ES" }
     ],
     []
   );

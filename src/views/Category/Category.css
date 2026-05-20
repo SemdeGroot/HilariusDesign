@@ -86,6 +86,8 @@
   font-weight: 500;
 }
 
+.catHeadingLine{ display: block; }
+
 .catStrong{ font-weight: 700; }
 
 .catTableWrap{

@@ -30,6 +30,26 @@ export const texts = {
           "Von Schreibtisch-Accessoires und Transportmodellen bis zu Premium-(Wein)Verpackungen, Mappen und Spielen. Hilarius Design begleitet von Konzept bis Produktion.",
         hoverHint: "Kategorie ansehen",
         extraLabel: "Highlight"
+      },
+      fr: {
+        leadTitle: "Hilarius Design",
+        leadBody:
+          "Conception et production de cadeaux d'affaires originaux, give-aways et emballages en carton recycle. Des idees intelligentes, un design clair, adapte a votre identite visuelle.",
+        secondTitle: "De l'idee a la realisation",
+        secondBody:
+          "Des accessoires de bureau en carton et modeles de transport aux emballages haut de gamme pour le vin, dossiers et jeux. Hilarius Design allie simplicite et impact, du concept a la production.",
+        hoverHint: "Voir la categorie",
+        extraLabel: "Selection"
+      },
+      es: {
+        leadTitle: "Hilarius Design",
+        leadBody:
+          "Diseno y produccion de regalos corporativos originales, give-aways y embalajes en carton reciclado. Ideas inteligentes, diseno claro y adaptado a su identidad visual.",
+        secondTitle: "De la idea a la realizacion",
+        secondBody:
+          "Desde accesorios de escritorio y modelos de transporte hasta embalajes premium para vino, carpetas y juegos. Hilarius Design combina sencillez e impacto, del concepto a la produccion.",
+        hoverHint: "Ver categoria",
+        extraLabel: "Destacado"
       }
     }
   },
@@ -60,6 +80,22 @@ export const texts = {
           body:
             "Bei Hilarius Design dreht sich alles um Einfallsreichtum, Handwerkskunst und durchdachte Einfachheit. Seit mehr als vierzig Jahren entwerfe ich Produkte, in denen Kreativität und Konstruktion zusammenkommen: von Werbegeschenken und Verpackungen bis hin zu Transportmodellen und Innenraumelementen, alle aus recycelter Pappe.\n\nPappe ist ein Material, das Menschen unterschätzen. Es ist leicht, stark, nachhaltig und bildet die Grundlage für Produkte, die auffallen ohne zu schreien. Jeder Entwurf beginnt mit einer Idee: Wie kann etwas gleichzeitig clever, schön und produzierbar sein?\n\nVon der ersten Skizze bis zur Produktion begleite ich den gesamten Prozess. Das Ergebnis ist immer ein Produkt, das im Detail stimmt und zu Ihrer Marke passt.",
           cta: "Meine Arbeit ansehen"
+        },
+        fr: {
+          title: "A propos de Wim",
+          heading: "Wim Hilarius",
+          intro: "Design en carton recycle, avec une signature claire.",
+          body:
+            "Chez Hilarius Design, tout tourne autour de l'inventivite, du savoir-faire et d'une simplicite reflechie. Depuis plus de quarante ans, je conçois des produits ou creativite et construction se rencontrent : cadeaux d'affaires, emballages, modeles de transport et elements d'interieur, tous fabriques en carton recycle.\n\nLe carton est un materiau souvent sous-estime. Il est leger, solide, durable et forme la base de produits qui se remarquent sans en faire trop. Chaque creation commence par une idee : comment rendre un objet a la fois intelligent, beau et realisable ?\n\nDe la premiere esquisse a la production, j'accompagne tout le processus. Le resultat est toujours un produit juste dans le detail et adapte a votre marque.",
+          cta: "Voir mon travail"
+        },
+        es: {
+          title: "Sobre Wim",
+          heading: "Wim Hilarius",
+          intro: "Diseno en carton reciclado, con una firma clara.",
+          body:
+            "En Hilarius Design todo gira en torno al ingenio, la artesania y la sencillez bien pensada. Desde hace mas de cuarenta anos diseno productos en los que creatividad y construccion se unen: regalos corporativos, embalajes, modelos de transporte y elementos de interior, todos fabricados en carton reciclado.\n\nEl carton es un material que a menudo se subestima. Es ligero, resistente, sostenible y forma la base de productos que destacan sin necesidad de exagerar. Cada diseno empieza con una idea: como puede algo ser inteligente, bello y producible al mismo tiempo?\n\nDesde el primer boceto hasta la produccion acompano todo el proceso. El resultado es siempre un producto cuidado al detalle y adecuado para su marca.",
+          cta: "Ver mi trabajo"
         }
       }
     },
@@ -131,6 +167,50 @@ export const texts = {
               a: "Die Lieferzeit hängt von Komplexität, Auflage und Veredelung ab. Nach Abstimmung nennen wir einen realistischen Termin."
             }
           ]
+        },
+        fr: {
+          title: "FAQ",
+          intro: "Questions frequentes sur la conception, la production et la livraison.",
+          items: [
+            {
+              q: "Quelle est la quantite minimale ?",
+              a: "Cela depend du produit et de la finition. Contactez-nous, nous vous conseillerons en fonction de votre objectif et de votre budget."
+            },
+            {
+              q: "Pouvez-vous aussi realiser un prototype ?",
+              a: "Oui. Un prototype permet d'evaluer la forme, l'ajustement et la presentation avant de passer a une production plus large."
+            },
+            {
+              q: "Proposez-vous aussi l'impression et la finition ?",
+              a: "Oui. L'impression et la finition sont adaptees a l'application, a l'identite visuelle et au rendu souhaite."
+            },
+            {
+              q: "Quel est le delai de livraison ?",
+              a: "Le delai depend de la complexite, de la quantite et de la finition. Apres concertation, nous donnons toujours un planning realiste."
+            }
+          ]
+        },
+        es: {
+          title: "FAQ",
+          intro: "Preguntas frecuentes sobre diseno, produccion y entrega.",
+          items: [
+            {
+              q: "Cual es la cantidad minima?",
+              a: "Depende del producto y del acabado. Pongase en contacto con nosotros y le asesoraremos segun su objetivo y presupuesto."
+            },
+            {
+              q: "Tambien pueden hacer un prototipo?",
+              a: "Si. Un prototipo ayuda a evaluar la forma, el encaje y la presentacion antes de escalar la produccion."
+            },
+            {
+              q: "Tambien ofrecen impresion y acabado?",
+              a: "Si. La impresion y el acabado se adaptan al uso, a la identidad visual y al aspecto deseado."
+            },
+            {
+              q: "Cual es el plazo de entrega?",
+              a: "El plazo depende de la complejidad, la cantidad y el acabado. Tras la coordinacion, siempre ofrecemos una planificacion realista."
+            }
+          ]
         }
       }
     },
@@ -168,6 +248,28 @@ export const texts = {
             message: "Nachricht",
             send: "Senden",
             success: "Vielen Dank für Ihre Nachricht. Wir melden uns so schnell wie möglich."
+          }
+        },
+        fr: {
+          title: "Contact",
+          intro: "Contactez-nous pour des idees, des prototypes ou un devis.",
+          formLabels: {
+            name: "Nom",
+            email: "Adresse e-mail",
+            message: "Message",
+            send: "Envoyer",
+            success: "Merci pour votre message. Nous vous repondrons des que possible."
+          }
+        },
+        es: {
+          title: "Contacto",
+          intro: "Pongase en contacto para ideas, prototipos o un presupuesto.",
+          formLabels: {
+            name: "Nombre",
+            email: "Correo electronico",
+            message: "Mensaje",
+            send: "Enviar",
+            success: "Gracias por su mensaje. Nos pondremos en contacto lo antes posible."
           }
         }
       }

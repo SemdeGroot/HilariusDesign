@@ -10,7 +10,7 @@ export const I18nContext = createContext({
 });
 
 export default function I18nProvider({ children }) {
-  const supported = routesConfig.i18n?.supported ?? ["nl", "en", "de"];
+  const supported = routesConfig.i18n?.supported ?? ["nl", "en", "de", "fr", "es"];
   const fallback = routesConfig.i18n?.fallback ?? "nl";
 
   const defaultLang = routesConfig.i18n?.default ?? "nl";
