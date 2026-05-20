@@ -267,6 +267,18 @@
   .projTitle{ font-size: 28px; }
 
   /* Collage mobile */
+  .collage .imgBox{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .collage .imgBox img{
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
   .collage--3{
     grid-template-columns: 1fr 1fr;
   }

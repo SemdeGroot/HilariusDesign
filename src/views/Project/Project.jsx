@@ -207,7 +207,7 @@ export default function Project() {
       <div className="pn">
         <div className="pnLeft">
           {nav.prev ? (
-            <Link href={`/project/${nav.prev.id}`} className="pnLink">
+            <Link href={`/project/${nav.prev.id}`} className="pnLink" scroll={false}>
               <span className="pnIcon" aria-hidden="true">
                 <ArrowLeft strokeWidth={1.8} />
               </span>
@@ -230,7 +230,7 @@ export default function Project() {
 
         <div className="pnRight">
           {nav.next ? (
-            <Link href={`/project/${nav.next.id}`} className="pnLink right">
+            <Link href={`/project/${nav.next.id}`} className="pnLink right" scroll={false}>
               <span className="pnText">
                 {pick(routesConfig.copy.project, "next")}
               </span>
