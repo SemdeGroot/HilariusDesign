@@ -16,7 +16,7 @@ function useFadeIn(delay = 0) {
   return visible;
 }
 
-/* ─── About ─────────────────────────────────────────────────── */
+/* About */
 function AboutPage({ page }) {
   const { pick } = useContext(I18nContext);
   const imgVisible = useFadeIn(100);
@@ -50,7 +50,7 @@ function AboutPage({ page }) {
   );
 }
 
-/* ─── FAQ ────────────────────────────────────────────────────── */
+/* FAQ */
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
 
@@ -110,7 +110,7 @@ function FaqPage({ page }) {
   );
 }
 
-/* ─── Contact ────────────────────────────────────────────────── */
+/* Contact */
 function ContactPage({ page }) {
   const { pick } = useContext(I18nContext);
   const labels = pick(page, "formLabels") ?? {};

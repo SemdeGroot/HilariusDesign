@@ -14,8 +14,8 @@
 }
 
 .breadcrumb{
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--text);
   display:flex;
   align-items:center;
   gap: 8px;
@@ -23,12 +23,13 @@
 }
 
 .crumbLink{
-  color: var(--muted);
+  color: var(--text);
   padding: 4px 0;
+  opacity: 0.78;
 }
 
-.sep{ opacity: 0.6; }
-.crumbNow{ color: var(--text); opacity: 0.85; }
+.sep{ opacity: 0.45; }
+.crumbNow{ color: var(--text); opacity: 0.9; }
 
 .projLayout{
   display:grid;
@@ -148,18 +149,18 @@
   margin-top: 16px;
   max-width: 44ch;
   color: var(--muted);
-  line-height: 1.85;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 16px;
   white-space: pre-line;
 }
 
 .projBody{
   margin-top: 18px;
   max-width: 62ch;
-  line-height: 1.9;
-  font-size: 14px;
+  line-height: 1.62;
+  font-size: 16px;
   color: var(--text);
-  opacity: 0.9;
+  opacity: 0.96;
   white-space: pre-line;
 }
 
@@ -177,16 +178,16 @@
 }
 
 .detailKey{
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .detailVal{
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
-  opacity: 0.9;
+  opacity: 0.96;
   line-height: 1.6;
 }
 

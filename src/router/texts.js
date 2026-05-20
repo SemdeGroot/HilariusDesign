@@ -42,7 +42,7 @@ export const texts = {
           heading: "Wim Hilarius",
           intro: "Ontwerp in gerecycled karton, met een heldere signatuur.",
           body:
-            "Bij Hilarius Design draait alles om vindingrijkheid, vakmanschap en doordachte eenvoud. Al meer dan veertig jaar ontwerp ik producten waarin creativiteit en constructie samenkomen — van relatiegeschenken en verpakkingen tot transportmodellen en interieurelementen, allemaal vervaardigd uit gerecycled karton.\n\nKarton is een materiaal dat mensen onderschatten. Het is licht, sterk, duurzaam en vormt de basis voor producten die opvallen zonder te schreeuwen. Elk ontwerp begint met een idee: hoe kan iets tegelijk slim, mooi en maakbaar zijn?\n\nVan eerste schets tot productie begeleid ik het volledige traject. Het resultaat is altijd een product dat klopt in detail en past bij uw merk.",
+            "Bij Hilarius Design draait alles om vindingrijkheid, vakmanschap en doordachte eenvoud. Al meer dan veertig jaar ontwerp ik producten waarin creativiteit en constructie samenkomen: van relatiegeschenken en verpakkingen tot transportmodellen en interieurelementen, allemaal vervaardigd uit gerecycled karton.\n\nKarton is een materiaal dat mensen onderschatten. Het is licht, sterk, duurzaam en vormt de basis voor producten die opvallen zonder te schreeuwen. Elk ontwerp begint met een idee: hoe kan iets tegelijk slim, mooi en maakbaar zijn?\n\nVan eerste schets tot productie begeleid ik het volledige traject. Het resultaat is altijd een product dat klopt in detail en past bij uw merk.",
           cta: "Bekijk mijn werk"
         },
         en: {
@@ -50,7 +50,7 @@ export const texts = {
           heading: "Wim Hilarius",
           intro: "Design in recycled board, with a clear signature.",
           body:
-            "Hilarius Design is about ingenuity, craftsmanship and considered simplicity. For over forty years I have designed products where creativity and construction meet — from corporate gifts and packaging to transport models and interior elements, all made from recycled board.\n\nBoard is a material people underestimate. It is light, strong, sustainable and forms the basis for products that stand out without shouting. Every design starts with an idea: how can something be smart, beautiful and manufacturable at the same time?\n\nFrom first sketch to production I guide the full process. The result is always a product that holds up in detail and fits your brand.",
+            "Hilarius Design is about ingenuity, craftsmanship and considered simplicity. For over forty years I have designed products where creativity and construction meet: from corporate gifts and packaging to transport models and interior elements, all made from recycled board.\n\nBoard is a material people underestimate. It is light, strong, sustainable and forms the basis for products that stand out without shouting. Every design starts with an idea: how can something be smart, beautiful and manufacturable at the same time?\n\nFrom first sketch to production I guide the full process. The result is always a product that holds up in detail and fits your brand.",
           cta: "View my work"
         },
         de: {
@@ -58,7 +58,7 @@ export const texts = {
           heading: "Wim Hilarius",
           intro: "Design aus recycelter Pappe, mit klarer Handschrift.",
           body:
-            "Bei Hilarius Design dreht sich alles um Einfallsreichtum, Handwerkskunst und durchdachte Einfachheit. Seit mehr als vierzig Jahren entwerfe ich Produkte, in denen Kreativität und Konstruktion zusammenkommen — von Werbegeschenken und Verpackungen bis hin zu Transportmodellen und Innenraumelementen, alle aus recycelter Pappe.\n\nPappe ist ein Material, das Menschen unterschätzen. Es ist leicht, stark, nachhaltig und bildet die Grundlage für Produkte, die auffallen ohne zu schreien. Jeder Entwurf beginnt mit einer Idee: Wie kann etwas gleichzeitig clever, schön und produzierbar sein?\n\nVon der ersten Skizze bis zur Produktion begleite ich den gesamten Prozess. Das Ergebnis ist immer ein Produkt, das im Detail stimmt und zu Ihrer Marke passt.",
+            "Bei Hilarius Design dreht sich alles um Einfallsreichtum, Handwerkskunst und durchdachte Einfachheit. Seit mehr als vierzig Jahren entwerfe ich Produkte, in denen Kreativität und Konstruktion zusammenkommen: von Werbegeschenken und Verpackungen bis hin zu Transportmodellen und Innenraumelementen, alle aus recycelter Pappe.\n\nPappe ist ein Material, das Menschen unterschätzen. Es ist leicht, stark, nachhaltig und bildet die Grundlage für Produkte, die auffallen ohne zu schreien. Jeder Entwurf beginnt mit einer Idee: Wie kann etwas gleichzeitig clever, schön und produzierbar sein?\n\nVon der ersten Skizze bis zur Produktion begleite ich den gesamten Prozess. Das Ergebnis ist immer ein Produkt, das im Detail stimmt und zu Ihrer Marke passt.",
           cta: "Meine Arbeit ansehen"
         }
       }
@@ -116,7 +116,7 @@ export const texts = {
           items: [
             {
               q: "Was ist die Mindestauflage?",
-              a: "Das hängt von Produkt und Veredelung ab. Kontaktieren Sie uns — wir beraten passend zu Ziel und Budget."
+              a: "Das hängt von Produkt und Veredelung ab. Kontaktieren Sie uns, dann beraten wir passend zu Ziel und Budget."
             },
             {
               q: "Macht ihr Prototypen?",

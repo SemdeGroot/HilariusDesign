@@ -37,7 +37,7 @@ export default function Category() {
     return routesConfig.projects.filter((p) => p.category === category.slug);
   }, [category]);
 
-  // ─── Desktop hero ────────────────────────────────────────────
+  // Desktop hero
   const [activeId, setActiveId] = useState(null);
   const [heroSrc, setHeroSrc] = useState("");
   const [heroFadeKey, setHeroFadeKey] = useState(0);
@@ -70,7 +70,7 @@ export default function Category() {
     preloadAndDecode(p.cover).then(() => { preloadedRef.current.add(p.cover); show(); }).catch(show);
   }
 
-  // ─── Mobile: image rail + static dots/title ──────────────────
+  // Mobile: image rail + static dots/title
   const railRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndexRef = useRef(0);

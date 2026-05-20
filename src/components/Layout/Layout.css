@@ -40,7 +40,7 @@
 .footerTagline{
   display:grid;
   gap: 2px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -75,7 +75,7 @@
 }
 
 .footerText{
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--text);
   opacity: 0.9;
@@ -83,7 +83,7 @@
 }
 
 .footerLink{
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   padding: 0;
   display: block;
@@ -120,7 +120,7 @@
 }
 
 .footerLegal{
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--muted);
   white-space: nowrap;
@@ -164,7 +164,7 @@
   .footerText,
   .footerLink,
   .footerLegal{
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
   }
 

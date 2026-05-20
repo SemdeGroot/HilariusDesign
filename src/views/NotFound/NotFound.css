@@ -12,7 +12,7 @@
 
 .notFoundCode{
   margin: 0;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -28,8 +28,8 @@
 
 .notFoundBody{
   margin: 0;
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--muted);
 }
 
@@ -40,7 +40,7 @@
   margin-top: 8px;
   text-decoration: none;
   color: var(--text);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--text);

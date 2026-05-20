@@ -71,8 +71,8 @@
 }
 
 .homeMobileIntroBody{
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.62;
   color: var(--text);
   opacity: 0.9;
 }
@@ -109,16 +109,17 @@
 }
 
 .homeMobileCatTitle{
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.02em;
   opacity: 0.92;
 }
 
 .homeMobileCatSub{
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.45;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.48;
   margin-top: 0;
+  opacity: 0.72;
 }
 
 .homeMobileCatTitle,

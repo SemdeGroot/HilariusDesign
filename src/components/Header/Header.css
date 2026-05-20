@@ -7,7 +7,7 @@
   position: sticky;
   top:0;
   z-index:200;
-  /* Always solid white — no backdrop-filter opacity effect */
+  /* Always solid white, with no backdrop-filter opacity effect */
   background: #ffffff;
   border-bottom: 1px solid var(--line);
 }
@@ -47,8 +47,8 @@
   position: relative;
   text-decoration:none;
   color: var(--text);
-  font-size: 13px;
-  letter-spacing: 0.14em;
+  font-size: 15px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 12px 0;
   opacity: 0.88;
@@ -138,8 +138,8 @@
 .megaTitle{
   text-decoration:none;
   color: var(--text);
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-size: 14px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   display:inline-block;
   padding: 8px 0 6px;
@@ -172,8 +172,8 @@
 .megaSub{
   margin-top: 6px;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.45;
   padding: 0 0 10px;
 }
 
@@ -186,6 +186,7 @@
   text-decoration:none;
   color: var(--text);
   display:inline-block;
+  font-size: 15px;
   padding: 8px 0;
   opacity: 0.85;
   font-weight: 400;
@@ -303,7 +304,7 @@
 }
 
 .mobileTitle{
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.9;
@@ -323,7 +324,7 @@
 }
 
 .mobileSectionLabel{
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -355,7 +356,7 @@
 .mobileAccBtn:hover{ background: rgba(0,0,0,0.03); }
 
 .mobileAccTitle{
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.02em;
   opacity: 0.92;
 }
@@ -391,7 +392,7 @@
   display:block;
   text-decoration:none;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   padding: 6px 0 8px;
 }
@@ -401,7 +402,7 @@
 .mobileAccProduct{
   text-decoration:none;
   color: var(--text);
-  font-size: 13px;
+  font-size: 14px;
   opacity: 0.90;
   padding: 8px 0;
   border-bottom: 1px solid rgba(10,10,10,0.06);
@@ -459,7 +460,7 @@
     letter-spacing: 0.08em;
   }
 
-  /* Spacer removed — space-between handles even distribution */
+  /* Spacer removed because space-between handles even distribution */
   .navMobileInline::after{
     display: none;
   }

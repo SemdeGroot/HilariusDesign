@@ -12,7 +12,7 @@
   color: var(--text);
   cursor:pointer;
   letter-spacing:0.14em;
-  font-size:12px;
+  font-size:13px;
 }
 
 .langBtn:hover{ background: rgba(0,0,0,0.03); }
@@ -57,7 +57,7 @@
   border-radius:10px;
   cursor:pointer;
   letter-spacing:0.14em;
-  font-size:12px;
+  font-size:13px;
   opacity:0.85;
 }
 .langItem:hover{ background: rgba(0,0,0,0.03); opacity:1; }
@@ -68,7 +68,7 @@
   height: 30px;
   padding: 0 7px 0 10px;
   gap: 4px;             /* chevron dichter bij landcode */
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
 }
 

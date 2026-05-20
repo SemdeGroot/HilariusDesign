@@ -76,7 +76,7 @@
   transition: transform 280ms ease;
 }
 
-/* Fade in on load — desktop */
+/* Fade in on load: desktop */
 .mosaicMedia img.revealImg {
   opacity: 0;
   transition: opacity 600ms ease, transform 280ms ease;
@@ -94,15 +94,15 @@
   pointer-events: none;
 }
 
-/* Caption below image — appears on hover */
+/* Caption below image, appears on hover */
 .mosaicCaption {
   padding: 10px 0 20px;
-  min-height: 44px;
+  min-height: 52px;
 }
 
 .mosaicCaptionLabel {
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-size: 14px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(5px);
@@ -111,9 +111,9 @@
 
 .mosaicCaptionSub {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.42;
   opacity: 0;
   transform: translateY(5px);
   transition: opacity 200ms ease 30ms, transform 200ms ease 30ms;

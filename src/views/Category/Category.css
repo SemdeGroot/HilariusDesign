@@ -109,7 +109,7 @@
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   z-index: 2;
@@ -153,8 +153,8 @@
 .catMetaNote{
   margin-top: 18px;
   color: var(--muted);
-  line-height: 1.7;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
 /* ─── Mobile ─────────────────────────────────────────────────── */
@@ -179,10 +179,10 @@
   margin-top: 6px;
   color: var(--muted);
   line-height: 1.55;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Image-only scroll rail — only the images scroll, nothing else */
+/* Image-only scroll rail: only the images scroll, nothing else */
 .catMobileImgRail{
   margin-top: 16px;
   display: grid;
@@ -194,7 +194,7 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
-  /* No aspect-ratio here — each cell carries it */
+  /* No aspect-ratio here because each cell carries it */
 }
 
 .catMobileImgRail::-webkit-scrollbar{ display: none; }

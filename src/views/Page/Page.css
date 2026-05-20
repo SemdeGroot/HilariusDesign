@@ -34,8 +34,8 @@
 .pageIntro{
   margin-top: 14px;
   color: var(--muted);
-  line-height: 1.8;
-  font-size: 14px;
+  line-height: 1.65;
+  font-size: 15px;
 }
 
 @media (max-width: 860px){
@@ -80,7 +80,7 @@
 }
 
 .aboutSuper{
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -103,8 +103,8 @@
 }
 
 .aboutBody{
-  font-size: 14px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--text);
   opacity: 0.9;
   white-space: pre-line;
@@ -117,7 +117,7 @@
   gap: 10px;
   text-decoration: none;
   color: var(--text);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--text);
@@ -186,7 +186,7 @@
 }
 
 .faqQ{
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   font-weight: 600;
@@ -227,7 +227,7 @@
   opacity: 1;
 }
 
-/* No padding here — padding on the inner element causes the browser
+/* No padding here because padding on the inner element causes the browser
    to still reserve space even when grid-template-rows is 0fr,
    creating the asymmetric gap in closed state. */
 .faqPanelInner{
@@ -239,8 +239,8 @@
    This way it truly only exists when the panel is open. */
 .faqA{
   margin: 0 0 18px;
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--text);
   opacity: 0.85;
 }
@@ -286,7 +286,7 @@
 .contactDetailLink{
   display:inline-block; /* clickable only on the text */
   width: fit-content;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65;
   color: var(--text);
   text-decoration: none;
@@ -323,8 +323,8 @@
 }
 
 .contactDetailText{
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.58;
   color: var(--text);
   opacity: 0.75;
 }
@@ -352,7 +352,7 @@
 }
 
 .formLabel{
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -364,7 +364,7 @@
   border-radius: 0;
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 15px;
   padding: 12px 14px;
   outline: none;
   transition: border-color 160ms ease;
@@ -388,7 +388,7 @@
   border: 0;
   padding: 13px 32px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -402,8 +402,8 @@
 
 .contactSuccess{
   margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--text);
   opacity: 0.85;
   border-left: 2px solid var(--text);

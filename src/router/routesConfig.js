@@ -33,19 +33,19 @@ const defaultProjectI18n = (file, categoryDefaults = {}) => {
       description:
         "Ontwerp en productie in gerecycled karton. Strak, functioneel en volledig te personaliseren in uw huisstijl.",
       body:
-        "Toepassing\n— Waar wordt dit product voor gebruikt?\n\nDetails\n— Formaat / variaties\n— Afwerking (bijv. stans, folie, lak)\n— Personalisatie / branding\n\nProductie\n— Oplage (indicatie)\n— Levertijd (indicatie)\n\nOpmerking\n— Extra context of wensen van de klant",
+        "Toepassing\nWaar wordt dit product voor gebruikt?\n\nDetails\nFormaat / variaties\nAfwerking (bijv. stans, folie, lak)\nPersonalisatie / branding\n\nProductie\nOplage (indicatie)\nLevertijd (indicatie)\n\nOpmerking\nExtra context of wensen van de klant",
       type: categoryDefaults?.nl?.type ?? "Relatiegeschenk / Karton",
-      year: categoryDefaults?.nl?.year ?? "—",
+      year: categoryDefaults?.nl?.year ?? "",
       materials: "Gerecycled karton"
     },
     en: {
       title: t,
       description:
-        "Design and production in recycled board. Clean, functional and fully customizable to your brand.",
+        "Design and production in recycled board. Clean, functional and fully tailored to your brand.",
       body:
-        "Use case\n— What is this used for?\n\nDetails\n— Size / variations\n— Finishing (e.g. die-cut, foil, varnish)\n— Custom branding\n\nProduction\n— Quantity (estimate)\n— Lead time (estimate)\n\nNotes\n— Any extra context or client requests",
+        "Use case\nWhat is this used for?\n\nDetails\nSize / variations\nFinishing (e.g. die-cut, foil, varnish)\nCustom branding\n\nProduction\nQuantity (estimate)\nLead time (estimate)\n\nNotes\nAny extra context or client requests",
       type: categoryDefaults?.en?.type ?? "Corporate gift / Board",
-      year: categoryDefaults?.en?.year ?? "—",
+      year: categoryDefaults?.en?.year ?? "",
       materials: "Recycled board"
     },
     de: {
@@ -53,9 +53,9 @@ const defaultProjectI18n = (file, categoryDefaults = {}) => {
       description:
         "Design und Produktion aus recycelter Pappe. Klar, funktional und vollständig an Ihre Marke anpassbar.",
       body:
-        "Einsatz\n— Wofür wird es genutzt?\n\nDetails\n— Größe / Varianten\n— Veredelung (z.B. Stanzung, Folie, Lack)\n— Branding / Personalisierung\n\nProduktion\n— Auflage (Schätzung)\n— Lieferzeit (Schätzung)\n\nNotizen\n— Zusätzlicher Kontext oder Kundenwünsche",
+        "Einsatz\nWofür wird es genutzt?\n\nDetails\nGröße / Varianten\nVeredelung (z.B. Stanzung, Folie, Lack)\nBranding / Personalisierung\n\nProduktion\nAuflage (Schätzung)\nLieferzeit (Schätzung)\n\nNotizen\nZusätzlicher Kontext oder Kundenwünsche",
       type: categoryDefaults?.de?.type ?? "Werbegeschenk / Pappe",
-      year: categoryDefaults?.de?.year ?? "—",
+      year: categoryDefaults?.de?.year ?? "",
       materials: "Recycelte Pappe"
     }
   };
@@ -82,7 +82,23 @@ const makeProject = ({ id, category, file, i18n }) => {
   };
 };
 
-const makeId = (file) => file.split("/").pop().replace(/\.[^/.]+$/, "").toLowerCase();
+const slugify = (value) =>
+  String(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " en ")
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const makeId = (file, i18n) => {
+  const title = i18n?.nl?.title;
+  const fromTitle = title ? slugify(title) : "";
+  if (fromTitle) return fromTitle;
+
+  return slugify(file.split("/").pop().replace(/\.[^/.]+$/, ""));
+};
 
 const buildCategoryProjects = (categorySlug, files, categoryDefaults) => {
   const ordered = projectOrder?.[categorySlug];
@@ -102,14 +118,19 @@ const buildCategoryProjects = (categorySlug, files, categoryDefaults) => {
 
   finalFiles.push(...remaining);
 
+  const usedIds = new Map();
+
   return finalFiles.map((file) => {
     const baseI18n = defaultProjectI18n(file, categoryDefaults);
     const override = projectOverrides[file];
 
     const mergedI18n = mergeDeep(baseI18n, override?.i18n);
+    const baseId = makeId(file, mergedI18n);
+    const count = usedIds.get(baseId) ?? 0;
+    usedIds.set(baseId, count + 1);
 
     return makeProject({
-      id: makeId(file),
+      id: count === 0 ? baseId : `${baseId}-${count + 1}`,
       category: categorySlug,
       file,
       i18n: mergedI18n

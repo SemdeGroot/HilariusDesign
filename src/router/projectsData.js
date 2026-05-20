@@ -18,21 +18,21 @@ export const projectOverrides = {
     i18n: {
       nl: {
         title: "Bedrijfsauto's",
-        description: `De bedrijfsauto van karton is meer dan een verpakking — het is een rijdend uithangbord voor uw merk.`,
+        description: `De bedrijfsauto van karton is meer dan een verpakking. Het is een rijdend uithangbord voor uw merk.`,
         body: `Volledig bedrukt in uw huisstijl maakt deze wagen direct indruk op het bureau van uw relaties. Vul hem met snoep, chocolade of een kleine verrassing en geef een cadeau dat opvalt en bijblijft.
 
 Leverbaar in diverse uitvoeringen en volledig aan te passen aan uw wensen.`
       },
       en: {
         title: "Company cars",
-        description: `The cardboard company car is more than packaging — it's a moving billboard for your brand.`,
-        body: `Printed in your full corporate identity, this car makes an immediate impression on your clients' desks. Fill it with sweets, chocolate or a small surprise, and give a gift that stands out and stays memorable.
+        description: `The cardboard company car is more than packaging. It is a moving billboard for your brand.`,
+        body: `Printed in your full corporate identity, this car makes an immediate impression on your clients' desks. Fill it with sweets, chocolate or a small surprise, and give a gift that people keep on their desk.
 
-Available in various configurations and fully customisable to your requirements.`
+Available in various configurations and fully customizable to your requirements.`
       },
       de: {
         title: "Firmenwagen",
-        description: `Das Firmenauto aus Karton ist mehr als eine Verpackung — es ist ein fahrendes Aushängeschild für Ihre Marke.`,
+        description: `Das Firmenauto aus Karton ist mehr als eine Verpackung. Es ist ein fahrendes Aushängeschild für Ihre Marke.`,
         body: `Vollständig in Ihrem Corporate Design bedruckt, macht dieser Wagen auf dem Schreibtisch Ihrer Geschäftspartner sofort Eindruck. Füllen Sie ihn mit Süßigkeiten, Schokolade oder einer kleinen Überraschung und schenken Sie etwas, das auffällt und in Erinnerung bleibt.
 
 Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen anpassbar.`
@@ -49,8 +49,8 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
       },
       en: {
         title: "Beer wagon",
-        description: `An original cardboard beer wagon to present your bottle of beer in a festive and unforgettable way.`,
-        body: `Fully printed in your corporate identity, this beer wagon becomes a true eye-catcher on any desk. Perfect as a corporate gift for the hospitality sector, breweries, or events where your brand takes centre stage.`
+        description: `An original cardboard beer wagon to present your bottle of beer in a festive way.`,
+        body: `Fully printed in your corporate identity, this beer wagon becomes a true eye-catcher on any desk. Perfect as a corporate gift for the hospitality sector, breweries or events where your brand takes center stage.`
       },
       de: {
         title: "Bierwagen",
@@ -65,12 +65,12 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
       nl: {
         title: "Containers",
         description: `Kartonnen containers als originele verpakking voor uw relatiegeschenk. Robuust, indrukwekkend en volledig in uw huisstijl.`,
-        body: `Deze containers van karton combineren een stoere uitstraling met praktisch gebruik. Vul ze met uw cadeau en geef uw relaties een geschenk dat blijft staan — letterlijk en figuurlijk.`
+        body: `Deze containers van karton combineren een stoere uitstraling met praktisch gebruik. Vul ze met uw cadeau en geef uw relaties een geschenk dat letterlijk blijft staan.`
       },
       en: {
         title: "Containers",
         description: `Cardboard containers as an original packaging for your corporate gift. Robust, impressive and fully in your corporate identity.`,
-        body: `These cardboard containers combine a bold appearance with practical use. Fill them with your gift and give your clients a present that truly stands out — literally and figuratively.`
+        body: `These cardboard containers combine a bold appearance with practical use. Fill them with your gift and give your clients a present that stands out on the desk.`
       },
       de: {
         title: "Container",
@@ -105,12 +105,12 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
       nl: {
         title: "Tankauto",
         description: `Een kartonnen tankauto als opvallend relatiegeschenk. Perfect voor bedrijven in de energie- of transportsector.`,
-        body: `Volledig bedrukt in uw huisstijl staat deze tankauto als een echte blikvanger op het bureau. Origineel, duurzaam en onderscheidend — een geschenk dat uw merk in beweging houdt.`
+        body: `Volledig bedrukt in uw huisstijl staat deze tankauto als een echte blikvanger op het bureau. Origineel, duurzaam en herkenbaar: een geschenk dat uw merk in beweging houdt.`
       },
       en: {
         title: "Tanker truck",
         description: `A cardboard tanker truck as a striking corporate gift. Perfect for companies in the energy or transport sector.`,
-        body: `Fully printed in your corporate identity, this tanker truck stands out on any desk. Original, sustainable and distinctive — a gift that keeps your brand moving.`
+        body: `Fully printed in your corporate identity, this tanker truck stands out on any desk. Original, sustainable and recognizable: a gift that keeps your brand moving.`
       },
       de: {
         title: "Tankwagen",
@@ -125,12 +125,12 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
       nl: {
         title: "Treinen",
         description: `Een kartonnen trein als origineel relatiegeschenk voor partners in de railwereld en daarbuiten.`,
-        body: `Volledig op maat bedrukt in uw huisstijl rijdt deze trein rechtstreeks naar de harten van uw relaties. Origineel, herkenbaar en duurzaam — een geschenk dat de verbinding versterkt.`
+        body: `Volledig op maat bedrukt in uw huisstijl rijdt deze trein rechtstreeks naar de harten van uw relaties. Origineel, herkenbaar en duurzaam: een geschenk dat de verbinding versterkt.`
       },
       en: {
         title: "Trains",
         description: `A cardboard train as an original corporate gift for partners in the rail sector and beyond.`,
-        body: `Fully printed to order in your corporate identity, this train goes straight to the hearts of your clients. Original, recognisable and sustainable — a gift that strengthens the connection.`
+        body: `Fully printed to order in your corporate identity, this train goes straight to the hearts of your clients. Original, recognizable and sustainable: a gift that strengthens the connection.`
       },
       de: {
         title: "Züge",
@@ -144,15 +144,15 @@ Erhältlich in verschiedenen Ausführungen und vollständig nach Ihren Wünschen
     i18n: {
       nl: {
         title: "Vliegtuigen",
-        description: `Zorg voor een vliegende start met uw nieuwe relaties. Kartonnen vliegtuigen als onderscheidend relatiegeschenk.`,
+        description: `Zorg voor een vliegende start met uw nieuwe relaties. Kartonnen vliegtuigen als origineel relatiegeschenk.`,
         body: `Deze vliegtuigen van karton worden volledig bedrukt in uw huisstijl en zijn perfect te vullen met snoep, chocolade of een kleine verrassing. Een geschenk dat de aandacht trekt en de verbeelding prikkelt.
 
 De sky is the limit!`
       },
       en: {
         title: "Aircraft",
-        description: `Give your new business relationships a flying start. Cardboard aircraft as a distinctive corporate gift.`,
-        body: `These cardboard aircraft are fully printed in your corporate identity and perfect to fill with sweets, chocolate or a small surprise. A gift that captures attention and sparks the imagination.
+        description: `Give your new business relationships a flying start. Cardboard aircraft as an original corporate gift.`,
+        body: `These cardboard aircraft are fully printed in your corporate identity and perfect to fill with sweets, chocolate or a small surprise. A gift that draws attention and sparks the imagination.
 
 The sky is the limit!`
       },
@@ -184,7 +184,7 @@ Heeft u interesse in andere voertuigen van karton? Neem dan een kijkje op hilari
 
 Dimensions: 348 x 86 x 114 mm (l x w x h).
 
-Interested in other cardboard vehicles? Visit hilariusdesign.nl or get in touch — we are happy to develop a custom design. The sky is the limit!`
+Interested in other cardboard vehicles? Visit hilariusdesign.nl or get in touch. We are happy to develop a custom design. The sky is the limit!`
       },
       de: {
         title: "LKW",
@@ -193,7 +193,7 @@ Interested in other cardboard vehicles? Visit hilariusdesign.nl or get in touch 
 
 Maße: 348 x 86 x 114 mm (L x B x H).
 
-Interesse an anderen Kartonfahrzeugen? Besuchen Sie hilariusdesign.nl oder nehmen Sie Kontakt auf — wir entwickeln gerne ein individuelles Design. The sky is the limit!`
+Interesse an anderen Kartonfahrzeugen? Besuchen Sie hilariusdesign.nl oder nehmen Sie Kontakt auf. Wir entwickeln gerne ein individuelles Design. The sky is the limit!`
       }
     }
   },
@@ -211,9 +211,9 @@ Interesse an anderen Kartonfahrzeugen? Besuchen Sie hilariusdesign.nl oder nehme
 
 Formaat bureaukalender: 210 x 75 x 70 mm (l x b x h). De kalenders worden vlakliggend geleverd.
 
-Ook leverbaar als wandkalender — formaat 420 x 297 mm of 297 x 420 mm.
+Ook leverbaar als wandkalender in het formaat 420 x 297 mm of 297 x 420 mm.
 
-Duurzaam, onderscheidend en praktisch: het relatiegeschenk dat blijft staan.`
+Duurzaam, herkenbaar en praktisch: het relatiegeschenk dat blijft staan.`
       },
       en: {
         title: "Desk calendars",
@@ -222,9 +222,9 @@ Duurzaam, onderscheidend en praktisch: het relatiegeschenk dat blijft staan.`
 
 Desk calendar dimensions: 210 x 75 x 70 mm (l x w x h). Calendars are delivered flat.
 
-Also available as a wall calendar — 420 x 297 mm or 297 x 420 mm.
+Also available as a wall calendar in 420 x 297 mm or 297 x 420 mm.
 
-Sustainable, distinctive and practical: the corporate gift that keeps standing.`
+Sustainable, recognizable and practical: the corporate gift that keeps standing.`
       },
       de: {
         title: "Schreibtischkalender",
@@ -233,7 +233,7 @@ Sustainable, distinctive and practical: the corporate gift that keeps standing.`
 
 Maße Schreibtischkalender: 210 x 75 x 70 mm (L x B x H). Die Kalender werden flach geliefert.
 
-Auch als Wandkalender erhältlich — Format 420 x 297 mm oder 297 x 420 mm.
+Auch als Wandkalender im Format 420 x 297 mm oder 297 x 420 mm erhältlich.
 
 Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.`
       }
@@ -245,17 +245,17 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       nl: {
         title: "Fotolijstjes",
         description: `Elegante fotolijstjes van karton die een persoonlijke noot geven aan uw bureau of kantoor.`,
-        body: `Ontworpen met oog voor detail combineren deze fotolijstjes een stijlvolle uitstraling met duurzame materialen. Volledig personaliseerbaar met uw logo of boodschap — een relatiegeschenk dat persoonlijk en functioneel tegelijk is.`
+        body: `Ontworpen met oog voor detail combineren deze fotolijstjes een stijlvolle uitstraling met duurzame materialen. Met uw logo of boodschap worden ze een relatiegeschenk dat persoonlijk en functioneel tegelijk is.`
       },
       en: {
         title: "Photo frames",
         description: `Elegant cardboard photo frames that add a personal touch to any desk or office.`,
-        body: `Designed with attention to detail, these photo frames combine a stylish appearance with sustainable materials. Fully personalisable with your logo or message — a corporate gift that is both personal and functional.`
+        body: `Designed with attention to detail, these photo frames combine a stylish appearance with sustainable materials. With your logo or message, they become a corporate gift that is both personal and functional.`
       },
       de: {
         title: "Fotorahmen",
         description: `Elegante Karton-Fotorahmen, die jedem Schreibtisch oder Büro eine persönliche Note verleihen.`,
-        body: `Mit viel Liebe zum Detail entworfen, verbinden diese Fotorahmen eine stilvolle Optik mit nachhaltigen Materialien. Vollständig personalisierbar mit Ihrem Logo oder einer Botschaft — ein Werbegeschenk, das persönlich und funktional zugleich ist.`
+        body: `Mit viel Liebe zum Detail entworfen, verbinden diese Fotorahmen eine stilvolle Optik mit nachhaltigen Materialien. Mit Ihrem Logo oder einer Botschaft werden sie zu einem Werbegeschenk, das persönlich und funktional zugleich ist.`
       }
     }
   },
@@ -265,12 +265,12 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       nl: {
         title: "Klokken",
         description: `De tijd in karton: het is eens wat anders. Wandklokken van massiefkarton of golfkarton als bijzonder relatiegeschenk.`,
-        body: `Deze wandklokken zijn ontworpen door Hilarius Design en combineren functionaliteit met een onderscheidend uiterlijk. Leverbaar in diverse uitvoeringen, volledig op maat te maken naar uw wensen en huisstijl.`
+        body: `Deze wandklokken zijn ontworpen door Hilarius Design en combineren functionaliteit met een eigen uiterlijk. Leverbaar in diverse uitvoeringen, volledig op maat te maken naar uw wensen en huisstijl.`
       },
       en: {
         title: "Clocks",
-        description: `Time in cardboard: quite something else. Wall clocks made from solid cardboard or corrugated board as a distinctive corporate gift.`,
-        body: `These wall clocks are designed by Hilarius Design and combine functionality with a distinctive look. Available in various configurations and fully customisable to your requirements and corporate identity.`
+        description: `Time in cardboard: quite something else. Wall clocks made from solid cardboard or corrugated board as a special corporate gift.`,
+        body: `These wall clocks are designed by Hilarius Design and combine functionality with a clear look of their own. Available in various configurations and fully customizable to your requirements and corporate identity.`
       },
       de: {
         title: "Uhren",
@@ -285,17 +285,17 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       nl: {
         title: "Memobakjes",
         description: `Praktische memobakjes van karton voor op het bureau. Functioneel, stijlvol en volledig in uw huisstijl.`,
-        body: `Deze memobakjes zijn meer dan een opbergoplossing — ze zijn een dagelijkse herinnering aan uw merk. Volledig bedrukt in uw huisstijl blijven ze aanwezig op het bureau van uw relaties.`
+        body: `Deze memobakjes zijn meer dan een opbergoplossing. Ze zijn een dagelijkse herinnering aan uw merk. Volledig bedrukt in uw huisstijl blijven ze aanwezig op het bureau van uw relaties.`
       },
       en: {
         title: "Memo trays",
         description: `Practical cardboard memo trays for the desk. Functional, stylish and fully in your corporate identity.`,
-        body: `These memo trays are more than a storage solution — they are a daily reminder of your brand. Fully printed in your corporate identity, they remain a constant presence on your clients' desks.`
+        body: `These memo trays are more than a storage solution. They are a daily reminder of your brand. Fully printed in your corporate identity, they remain a constant presence on your clients' desks.`
       },
       de: {
         title: "Memo-Ablagen",
         description: `Praktische Memo-Ablagen aus Karton für den Schreibtisch. Funktional, stilvoll und vollständig in Ihrem Corporate Design.`,
-        body: `Diese Memo-Ablagen sind mehr als eine Aufbewahrungslösung — sie sind eine tägliche Erinnerung an Ihre Marke. Vollständig in Ihrem Corporate Design bedruckt, bleiben sie dauerhaft auf dem Schreibtisch Ihrer Geschäftspartner präsent.`
+        body: `Diese Memo-Ablagen sind mehr als eine Aufbewahrungslösung. Sie erinnern täglich an Ihre Marke. Vollständig in Ihrem Corporate Design bedruckt, bleiben sie dauerhaft auf dem Schreibtisch Ihrer Geschäftspartner präsent.`
       }
     }
   },
@@ -335,7 +335,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       de: {
         title: "Pop-up",
         description: `Pop-up-Konstruktionen aus Karton, die überraschen und auffallen. Perfekt als Werbemittel oder Werbegeschenk.`,
-        body: `Hilarius Design entwirft und produziert Pop-up-Konstruktionen, die beim Öffnen sofort die Aufmerksamkeit auf sich ziehen. Eine spektakuläre Art, Ihre Botschaft zu präsentieren — vollständig in Ihrem Corporate Design.`
+        body: `Hilarius Design entwirft und produziert Pop-up-Konstruktionen, die beim Öffnen sofort die Aufmerksamkeit auf sich ziehen. Eine spektakuläre Art, Ihre Botschaft vollständig in Ihrem Corporate Design zu präsentieren.`
       }
     }
   },
@@ -354,7 +354,7 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       en: {
         title: "Flower packaging",
         description: `Original cardboard flower packaging that presents a bouquet as a true gift.`,
-        body: `Hilarius Design creates flower packaging that optimally presents and protects the flowers. Fully in your corporate identity, they add a stylish touch to any occasion.`
+        body: `Hilarius Design creates flower packaging that presents and protects the flowers well. Fully in your corporate identity, they add a stylish touch to any occasion.`
       },
       de: {
         title: "Blumenverpackung",
@@ -369,12 +369,12 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
       nl: {
         title: "CD-verpakking",
         description: `Bijzondere CD-verpakkingen van karton die uw muziek of presentatie een professionele uitstraling geven.`,
-        body: `Deze op maat gemaakte CD-verpakkingen van karton zijn een onderscheidende manier om uw product te presenteren. Volledig in uw huisstijl, van eenvoudig tot luxe afgewerkt.`
+        body: `Deze op maat gemaakte CD-verpakkingen van karton geven uw product een eigen presentatie. Volledig in uw huisstijl, van eenvoudig tot luxe afgewerkt.`
       },
       en: {
         title: "CD packaging",
-        description: `Distinctive cardboard CD packaging that gives your music or presentation a professional appearance.`,
-        body: `These bespoke cardboard CD cases are a distinctive way to present your product. Fully in your corporate identity, ranging from simple to premium finish.`
+        description: `Cardboard CD packaging that gives your music or presentation a professional appearance.`,
+        body: `These bespoke cardboard CD cases give your product its own presentation. Fully in your corporate identity, ranging from simple to premium finish.`
       },
       de: {
         title: "CD-Verpackung",
@@ -388,17 +388,17 @@ Nachhaltig, unverwechselbar und praktisch: das Werbegeschenk, das stehen bleibt.
     i18n: {
       nl: {
         title: "Chocoladedoosje",
-        description: `Luxe chocoladedoosjes van karton — een smakelijk relatiegeschenk in een stijlvolle verpakking.`,
+        description: `Luxe chocoladedoosjes van karton als smakelijk relatiegeschenk in een stijlvolle verpakking.`,
         body: `Hilarius Design ontwerpt chocoladedoosjes die indruk maken nog voor de eerste bonbon. Volledig personaliseerbaar in uw huisstijl, van formaat tot bedrukking.`
       },
       en: {
         title: "Chocolate box",
-        description: `Luxury cardboard chocolate boxes — a delicious corporate gift in a stylish package.`,
+        description: `Luxury cardboard chocolate boxes as a delicious corporate gift in a stylish package.`,
         body: `Hilarius Design creates chocolate boxes that make an impression even before the first bonbon. Fully personalisable in your corporate identity, from size to print.`
       },
       de: {
         title: "Schokoladendöschen",
-        description: `Luxuriöse Schokoladenschachteln aus Karton — ein köstliches Werbegeschenk in stilvoller Verpackung.`,
+        description: `Luxuriöse Schokoladenschachteln aus Karton als köstliches Werbegeschenk in stilvoller Verpackung.`,
         body: `Hilarius Design entwirft Schokoladenschachteln, die schon vor der ersten Praline beeindrucken. Vollständig in Ihrem Corporate Design personalisierbar, von der Größe bis zum Druck.`
       }
     }
@@ -420,7 +420,7 @@ Prijs op aanvraag vanaf 250 stuks. Inclusief artwork en één correctieronde, ex
         description: `Gift in style. Luxury cardboard handbags that turn any present into a stylish experience.`,
         body: `Perfect for surprising clients, thanking staff or reinforcing your brand during special occasions. Ideal for champagne, wine, delicacies, lingerie, fashion and cosmetics.
 
-Thanks to the high-quality finish and sturdy corrugated board, they combine a luxurious look with practical durability. Available in white, black or brown cardboard and fully customisable to your corporate identity.
+Thanks to the high-quality finish and sturdy corrugated board, they combine a luxurious look with practical durability. Available in white, black or brown cardboard and fully customizable to your corporate identity.
 
 Price on request from 250 units. Including artwork and one revision round, excluding 21% VAT.`
       },
@@ -448,9 +448,9 @@ Wij ontwikkelen originele verpakkingen op maat, perfect afgestemd op uw wensen.`
       en: {
         title: "Magic Packaging",
         description: `The world's most original champagne or wine packaging. With a simple tap on the top, the box opens like a flower.`,
-        body: `Discover the magic packaging by Hilarius Design: with a single tap the box unfolds like a flower, presenting the bottle beautifully. Available in striking pink and other colours on request.
+        body: `Discover the magic packaging by Hilarius Design: with a single tap the box unfolds like a flower, presenting the bottle beautifully. Available in striking pink and other colors on request.
 
-We develop original custom packaging, perfectly tailored to your wishes.`
+We develop original custom packaging tailored to your wishes.`
       },
       de: {
         title: "Magic Packaging",
@@ -467,17 +467,17 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
       nl: {
         title: "Ontspiegelde showcase",
         description: `Ontspiegelde showcases voor een optimale presentatie zonder storende reflecties.`,
-        body: `Deze showcases zijn ontworpen voor een kristalheldere presentatie van uw product. Met de ontspiegelde uitvoering valt de focus volledig op de inhoud — perfect voor tentoonstellingen, winkels en bedrijfspresentaties.`
+        body: `Deze showcases zijn ontworpen voor een kristalheldere presentatie van uw product. Met de ontspiegelde uitvoering valt de focus volledig op de inhoud. Perfect voor tentoonstellingen, winkels en bedrijfspresentaties.`
       },
       en: {
         title: "Anti-reflective showcase",
         description: `Anti-reflective showcases for an optimal presentation without distracting glare.`,
-        body: `These showcases are designed for a crystal-clear presentation of your product. With the anti-reflective finish, the focus is entirely on the contents — perfect for exhibitions, retail environments and corporate presentations.`
+        body: `These showcases are designed for a clear presentation of your product. With the anti-reflective finish, the focus is entirely on the contents. Perfect for exhibitions, retail environments and corporate presentations.`
       },
       de: {
         title: "Entspiegelte Vitrine",
         description: `Entspiegelte Vitrinen für eine optimale Präsentation ohne störende Reflexionen.`,
-        body: `Diese Vitrinen sind für eine kristallklare Präsentation Ihres Produkts konzipiert. Durch die entspiegelte Ausführung liegt der Fokus vollständig auf dem Inhalt — ideal für Ausstellungen, Geschäfte und Unternehmenspräsentationen.`
+        body: `Diese Vitrinen sind für eine kristallklare Präsentation Ihres Produkts konzipiert. Durch die entspiegelte Ausführung liegt der Fokus vollständig auf dem Inhalt. Ideal für Ausstellungen, Geschäfte und Unternehmenspräsentationen.`
       }
     }
   },
@@ -487,17 +487,17 @@ Wir entwickeln originelle Maßverpackungen, perfekt auf Ihre Wünsche abgestimmt
       nl: {
         title: "Shockproof wijnverpakking",
         description: `Shockproof wijnverpakking van karton die uw fles optimaal beschermt tijdens transport.`,
-        body: `Deze robuuste kartonnen wijnverpakking is ontwikkeld om uw fles te beschermen tegen stoten en schokken. Stijlvol, duurzaam en volledig te personaliseren in uw huisstijl — veilig en representatief tegelijk.`
+        body: `Deze robuuste kartonnen wijnverpakking is ontwikkeld om uw fles te beschermen tegen stoten en schokken. Stijlvol, duurzaam en volledig te personaliseren in uw huisstijl. Veilig en representatief tegelijk.`
       },
       en: {
         title: "Shockproof wine packaging",
-        description: `Shockproof cardboard wine packaging that protects your bottle optimally during transport.`,
-        body: `This robust cardboard wine packaging is engineered to protect your bottle against bumps and shocks. Stylish, sustainable and fully personalisable in your corporate identity — safe and representative at the same time.`
+        description: `Shockproof cardboard wine packaging that protects your bottle during transport.`,
+        body: `This strong cardboard wine packaging is developed to protect your bottle against bumps and shocks. Stylish, sustainable and fully personalisable in your corporate identity. Safe and representative at the same time.`
       },
       de: {
         title: "Stoßfeste Weinverpackung",
         description: `Stoßfeste Weinverpackung aus Karton, die Ihre Flasche beim Transport optimal schützt.`,
-        body: `Diese robuste Karton-Weinverpackung wurde entwickelt, um Ihre Flasche vor Stößen und Erschütterungen zu schützen. Stilvoll, nachhaltig und vollständig in Ihrem Corporate Design personalisierbar — sicher und repräsentativ zugleich.`
+        body: `Diese stabile Karton-Weinverpackung wurde entwickelt, um Ihre Flasche vor Stößen und Erschütterungen zu schützen. Stilvoll, nachhaltig und vollständig in Ihrem Corporate Design personalisierbar. Sicher und repräsentativ zugleich.`
       }
     }
   },
@@ -596,21 +596,21 @@ Vollständig in Ihrem Corporate Design personalisierbar.`
     i18n: {
       nl: {
         title: "Boekverpakkingen",
-        description: `De presentatie maakt het verschil. Op maat gemaakte cassettes voor bijzondere boeken — zoals bij de uitreiking van de Libris-prijs.`,
+        description: `De presentatie maakt het verschil. Op maat gemaakte cassettes voor bijzondere boeken, zoals bij de uitreiking van de Libris-prijs.`,
         body: `Een boek biedt uren, dagen en soms zelfs jaren leesplezier en is daarmee het perfecte relatiegeschenk. Maar de presentatie maakt het verschil. Kiest u voor standaard cadeaupapier of voor een duurzame, op maat gemaakte cassette?
 
 De afgebeelde boekverpakking werd gebruikt bij de uitreiking van de Libris-prijs, waarbij prijswinnaars hun boek in deze exclusieve uitvoering mee naar huis namen.`
       },
       en: {
         title: "Book packaging",
-        description: `Presentation makes the difference. Bespoke slipcases for special books — as used at the Libris Prize ceremony.`,
+        description: `Presentation makes the difference. Bespoke slipcases for special books, as used at the Libris Prize ceremony.`,
         body: `A book offers hours, days and sometimes even years of reading pleasure, making it the perfect corporate gift. But presentation makes the difference. Do you go for standard gift wrap or a durable, bespoke slipcase?
 
 The book packaging shown here was used at the Libris Prize ceremony, where award winners took their book home in this exclusive presentation.`
       },
       de: {
         title: "Buchverpackungen",
-        description: `Die Präsentation macht den Unterschied. Maßgefertigte Schuber für besondere Bücher — wie bei der Verleihung des Libris-Preises.`,
+        description: `Die Präsentation macht den Unterschied. Maßgefertigte Schuber für besondere Bücher, wie bei der Verleihung des Libris-Preises.`,
         body: `Ein Buch bietet stunden-, tage- und manchmal jahrelanges Lesevergnügen und ist damit das perfekte Werbegeschenk. Aber die Präsentation macht den Unterschied. Entscheiden Sie sich für normales Geschenkpapier oder für einen nachhaltigen, maßgefertigten Schuber?
 
 Die abgebildete Buchverpackung wurde bei der Verleihung des Libris-Preises verwendet, bei der Preisträger ihr Buch in dieser exklusiven Ausführung mit nach Hause nehmen durften.`
@@ -623,17 +623,17 @@ Die abgebildete Buchverpackung wurde bei der Verleihung des Libris-Preises verwe
       nl: {
         title: "Euromap",
         description: `Uitgegeven bij de introductie van de Euro in 2002. Alle munten van de twaalf aangesloten landen passen erin.`,
-        body: `Deze unieke mappen werden uitgegeven bij de introductie van de Euro in 2002. Alle munten van de twaalf, toen aangesloten landen, passen erin — een historisch hebbeding dat de komst van een nieuw tijdperk vastlegt.`
+        body: `Deze unieke mappen werden uitgegeven bij de introductie van de Euro in 2002. Alle munten van de twaalf, toen aangesloten landen, passen erin. Een historisch hebbeding dat de komst van een nieuw tijdperk vastlegt.`
       },
       en: {
         title: "Euromap folder",
         description: `Issued at the introduction of the Euro in 2002. All coins from the twelve participating countries fit inside.`,
-        body: `These unique folders were issued at the introduction of the Euro in 2002. All coins from the twelve member countries at the time fit inside — a historic keepsake that captures the arrival of a new era.`
+        body: `These unique folders were issued at the introduction of the Euro in 2002. All coins from the twelve member countries at the time fit inside. A historic keepsake from the arrival of a new era.`
       },
       de: {
         title: "Euromap-Mappe",
         description: `Anlässlich der Euro-Einführung 2002 herausgegeben. Alle Münzen der zwölf Mitgliedsländer haben darin Platz.`,
-        body: `Diese einzigartigen Mappen wurden anlässlich der Euro-Einführung im Jahr 2002 herausgegeben. Alle Münzen der damals zwölf Mitgliedsländer haben darin Platz — ein historisches Sammlerstück, das den Beginn einer neuen Ära festhält.`
+        body: `Diese einzigartigen Mappen wurden anlässlich der Euro-Einführung im Jahr 2002 herausgegeben. Alle Münzen der damals zwölf Mitgliedsländer haben darin Platz. Ein historisches Sammlerstück, das den Beginn einer neuen Ära festhält.`
       }
     }
   },
@@ -645,21 +645,21 @@ Die abgebildete Buchverpackung wurde bei der Verleihung des Libris-Preises verwe
         description: `Unieke uitgave voor golfliefhebbers met bijzondere records en inspirerende anekdotes over beroemde golfers.`,
         body: `Wat dit boekje echt onderscheidt, is de complete beleving. Hilarius Design heeft de golfbal, tee en marker een eigen plek gegeven. Alle onderdelen kunnen worden gepersonaliseerd met uw logo.
 
-Het boekje is beschikbaar in het Nederlands, Engels en Duits — ideaal voor een internationaal publiek.`
+Het boekje is beschikbaar in het Nederlands, Engels en Duits. Ideaal voor een internationaal publiek.`
       },
       en: {
         title: "Golf records book",
         description: `A unique publication for golf enthusiasts featuring remarkable records and inspiring anecdotes about famous golfers.`,
-        body: `What truly sets this booklet apart is the complete experience. Hilarius Design has given the golf ball, tee and marker their own dedicated place. All components can be personalised with your logo.
+        body: `What sets this booklet apart is the complete experience. Hilarius Design has given the golf ball, tee and marker their own dedicated place. All components can be personalized with your logo.
 
-Available in Dutch, English and German — ideal for an international audience.`
+Available in Dutch, English and German. Ideal for an international audience.`
       },
       de: {
         title: "Golfrekorde-Buch",
         description: `Eine einzigartige Publikation für Golfbegeisterte mit besonderen Rekorden und inspirierenden Anekdoten über berühmte Golfer.`,
         body: `Was dieses Heft wirklich auszeichnet, ist das vollständige Erlebnis. Hilarius Design hat dem Golfball, dem Tee und dem Marker einen eigenen Platz eingeräumt. Alle Komponenten können mit Ihrem Logo personalisiert werden.
 
-Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein internationales Publikum.`
+Erhältlich auf Niederländisch, Englisch und Deutsch. Ideal für ein internationales Publikum.`
       }
     }
   },
@@ -669,17 +669,17 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
       nl: {
         title: "Grafiekmappen",
         description: `Elf losse sumi-tekeningen van Peter Schenk gebundeld door stalen pinnen, verrijkt met een gedicht van Theo Olthuis.`,
-        body: `In deze bijzondere ordner worden elf losse sumi-tekeningen van Peter Schenk door stalen pinnen gebundeld. De map is verrijkt met een gedicht van Theo Olthuis — een unieke kunstzinnige uitgave die inhoud en vorm op bijzondere wijze verbindt.`
+        body: `In deze bijzondere ordner worden elf losse sumi-tekeningen van Peter Schenk door stalen pinnen gebundeld. De map is verrijkt met een gedicht van Theo Olthuis. Zo ontstaat een kunstzinnige uitgave waarin inhoud en vorm samenkomen.`
       },
       en: {
         title: "Graphic folders",
         description: `Eleven individual sumi drawings by Peter Schenk, bound by steel pins and enriched with a poem by Theo Olthuis.`,
-        body: `In this special binder, eleven individual sumi drawings by Peter Schenk are held together by steel pins. The folder is enriched with a poem by Theo Olthuis — a unique artistic publication that unites content and form in a remarkable way.`
+        body: `In this special binder, eleven individual sumi drawings by Peter Schenk are held together by steel pins. The folder is enriched with a poem by Theo Olthuis. Together they form an artistic publication where content and form meet.`
       },
       de: {
         title: "Grafikmappe",
         description: `Elf lose Sumi-Zeichnungen von Peter Schenk, durch Stahlstifte gebunden und mit einem Gedicht von Theo Olthuis bereichert.`,
-        body: `In diesem besonderen Ordner werden elf lose Sumi-Zeichnungen von Peter Schenk durch Stahlstifte zusammengehalten. Die Mappe ist mit einem Gedicht von Theo Olthuis bereichert — eine einzigartige künstlerische Publikation, die Inhalt und Form auf besondere Weise verbindet.`
+        body: `In diesem besonderen Ordner werden elf lose Sumi-Zeichnungen von Peter Schenk durch Stahlstifte zusammengehalten. Die Mappe ist mit einem Gedicht von Theo Olthuis bereichert. So entsteht eine künstlerische Publikation, die Inhalt und Form verbindet.`
       }
     }
   },
@@ -734,7 +734,7 @@ Erhältlich auf Niederländisch, Englisch und Deutsch — ideal für ein interna
       en: {
         title: "Art folders",
         description: `High-quality art folders for presenting and storing works of art and graphic prints.`,
-        body: `These folders are designed for artists, galleries and collectors who want to present and protect their work optimally. Made entirely to measure, with an eye for aesthetics that serves the artwork.`
+        body: `These folders are designed for artists, galleries and collectors who want to present and protect their work well. Made entirely to measure, with an eye for aesthetics that serves the artwork.`
       },
       de: {
         title: "Kunstmappe",
@@ -779,17 +779,17 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
       nl: {
         title: "Bordspellen",
         description: `Het driedimensionale 'Hogerop spel', volledig personaliseerbaar met vragen over uw organisatie.`,
-        body: `Maak van teambuilding of relatiebeheer een echte belevenis. Dit driedimensionale bordspel is volledig aan te passen aan uw organisatie en doelstellingen — een originele manier om uw merk te verbinden aan een positieve, gezamenlijke ervaring.`
+        body: `Maak van teambuilding of relatiebeheer een echte belevenis. Dit driedimensionale bordspel is volledig aan te passen aan uw organisatie en doelstellingen. Een originele manier om uw merk te verbinden aan een positieve, gezamenlijke ervaring.`
       },
       en: {
         title: "Board games",
-        description: `The three-dimensional 'Hogerop game', fully personalisable with questions about your organisation.`,
-        body: `Turn team building or client entertainment into a real experience. This three-dimensional board game is fully adaptable to your organisation and objectives — an original way to connect your brand to a positive, shared experience.`
+        description: `The three-dimensional 'Hogerop game', fully customizable with questions about your organization.`,
+        body: `Turn team building or client entertainment into a real experience. This three-dimensional board game is fully adaptable to your organization and objectives. It is an original way to connect your brand to a positive, shared experience.`
       },
       de: {
         title: "Brettspiele",
         description: `Das dreidimensionale 'Hogerop-Spiel', vollständig personalisierbar mit Fragen zu Ihrer Organisation.`,
-        body: `Machen Sie aus Teambuilding oder Kundenpflege ein echtes Erlebnis. Dieses dreidimensionale Brettspiel lässt sich vollständig an Ihre Organisation und Ziele anpassen — eine originelle Art, Ihre Marke mit einem positiven, gemeinsamen Erlebnis zu verbinden.`
+        body: `Machen Sie aus Teambuilding oder Kundenpflege ein echtes Erlebnis. Dieses dreidimensionale Brettspiel lässt sich vollständig an Ihre Organisation und Ziele anpassen. So verbinden Sie Ihre Marke mit einem positiven, gemeinsamen Erlebnis.`
       }
     }
   },
@@ -804,7 +804,7 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
       en: {
         title: "Poule ball game",
         description: `The Poule ball game: a challenging and entertaining group game, perfect as a corporate gift.`,
-        body: `Play, challenge and laugh together. The Hilarius Design Poule ball game is an excellent tool for team activities and is fully personalisable for your organisation.`
+        body: `Play, challenge and laugh together. The Hilarius Design Poule ball game works well for team activities and is fully customizable for your organization.`
       },
       de: {
         title: "Poule-Spiel",
@@ -819,12 +819,12 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
       nl: {
         title: "Puzzel",
         description: `Hoe maak je van acht stukjes een ruit? Of van tien een cirkel? Onze exclusieve puzzels dagen uit en ontspannen tegelijk.`,
-        body: `Deze bijzondere puzzels van Hilarius Design zijn niet alleen een leuke bezigheid, maar ook een onderscheidend relatiegeschenk dat opvalt en bijblijft. Volledig te personaliseren met uw logo of boodschap.`
+        body: `Deze bijzondere puzzels van Hilarius Design zijn niet alleen een leuke bezigheid, maar ook een origineel relatiegeschenk dat opvalt en bijblijft. Volledig te personaliseren met uw logo of boodschap.`
       },
       en: {
         title: "Puzzle",
         description: `How do you make a diamond from eight pieces? Or a circle from ten? Our exclusive puzzles challenge and relax in equal measure.`,
-        body: `These distinctive puzzles by Hilarius Design are not only an enjoyable pastime, but also a standout corporate gift that leaves a lasting impression. Fully personalisable with your logo or message.`
+        body: `These puzzles by Hilarius Design are an enjoyable pastime and an original corporate gift. Fully customizable with your logo or message.`
       },
       de: {
         title: "Puzzle",
@@ -839,17 +839,17 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
       nl: {
         title: "Schaakspel",
         description: `Fraaie schaakspellen leverbaar in diverse kleuren en maten. Een potje schaken tussen de bedrijven door.`,
-        body: `Onze schaakspellen van karton zijn zowel functioneel als decoratief. Ze combineren klassiek spel met het unieke materiaal karton — een origineel relatiegeschenk voor liefhebbers van het schaakspel dat ook als designobject opvalt.`
+        body: `Onze schaakspellen van karton zijn zowel functioneel als decoratief. Ze combineren klassiek spel met het unieke materiaal karton. Een origineel relatiegeschenk voor liefhebbers van het schaakspel dat ook als designobject opvalt.`
       },
       en: {
         title: "Chess set",
-        description: `Beautiful chess sets available in various colours and sizes. A game of chess between meetings.`,
-        body: `Our cardboard chess sets are both functional and decorative. They combine a classic game with the unique material of cardboard — an original corporate gift for chess enthusiasts that also stands out as a design object.`
+        description: `Beautiful chess sets available in various colors and sizes. A game of chess between meetings.`,
+        body: `Our cardboard chess sets are both functional and decorative. They combine a classic game with the unique material of cardboard. An original corporate gift for chess enthusiasts that also stands out as a design object.`
       },
       de: {
         title: "Schachspiel",
         description: `Schöne Schachspiele in verschiedenen Farben und Größen erhältlich. Eine Partie Schach zwischendurch.`,
-        body: `Unsere Schachspiele aus Karton sind sowohl funktional als auch dekorativ. Sie verbinden ein klassisches Spiel mit dem einzigartigen Material Karton — ein originelles Werbegeschenk für Schachliebhaber, das auch als Designobjekt auffällt.`
+        body: `Unsere Schachspiele aus Karton sind sowohl funktional als auch dekorativ. Sie verbinden ein klassisches Spiel mit dem einzigartigen Material Karton. Ein originelles Werbegeschenk für Schachliebhaber, das auch als Designobjekt auffällt.`
       }
     }
   },
@@ -859,17 +859,17 @@ Hilarius Design entwirft Mappen vollständig in Ihrem Corporate Design, mit Ihre
       nl: {
         title: "Werpspel",
         description: `Een uitdagend werpspel van karton, perfect als relatiegeschenk voor teambuilding en borrels.`,
-        body: `Dit werpspel van Hilarius Design combineert eenvoudige regels met verrassend veel plezier. Volledig te personaliseren in uw huisstijl — een origineel cadeau dat mensen samenbrengt.`
+        body: `Dit werpspel van Hilarius Design combineert eenvoudige regels met verrassend veel plezier. Volledig te personaliseren in uw huisstijl en gemaakt om mensen samen te brengen.`
       },
       en: {
         title: "Throwing game",
         description: `A challenging cardboard throwing game, perfect as a corporate gift for team building and receptions.`,
-        body: `This throwing game by Hilarius Design combines simple rules with surprisingly great fun. Fully personalisable in your corporate identity — an original gift that brings people together.`
+        body: `This throwing game by Hilarius Design combines simple rules with surprisingly great fun. Fully personalisable in your corporate identity and made to bring people together.`
       },
       de: {
         title: "Wurfspiel",
         description: `Ein herausforderndes Wurfspiel aus Karton, ideal als Werbegeschenk für Teambuilding und Empfänge.`,
-        body: `Dieses Wurfspiel von Hilarius Design verbindet einfache Regeln mit überraschend viel Spaß. Vollständig in Ihrem Corporate Design personalisierbar — ein originelles Geschenk, das Menschen zusammenbringt.`
+        body: `Dieses Wurfspiel von Hilarius Design verbindet einfache Regeln mit überraschend viel Spaß. Vollständig in Ihrem Corporate Design personalisierbar und gemacht, um Menschen zusammenzubringen.`
       }
     }
   },
@@ -909,21 +909,21 @@ Haben Sie ein anderes Gebäude im Sinn? Das fertigen wir gerne nach Maß.`
       nl: {
         title: "Golfkartonnen stoel",
         description: `Volledig gemaakt van golfkarton, laag voor laag verlijmd tot een verrassend sterk ontwerp.`,
-        body: `Aan de zijkant zit het detail dat hem afmaakt: in de verschillende lagen golfkarton is de letter O uitgesneden — een subtiele verwijzing naar Oscar, voor wie deze stoel is ontwikkeld.
+        body: `Aan de zijkant zit het detail dat hem afmaakt: in de verschillende lagen golfkarton is de letter O uitgesneden. Een subtiele verwijzing naar Oscar, voor wie deze stoel is ontwikkeld.
 
 Ontworpen en gemaakt door Hilarius Design, waar karton karakter krijgt en design een persoonlijk verhaal vertelt.`
       },
       en: {
         title: "Corrugated cardboard chair",
         description: `Made entirely from corrugated cardboard, layer upon layer glued into a surprisingly strong design.`,
-        body: `On the side sits the detail that completes it: the letter O cut out from the various layers of corrugated board — a subtle reference to Oscar, for whom this chair was developed.
+        body: `On the side sits the detail that completes it: the letter O cut out from the various layers of corrugated board. A subtle reference to Oscar, for whom this chair was developed.
 
 Designed and made by Hilarius Design, where cardboard gains character and design tells a personal story.`
       },
       de: {
         title: "Wellpappenstuhl",
         description: `Vollständig aus Wellpappe gefertigt, Schicht für Schicht verleimt zu einem überraschend stabilen Design.`,
-        body: `An der Seite befindet sich das Detail, das ihn vervollständigt: der Buchstabe O, der aus den verschiedenen Lagen Wellpappe ausgeschnitten wurde — eine subtile Anspielung auf Oscar, für den dieser Stuhl entwickelt wurde.
+        body: `An der Seite befindet sich das Detail, das ihn vervollständigt: der Buchstabe O, der aus den verschiedenen Lagen Wellpappe ausgeschnitten wurde. Eine subtile Anspielung auf Oscar, für den dieser Stuhl entwickelt wurde.
 
 Entworfen und gefertigt von Hilarius Design, wo Karton Charakter bekommt und Design eine persönliche Geschichte erzählt.`
       }
@@ -937,21 +937,21 @@ Entworfen und gefertigt von Hilarius Design, wo Karton Charakter bekommt und Des
         description: `Geïnspireerd op mediterrane mozaïekstukjes en Thaise reclamepanelen. Een krachtige visuele compositie op golfkarton.`,
         body: `Voor deze Tezeras liet Paolo Sistilli zich inspireren door twee werelden: de verfijning van kleine mediterrane mozaïekstukjes en de rauwe esthetiek van grote Thaise reclamepanelen. Deze fragmenten zijn samengebracht tot een krachtig geheel op vierkante doosjes van golfkarton.
 
-Verbonden door stroken karton, alsof ze letterlijk aan elkaar zijn geregen — een subtiel detail dat het geheel versterkt.`
+Verbonden door stroken karton, alsof ze letterlijk aan elkaar zijn geregen. Een subtiel detail dat het geheel versterkt.`
       },
       en: {
         title: "Tezeras",
-        description: `Inspired by Mediterranean mosaic fragments and Thai advertising panels. A powerful visual composition on corrugated cardboard.`,
-        body: `For these Tezeras, Paolo Sistilli drew inspiration from two worlds: the refinement of small Mediterranean mosaic pieces and the raw aesthetics of large Thai advertising panels. These fragments have been brought together into a powerful whole on square corrugated cardboard boxes.
+        description: `Inspired by Mediterranean mosaic fragments and Thai advertising panels. A strong visual composition on corrugated cardboard.`,
+        body: `For these Tezeras, Paolo Sistilli drew inspiration from two worlds: the refinement of small Mediterranean mosaic pieces and the raw aesthetics of large Thai advertising panels. These fragments have been brought together on square corrugated cardboard boxes.
 
-Connected by strips of cardboard, as if literally threaded together — a subtle detail that strengthens the whole.`
+Connected by strips of cardboard, as if literally threaded together. A subtle detail that strengthens the whole.`
       },
       de: {
         title: "Tezeras",
         description: `Inspiriert von mediterranen Mosaikstücken und thailändischen Werbetafeln. Eine kraftvolle visuelle Komposition auf Wellpappe.`,
         body: `Für diese Tezeras ließ sich Paolo Sistilli von zwei Welten inspirieren: der Verfeinerung kleiner mediterraner Mosaikstücke und der rohen Ästhetik großer thailändischer Werbepanele. Diese Fragmente wurden auf quadratischen Wellpapp-Schachteln zu einem kraftvollen Ganzen zusammengeführt.
 
-Verbunden durch Kartonstreifen, als wären sie buchstäblich aneinandergereiht — ein subtiles Detail, das das Ganze stärkt.`
+Verbunden durch Kartonstreifen, als wären sie buchstäblich aneinandergereiht. Ein subtiles Detail, das das Ganze stärkt.`
       }
     }
   },
@@ -989,21 +989,21 @@ Haben Sie ein anderes Gebäude im Sinn? Das fertigen wir gerne nach Maß.`
         description: `Bloemmotieven geïnspireerd op wilde bloemen zoals de klaproos, korenbloem en bosanemoon. Geprint op karton of dibond.`,
         body: `Deze bloemmotieven worden in verschillende hoogtes geprint op karton of dibond. Het wordt heel mooi als het in verschillende lagen gekleurd karton wordt geplot, zoals de details van de bosanemoon.
 
-U kunt ook uw eigen bloem aangeven — wij komen graag met een voorstel.`
+U kunt ook uw eigen bloem aangeven. Wij komen graag met een voorstel.`
       },
       en: {
         title: "Wild Flowers",
         description: `Floral motifs inspired by wild flowers such as the poppy, cornflower and wood anemone. Printed on cardboard or dibond.`,
         body: `These floral motifs are printed at various heights on cardboard or dibond. The result is particularly beautiful when plotted in multiple layers of coloured cardboard, as with the details of the wood anemone.
 
-You can also suggest your own flower — we are happy to develop a proposal.`
+You can also suggest your own flower. We are happy to develop a proposal.`
       },
       de: {
         title: "Wildblumen",
         description: `Blumenmotive, inspiriert von Wildblumen wie Mohn, Kornblume und Buschwindröschen. Gedruckt auf Karton oder Dibond.`,
         body: `Diese Blumenmotive werden in verschiedenen Höhen auf Karton oder Dibond gedruckt. Besonders schön wirkt es, wenn es in verschiedenen Lagen farbigen Kartons geplottet wird, wie bei den Details des Buschwindröschens.
 
-Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Entwurf.`
+Sie können auch Ihre eigene Blume vorschlagen. Wir erstellen gerne einen Entwurf.`
       }
     }
   },
@@ -1033,17 +1033,17 @@ Sie können auch Ihre eigene Blume vorschlagen — wir erstellen gerne einen Ent
       nl: {
         title: "Enorme displays",
         description: `Enorme displays van karton die uw merk of product op grote schaal presenteren.`,
-        body: `Hilarius Design ontwerpt en produceert grote kartonnen displays voor evenementen, winkels en tentoonstellingen. Opvallend, effectief en volledig in uw huisstijl — een indrukwekkende aanwezigheid op elke locatie.`
+        body: `Hilarius Design ontwerpt en produceert grote kartonnen displays voor evenementen, winkels en tentoonstellingen. Opvallend, effectief en volledig in uw huisstijl. Een indrukwekkende aanwezigheid op elke locatie.`
       },
       en: {
         title: "Huge displays",
         description: `Enormous cardboard displays that present your brand or product on a grand scale.`,
-        body: `Hilarius Design designs and produces large cardboard displays for events, shops and exhibitions. Eye-catching, effective and fully in your corporate identity — an impressive presence at any location.`
+        body: `Hilarius Design designs and produces large cardboard displays for events, shops and exhibitions. Eye-catching, effective and fully in your corporate identity. An impressive presence at any location.`
       },
       de: {
         title: "Riesendisplays",
         description: `Riesige Displays aus Karton, die Ihre Marke oder Ihr Produkt in großem Maßstab präsentieren.`,
-        body: `Hilarius Design entwirft und produziert große Karton-Displays für Veranstaltungen, Geschäfte und Ausstellungen. Auffällig, wirkungsvoll und vollständig in Ihrem Corporate Design — eine beeindruckende Präsenz an jedem Standort.`
+        body: `Hilarius Design entwirft und produziert große Karton-Displays für Veranstaltungen, Geschäfte und Ausstellungen. Auffällig, wirkungsvoll und vollständig in Ihrem Corporate Design. Eine beeindruckende Präsenz an jedem Standort.`
       }
     }
   },
@@ -1106,9 +1106,9 @@ Het is een investering in waardering en langdurige relaties.`
       en: {
         title: "Compilation",
         description: `Original cardboard year-end gifts that combine originality with sustainability.`,
-        body: `Surprise your clients and show appreciation to your staff with a gift that leaves a lasting impression. Our cardboard year-end gifts are perfectly tailored to your brand and the recipient.
+        body: `Surprise your clients and show appreciation to your staff with a gift that leaves a lasting impression. Our cardboard year-end gifts are tailored to your brand and the recipient.
 
-At Hilarius Design, old paper and cardboard gain a new life as a unique sustainable corporate gift. By choosing cardboard, you contribute to reducing waste, conserving raw materials and lowering CO2 emissions.
+At Hilarius Design, old paper and cardboard gain a new life as a sustainable corporate gift. By choosing cardboard, you contribute to reducing waste, conserving raw materials and lowering CO2 emissions.
 
 It is an investment in appreciation and long-lasting relationships.`
       },
@@ -1129,17 +1129,17 @@ Es ist eine Investition in Wertschätzung und langfristige Beziehungen.`
       nl: {
         title: "Kerstversiering",
         description: `Bijzondere kerstversiering van karton die de feestdagen een unieke uitstraling geeft.`,
-        body: `Hilarius Design ontwerpt en produceert kerstversiering die niet alleen mooi is, maar ook duurzaam. Van sierlijke ornamenten tot opvallende decoraties — volledig personaliseerbaar in uw huisstijl voor een onvergetelijke eindejaarsperiode.`
+        body: `Hilarius Design ontwerpt en produceert kerstversiering die niet alleen mooi is, maar ook duurzaam. Van sierlijke ornamenten tot opvallende decoraties, volledig personaliseerbaar in uw huisstijl voor een feestelijke eindejaarsperiode.`
       },
       en: {
         title: "Christmas decorations",
         description: `Special cardboard Christmas decorations that give the festive season a unique look.`,
-        body: `Hilarius Design designs and produces Christmas decorations that are not only beautiful, but also sustainable. From elegant ornaments to striking decorations — fully personalisable in your corporate identity for an unforgettable year-end period.`
+        body: `Hilarius Design designs and produces Christmas decorations that are beautiful and sustainable. From elegant ornaments to striking decorations, fully customizable in your corporate identity for a festive year-end period.`
       },
       de: {
         title: "Weihnachtsdekoration",
         description: `Besondere Weihnachtsdekoration aus Karton, die den Festtagen eine einzigartige Ausstrahlung verleiht.`,
-        body: `Hilarius Design entwirft und produziert Weihnachtsdekoration, die nicht nur schön, sondern auch nachhaltig ist. Von eleganten Ornamenten bis hin zu auffälligen Dekorationen — vollständig in Ihrem Corporate Design personalisierbar für eine unvergessliche Jahresendzeit.`
+        body: `Hilarius Design entwirft und produziert Weihnachtsdekoration, die nicht nur schön, sondern auch nachhaltig ist. Von eleganten Ornamenten bis hin zu auffälligen Dekorationen, vollständig in Ihrem Corporate Design personalisierbar für eine festliche Jahresendzeit.`
       }
     }
   }
