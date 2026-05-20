@@ -158,6 +158,7 @@
   text-align: left;
 }
 
+  .footerLink,
   .footerColMeta .footerText,
   .footerColMeta .footerLegal{
     font-size: 15px;
@@ -178,6 +179,7 @@
     line-height: 1.6;
   }
 
+  .footerLink,
   .footerColMeta .footerText,
   .footerColMeta .footerLegal{
     font-size: 14px;
