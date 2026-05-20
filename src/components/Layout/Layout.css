@@ -68,6 +68,10 @@
   text-align: left;
 }
 
+.footerColMeta .footerBody{
+  gap: 9px;
+}
+
 .footerBody{
   display:grid;
   gap: 8px;
@@ -149,9 +153,15 @@
     gap: 24px 32px;
   }
 
-  .footerColMeta{
-    justify-self: start;
-    text-align: left;
+.footerColMeta{
+  justify-self: start;
+  text-align: left;
+}
+
+  .footerColMeta .footerText,
+  .footerColMeta .footerLegal{
+    font-size: 15px;
+    line-height: 1.55;
   }
 }
 
@@ -166,6 +176,12 @@
   .footerLegal{
     font-size: 13px;
     line-height: 1.6;
+  }
+
+  .footerColMeta .footerText,
+  .footerColMeta .footerLegal{
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .footerText,

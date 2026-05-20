@@ -456,8 +456,8 @@
     height: 44px;
     min-width: 44px;
     padding: 0;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    font-size: 12px;
+    letter-spacing: 0.07em;
   }
 
   /* Spacer removed because space-between handles even distribution */
@@ -479,7 +479,7 @@
 }
 
 @media (max-width: 380px){
-  .navMobileInlineLink{ font-size: 10px; letter-spacing: 0.05em; }
+  .navMobileInlineLink{ font-size: 11px; letter-spacing: 0.045em; }
 }
 
 @media (hover: none) and (pointer: coarse){
